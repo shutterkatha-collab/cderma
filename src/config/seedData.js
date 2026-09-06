@@ -107,10 +107,10 @@ const defaultSettings = [
   { key: 'science_cta_btn', value: 'Book Academic Cleanroom Tour', category: 'Science & About', label: 'Science CTA Button' },
 
   // B2B & Wholesale Portal
-  { key: 'b2b_hero_title', value: 'Direct B2B Clinic & Wholesale Distribution', category: 'B2B Wholesale', label: 'B2B Main Headline' },
-  { key: 'b2b_hero_subtitle', value: 'Institutional supply agreements, medical sample kits, and direct dispensary pricing for licensed dermatology clinics, aesthetic centers, and hospital pharmacies.', category: 'B2B Wholesale', label: 'B2B Subtitle' },
+  { key: 'b2b_hero_title', value: 'Direct B2B Cosmetic Store, Clinic & Wholesale Distribution', category: 'B2B Wholesale', label: 'B2B Main Headline' },
+  { key: 'b2b_hero_subtitle', value: 'Institutional supply agreements, cosmetic store counter testers, and direct wholesale pricing for premier beauty retailers, licensed dermatology clinics, and hospital pharmacies.', category: 'B2B Wholesale', label: 'B2B Subtitle' },
   { key: 'b2b_stat_1_val', value: '120+', category: 'B2B Wholesale', label: 'B2B Stat 1 Value' },
-  { key: 'b2b_stat_1_lbl', value: 'Authorized Pharmacies Nationwide', category: 'B2B Wholesale', label: 'B2B Stat 1 Label' },
+  { key: 'b2b_stat_1_lbl', value: 'Cosmetic Stores & Pharmacies', category: 'B2B Wholesale', label: 'B2B Stat 1 Label' },
   { key: 'b2b_stat_2_val', value: '45+', category: 'B2B Wholesale', label: 'B2B Stat 2 Value' },
   { key: 'b2b_stat_2_lbl', value: 'Dermatology Clinics & Hospitals', category: 'B2B Wholesale', label: 'B2B Stat 2 Label' },
   { key: 'b2b_stat_3_val', value: '24h', category: 'B2B Wholesale', label: 'B2B Stat 3 Value' },
@@ -119,23 +119,23 @@ const defaultSettings = [
   { key: 'b2b_stat_4_lbl', value: 'Nepal Domestic Supply Reliability', category: 'B2B Wholesale', label: 'B2B Stat 4 Label' },
   { key: 'b2b_benefit_1_title', value: 'Continuous Domestic Supply', category: 'B2B Wholesale', label: 'B2B Benefit 1 Title' },
   { key: 'b2b_benefit_1_desc', value: 'Formulated and manufactured in Nepal. Zero customs delays, import tariffs, or third-party border disruptions.', category: 'B2B Wholesale', label: 'B2B Benefit 1 Description' },
-  { key: 'b2b_benefit_2_title', value: 'Practitioner Margin Protection', category: 'B2B Wholesale', label: 'B2B Benefit 2 Title' },
-  { key: 'b2b_benefit_2_desc', value: 'Strict price parity safeguards clinic dispensary margins against unauthorized e-commerce discounting.', category: 'B2B Wholesale', label: 'B2B Benefit 2 Description' },
-  { key: 'b2b_benefit_3_title', value: 'Complimentary Doctor Trial Kits', category: 'B2B Wholesale', label: 'B2B Benefit 3 Title' },
-  { key: 'b2b_benefit_3_desc', value: 'Full-size clinical trial units, technical monographs, and post-procedure patient sample sachets provided to authorized partners.', category: 'B2B Wholesale', label: 'B2B Benefit 3 Description' },
-  { key: 'b2b_form_title', value: 'Clinic Partnership & Wholesale Application', category: 'B2B Wholesale', label: 'Application Form Title' },
-  { key: 'b2b_form_subtitle', value: 'Apply for direct practitioner wholesale tier pricing and doctor trial kits.', category: 'B2B Wholesale', label: 'Application Form Subtitle' },
+  { key: 'b2b_benefit_2_title', value: 'Practitioner & Retailer Margin Protection', category: 'B2B Wholesale', label: 'B2B Benefit 2 Title' },
+  { key: 'b2b_benefit_2_desc', value: 'Strict MAP pricing and clear wholesale tiers protect cosmetic retailers and clinic dispensary margins against undercut discounting.', category: 'B2B Wholesale', label: 'B2B Benefit 2 Description' },
+  { key: 'b2b_benefit_3_title', value: 'Store Testers & Doctor Trial Kits', category: 'B2B Wholesale', label: 'B2B Benefit 3 Title' },
+  { key: 'b2b_benefit_3_desc', value: 'Luxury acrylic counter displays, full-size retail testers, beauty advisor selling guides, and clinical trial sachets provided to authorized partners.', category: 'B2B Wholesale', label: 'B2B Benefit 3 Description' },
+  { key: 'b2b_form_title', value: 'Cosmetic Store & Clinic Wholesale Application', category: 'B2B Wholesale', label: 'Application Form Title' },
+  { key: 'b2b_form_subtitle', value: 'Apply for direct cosmetic retailer, clinic dispensary wholesale pricing, counter tester units, and clinical trial kits.', category: 'B2B Wholesale', label: 'Application Form Subtitle' },
   { key: 'b2b_form_btn', value: 'Submit Wholesale Application', category: 'B2B Wholesale', label: 'Application Form Button' },
 
   // Products Page
   { key: 'products_hero_title', value: 'Clinical Formulations Directory', category: 'Products Page', label: 'Products Hero Title' },
   { key: 'products_hero_subtitle', value: 'Medical-grade dermatological regimens, concentrated active fractions, and post-procedure barrier creams formulated for Asian skin.', category: 'Products Page', label: 'Products Hero Subtitle' },
-  { key: 'products_disclaimer', value: 'For clinical dispensary prescription and authorized clinic dispensing. Formulated at physiological pH in our Koshi cleanroom.', category: 'Products Page', label: 'Products Advisory Notice' },
+  { key: 'products_disclaimer', value: 'For clinical dispensary prescription, authorized cosmetic stores, and clinic dispensing. Formulated at physiological pH in our Koshi cleanroom.', category: 'Products Page', label: 'Products Advisory Notice' },
 
   // Clinic Directory
-  { key: 'clinics_hero_title', value: 'Authorized Clinic Locator & Dispensary Directory', category: 'Clinics', label: 'Clinic Locator Headline' },
-  { key: 'clinics_hero_subtitle', value: 'Discover certified medical clinics, hospital dispensaries, and aesthetic centers stocking official CDerma clinical formulations across Nepal.', category: 'Clinics', label: 'Clinic Locator Subtitle' },
-  { key: 'clinics_search_placeholder', value: 'Search by clinic name, doctor, city (Kathmandu, Pokhara, Biratnagar)...', category: 'Clinics', label: 'Clinic Search Placeholder' },
+  { key: 'clinics_hero_title', value: 'Authorized Cosmetic Store & Clinic Directory', category: 'Clinics', label: 'Clinic Locator Headline' },
+  { key: 'clinics_hero_subtitle', value: 'Discover authorized beauty retailers, premium cosmetic stores, medical clinics, and aesthetic centers stocking official CDerma clinical formulations across Nepal.', category: 'Clinics', label: 'Clinic Locator Subtitle' },
+  { key: 'clinics_search_placeholder', value: 'Search by cosmetic store, clinic name, doctor, city (Kathmandu, Pokhara, Biratnagar)...', category: 'Clinics', label: 'Clinic Search Placeholder' },
 
   // Monographs & Guidance
   { key: 'monographs_hero_title', value: 'Medical Guidance & Clinical Monographs', category: 'Monographs', label: 'Monographs Headline' },
@@ -148,7 +148,7 @@ const defaultSettings = [
   { key: 'contact_whatsapp', value: '+977 9801234567', category: 'Contact & Footer', label: 'Practitioner WhatsApp' },
   { key: 'contact_address', value: 'K&K Trading Concern, Industrial Estate, Itahari, Koshi Province, Nepal', category: 'Contact & Footer', label: 'Manufacturing & Corporate Address' },
   { key: 'corporate_reg', value: 'DDA / PAN: 609874123 • GMP Compliant Facility', category: 'Contact & Footer', label: 'Registration & Compliance Notice' },
-  { key: 'footer_mission', value: 'Professional skincare, made with care in Itahari, Nepal. Bridging clinical formulation rigor with high-altitude botanical resilience for dermatological clarity.', category: 'Contact & Footer', label: 'Footer Brand Mission Statement' },
+  { key: 'footer_mission', value: 'Professional skincare, made with care in Itahari, Nepal. Supplying premier cosmetic stores, beauty retailers, certified clinics, and dermatologists across Nepal.', category: 'Contact & Footer', label: 'Footer Brand Mission Statement' },
   { key: 'footer_copyright', value: '© 2026 K&K Trading Concern. All rights reserved. Professional Formulation Facility, Itahari, Koshi Province.', category: 'Contact & Footer', label: 'Footer Copyright Notice' }
 ];
 
@@ -157,7 +157,7 @@ const defaultMedia = [
     slot_key: 'site_logo',
     slot_label: 'Main Site Logo (Header & Light Surfaces)',
     page: 'Global',
-    description: 'The official CDerma Choice by Professional logo in Deep Graphite (#1E2322) for navigation headers and light backgrounds.',
+    description: 'The official CDerma Choice by Professional logo in Pure Black (#000000) for navigation headers and light backgrounds.',
     image_url: 'assets/images/cderma-logo.png'
   },
   {
