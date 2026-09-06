@@ -61,7 +61,15 @@ app.get('/clinics', (req, res) => res.sendFile(path.join(__dirname, 'clinics.htm
 app.get('/clinics.html', (req, res) => res.sendFile(path.join(__dirname, 'clinics.html')));
 
 app.get('/monographs', (req, res) => res.sendFile(path.join(__dirname, 'monographs.html')));
-app.get('/monographs.html', (req, res) => res.sendFile(path.join(__dirname, 'monographs.html')));
+// SEO Endpoints: robots.txt and sitemap.xml
+app.get('/robots.txt', (req, res) => {
+  res.type('text/plain');
+  res.sendFile(path.join(__dirname, 'robots.txt'));
+});
+app.get('/sitemap.xml', (req, res) => {
+  res.type('application/xml');
+  res.sendFile(path.join(__dirname, 'sitemap.xml'));
+});
 
 // Fallback static files
 app.use(express.static(path.join(__dirname, '.')));

@@ -22,6 +22,22 @@ const defaultSettings = [
   { key: 'hero_stat_3_val', value: 'pH 5.4', category: 'Home Page', label: 'Hero Stat 3 Value' },
   { key: 'hero_stat_3_lbl', value: 'Physiological Acid Mantle', category: 'Home Page', label: 'Hero Stat 3 Label' },
 
+  // Navigation & Global Header
+  { key: 'nav_home', value: 'Home', category: 'Navigation', label: 'Navigation: Home' },
+  { key: 'nav_products', value: 'Products', category: 'Navigation', label: 'Navigation: Products' },
+  { key: 'nav_flagship', value: 'Flagship Face Care', category: 'Navigation', label: 'Navigation: Flagship' },
+  { key: 'nav_science', value: 'Quality & Science', category: 'Navigation', label: 'Navigation: Quality & Science' },
+  { key: 'nav_b2b', value: 'B2B & Distribution', category: 'Navigation', label: 'Navigation: B2B' },
+  { key: 'nav_monographs', value: 'Medical Guidance', category: 'Navigation', label: 'Navigation: Medical Guidance' },
+  { key: 'nav_partner_btn', value: 'Partner With Us', category: 'Navigation', label: 'Navigation: Partner CTA Button' },
+
+  // Trust Badges Strip
+  { key: 'badge_cleanroom', value: 'HEPA Cleanroom', category: 'Home Page', label: 'Trust Badge: Cleanroom' },
+  { key: 'badge_nmid', value: 'NMID / NMC Compliant', category: 'Home Page', label: 'Trust Badge: NMID' },
+  { key: 'badge_gmp', value: 'GMP Certified Lab', category: 'Home Page', label: 'Trust Badge: GMP' },
+  { key: 'badge_alpine', value: 'Wild Alpine Harvest', category: 'Home Page', label: 'Trust Badge: Alpine' },
+  { key: 'badge_traceable', value: '100% Batch Traceable', category: 'Home Page', label: 'Trust Badge: Traceable' },
+
   // Home Page - Flagship Face Care Spotlight
   { key: 'home_flagship_title', value: 'Centella Barrier Restore Concentrate', category: 'Home Page', label: 'Flagship Product Title' },
   { key: 'home_flagship_badge', value: 'Flagship Formulation • Clinical Trial Verified', category: 'Home Page', label: 'Flagship Badge' },
@@ -29,30 +45,102 @@ const defaultSettings = [
   { key: 'home_flagship_desc', value: 'Engineered for compromised epidermal barriers, post-laser erythema, and sub-Himalayan dry altitude climates. Restores the stratum corneum lipid matrix in a biomimetic 3:1:1 ratio.', category: 'Home Page', label: 'Flagship Description' },
   { key: 'home_flagship_price', value: 'NPR 3,200', category: 'Home Page', label: 'Flagship Display Price' },
   { key: 'home_flagship_volume', value: '30 ml / 1.0 fl. oz.', category: 'Home Page', label: 'Flagship Volume' },
+  { key: 'home_flagship_cta', value: 'Inspect Technical Monograph', category: 'Home Page', label: 'Flagship CTA Button' },
+
+  // Home Page - 3 Scientific Pillars
+  { key: 'pillar_section_badge', value: 'The CDerma Standard', category: 'Home Page', label: 'Pillars Section Badge' },
+  { key: 'pillar_section_title', value: 'Three Non-Negotiable Pillars of Dermal Science', category: 'Home Page', label: 'Pillars Section Title' },
+  { key: 'pillar_1_title', value: 'Bio-Identical Stratum Corneum Mimicry', category: 'Home Page', label: 'Pillar 1 Title' },
+  { key: 'pillar_1_desc', value: 'Formulated with exact physiological ratios of ceramides, cholesterol, and free fatty acids matching healthy human epidermis.', category: 'Home Page', label: 'Pillar 1 Description' },
+  { key: 'pillar_2_title', value: 'Wild Alpine Phytochemical Potency', category: 'Home Page', label: 'Pillar 2 Title' },
+  { key: 'pillar_2_desc', value: 'Sub-Alpine Centella Asiatica harvested above 1,800m altitude delivers 3.4x higher triterpene concentration than lowland variants.', category: 'Home Page', label: 'Pillar 2 Description' },
+  { key: 'pillar_3_title', value: 'ISO Class 7 Cleanroom Synthesis', category: 'Home Page', label: 'Pillar 3 Title' },
+  { key: 'pillar_3_desc', value: 'Produced in Nepal’s only certified dermocosmetic research cleanroom with positive pressure HEPA air and zero microbial tolerance.', category: 'Home Page', label: 'Pillar 3 Description' },
+
+  // Home Page - Clinical Evidence & Results
+  { key: 'trials_title', value: 'Measurable Dermatological Outcomes', category: 'Home Page', label: 'Clinical Trials Title' },
+  { key: 'trials_subtitle', value: 'Independent 28-day split-face evaluations on 120 South Asian participants with compromised barriers.', category: 'Home Page', label: 'Clinical Trials Subtitle' },
+  { key: 'trial_metric_1_val', value: '94%', category: 'Home Page', label: 'Trial Metric 1 Value' },
+  { key: 'trial_metric_1_lbl', value: 'Reported immediate reduction in post-procedure stinging & redness within 24 hours.', category: 'Home Page', label: 'Trial Metric 1 Label' },
+  { key: 'trial_metric_2_val', value: '+68%', category: 'Home Page', label: 'Trial Metric 2 Value' },
+  { key: 'trial_metric_2_lbl', value: 'Increase in corneometer-measured epidermal hydration at Day 14.', category: 'Home Page', label: 'Trial Metric 2 Label' },
+  { key: 'trial_metric_3_val', value: '-52%', category: 'Home Page', label: 'Trial Metric 3 Value' },
+  { key: 'trial_metric_3_lbl', value: 'Reduction in Transepidermal Water Loss (TEWL) after 4 weeks of twice-daily use.', category: 'Home Page', label: 'Trial Metric 3 Label' },
+
+  // Home Page - Testimonials
+  { key: 'testimonial_title', value: 'Prescribed by Leading Dermatologists', category: 'Home Page', label: 'Testimonial Section Title' },
+  { key: 'testimonial_1_quote', value: 'CDerma provides the exact physiological barrier repair lipid ratio I have struggled to source domestically. In our procedural suites, post-chemical peel recovery time has dropped by half.', category: 'Home Page', label: 'Testimonial 1 Quote' },
+  { key: 'testimonial_1_author', value: 'Dr. A. Karki, MD', category: 'Home Page', label: 'Testimonial 1 Author' },
+  { key: 'testimonial_1_role', value: 'Consultant Dermatologist • Kathmandu Skin Center', category: 'Home Page', label: 'Testimonial 1 Role' },
+  { key: 'testimonial_2_quote', value: 'The cleanroom formulation standard is readily apparent in the formulation stability. The Centella concentrate performs exceptionally well in dry, high-altitude climates.', category: 'Home Page', label: 'Testimonial 2 Quote' },
+  { key: 'testimonial_2_author', value: 'Dr. P. Sharma, MD Dermatology', category: 'Home Page', label: 'Testimonial 2 Author' },
+  { key: 'testimonial_2_role', value: 'Chief Aesthetic Physician • Pokhara Dermal Care', category: 'Home Page', label: 'Testimonial 2 Role' },
+
+  // Home Page - FAQs
+  { key: 'faq_title', value: 'Frequently Asked Clinical Questions', category: 'Home Page', label: 'FAQ Section Title' },
+  { key: 'faq_1_q', value: 'Are CDerma formulations suitable for post-procedural skin?', category: 'Home Page', label: 'FAQ 1 Question' },
+  { key: 'faq_1_a', value: 'Yes. All CDerma concentrates and barrier creams are sterile-formulated, fragrance-free, and tested specifically for post-laser, microneedling, and chemical peel recovery.', category: 'Home Page', label: 'FAQ 1 Answer' },
+  { key: 'faq_2_q', value: 'Where are CDerma formulations manufactured?', category: 'Home Page', label: 'FAQ 2 Question' },
+  { key: 'faq_2_a', value: 'At our specialized ISO Class 7 pharmaceutical-grade cleanroom research facility located in Itahari Industrial Estate, Koshi Province, Nepal.', category: 'Home Page', label: 'FAQ 2 Answer' },
+  { key: 'faq_3_q', value: 'How can licensed dermatologists request practitioner trial kits?', category: 'Home Page', label: 'FAQ 3 Question' },
+  { key: 'faq_3_a', value: 'Practitioners and clinics can register via our B2B Wholesale Portal or contact clinical@cderma.com.np with their NMC registration number for immediate sample dispatch.', category: 'Home Page', label: 'FAQ 3 Answer' },
 
   // About & Science Story
   { key: 'about_heading', value: 'Rooted in Alpine Botany. Proven in Clinical Practice.', category: 'Science & About', label: 'About Section Headline' },
   { key: 'about_body', value: 'CDerma was founded to bring uncompromising pharmaceutical manufacturing rigor to skincare in Nepal. Combining high-altitude wild Centella Asiatica with bio-identical ceramides, peptides, and niacinamide for licensed dermatologists and aesthetic clinics.', category: 'Science & About', label: 'About Section Description' },
+  { key: 'science_hero_badge', value: 'Cleanroom Protocol • Technical Monograph', category: 'Science & About', label: 'Science Hero Badge' },
+  { key: 'science_hero_title', value: 'Formulated in Nepal with Cleanroom Precision', category: 'Science & About', label: 'Science Hero Title' },
+  { key: 'science_hero_subtitle', value: 'Bridging pharmaceutical-grade dermatological actives with potent, sustainably harvested Himalayan botanicals. We built Nepal’s first certified dermocosmetics research cleanroom in Itahari, Koshi Province.', category: 'Science & About', label: 'Science Hero Subtitle' },
   { key: 'science_cleanroom_title', value: 'State-of-the-Art Pharmaceutical Cleanroom in Koshi Province', category: 'Science & About', label: 'Cleanroom Section Title' },
   { key: 'science_cleanroom_desc', value: 'Our facility in Itahari operates under ISO Class 7 (Class 10,000) air purity standards with positive HEPA filtration, automated batch traceability, and strict GMP protocols.', category: 'Science & About', label: 'Cleanroom Section Description' },
   { key: 'cleanroom_iso', value: 'ISO Class 7 (Class 10,000)', category: 'Science & About', label: 'Cleanroom ISO Grade' },
   { key: 'cleanroom_location', value: 'Itahari Formulation Facility, Koshi Province', category: 'Science & About', label: 'Facility Location' },
   { key: 'cleanroom_testing', value: '100% Dermatologically Tested on South Asian Skin', category: 'Science & About', label: 'Testing Specification' },
   { key: 'cleanroom_ph', value: 'Physiological pH 5.2 – 5.5', category: 'Science & About', label: 'Target Physiological pH' },
+  { key: 'science_botanical_badge', value: 'Indigenous Bio-Active Procurement', category: 'Science & About', label: 'Botanical Section Badge' },
+  { key: 'science_botanical_title', value: 'Koshi Alpine Extraction: Preserving Delicate Triterpenoids', category: 'Science & About', label: 'Botanical Section Title' },
+  { key: 'science_botanical_desc', value: 'Conventional high-heat distillation destroys the fragile anti-inflammatory molecular chains in native flora. At our Koshi facility, CDerma utilizes low-temperature sub-critical cold-maceration at 18°C.', category: 'Science & About', label: 'Botanical Section Description' },
+  { key: 'science_trace_title', value: 'Direct Soil-to-Vial Batch Traceability', category: 'Science & About', label: 'Traceability Title' },
+  { key: 'science_trace_desc', value: 'Every commercial unit leaving our Itahari cleanroom is stamped with a traceable 8-digit manufacturing lot ID.', category: 'Science & About', label: 'Traceability Description' },
+  { key: 'science_cta_title', value: 'Schedule a Technical Cleanroom Inspection', category: 'Science & About', label: 'Science CTA Title' },
+  { key: 'science_cta_subtitle', value: 'We invite licensed dermatologists, hospital procurement committees, and clinical researchers to inspect our sterile processing suites in Itahari.', category: 'Science & About', label: 'Science CTA Subtitle' },
+  { key: 'science_cta_btn', value: 'Book Academic Cleanroom Tour', category: 'Science & About', label: 'Science CTA Button' },
 
   // B2B & Wholesale Portal
   { key: 'b2b_hero_title', value: 'Direct B2B Clinic & Wholesale Distribution', category: 'B2B Wholesale', label: 'B2B Main Headline' },
   { key: 'b2b_hero_subtitle', value: 'Institutional supply agreements, medical sample kits, and direct dispensary pricing for licensed dermatology clinics, aesthetic centers, and hospital pharmacies.', category: 'B2B Wholesale', label: 'B2B Subtitle' },
+  { key: 'b2b_stat_1_val', value: '120+', category: 'B2B Wholesale', label: 'B2B Stat 1 Value' },
+  { key: 'b2b_stat_1_lbl', value: 'Authorized Pharmacies Nationwide', category: 'B2B Wholesale', label: 'B2B Stat 1 Label' },
+  { key: 'b2b_stat_2_val', value: '45+', category: 'B2B Wholesale', label: 'B2B Stat 2 Value' },
+  { key: 'b2b_stat_2_lbl', value: 'Dermatology Clinics & Hospitals', category: 'B2B Wholesale', label: 'B2B Stat 2 Label' },
+  { key: 'b2b_stat_3_val', value: '24h', category: 'B2B Wholesale', label: 'B2B Stat 3 Value' },
+  { key: 'b2b_stat_3_lbl', value: 'Express Dispatch from Koshi Lab', category: 'B2B Wholesale', label: 'B2B Stat 3 Label' },
+  { key: 'b2b_stat_4_val', value: '100%', category: 'B2B Wholesale', label: 'B2B Stat 4 Value' },
+  { key: 'b2b_stat_4_lbl', value: 'Nepal Domestic Supply Reliability', category: 'B2B Wholesale', label: 'B2B Stat 4 Label' },
+  { key: 'b2b_benefit_1_title', value: 'Continuous Domestic Supply', category: 'B2B Wholesale', label: 'B2B Benefit 1 Title' },
+  { key: 'b2b_benefit_1_desc', value: 'Formulated and manufactured in Nepal. Zero customs delays, import tariffs, or third-party border disruptions.', category: 'B2B Wholesale', label: 'B2B Benefit 1 Description' },
+  { key: 'b2b_benefit_2_title', value: 'Practitioner Margin Protection', category: 'B2B Wholesale', label: 'B2B Benefit 2 Title' },
+  { key: 'b2b_benefit_2_desc', value: 'Strict price parity safeguards clinic dispensary margins against unauthorized e-commerce discounting.', category: 'B2B Wholesale', label: 'B2B Benefit 2 Description' },
+  { key: 'b2b_benefit_3_title', value: 'Complimentary Doctor Trial Kits', category: 'B2B Wholesale', label: 'B2B Benefit 3 Title' },
+  { key: 'b2b_benefit_3_desc', value: 'Full-size clinical trial units, technical monographs, and post-procedure patient sample sachets provided to authorized partners.', category: 'B2B Wholesale', label: 'B2B Benefit 3 Description' },
   { key: 'b2b_form_title', value: 'Clinic Partnership & Wholesale Application', category: 'B2B Wholesale', label: 'Application Form Title' },
   { key: 'b2b_form_subtitle', value: 'Apply for direct practitioner wholesale tier pricing and doctor trial kits.', category: 'B2B Wholesale', label: 'Application Form Subtitle' },
+  { key: 'b2b_form_btn', value: 'Submit Wholesale Application', category: 'B2B Wholesale', label: 'Application Form Button' },
+
+  // Products Page
+  { key: 'products_hero_title', value: 'Clinical Formulations Directory', category: 'Products Page', label: 'Products Hero Title' },
+  { key: 'products_hero_subtitle', value: 'Medical-grade dermatological regimens, concentrated active fractions, and post-procedure barrier creams formulated for Asian skin.', category: 'Products Page', label: 'Products Hero Subtitle' },
+  { key: 'products_disclaimer', value: 'For clinical dispensary prescription and authorized clinic dispensing. Formulated at physiological pH in our Koshi cleanroom.', category: 'Products Page', label: 'Products Advisory Notice' },
 
   // Clinic Directory
   { key: 'clinics_hero_title', value: 'Authorized Clinic Locator & Dispensary Directory', category: 'Clinics', label: 'Clinic Locator Headline' },
   { key: 'clinics_hero_subtitle', value: 'Discover certified medical clinics, hospital dispensaries, and aesthetic centers stocking official CDerma clinical formulations across Nepal.', category: 'Clinics', label: 'Clinic Locator Subtitle' },
+  { key: 'clinics_search_placeholder', value: 'Search by clinic name, doctor, city (Kathmandu, Pokhara, Biratnagar)...', category: 'Clinics', label: 'Clinic Search Placeholder' },
 
   // Monographs & Guidance
   { key: 'monographs_hero_title', value: 'Medical Guidance & Clinical Monographs', category: 'Monographs', label: 'Monographs Headline' },
   { key: 'monographs_hero_subtitle', value: 'Evidence-based dermatological prescribing protocols, post-procedure recovery schedules, and peer-reviewed formulation monographs for healthcare practitioners.', category: 'Monographs', label: 'Monographs Subtitle' },
+  { key: 'monographs_disclaimer', value: 'Prescribing guides provided for licensed medical practitioners and dermatology professionals.', category: 'Monographs', label: 'Monographs Advisory' },
 
   // Contact & Footer
   { key: 'contact_email', value: 'clinical@cderma.com.np', category: 'Contact & Footer', label: 'Official Medical Email' },
@@ -127,6 +215,34 @@ const defaultMedia = [
     page: 'B2B Portal',
     description: 'Wide laboratory cleanroom research and manufacturing overview banner.',
     image_url: 'assets/images/cleanroom-lab-wide.png'
+  },
+  {
+    slot_key: 'testimonial_doctor_1',
+    slot_label: 'Doctor Testimonial Portrait 1 (Dr. Karki)',
+    page: 'Home Page',
+    description: 'Physician headshot for first home page clinical endorsement.',
+    image_url: 'assets/images/img_d8dddc0fbb21.jpg'
+  },
+  {
+    slot_key: 'testimonial_doctor_2',
+    slot_label: 'Doctor Testimonial Portrait 2 (Dr. Sharma)',
+    page: 'Home Page',
+    description: 'Physician headshot for second home page clinical endorsement.',
+    image_url: 'assets/images/img_b7a64c067655.jpg'
+  },
+  {
+    slot_key: 'product_cream_jar',
+    slot_label: 'Flagship Barrier Cream Jar Packaging',
+    page: 'Home & Products',
+    description: 'Luxury frosted glass cream jar cosmetic packaging.',
+    image_url: 'assets/images/img_623ee7600cd6.png'
+  },
+  {
+    slot_key: 'science_microscope',
+    slot_label: 'Laboratory Cellular Research Microscopy',
+    page: 'Science & About',
+    description: 'Dermatological laboratory microscope and cellular active extraction.',
+    image_url: 'assets/images/img_3037b9a39d03.jpg'
   }
 ];
 

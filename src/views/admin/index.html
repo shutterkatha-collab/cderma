@@ -4,6 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CDerma Nepal — CMS Administration & Content Engine</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="CDerma Nepal CMS Administration and Content Management Portal.">
+  <meta property="og:title" content="CDerma Nepal — CMS Administration">
+  <meta property="og:description" content="CDerma CMS Administration Portal">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -218,14 +222,18 @@
         <div class="bg-white rounded-xl border border-outline-border shadow-sm p-6">
           <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-outline-border mb-6">
             <div>
-              <h3 class="font-serif text-lg font-semibold text-primary">Global Site Copy & Headlines Editor</h3>
+              <h3 class="font-serif text-lg font-semibold text-primary">Global Site Copy &amp; Headlines Editor</h3>
               <p class="text-xs text-gray-500">Edit every headline, subtext, address, and specification across all pages without coding.</p>
             </div>
-            <div class="flex items-center gap-3">
+            <div class="flex flex-wrap items-center gap-3">
               <div class="relative">
                 <span class="material-symbols-outlined absolute left-3 top-2.5 text-gray-400 text-sm">search</span>
                 <input type="text" id="settingsSearch" oninput="handleSettingsSearch(this.value)" placeholder="Search copy or key..." class="pl-9 pr-3 py-2 rounded-lg border border-outline-border text-xs w-48 sm:w-64 focus:border-secondary focus:outline-none bg-surface">
               </div>
+              <button onclick="openCustomFieldModal()" class="px-4 py-2.5 rounded-lg bg-surface border border-outline-border hover:bg-surface-container text-primary text-xs font-semibold transition-colors shadow-sm flex items-center gap-1.5 shrink-0">
+                <span class="material-symbols-outlined text-sm">add_circle</span>
+                <span>+ Custom Text Field</span>
+              </button>
               <button onclick="saveAllSettings()" class="px-5 py-2.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold uppercase tracking-wider transition-colors shadow flex items-center gap-2 shrink-0">
                 <span class="material-symbols-outlined text-sm">save</span>
                 <span>Save All Changes</span>
@@ -236,13 +244,16 @@
           <!-- Category Filter Pills -->
           <div class="flex flex-wrap gap-2 mb-6" id="settingsCategoryFilters">
             <button onclick="filterSettingsCat('all')" class="settings-cat-btn active px-3 py-1 rounded-full text-xs font-semibold bg-secondary text-white transition-all" data-cat="all">All Sections</button>
-            <button onclick="filterSettingsCat('General')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="General">General & Brand</button>
+            <button onclick="filterSettingsCat('Navigation')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Navigation">Navigation &amp; Menu</button>
+            <button onclick="filterSettingsCat('General')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="General">General &amp; Brand</button>
             <button onclick="filterSettingsCat('Home Page')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Home Page">Home Page</button>
-            <button onclick="filterSettingsCat('Science & About')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Science & About">Science & Cleanroom</button>
+            <button onclick="filterSettingsCat('Science & About')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Science & About">Science &amp; Cleanroom</button>
             <button onclick="filterSettingsCat('B2B Wholesale')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="B2B Wholesale">B2B Wholesale</button>
+            <button onclick="filterSettingsCat('Products Page')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Products Page">Products Page</button>
             <button onclick="filterSettingsCat('Clinics')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Clinics">Clinics Locator</button>
             <button onclick="filterSettingsCat('Monographs')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Monographs">Monographs</button>
-            <button onclick="filterSettingsCat('Contact & Footer')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Contact & Footer">Contact & Footer</button>
+            <button onclick="filterSettingsCat('Contact & Footer')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Contact & Footer">Contact &amp; Footer</button>
+            <button onclick="filterSettingsCat('Custom')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Custom">Custom Fields</button>
           </div>
 
           <div id="settingsContainer" class="space-y-6">
@@ -257,22 +268,27 @@
         <div class="bg-white rounded-xl border border-outline-border shadow-sm p-6">
           <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-outline-border mb-6">
             <div>
-              <h3 class="font-serif text-lg font-semibold text-primary">Media & Visual Assets Control Center</h3>
+              <h3 class="font-serif text-lg font-semibold text-primary">Media &amp; Visual Assets Control Center</h3>
               <p class="text-xs text-gray-500">Upload and instantly swap any image, brand logo, or laboratory visual across the website.</p>
             </div>
-            <!-- Quick Asset Uploader Form -->
-            <div class="flex items-center gap-2 bg-surface p-2.5 rounded-lg border border-outline-border">
-              <span class="material-symbols-outlined text-secondary text-base">cloud_upload</span>
-              <span class="text-xs font-semibold text-primary">Upload Asset:</span>
-              <input type="file" id="generalAssetInput" accept="image/*" class="text-xs w-44 text-gray-500 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-[11px] file:font-semibold file:bg-primary file:text-white hover:file:bg-secondary">
-              <button onclick="handleGeneralAssetUpload()" class="px-3 py-1.5 rounded bg-primary hover:bg-secondary text-white text-xs font-semibold transition-colors">Upload</button>
+            <!-- Quick Asset Uploader Form & New Slot Button -->
+            <div class="flex flex-wrap items-center gap-3">
+              <button onclick="openCustomSlotModal()" class="px-3.5 py-2 rounded-lg bg-surface border border-outline-border hover:bg-surface-container text-primary text-xs font-semibold transition-colors shadow-sm flex items-center gap-1.5 shrink-0">
+                <span class="material-symbols-outlined text-sm">add_photo_alternate</span>
+                <span>+ Register New Image Slot</span>
+              </button>
+              <div class="flex items-center gap-2 bg-surface p-2 rounded-lg border border-outline-border">
+                <span class="material-symbols-outlined text-secondary text-base">cloud_upload</span>
+                <input type="file" id="generalAssetInput" accept="image/*" class="text-xs w-44 text-gray-500 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-[11px] file:font-semibold file:bg-primary file:text-white hover:file:bg-secondary">
+                <button onclick="handleGeneralAssetUpload()" class="px-3 py-1 rounded bg-primary hover:bg-secondary text-white text-xs font-semibold transition-colors">Upload</button>
+              </div>
             </div>
           </div>
 
           <!-- Recently Uploaded URL Banner (if any) -->
           <div id="recentUploadBanner" class="hidden mb-6 p-3.5 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center justify-between text-xs text-emerald-900">
             <div class="flex items-center gap-3">
-              <img id="recentUploadImg" src="" class="w-10 h-10 object-cover rounded border border-emerald-300">
+              <img id="recentUploadImg" src="" alt="Recently uploaded media" class="w-10 h-10 object-cover rounded border border-emerald-300">
               <div>
                 <p class="font-bold">File Uploaded Successfully!</p>
                 <p id="recentUploadUrl" class="font-mono text-[11px] text-emerald-700 select-all"></p>
@@ -595,6 +611,99 @@
     </div>
   </div>
 
+  <!-- ==================== CUSTOM CONTENT FIELD MODAL ==================== -->
+  <div id="customFieldModal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full flex flex-col border border-outline-border">
+      <div class="p-6 border-b border-outline-border flex items-center justify-between">
+        <h3 class="font-serif text-lg font-semibold text-primary">Add Custom Text / Content Field</h3>
+        <button onclick="closeCustomFieldModal()" class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">close</span></button>
+      </div>
+      <form id="customFieldForm" onsubmit="submitCustomField(event)" class="p-6 space-y-4 text-xs">
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Unique Field Key *</label>
+          <input type="text" id="newFieldKey" required placeholder="e.g. spring_campaign_badge" class="w-full p-2.5 rounded border border-outline-border font-mono text-xs">
+          <p class="text-[10px] text-gray-400 mt-1">Bind in any HTML template using <code class="bg-gray-100 px-1 py-0.5 rounded font-mono">data-cms="your_key"</code></p>
+        </div>
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Display Label *</label>
+          <input type="text" id="newFieldLabel" required placeholder="e.g. Spring Seasonal Promotion Badge" class="w-full p-2.5 rounded border border-outline-border">
+        </div>
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Section / Category *</label>
+          <select id="newFieldCategory" required class="w-full p-2.5 rounded border border-outline-border bg-white">
+            <option value="Home Page">Home Page</option>
+            <option value="Navigation">Navigation & Menu</option>
+            <option value="General">General & Brand</option>
+            <option value="Science & About">Science & Cleanroom</option>
+            <option value="B2B Wholesale">B2B Wholesale</option>
+            <option value="Products Page">Products Page</option>
+            <option value="Clinics">Clinics Locator</option>
+            <option value="Monographs">Monographs</option>
+            <option value="Contact & Footer">Contact & Footer</option>
+            <option value="Custom">Custom / Miscellaneous</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Initial Content / Value</label>
+          <textarea id="newFieldValue" rows="3" placeholder="Enter the text content..." class="w-full p-2.5 rounded border border-outline-border"></textarea>
+        </div>
+        <div class="pt-4 border-t border-outline-border flex justify-end gap-3">
+          <button type="button" onclick="closeCustomFieldModal()" class="px-4 py-2 rounded border border-outline-border text-gray-600 hover:bg-gray-50">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded bg-primary text-white hover:bg-secondary font-semibold">Save Field</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== CUSTOM MEDIA SLOT MODAL ==================== -->
+  <div id="customSlotModal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full flex flex-col border border-outline-border">
+      <div class="p-6 border-b border-outline-border flex items-center justify-between">
+        <h3 class="font-serif text-lg font-semibold text-primary">Register New Image / Media Slot</h3>
+        <button onclick="closeCustomSlotModal()" class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">close</span></button>
+      </div>
+      <form id="customSlotForm" onsubmit="submitCustomSlot(event)" class="p-6 space-y-4 text-xs">
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Unique Slot Key *</label>
+          <input type="text" id="newSlotKey" required placeholder="e.g. hero_video_poster" class="w-full p-2.5 rounded border border-outline-border font-mono text-xs">
+          <p class="text-[10px] text-gray-400 mt-1">Bind in any HTML template using <code class="bg-gray-100 px-1 py-0.5 rounded font-mono">data-cms-img="your_slot"</code></p>
+        </div>
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Slot Label *</label>
+          <input type="text" id="newSlotLabel" required placeholder="e.g. Hero Video Poster Graphic" class="w-full p-2.5 rounded border border-outline-border">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Page Category *</label>
+            <select id="newSlotPage" required class="w-full p-2.5 rounded border border-outline-border bg-white">
+              <option value="Home Page">Home Page</option>
+              <option value="Global">Global / Header / Footer</option>
+              <option value="Science & About">Science & About</option>
+              <option value="B2B Portal">B2B Portal</option>
+              <option value="Products Page">Products Page</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Upload File (Optional)</label>
+            <input type="file" id="newSlotFile" accept="image/*" class="w-full text-[11px] text-gray-500 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-[10px] file:bg-primary file:text-white">
+          </div>
+        </div>
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Or Existing Image URL / Path</label>
+          <input type="text" id="newSlotUrl" placeholder="assets/images/... or uploads/... or https://" class="w-full p-2.5 rounded border border-outline-border font-mono text-xs">
+        </div>
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Description / Location</label>
+          <input type="text" id="newSlotDesc" placeholder="Brief note on where this image displays" class="w-full p-2.5 rounded border border-outline-border">
+        </div>
+        <div class="pt-4 border-t border-outline-border flex justify-end gap-3">
+          <button type="button" onclick="closeCustomSlotModal()" class="px-4 py-2 rounded border border-outline-border text-gray-600 hover:bg-gray-50">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded bg-primary text-white hover:bg-secondary font-semibold">Create Media Slot</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- Client-side CMS Script -->
   <script>
     // State
@@ -775,15 +884,20 @@
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             ${items.map(item => `
-              <div class="${item.value && item.value.length > 80 ? 'md:col-span-2' : ''}">
+              <div class="${item.value && item.value.length > 80 ? 'md:col-span-2' : ''} p-3 rounded-lg bg-white border border-outline-border/50 hover:border-secondary/40 transition-colors">
                 <div class="flex items-center justify-between mb-1">
                   <label class="block text-xs font-semibold text-gray-700">${escapeHtml(item.label || item.key)}</label>
-                  <span class="font-mono text-[10px] text-gray-400 select-all">${escapeHtml(item.key)}</span>
+                  <div class="flex items-center gap-1.5">
+                    <span class="font-mono text-[10px] text-gray-400 bg-gray-50 px-1.5 py-0.5 rounded select-all">${escapeHtml(item.key)}</span>
+                    <button type="button" onclick="deleteCustomSetting('${escapeHtml(item.key)}')" title="Delete this field" class="p-0.5 rounded text-gray-300 hover:text-rose-500 hover:bg-rose-50 transition-colors">
+                      <span class="material-symbols-outlined text-[14px]">delete</span>
+                    </button>
+                  </div>
                 </div>
                 ${item.value && (item.value.length > 80 || item.key.includes('desc') || item.key.includes('body') || item.key.includes('mission')) ? `
-                  <textarea id="setting_${item.key}" class="w-full p-2.5 rounded border border-outline-border bg-white text-xs text-primary focus:border-secondary focus:outline-none transition-colors" rows="3">${escapeHtml(item.value || '')}</textarea>
+                  <textarea id="setting_${item.key}" class="w-full p-2.5 rounded border border-outline-border bg-surface/40 text-xs text-primary focus:border-secondary focus:bg-white focus:outline-none transition-colors" rows="3">${escapeHtml(item.value || '')}</textarea>
                 ` : `
-                  <input type="text" id="setting_${item.key}" value="${escapeHtml(item.value || '')}" class="w-full p-2.5 rounded border border-outline-border bg-white text-xs text-primary focus:border-secondary focus:outline-none transition-colors">
+                  <input type="text" id="setting_${item.key}" value="${escapeHtml(item.value || '')}" class="w-full p-2.5 rounded border border-outline-border bg-surface/40 text-xs text-primary focus:border-secondary focus:bg-white focus:outline-none transition-colors">
                 `}
               </div>
             `).join('')}
@@ -845,6 +959,9 @@
             <div class="p-4 space-y-2">
               <div class="flex items-center justify-between">
                 <h4 class="font-serif text-sm font-semibold text-primary leading-tight">${escapeHtml(m.slot_label)}</h4>
+                <button type="button" onclick="deleteCustomSlot('${escapeHtml(m.slot_key)}')" title="Delete this slot" class="p-0.5 rounded text-gray-300 hover:text-rose-500 hover:bg-rose-50 transition-colors">
+                  <span class="material-symbols-outlined text-[14px]">delete</span>
+                </button>
               </div>
               <p class="font-mono text-[10px] text-gray-400 bg-surface px-1.5 py-0.5 rounded inline-block select-all">${escapeHtml(m.slot_key)}</p>
               <p class="text-[11px] text-gray-500 leading-snug line-clamp-2">${escapeHtml(m.description || '')}</p>
@@ -999,6 +1116,121 @@
       }
     }
 
+    // ==================== CUSTOM CONTENT FIELD CONTROLLERS ====================
+    function openCustomFieldModal() {
+      document.getElementById('customFieldModal').classList.remove('hidden');
+      document.getElementById('newFieldKey').focus();
+    }
+
+    function closeCustomFieldModal() {
+      document.getElementById('customFieldModal').classList.add('hidden');
+      document.getElementById('customFieldForm').reset();
+    }
+
+    async function submitCustomField(e) {
+      e.preventDefault();
+      const key = document.getElementById('newFieldKey').value.trim();
+      const label = document.getElementById('newFieldLabel').value.trim();
+      const category = document.getElementById('newFieldCategory').value;
+      const value = document.getElementById('newFieldValue').value;
+
+      try {
+        const res = await fetch('/admin/api/settings/custom', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ key, label, category, value })
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(data.message);
+          closeCustomFieldModal();
+          await loadSettings();
+        } else {
+          alert(data.message || 'Error creating custom field');
+        }
+      } catch (err) {
+        alert('Request failed: ' + err.message);
+      }
+    }
+
+    async function deleteCustomSetting(key) {
+      if (!confirm(`Are you sure you want to delete content field "${key}"?`)) return;
+      try {
+        const res = await fetch(`/admin/api/settings/${encodeURIComponent(key)}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (data.success) {
+          showToast(data.message);
+          await loadSettings();
+        } else {
+          alert(data.message || 'Failed to delete');
+        }
+      } catch (err) {
+        alert('Delete failed: ' + err.message);
+      }
+    }
+
+    // ==================== CUSTOM MEDIA SLOT CONTROLLERS ====================
+    function openCustomSlotModal() {
+      document.getElementById('customSlotModal').classList.remove('hidden');
+      document.getElementById('newSlotKey').focus();
+    }
+
+    function closeCustomSlotModal() {
+      document.getElementById('customSlotModal').classList.add('hidden');
+      document.getElementById('customSlotForm').reset();
+    }
+
+    async function submitCustomSlot(e) {
+      e.preventDefault();
+      const slot_key = document.getElementById('newSlotKey').value.trim();
+      const slot_label = document.getElementById('newSlotLabel').value.trim();
+      const page = document.getElementById('newSlotPage').value;
+      const description = document.getElementById('newSlotDesc').value.trim();
+      const image_url = document.getElementById('newSlotUrl').value.trim();
+      const fileInput = document.getElementById('newSlotFile');
+
+      const formData = new FormData();
+      formData.append('slot_key', slot_key);
+      formData.append('slot_label', slot_label);
+      formData.append('page', page);
+      formData.append('description', description);
+      if (image_url) formData.append('image_url', image_url);
+      if (fileInput && fileInput.files.length) formData.append('file', fileInput.files[0]);
+
+      try {
+        const res = await fetch('/admin/api/media/custom', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(data.message);
+          closeCustomSlotModal();
+          await loadMedia();
+        } else {
+          alert(data.message || 'Error creating media slot');
+        }
+      } catch (err) {
+        alert('Media slot creation error: ' + err.message);
+      }
+    }
+
+    async function deleteCustomSlot(slotKey) {
+      if (!confirm(`Are you sure you want to delete media slot "${slotKey}"?`)) return;
+      try {
+        const res = await fetch(`/admin/api/media/${encodeURIComponent(slotKey)}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (data.success) {
+          showToast(data.message);
+          await loadMedia();
+        } else {
+          alert(data.message || 'Failed to delete slot');
+        }
+      } catch (err) {
+        alert('Delete failed: ' + err.message);
+      }
+    }
+
     // ==================== PRODUCTS ====================
     async function loadProducts() {
       try {
@@ -1015,7 +1247,7 @@
             <tr class="hover:bg-surface/50">
               <td class="py-3 px-3">
                 <div class="flex items-center gap-3">
-                  <img src="${escapeHtml(p.image_url || 'assets/images/product-packaging-dropper.png')}" class="w-10 h-10 object-contain rounded border border-outline-border bg-surface p-0.5">
+                  <img src="${escapeHtml(p.image_url || 'assets/images/product-packaging-dropper.png')}" alt="${escapeHtml(p.title)}" class="w-10 h-10 object-contain rounded border border-outline-border bg-surface p-0.5">
                   <div>
                     <p class="font-semibold text-primary">${escapeHtml(p.title)}</p>
                     <p class="text-[11px] text-gray-400 font-mono">${escapeHtml(p.slug)}</p>

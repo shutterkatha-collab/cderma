@@ -96,26 +96,89 @@ router.get('/api/settings', requireAdmin, (req, res) => {
   }
 });
 
-// POST /admin/api/settings - Update site settings (bulk key-value)
+// POST /admin/api/settings - Update site settings (bulk key-value with upsert)
 router.post('/api/settings', requireAdmin, (req, res) => {
   try {
-    const { settings } = req.body; // array of { key, value } or object { key: value }
-    const updateStmt = db.prepare('UPDATE site_settings SET value = ?, updated_at = CURRENT_TIMESTAMP WHERE key = ?');
+    const { settings } = req.body; // array of { key, value, category, label } or object { key: value }
+    const upsertStmt = db.prepare(`
+      INSERT INTO site_settings (key, value, category, label)
+      VALUES (@key, @value, COALESCE(@category, 'Custom'), COALESCE(@label, @key))
+      ON CONFLICT(key) DO UPDATE SET
+        value = excluded.value,
+        category = COALESCE(excluded.category, site_settings.category),
+        label = COALESCE(excluded.label, site_settings.label),
+        updated_at = CURRENT_TIMESTAMP
+    `);
 
     const updateTx = db.transaction((data) => {
       if (Array.isArray(data)) {
         for (const s of data) {
-          updateStmt.run(s.value, s.key);
+          upsertStmt.run({
+            key: s.key,
+            value: s.value !== undefined ? String(s.value) : '',
+            category: s.category || null,
+            label: s.label || null
+          });
         }
-      } else if (typeof data === 'object') {
+      } else if (typeof data === 'object' && data !== null) {
         for (const [key, value] of Object.entries(data)) {
-          updateStmt.run(value, key);
+          upsertStmt.run({
+            key,
+            value: value !== undefined ? String(value) : '',
+            category: null,
+            label: null
+          });
         }
       }
     });
 
     updateTx(settings);
     res.json({ success: true, message: 'Site copy and settings updated successfully.' });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// POST /admin/api/settings/custom - Create or configure a new custom content key
+router.post('/api/settings/custom', requireAdmin, (req, res) => {
+  try {
+    const { key, label, category, value } = req.body;
+    if (!key || !key.trim()) {
+      return res.status(400).json({ success: false, message: 'Field key is required (e.g. promo_banner_text).' });
+    }
+
+    const cleanKey = key.trim().toLowerCase().replace(/[^a-z0-9_]/g, '_');
+    const cleanLabel = label && label.trim() ? label.trim() : cleanKey;
+    const cleanCategory = category && category.trim() ? category.trim() : 'General';
+    const cleanValue = value !== undefined ? String(value) : '';
+
+    const stmt = db.prepare(`
+      INSERT INTO site_settings (key, value, category, label)
+      VALUES (?, ?, ?, ?)
+      ON CONFLICT(key) DO UPDATE SET
+        value = excluded.value,
+        category = excluded.category,
+        label = excluded.label,
+        updated_at = CURRENT_TIMESTAMP
+    `);
+
+    stmt.run(cleanKey, cleanValue, cleanCategory, cleanLabel);
+    res.json({
+      success: true,
+      message: `Content field "${cleanKey}" registered successfully.`,
+      field: { key: cleanKey, value: cleanValue, category: cleanCategory, label: cleanLabel }
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// DELETE /admin/api/settings/:key - Delete a custom setting key
+router.delete('/api/settings/:key', requireAdmin, (req, res) => {
+  try {
+    const { key } = req.params;
+    db.prepare('DELETE FROM site_settings WHERE key = ?').run(key);
+    res.json({ success: true, message: `Field "${key}" removed.` });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -466,6 +529,59 @@ router.post('/api/media/:slot_key', requireAdmin, upload.single('file'), (req, r
       message: `Image slot "${slot_key}" updated successfully!`,
       slot: updated
     });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// POST /admin/api/media/custom - Register a new custom media slot
+router.post('/api/media/custom', requireAdmin, upload.single('file'), (req, res) => {
+  try {
+    const { slot_key, slot_label, page, description } = req.body;
+    let imageUrl = req.body.image_url;
+
+    if (req.file) {
+      imageUrl = `uploads/${req.file.filename}`;
+    }
+
+    if (!slot_key || !slot_key.trim()) {
+      return res.status(400).json({ success: false, message: 'Slot key is required (e.g. promo_banner_image).' });
+    }
+
+    const cleanKey = slot_key.trim().toLowerCase().replace(/[^a-z0-9_]/g, '_');
+    const cleanLabel = slot_label && slot_label.trim() ? slot_label.trim() : cleanKey;
+    const cleanPage = page && page.trim() ? page.trim() : 'Global';
+    const cleanDesc = description && description.trim() ? description.trim() : '';
+    const cleanUrl = imageUrl && imageUrl.trim() ? imageUrl.trim() : 'assets/images/product-packaging-dropper.png';
+
+    db.prepare(`
+      INSERT INTO site_media (slot_key, slot_label, page, description, image_url)
+      VALUES (?, ?, ?, ?, ?)
+      ON CONFLICT(slot_key) DO UPDATE SET
+        slot_label = excluded.slot_label,
+        page = excluded.page,
+        description = excluded.description,
+        image_url = excluded.image_url,
+        updated_at = CURRENT_TIMESTAMP
+    `).run(cleanKey, cleanLabel, cleanPage, cleanDesc, cleanUrl);
+
+    const slot = db.prepare('SELECT * FROM site_media WHERE slot_key = ?').get(cleanKey);
+    res.json({
+      success: true,
+      message: `Media slot "${cleanKey}" created successfully.`,
+      slot
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// DELETE /admin/api/media/:slot_key - Delete an image slot
+router.delete('/api/media/:slot_key', requireAdmin, (req, res) => {
+  try {
+    const { slot_key } = req.params;
+    db.prepare('DELETE FROM site_media WHERE slot_key = ?').run(slot_key);
+    res.json({ success: true, message: `Media slot "${slot_key}" deleted.` });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }

@@ -22,3 +22,6 @@ Thumbs.db
 # User uploaded media
 public/uploads/*
 !public/uploads/.gitkeep
+
+# IDE Agent customizations
+.agents/

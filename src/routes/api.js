@@ -2,6 +2,15 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
 
+// GET /api/auth/status - Check if active user has admin session
+router.get('/auth/status', (req, res) => {
+  const isAdmin = req.session && req.session.adminLoggedIn === true;
+  res.json({
+    authenticated: isAdmin,
+    username: isAdmin ? req.session.adminUsername : null
+  });
+});
+
 // GET /api/settings - Fetch all public site settings
 router.get('/settings', (req, res) => {
   try {

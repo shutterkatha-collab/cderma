@@ -180,7 +180,297 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (clinicContainer) {
     loadDynamicClinics(clinicContainer);
   }
+
+  // 5. In-Page Live Visual Editor (for authenticated admins)
+  initVisualEditor();
 });
+
+async function initVisualEditor() {
+  try {
+    const res = await fetch('/api/auth/status');
+    const authData = await res.json();
+    if (!authData.authenticated) return; // Not admin, stay in normal visitor mode
+
+    // Inject Admin Bar Styles
+    const style = document.createElement('style');
+    style.id = 'cderma-cms-styles';
+    style.textContent = `
+      #cderma-admin-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 44px;
+        background: #191c1b;
+        color: #f2ede3;
+        z-index: 999999;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 16px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 13px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        border-bottom: 1px solid rgba(219,197,124,0.3);
+      }
+      body.cderma-admin-active {
+        padding-top: 44px !important;
+      }
+      body.cderma-edit-mode [data-cms] {
+        outline: 2px dashed rgba(107,91,28,0.4) !important;
+        outline-offset: 3px;
+        border-radius: 4px;
+        cursor: text;
+        transition: outline 0.15s, background-color 0.15s;
+        position: relative;
+      }
+      body.cderma-edit-mode [data-cms]:hover {
+        outline: 2px solid #6b5b1c !important;
+        background-color: rgba(249, 225, 149, 0.15) !important;
+      }
+      body.cderma-edit-mode [data-cms]:focus {
+        outline: 2px solid #2563eb !important;
+        background-color: rgba(37, 99, 235, 0.08) !important;
+      }
+      body.cderma-edit-mode [data-cms-img] {
+        position: relative;
+        cursor: pointer;
+        outline: 2px dashed rgba(107,91,28,0.5) !important;
+        outline-offset: 2px;
+      }
+      body.cderma-edit-mode [data-cms-img]:hover {
+        outline: 3px solid #6b5b1c !important;
+        opacity: 0.9;
+      }
+      .cderma-img-overlay-btn {
+        position: absolute;
+        bottom: 8px;
+        right: 8px;
+        background: rgba(25, 28, 27, 0.9);
+        color: #f9e195;
+        border: 1px solid #6b5b1c;
+        border-radius: 6px;
+        padding: 4px 10px;
+        font-size: 11px;
+        font-weight: 600;
+        cursor: pointer;
+        z-index: 1000;
+        display: none;
+      }
+      body.cderma-edit-mode .cderma-img-wrapper:hover .cderma-img-overlay-btn {
+        display: block;
+      }
+      .cderma-toast {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        background: #1E2322;
+        color: #fff;
+        padding: 12px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        z-index: 9999999;
+        font-size: 13px;
+        border-left: 4px solid #6b5b1c;
+        animation: cdermaSlideIn 0.3s ease-out;
+      }
+      @keyframes cdermaSlideIn {
+        from { transform: translateY(20px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+    `;
+    document.head.appendChild(style);
+    document.body.classList.add('cderma-admin-active');
+
+    // State tracking
+    window.__cderma_edits = {};
+    let editMode = false;
+
+    // Create and attach Top Admin Bar
+    const bar = document.createElement('div');
+    bar.id = 'cderma-admin-bar';
+    bar.innerHTML = `
+      <div style="display:flex; align-items:center; gap:12px;">
+        <span style="font-weight:bold; color:#f9e195; display:flex; align-items:center; gap:6px;">
+          <span>🌿 CDerma CMS</span>
+          <span style="font-size:10px; text-transform:uppercase; background:rgba(219,197,124,0.2); padding:2px 6px; border-radius:4px;">Live In-Page Editor</span>
+        </span>
+        <button id="cderma-toggle-edit" style="background:#2d3331; color:#fff; border:1px solid #4b4639; padding:4px 12px; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; display:flex; align-items:center; gap:6px; transition:all 0.15s;">
+          <span>✏️</span> <span>Enable Visual Edit Mode</span>
+        </button>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span id="cderma-pending-indicator" style="font-size:11px; color:#a1a1aa; display:none;">0 pending edits</span>
+        <button id="cderma-save-btn" disabled style="background:#6b5b1c; color:#fff; opacity:0.5; border:none; padding:4px 14px; border-radius:6px; cursor:not-allowed; font-size:12px; font-weight:600; display:flex; align-items:center; gap:6px; transition:all 0.15s;">
+          <span>💾</span> <span>Save Page Changes</span>
+        </button>
+        <a href="/admin" target="_blank" style="background:transparent; color:#dbc57c; text-decoration:none; padding:4px 10px; border-radius:6px; font-size:12px; font-weight:500; display:flex; align-items:center; gap:4px;">
+          <span>⚙️ Full CMS</span> ↗
+        </a>
+      </div>
+    `;
+    document.body.prepend(bar);
+
+    const toggleBtn = document.getElementById('cderma-toggle-edit');
+    const saveBtn = document.getElementById('cderma-save-btn');
+    const pendingIndicator = document.getElementById('cderma-pending-indicator');
+
+    // Hidden file uploader for in-page image replacement
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*';
+    fileInput.style.display = 'none';
+    document.body.appendChild(fileInput);
+    let currentUploadSlot = null;
+    let currentUploadImgEl = null;
+
+    fileInput.addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file || !currentUploadSlot) return;
+
+      showToast(`Uploading new image for "${currentUploadSlot}"...`);
+      const formData = new FormData();
+      formData.append('file', file);
+
+      try {
+        const upRes = await fetch(`/admin/api/media/${encodeURIComponent(currentUploadSlot)}`, {
+          method: 'POST',
+          body: formData
+        });
+        const upData = await upRes.json();
+        if (upData.success && upData.slot) {
+          if (currentUploadImgEl) {
+            currentUploadImgEl.src = upData.slot.image_url;
+          }
+          showToast(`✅ Image for "${currentUploadSlot}" replaced & published!`);
+        } else {
+          alert('Failed to upload image: ' + (upData.message || 'Unknown error'));
+        }
+      } catch (err) {
+        alert('Upload error: ' + err.message);
+      } finally {
+        fileInput.value = '';
+      }
+    });
+
+    // Toggle Edit Mode handler
+    toggleBtn.addEventListener('click', () => {
+      editMode = !editMode;
+      if (editMode) {
+        document.body.classList.add('cderma-edit-mode');
+        toggleBtn.style.background = '#15803d';
+        toggleBtn.style.borderColor = '#22c55e';
+        toggleBtn.innerHTML = `<span>🟢</span> <span>Visual Edit Mode ACTIVE</span>`;
+        showToast('✏️ Visual Edit Mode is now ON. Click any text to edit directly!');
+
+        // Enable contenteditable on all [data-cms]
+        document.querySelectorAll('[data-cms]').forEach(el => {
+          el.setAttribute('contenteditable', 'true');
+          el.setAttribute('title', `CMS Key: [${el.getAttribute('data-cms')}] (Click to edit)`);
+
+          el.addEventListener('input', () => {
+            const key = el.getAttribute('data-cms');
+            window.__cderma_edits[key] = el.innerText.trim();
+            updatePendingCount();
+          });
+        });
+
+        // Add click listener on images [data-cms-img]
+        document.querySelectorAll('[data-cms-img]').forEach(img => {
+          img.setAttribute('title', `Click to upload & replace image for slot [${img.getAttribute('data-cms-img')}]`);
+          img.onclick = (ev) => {
+            ev.preventDefault();
+            ev.stopPropagation();
+            currentUploadSlot = img.getAttribute('data-cms-img');
+            currentUploadImgEl = img;
+            fileInput.click();
+          };
+        });
+
+      } else {
+        document.body.classList.remove('cderma-edit-mode');
+        toggleBtn.style.background = '#2d3331';
+        toggleBtn.style.borderColor = '#4b4639';
+        toggleBtn.innerHTML = `<span>✏️</span> <span>Enable Visual Edit Mode</span>`;
+
+        document.querySelectorAll('[data-cms]').forEach(el => {
+          el.removeAttribute('contenteditable');
+        });
+        document.querySelectorAll('[data-cms-img]').forEach(img => {
+          img.onclick = null;
+        });
+      }
+    });
+
+    function updatePendingCount() {
+      const keys = Object.keys(window.__cderma_edits);
+      const count = keys.length;
+      if (count > 0) {
+        pendingIndicator.style.display = 'inline-block';
+        pendingIndicator.textContent = `${count} pending text edit${count > 1 ? 's' : ''}`;
+        saveBtn.disabled = false;
+        saveBtn.style.cursor = 'pointer';
+        saveBtn.style.opacity = '1';
+        saveBtn.style.background = '#22c55e';
+      } else {
+        pendingIndicator.style.display = 'none';
+        saveBtn.disabled = true;
+        saveBtn.style.cursor = 'not-allowed';
+        saveBtn.style.opacity = '0.5';
+        saveBtn.style.background = '#6b5b1c';
+      }
+    }
+
+    // Save Changes button click
+    saveBtn.addEventListener('click', async () => {
+      const keys = Object.keys(window.__cderma_edits);
+      if (keys.length === 0) return;
+
+      saveBtn.disabled = true;
+      saveBtn.innerHTML = `<span>⏳</span> <span>Saving...</span>`;
+
+      try {
+        const payload = { settings: window.__cderma_edits };
+        const saveRes = await fetch('/admin/api/settings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const saveData = await saveRes.json();
+
+        if (saveData.success) {
+          showToast(`✅ Successfully saved ${keys.length} changes to database!`);
+          window.__cderma_edits = {};
+          updatePendingCount();
+          saveBtn.innerHTML = `<span>💾</span> <span>Save Page Changes</span>`;
+        } else {
+          alert('Save failed: ' + (saveData.error || saveData.message));
+          saveBtn.disabled = false;
+          saveBtn.innerHTML = `<span>💾</span> <span>Retry Save</span>`;
+        }
+      } catch (err) {
+        alert('Network error while saving: ' + err.message);
+        saveBtn.disabled = false;
+        saveBtn.innerHTML = `<span>💾</span> <span>Retry Save</span>`;
+      }
+    });
+
+  } catch (e) {
+    console.debug('Visual editor not enabled');
+  }
+}
+
+function showToast(msg) {
+  let toast = document.querySelector('.cderma-toast');
+  if (toast) toast.remove();
+  toast = document.createElement('div');
+  toast.className = 'cderma-toast';
+  toast.innerHTML = msg;
+  document.body.appendChild(toast);
+  setTimeout(() => {
+    if (toast) toast.remove();
+  }, 4000);
+}
 
 async function loadDynamicClinics(container) {
   try {
@@ -218,3 +508,4 @@ function escapeHtml(str) {
   if (!str) return '';
   return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
+
