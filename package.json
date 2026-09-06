@@ -1,0 +1,29 @@
+{
+  "name": "cderma-nepal",
+  "version": "1.0.0",
+  "description": "CDerma Nepal Premium Skincare Web Experience - Imported from Stitch",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "cderma",
+    "skincare",
+    "nepal",
+    "dermatology",
+    "cleanroom",
+    "stitch"
+  ],
+  "author": "CDerma Nepal / K&K Trading Concern",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "better-sqlite3": "^13.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
+    "multer": "^2.3.0"
+  }
+}

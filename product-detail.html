@@ -1,0 +1,548 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&amp;family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary-fixed-dim":"#dbc57c","on-surface-variant":"#4b4639","on-secondary-fixed":"#221b00","on-tertiary-container":"#050500","tertiary":"#5f6041","outline-variant":"#cec6b4","secondary":"#6b5e2c","on-background":"#1d1c16","surface-container-low":"#f8f3e9","tertiary-fixed-dim":"#c8c9a3","background":"#fef9ef","secondary-container":"#f4e2a3","surface-dim":"#dedad0","on-tertiary-fixed-variant":"#47492c","secondary-fixed":"#f4e2a3","inverse-surface":"#32302a","on-tertiary-fixed":"#1c1d05","on-secondary":"#ffffff","surface-tint":"#6e5d1f","secondary-fixed-dim":"#d7c68a","outline":"#7d7768","tertiary-container":"#787958","inverse-on-surface":"#f5f0e6","surface-variant":"#e7e2d8","on-error-container":"#93000a","primary":"#6b5b1c","on-primary-fixed-variant":"#544607","on-surface":"#1d1c16","primary-container":"#857333","error-container":"#ffdad6","surface-container-lowest":"#ffffff","on-primary":"#ffffff","primary-fixed":"#f9e195","surface-bright":"#fef9ef","surface":"#fef9ef","surface-container":"#f2ede3","tertiary-fixed":"#e5e5bd","on-error":"#ffffff","inverse-primary":"#dbc57c","error":"#ba1a1a","on-primary-fixed":"#231b00","surface-container-high":"#ede8de","surface-container-highest":"#e7e2d8","on-secondary-container":"#716431","on-secondary-fixed-variant":"#524616","on-tertiary":"#ffffff","on-primary-container":"#fffbff"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-3xl":"4.5rem","space-2xs":"0.25rem","space-4xl":"6rem","space-md":"1rem","space-2xl":"3rem","space-lg":"1.5rem","container-max":"1360px","space-sm":"0.75rem","gutter-mobile":"1rem","space-xl":"2rem","gutter-desktop":"2rem","space-xs":"0.5rem"},fontFamily:{"body-md":["Open Sans"],"display-lg":["Comfortaa"]},fontSize:{"body-md":["15px",{lineHeight:"24px",letterSpacing:"0em",fontWeight:"400"}],"display-lg":["56px",{lineHeight:"64px",letterSpacing:"-0.02em",fontWeight:"400"}]}}}};</script></head><body class="bg-background font-body-md text-body-md text-on-surface min-h-screen"><header class="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(136,118,53,0.05)]"><div class="h-20 max-w-[1360px] mx-auto px-gutter-desktop flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-md shrink-0"><a class="flex items-center group" data-path="home" href="index.html"><img alt="CDerma - Choice by Professional" class="h-9 w-auto object-contain" src="assets/images/cderma-logo.png"/></a></div><nav class="hidden xl:flex items-center gap-space-lg shrink-0" data-active-classes="text-primary font-semibold"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="index.html">Home</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="products" href="products.html">Products</a><a aria-current="page" class="transition-colors text-primary font-semibold" data-path="flagship-face-care" href="product-detail.html">Flagship Face Care</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="quality-science" href="science.html">Quality &amp; Science</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="b2b-distribution" href="b2b.html">B2B &amp; Distribution</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="medical-guidance" href="monographs.html">Medical Guidance</a></nav><div class="flex items-center gap-space-md shrink-0"><button aria-label="Search catalog" class="w-9 h-9 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">search</span></button><div class="flex items-center text-[12px] tracking-wider font-semibold text-on-surface-variant px-space-xs"><button class="text-primary hover:text-primary transition-colors" type="button">EN</button><span class="mx-space-2xs text-outline-variant">|</span><button class="text-on-surface-variant hover:text-on-surface transition-colors" type="button">नेपाली</button></div><a class="hidden sm:inline-flex items-center justify-center px-space-lg py-space-xs rounded-full bg-primary text-on-primary text-[13px] font-medium tracking-wide shadow-[0_2px_12px_rgba(107,91,28,0.18)] hover:bg-primary-container transition-all" data-path="b2b-distribution" href="b2b.html">Partner With Us</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-background"><div class="flex flex-col w-full">
+<!-- Top Breadcrumb & Cleanroom Batch Status Bar -->
+<section class="w-full bg-surface-container-low text-on-surface-variant">
+<div class="max-w-[1360px] mx-auto px-gutter-desktop py-space-xs flex flex-wrap items-center justify-between gap-space-sm text-[13px]">
+<div class="flex items-center gap-space-xs text-outline">
+<a class="hover:text-primary transition-colors" href="#">Catalog</a>
+<span class="">/</span>
+<a class="hover:text-primary transition-colors" href="#">Face Care</a>
+<span class="">/</span>
+<span class="text-on-surface font-medium">Advanced Barrier Restore Concentrate</span>
+</div>
+<div class="flex items-center gap-space-md font-medium text-[12px] tracking-wider uppercase">
+<span class="inline-flex items-center gap-1 text-primary">
+<span class="w-2 h-2 rounded-full bg-primary inline-block"></span>
+          Fresh Batch No: Lot 24-0442
+        </span>
+<span class="text-outline-variant">|</span>
+<span class="text-outline">Cleanroom Verified: Koshi Province Labs</span>
+</div>
+</div>
+</section>
+<!-- Section 1: Main Product Console (Asymmetrical Split Grid) -->
+<section class="max-w-[1360px] mx-auto px-gutter-desktop py-space-2xl w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-2xl items-start">
+<!-- Left Column: Gallery & Micro-Diagnostic Swatches -->
+<div class="lg:col-span-7 flex flex-col gap-space-lg">
+<div class="relative w-full aspect-[4/4] sm:aspect-[5/4] rounded bg-surface-container overflow-hidden shadow-sm flex items-center justify-center group">
+<img alt="CDerma Advanced Barrier Restore Concentrate in frosted glass dropper vial resting on limestone plinth" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" id="main-product-img" src="assets/images/img_282f9d7b4a1e.jpg">
+<!-- Clinical Inspection Marker Pins -->
+<div class="absolute top-6 left-6 flex flex-col gap-2">
+<span class="inline-flex items-center px-space-sm py-space-2xs rounded-full bg-surface/90 backdrop-blur-md text-primary text-[11px] font-semibold tracking-wider uppercase shadow-sm">
+<span class="material-symbols-outlined text-[14px] mr-1 text-primary">verified</span>
+              Formula No. 04 — Medical Grade
+            </span>
+</div>
+<div class="absolute bottom-6 right-6 px-space-md py-space-xs rounded bg-surface/95 backdrop-blur-md shadow-sm text-left">
+<p class="text-[11px] uppercase tracking-widest text-outline font-semibold">Active Potency</p>
+<p class="text-[14px] font-semibold text-primary">5% Niacinamide + Alpine Centella</p>
+</div>
+</div>
+<!-- Thumbnails Grid -->
+<div class="grid grid-cols-4 gap-space-sm">
+<button class="thumbnail-btn rounded aspect-square overflow-hidden bg-surface-container shadow-sm ring-2 ring-primary" onclick="switchGallery('assets/images/img_282f9d7b4a1e.jpg', this)" type="button">
+<img alt="CDerma bottle on stone pedestal" class="w-full h-full object-cover" src="assets/images/img_282f9d7b4a1e.jpg">
+</button>
+<button class="thumbnail-btn rounded aspect-square overflow-hidden bg-surface-container hover:opacity-90" onclick="switchGallery('assets/images/img_2956941691f0.jpg', this)" type="button">
+<img alt="Bio-identical ceramide &amp; concentrate droplet swatches" class="w-full h-full object-cover" src="assets/images/img_2956941691f0.jpg">
+</button>
+<button class="thumbnail-btn rounded aspect-square overflow-hidden bg-surface-container hover:opacity-90" onclick="switchGallery('assets/images/img_9f7d04f58a04.jpg', this)" type="button">
+<img alt="Dermatologist guided face application" class="w-full h-full object-cover" src="assets/images/img_9f7d04f58a04.jpg">
+</button>
+<div class="rounded aspect-square bg-surface-container-high flex flex-col items-center justify-center p-space-xs text-center">
+<span class="material-symbols-outlined text-secondary text-[26px]">biotech</span>
+<span class="text-[11px] font-semibold uppercase tracking-wider text-on-surface mt-1">Lab Sealed</span>
+<span class="text-[10px] text-outline">pH 5.4 - 5.8</span>
+</div>
+</div>
+<!-- Ambient Mini Guarantee Strip -->
+<div class="grid grid-cols-3 gap-space-md p-space-lg rounded bg-surface-container-low shadow-sm mt-space-xs text-center">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-[22px]">nest_eco_leaf</span>
+<span class="text-[13px] font-semibold text-on-surface mt-1">Alpine Flora</span>
+<span class="text-[12px] text-outline">Solukhumbu Wild Centella</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-[22px]">science</span>
+<span class="text-[13px] font-semibold text-on-surface mt-1">NMC Compliant</span>
+<span class="text-[12px] text-outline">Doctor Protocol Certified</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-[22px]">local_shipping</span>
+<span class="text-[13px] font-semibold text-on-surface mt-1">Cold Chain</span>
+<span class="text-[12px] text-outline">Kathmandu Same-Day</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Product Detail & Purchase Console -->
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2">
+<span class="text-[12px] font-bold uppercase tracking-widest text-secondary">Apothecary Prescription Standard</span>
+<span class="text-outline-variant">•</span>
+<span class="text-[12px] text-outline font-medium">Batch 04/2025</span>
+</div>
+<h1 class="font-display-lg text-[32px] sm:text-[38px] leading-tight text-on-surface font-semibold tracking-tight">
+            Advanced Barrier Restore Concentrate
+          </h1>
+<p class="text-[15px] text-on-surface-variant font-normal leading-relaxed">
+            High-concentration cellular repair serum featuring 5% ultra-pure Niacinamide, wild alpine Centella Asiatica leaf broth, and a 3-part bio-identical Ceramide complex (NP, AP, EOP).
+          </p>
+</div>
+<!-- Social Proof & Clinical Rating Badge -->
+<div class="flex items-center gap-space-md py-space-xs">
+<div class="flex items-center text-primary">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="ml-2 font-bold text-[14px] text-on-surface">4.97</span>
+</div>
+<span class="text-outline-variant">|</span>
+<span class="text-[13px] text-outline underline cursor-pointer hover:text-primary">142 Clinical Evaluations</span>
+<span class="text-outline-variant">|</span>
+<span class="text-[12px] font-semibold bg-surface-container-high px-space-xs py-0.5 rounded text-secondary">45+ Aesthetic Clinics</span>
+</div>
+<!-- Pricing Card Container -->
+<div class="p-space-lg rounded bg-surface-container shadow-sm flex flex-col gap-space-xs border-l-4 border-primary"><div class="flex items-center justify-between"><span class="text-[11px] font-bold uppercase tracking-widest text-primary">Dispensing Classification</span><span class="px-space-sm py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed text-[11px] font-bold tracking-wide uppercase">Clinician Dispensed Only</span></div><p class="font-display-lg text-[20px] font-semibold text-on-surface">Prescription &amp; Clinical Protocol Standard</p><p class="text-[13px] text-on-surface-variant leading-relaxed">Exclusively dispensed through licensed dermatology clinics and hospital pharmacies across Nepal. Not available for direct online retail.</p></div>
+<!-- Diagnostic Targets Selector -->
+<div class="flex flex-col gap-2 pt-space-2xs">
+<span class="text-[12px] font-bold uppercase tracking-wider text-on-surface">Primary Dermal Indications:</span>
+<div class="flex flex-wrap gap-space-xs">
+<span class="px-space-sm py-space-2xs rounded-full bg-surface-container-high text-on-surface text-[12px] font-medium">Post-Chemical Peel / Laser</span>
+<span class="px-space-sm py-space-2xs rounded-full bg-surface-container-high text-on-surface text-[12px] font-medium">Himalayan UV Stress</span>
+<span class="px-space-sm py-space-2xs rounded-full bg-surface-container-high text-on-surface text-[12px] font-medium">Erythema &amp; Rosacea</span>
+<span class="px-space-sm py-space-2xs rounded-full bg-surface-container-high text-on-surface text-[12px] font-medium">Pollution-Degraded Barrier</span>
+</div>
+</div>
+<!-- Purchase & B2B Actions -->
+<div class="flex flex-col gap-space-sm pt-space-sm"><div class="flex flex-col sm:flex-row gap-space-sm"><a class="flex-1 h-12 px-space-lg rounded bg-primary text-on-primary font-semibold text-[14px] tracking-wide shadow-md hover:bg-primary-container transition-all flex items-center justify-center gap-2" data-path="medical-guidance" href="monographs.html"><span class="material-symbols-outlined text-[20px]">location_on</span><span class="">Find Certified Prescribing Clinic</span></a><button class="h-12 px-space-lg rounded bg-surface-container-high hover:bg-surface-container-highest text-secondary text-[13px] font-semibold tracking-wider uppercase transition-colors flex items-center justify-center gap-2 shrink-0" type="button"><span class="material-symbols-outlined text-[18px]">science</span><span class="">Request Practitioner Evaluation Sample</span></button></div><p class="text-[12px] text-outline text-center sm:text-left">Practitioners and aesthetic medical facilities may request clinical evaluation samples and peer monographs directly.</p></div>
+<!-- Express Logistics Assurance -->
+<div class="pt-space-xs flex flex-col gap-1 text-[12px] text-outline"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-secondary">local_hospital</span><span class=""><strong>Kathmandu, Lalitpur &amp; Bhaktapur:</strong> Stocked at 32 certified hospital pharmacies.</span></div><div class="flex items-center gap-2"><span class="material-symbols-outlined text-[16px] text-secondary">domain_verification</span><span class=""><strong>Regional Centers:</strong> Available through authorized aesthetic &amp; dermatology centers in Pokhara, Biratnagar, Chitwan &amp; Butwal.</span></div></div>
+</div>
+</div>
+</section>
+<!-- Section 2: Sensorics & Micro-Texture Breakdown -->
+<section class="w-full bg-surface-container-low py-space-3xl">
+<div class="max-w-[1360px] mx-auto px-gutter-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-2xl items-center">
+<div class="lg:col-span-5 flex flex-col gap-space-md">
+<span class="text-[12px] font-bold uppercase tracking-widest text-primary">Micro-Rheology &amp; Feel</span>
+<h2 class="font-display-lg text-[32px] sm:text-[40px] text-on-surface font-semibold leading-tight">
+            Weightless Absorption Meets Deep Barrier Nourishment
+          </h2>
+<p class="text-[15px] text-on-surface-variant leading-relaxed">
+            Formulated to solve the common drawback of restorative emollients: pore-suffocation and surface greasy residue. Our micro-emulsified aqueous matrix allows biomimetic lipids to fuse instantaneously with the lipid bilayers of the stratum corneum.
+          </p>
+<div class="space-y-space-md pt-space-xs">
+<div>
+<div class="flex justify-between text-[13px] font-semibold text-on-surface mb-1">
+<span class="">Dermal Absorption Velocity</span>
+<span class="text-primary">12-15 Seconds</span>
+</div>
+<div class="w-full h-2 rounded bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded" style="width: 95%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[13px] font-semibold text-on-surface mb-1">
+<span class="">Breathability &amp; Non-Comedogenic Score</span>
+<span class="text-primary">0 / 5 Pore Clogging</span>
+</div>
+<div class="w-full h-2 rounded bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded" style="width: 100%;"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-[13px] font-semibold text-on-surface mb-1">
+<span class="">Compatible with Sunscreen / Complexion Makeup</span>
+<span class="text-primary">Zero Pilling Confirmed</span>
+</div>
+<div class="w-full h-2 rounded bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded" style="width: 92%;"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="rounded bg-surface p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<span class="inline-block p-2 rounded bg-surface-container text-primary mb-space-sm">
+<span class="material-symbols-outlined text-[24px]">water_drop</span>
+</span>
+<h3 class="font-display-lg text-[18px] font-semibold text-on-surface mb-1">Dew-Lock Viscosity</h3>
+<p class="text-[14px] text-on-surface-variant leading-relaxed">Translucent golden viscous serum that liquefies instantly under the warmth of fingertip contact.</p>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-surface-container text-[12px] text-outline font-medium">
+              Zero Synthetic Gelling Agents
+            </div>
+</div>
+<div class="rounded bg-surface p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<span class="inline-block p-2 rounded bg-surface-container text-primary mb-space-sm">
+<span class="material-symbols-outlined text-[24px]">air</span>
+</span>
+<h3 class="font-display-lg text-[18px] font-semibold text-on-surface mb-1">Aroma Profile</h3>
+<p class="text-[14px] text-on-surface-variant leading-relaxed">Faint, earthy botanical whisper derived strictly from cold-pressed alpine centella leaf hydrosols.</p>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-surface-container text-[12px] text-outline font-medium">
+              100% Essential-Oil &amp; Perfume Free
+            </div>
+</div>
+<div class="sm:col-span-2 rounded overflow-hidden aspect-[16/9] shadow-sm relative">
+<img alt="Close-up cosmetic swatches showing emulsion cream and serum drop on limestone" class="w-full h-full object-cover" src="assets/images/img_2956941691f0.jpg">
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-transparent to-transparent flex items-end p-space-lg">
+<span class="text-inverse-on-surface text-[14px] font-medium">Laboratory Swatch No. 044: Rapid spreadability test on calibrated high-porosity slate substrate.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: 28-Day Clinical Trial & Doctor Endorsement -->
+<section class="w-full py-space-3xl max-w-[1360px] mx-auto px-gutter-desktop">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-lg mb-space-2xl">
+<div class="max-w-2xl">
+<span class="text-[12px] font-bold uppercase tracking-widest text-primary">Controlled Independent Trials</span>
+<h2 class="font-display-lg text-[32px] sm:text-[42px] text-on-surface font-semibold leading-tight mt-1">
+          Measured Results Under Dermal Diagnostic Cameras
+        </h2>
+</div>
+<div class="text-right">
+<p class="text-[13px] text-outline">Clinical Cohort: 80 Participants (Kathmandu &amp; Patan)</p>
+<p class="text-[12px] text-secondary font-semibold">28-Day Double-Blind Corneometer Study</p>
+</div>
+</div>
+<!-- Trial Stat Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Metric 1 -->
+<div class="p-space-xl rounded bg-surface-container shadow-sm flex flex-col justify-between">
+<div>
+<span class="font-display-lg text-[48px] font-bold text-primary leading-none">98.4%</span>
+<h3 class="font-display-lg text-[18px] font-semibold text-on-surface mt-space-sm">Rapid Soothing Response</h3>
+<p class="text-[14px] text-on-surface-variant mt-2 leading-relaxed">
+            Reported complete cessation of micro-stinging and burning sensations post-dust exposure and UV exposure within 48 hours of baseline use.
+          </p>
+</div>
+<div class="pt-space-md flex items-center gap-2 text-[12px] text-outline font-medium">
+<span class="material-symbols-outlined text-[16px] text-primary">timer</span>
+          Evaluation at Day 2
+        </div>
+</div>
+<!-- Metric 2 -->
+<div class="p-space-xl rounded bg-surface-container shadow-sm flex flex-col justify-between">
+<div>
+<span class="font-display-lg text-[48px] font-bold text-primary leading-none">-42.8%</span>
+<h3 class="font-display-lg text-[18px] font-semibold text-on-surface mt-space-sm">Reduction in TEWL</h3>
+<p class="text-[14px] text-on-surface-variant mt-2 leading-relaxed">
+            Trans-epidermal water loss systematically measured by evaporimetry showed a profound 42.8% stabilization in lipid retention capacity.
+          </p>
+</div>
+<div class="pt-space-md flex items-center gap-2 text-[12px] text-outline font-medium">
+<span class="material-symbols-outlined text-[16px] text-primary">water_drop</span>
+          Measured by Tewameter TM300
+        </div>
+</div>
+<!-- Metric 3 -->
+<div class="p-space-xl rounded bg-surface-container shadow-sm flex flex-col justify-between">
+<div>
+<span class="font-display-lg text-[48px] font-bold text-primary leading-none">94.6%</span>
+<h3 class="font-display-lg text-[18px] font-semibold text-on-surface mt-space-sm">Micro-Barrier Rebound</h3>
+<p class="text-[14px] text-on-surface-variant mt-2 leading-relaxed">
+            Observed visible restoration of uniform epidermal texture, reduction of flaking around nasolabial folds, and restored resilience against sudden temperature drops.
+          </p>
+</div>
+<div class="pt-space-md flex items-center gap-2 text-[12px] text-outline font-medium">
+<span class="material-symbols-outlined text-[16px] text-primary">verified</span>
+          Evaluation at Day 28
+        </div>
+</div>
+</div>
+<!-- Dermatologist Endorsement Quote Card -->
+<div class="mt-space-xl p-space-xl rounded bg-surface-container-high shadow-sm grid grid-cols-1 md:grid-cols-12 gap-space-lg items-center">
+<div class="md:col-span-3 flex flex-col items-start gap-2">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]">clinical_notes</span>
+</div>
+<div>
+<h4 class="font-semibold text-[16px] text-on-surface">Dr. Arpana Karki, MD</h4>
+<p class="text-[12px] text-secondary font-medium">Consultant Dermatologist &amp; Dermo-Surgeon</p>
+<p class="text-[11px] text-outline">NMC Reg: 9482 / Kathmandu Skin Institute</p>
+</div>
+</div>
+<div class="md:col-span-9">
+<blockquote class="text-[16px] text-on-surface leading-relaxed italic">
+          "Patients across Kathmandu Valley experience chronic micro-inflammation stemming from winter dry inversions and heavy airborne particulate matter. CDerma's formulation No. 04 is one of the few concentrates that combines clinical 5% niacinamide without flushing fillers, balanced by authentic Himalayan-harvested centella. We recommend it post-microneedling and as everyday barrier defense."
+        </blockquote>
+</div>
+</div>
+</section>
+<!-- Section 4: Full Transparent INCI & Monograph Accordion -->
+<section class="w-full bg-surface-container-low py-space-3xl">
+<div class="max-w-[1360px] mx-auto px-gutter-desktop">
+<div class="max-w-3xl mb-space-xl">
+<span class="text-[12px] font-bold uppercase tracking-widest text-primary">100% Disclosure Monograph</span>
+<h2 class="font-display-lg text-[32px] sm:text-[38px] text-on-surface font-semibold mt-1">
+          Formula Architecture &amp; Quantitative Potency
+        </h2>
+<p class="text-[14px] text-on-surface-variant mt-2 leading-relaxed">
+          In alignment with our clinical ethics, every bioactive percentage is transparently declared. No proprietary filler blends or obfuscated fragrance masking.
+        </p>
+</div>
+<!-- Ingredient Matrix Table -->
+<div class="rounded bg-surface overflow-hidden shadow-sm">
+<div class="grid grid-cols-12 bg-surface-container p-space-md text-[12px] font-bold uppercase tracking-wider text-secondary">
+<div class="col-span-4 sm:col-span-3">Bioactive Molecule</div>
+<div class="col-span-3 sm:col-span-2 text-center">Standard Potency</div>
+<div class="col-span-5 sm:col-span-5">Mechanism of Dermal Action</div>
+<div class="hidden sm:block sm:col-span-2 text-right">Botanical Origin</div>
+</div>
+<!-- Row 1 -->
+<div class="grid grid-cols-12 p-space-md items-center text-[14px] text-on-surface hover:bg-surface-container-low transition-colors">
+<div class="col-span-4 sm:col-span-3 font-semibold text-primary">
+            Niacinamide (Vitamin B3)
+          </div>
+<div class="col-span-3 sm:col-span-2 text-center font-bold">5.0%</div>
+<div class="col-span-5 sm:col-span-5 text-[13px] text-on-surface-variant">
+            Upregulates epidermal sphingolipid synthesis and prevents melanosome transfer, brightening dyspigmentation.
+          </div>
+<div class="hidden sm:block sm:col-span-2 text-right text-[12px] text-outline">
+            USP Clinical Grade
+          </div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-12 p-space-md items-center text-[14px] text-on-surface bg-surface-container-lowest/50 hover:bg-surface-container-low transition-colors">
+<div class="col-span-4 sm:col-span-3 font-semibold text-primary">
+            Alpine Centella Asiatica Extract
+          </div>
+<div class="col-span-3 sm:col-span-2 text-center font-bold">3.5%</div>
+<div class="col-span-5 sm:col-span-5 text-[13px] text-on-surface-variant">
+            Rich in madecassoside and asiatic acid; downregulates pro-inflammatory cytokines IL-1α and TNF-α.
+          </div>
+<div class="hidden sm:block sm:col-span-2 text-right text-[12px] text-outline">
+            High-Altitude Solukhumbu
+          </div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-12 p-space-md items-center text-[14px] text-on-surface hover:bg-surface-container-low transition-colors">
+<div class="col-span-4 sm:col-span-3 font-semibold text-primary">
+            Ceramide Complex (NP, AP, EOP)
+          </div>
+<div class="col-span-3 sm:col-span-2 text-center font-bold">2.0%</div>
+<div class="col-span-5 sm:col-span-5 text-[13px] text-on-surface-variant">
+            Biomimetic multi-lamellar lipid stack identical to natural skin matrix, locking intercellular junctions.
+          </div>
+<div class="hidden sm:block sm:col-span-2 text-right text-[12px] text-outline">
+            Bio-Fermented Phytosterols
+          </div>
+</div>
+<!-- Row 4 -->
+<div class="grid grid-cols-12 p-space-md items-center text-[14px] text-on-surface bg-surface-container-lowest/50 hover:bg-surface-container-low transition-colors">
+<div class="col-span-4 sm:col-span-3 font-semibold text-primary">
+            Multi-Molecular Hyaluronic Acid
+          </div>
+<div class="col-span-3 sm:col-span-2 text-center font-bold">1.5%</div>
+<div class="col-span-5 sm:col-span-5 text-[13px] text-on-surface-variant">
+            Tri-weight fractions: low MW penetrates deep dermis, high MW shields the surface stratum corneum.
+          </div>
+<div class="hidden sm:block sm:col-span-2 text-right text-[12px] text-outline">
+            Non-Animal Ferment
+          </div>
+</div>
+<!-- Row 5 -->
+<div class="grid grid-cols-12 p-space-md items-center text-[14px] text-on-surface hover:bg-surface-container-low transition-colors">
+<div class="col-span-4 sm:col-span-3 font-semibold text-primary">
+            D-Panthenol (Pro-Vitamin B5)
+          </div>
+<div class="col-span-3 sm:col-span-2 text-center font-bold">1.0%</div>
+<div class="col-span-5 sm:col-span-5 text-[13px] text-on-surface-variant">
+            Accelerates fibroblast proliferation and restores cellular hydration elasticity.
+          </div>
+<div class="hidden sm:block sm:col-span-2 text-right text-[12px] text-outline">
+            Pharmaceutical Grade
+          </div>
+</div>
+</div>
+<!-- Complete INCI & Download Action -->
+<div class="mt-space-lg p-space-lg rounded bg-surface shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md">
+<div class="max-w-2xl">
+<span class="text-[11px] uppercase tracking-widest text-outline font-bold">Full INCI Technical Declaration</span>
+<p class="text-[12px] text-on-surface-variant leading-relaxed mt-1">
+            Aqua (Himalayan Spring Distillate), Niacinamide, Centella Asiatica Leaf Extract, Ceramide NP, Ceramide AP, Ceramide EOP, Phytosphingosine, Cholesterol, Sodium Hyaluronate (Multi-Fraction), D-Panthenol, Glycerin (Vegetable), Allantoin, Xanthan Gum, Sodium Lauroyl Lactylate, Carbomer, Phenoxyethanol, Ethylhexylglycerin.
+          </p>
+</div>
+<button class="shrink-0 px-space-md py-space-xs rounded bg-surface-container text-primary hover:bg-surface-container-high text-[13px] font-semibold flex items-center gap-2 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+          Download Lab COA (PDF)
+        </button>
+</div>
+</div>
+</section>
+<!-- Section 5: Protocol Regimen & How to Use -->
+<section class="max-w-[1360px] mx-auto px-gutter-desktop py-space-3xl w-full">
+<div class="text-center max-w-2xl mx-auto mb-space-2xl">
+<span class="text-[12px] font-bold uppercase tracking-widest text-primary">Application Ritual &amp; Integration</span>
+<h2 class="font-display-lg text-[32px] sm:text-[38px] text-on-surface font-semibold mt-1">
+        Clinical Routine Placement
+      </h2>
+<p class="text-[14px] text-on-surface-variant mt-2">
+        Formulated as Step 3 in your restorative regimen. Safe for morning and evening post-cleanse application.
+      </p>
+</div>
+<!-- Regimen Flow Steps -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<div class="p-space-lg rounded bg-surface-container shadow-sm flex flex-col gap-2 relative opacity-70">
+<span class="text-[12px] font-bold uppercase tracking-widest text-outline">Step 01</span>
+<h4 class="font-display-lg text-[16px] font-semibold text-on-surface">Purify</h4>
+<p class="text-[13px] text-on-surface-variant">Gentle Amino-Acid Hydrating Foam Cleanser (pH 5.5).</p>
+</div>
+<div class="p-space-lg rounded bg-surface-container shadow-sm flex flex-col gap-2 relative opacity-70">
+<span class="text-[12px] font-bold uppercase tracking-widest text-outline">Step 02</span>
+<h4 class="font-display-lg text-[16px] font-semibold text-on-surface">Prepare</h4>
+<p class="text-[13px] text-on-surface-variant">Himalayan Botanical Calming Mist or Dermal Toner.</p>
+</div>
+<!-- Active Selected Step -->
+<div class="p-space-lg rounded bg-primary text-on-primary shadow-md flex flex-col gap-2 relative">
+<div class="flex items-center justify-between">
+<span class="text-[12px] font-bold uppercase tracking-widest text-primary-fixed">Step 03 • Concentrated Active</span>
+<span class="material-symbols-outlined text-primary-fixed text-[18px]">verified</span>
+</div>
+<h4 class="font-display-lg text-[18px] font-bold text-on-primary">Barrier Restore Concentrate</h4>
+<p class="text-[13px] text-on-primary-container leading-relaxed">
+          Dispense 3-4 drops directly onto dry fingertips. Press gently across forehead, cheeks, and neck until fully absorbed.
+        </p>
+</div>
+<div class="p-space-lg rounded bg-surface-container shadow-sm flex flex-col gap-2 relative opacity-70">
+<span class="text-[12px] font-bold uppercase tracking-widest text-outline">Step 04</span>
+<h4 class="font-display-lg text-[16px] font-semibold text-on-surface">Occlude &amp; Protect</h4>
+<p class="text-[13px] text-on-surface-variant">Lipid Repair Balm at night, Mineral Broad-Spectrum SPF 50 during daylight.</p>
+</div>
+</div>
+<!-- Lifestyle Visual Showcase Container -->
+<div class="mt-space-xl rounded overflow-hidden grid grid-cols-1 md:grid-cols-12 shadow-sm bg-surface-container">
+<div class="md:col-span-7 h-64 md:h-auto overflow-hidden">
+<img alt="Nepali model comfortably applying CDerma concentrate serum in sunlit clinical bathroom" class="w-full h-full object-cover" src="assets/images/img_9f7d04f58a04.jpg">
+</div>
+<div class="md:col-span-5 p-space-xl flex flex-col justify-center gap-space-md">
+<span class="text-[12px] font-bold uppercase tracking-widest text-primary">Doctor Instructions</span>
+<h3 class="font-display-lg text-[22px] font-semibold text-on-surface">Post-Treatment Care Protocol</h3>
+<p class="text-[14px] text-on-surface-variant leading-relaxed">
+          For compromised skin post-microneedling, laser resurfacing, or harsh tretinoin acclimation: apply 2 drops morning and evening directly after a sterile water rinse. Avoid AHA/BHA exfoliants during the initial 7 days of barrier restoration.
+        </p>
+<div class="flex items-center gap-space-sm text-[13px] font-semibold text-secondary">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="">Consistent 28-day regimen yields permanent lipid bilayer strengthening</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 6: Clinical FAQs & Express Logistics Across Nepal -->
+<section class="w-full bg-surface-container-low py-space-3xl">
+<div class="max-w-[1360px] mx-auto px-gutter-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-2xl">
+<div class="lg:col-span-4 flex flex-col gap-space-md">
+<span class="text-[12px] font-bold uppercase tracking-widest text-primary">Inquiries &amp; Support</span>
+<h2 class="font-display-lg text-[30px] font-semibold text-on-surface leading-tight">
+            Frequently Asked Clinical Questions
+          </h2>
+<p class="text-[14px] text-on-surface-variant leading-relaxed">
+            Have questions regarding your specific skin condition, prescription compatibility, or hospital order batching? Our pharmacological team is on standby.
+          </p>
+<div class="p-space-lg rounded bg-surface shadow-sm">
+<span class="text-[12px] font-bold uppercase tracking-wider text-outline">Clinician Consultation Line</span>
+<p class="text-[16px] font-bold text-on-surface mt-1">+977 (01) 441-2940</p>
+<p class="text-[12px] text-outline mt-1">Sun - Fri, 9:00 AM - 6:00 PM NPT</p>
+</div>
+</div>
+<div class="lg:col-span-8 flex flex-col gap-space-sm">
+<!-- FAQ 1 -->
+<div class="p-space-lg rounded bg-surface shadow-sm cursor-pointer" onclick="toggleFaq(this)">
+<div class="flex items-center justify-between">
+<h4 class="font-semibold text-[15px] text-on-surface">Can this concentrate be layered with Active Retinoids and Vitamin C?</h4>
+<span class="material-symbols-outlined text-outline text-[20px] transition-transform">expand_more</span>
+</div>
+<div class="faq-content hidden pt-space-sm text-[14px] text-on-surface-variant leading-relaxed">
+              Yes. Formulated at a physiologically harmonized pH of 5.5, our 5% Niacinamide and Ceramide matrix buffers against the common irritation caused by pure L-ascorbic acid and topical retinoic acid. We suggest applying this concentrate first, allowing 60 seconds to absorb, then following with your prescription active.
+            </div>
+</div>
+<!-- FAQ 2 -->
+<div class="p-space-lg rounded bg-surface shadow-sm cursor-pointer" onclick="toggleFaq(this)">
+<div class="flex items-center justify-between">
+<h4 class="font-semibold text-[15px] text-on-surface">Is this safe for acne-prone, fungal acne, and sensitive skin?</h4>
+<span class="material-symbols-outlined text-outline text-[20px] transition-transform">expand_more</span>
+</div>
+<div class="faq-content hidden pt-space-sm text-[14px] text-on-surface-variant leading-relaxed">
+              Completely. The formula is free of coconut-derived comedogenic lipids, heavy esters, polysorbates, and synthetic fragrance. High-purity Centella Asiatica provides rapid calming against inflammatory acne lesions, while niacinamide regulates sebaceous gland hyper-secretion.
+            </div>
+</div>
+<!-- FAQ 3 -->
+<div class="p-space-lg rounded bg-surface shadow-sm cursor-pointer" onclick="toggleFaq(this)">
+<div class="flex items-center justify-between">
+<h4 class="font-semibold text-[15px] text-on-surface">What is the shelf-life and proper storage in Nepal's climate?</h4>
+<span class="material-symbols-outlined text-outline text-[20px] transition-transform">expand_more</span>
+</div>
+<div class="faq-content hidden pt-space-sm text-[14px] text-on-surface-variant leading-relaxed">
+              Unopened bottles maintain stability for 24 months from the manufacturing batch date indicated on the carton base. Once unsealed, maintain below 25°C away from direct Himalayan sunlight. In hot Terai summer months, refrigeration is acceptable though not required.
+            </div>
+</div>
+<!-- FAQ 4 -->
+<div class="p-space-lg rounded bg-surface shadow-sm cursor-pointer" onclick="toggleFaq(this)">
+<div class="flex items-center justify-between">
+<h4 class="font-semibold text-[15px] text-on-surface">How does clinic batch ordering and wholesale supply work?</h4>
+<span class="material-symbols-outlined text-outline text-[20px] transition-transform">expand_more</span>
+</div>
+<div class="faq-content hidden pt-space-sm text-[14px] text-on-surface-variant leading-relaxed">This formula is strictly non-retail and cannot be purchased via direct consumer e-commerce. Licensed dermatologists, hospital pharmacies, and medical aesthetic practices obtain demonstration batches and clinical inventory directly from our licensed Koshi distribution depot. Patients can receive the formulation through an authorized prescribing clinic or affiliated hospital dispensary following clinical evaluation.</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 7: Floating Re-Order Banner for Seamless Conversions -->
+<section class="sticky bottom-0 left-0 w-full z-40 bg-surface/95 backdrop-blur-md shadow-lg py-space-sm border-t border-surface-container"><div class="max-w-[1360px] mx-auto px-gutter-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><img alt="Bottle preview" class="w-10 h-10 rounded object-cover shadow-sm hidden sm:block" src="assets/images/img_282f9d7b4a1e.jpg"><div><p class="font-semibold text-[14px] text-on-surface leading-tight truncate">CDerma Advanced Barrier Restore Concentrate</p><p class="text-[12px] text-outline font-medium">Clinical Monograph • Prescription &amp; Clinic Dispensed Only</p></div></div><div class="flex items-center gap-space-md shrink-0"><div class="text-right hidden md:block"><span class="text-[11px] font-bold uppercase tracking-wider text-secondary">Authorized Dispensaries</span><p class="text-[11px] text-outline">Kathmandu, Lalitpur, Pokhara &amp; Regional Hubs</p></div><a class="h-10 px-space-lg rounded bg-primary text-on-primary font-semibold text-[13px] tracking-wide hover:bg-primary-container shadow-md transition-all flex items-center gap-2" data-path="medical-guidance" href="monographs.html"><span class="material-symbols-outlined text-[18px]">pin_drop</span><span class="">Locate a Prescribing Clinic</span></a></div></div></section>
+</div>
+<script>
+  function switchGallery(srcUrl, element) {
+    var mainImg = document.getElementById('main-product-img');
+    if (mainImg && srcUrl) {
+      mainImg.src = srcUrl;
+    }
+    var buttons = document.querySelectorAll('.thumbnail-btn');
+    buttons.forEach(function(btn) {
+      btn.classList.remove('ring-2', 'ring-primary');
+    });
+    if (element) {
+      element.classList.add('ring-2', 'ring-primary');
+    }
+  }
+
+  function incrementQty() {
+    var qtyEl = document.getElementById('product-qty');
+    var current = parseInt(qtyEl.innerText, 10);
+    qtyEl.innerText = current + 1;
+  }
+
+  function decrementQty() {
+    var qtyEl = document.getElementById('product-qty');
+    var current = parseInt(qtyEl.innerText, 10);
+    if (current > 1) {
+      qtyEl.innerText = current - 1;
+    }
+  }
+
+  function toggleFaq(card) {
+    var content = card.querySelector('.faq-content');
+    var icon = card.querySelector('.material-symbols-outlined');
+    if (content.classList.contains('hidden')) {
+      content.classList.remove('hidden');
+      icon.style.transform = 'rotate(180deg)';
+    } else {
+      content.classList.add('hidden');
+      icon.style.transform = 'rotate(0deg)';
+    }
+  }
+</script></main><footer class="w-full bg-surface-container-low text-on-surface-variant"><div class="max-w-[1360px] mx-auto px-gutter-desktop pt-space-3xl pb-space-2xl"><div class="grid grid-cols-1 lg:grid-cols-12 gap-space-2xl pb-space-2xl"><div class="lg:col-span-4 flex flex-col items-start gap-space-md"><a class="flex items-center group" data-path="home" href="index.html"><img alt="CDerma - Choice by Professional" class="h-8 w-auto object-contain" src="assets/images/cderma-logo.png"/></a><p class="text-on-surface-variant max-w-sm leading-relaxed text-[14px]">Clinical-grade medical botanicals crafted at the intersection of rigorous dermatological science and indigenous Himalayan bio-actives for licensed clinicians, aesthetic centers, and discerning patrons.</p><div class="flex flex-wrap gap-space-xs pt-space-xs"><span class="inline-flex items-center px-space-sm py-space-2xs rounded-full bg-surface-container-high text-[11px] font-medium tracking-wider text-secondary uppercase">HEPA Cleanroom</span><span class="inline-flex items-center px-space-sm py-space-2xs rounded-full bg-surface-container-high text-[11px] font-medium tracking-wider text-secondary uppercase">NMID/NMC Compliant</span><span class="inline-flex items-center px-space-sm py-space-2xs rounded-full bg-surface-container-high text-[11px] font-medium tracking-wider text-secondary uppercase">GMP Certified</span></div></div><div class="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-space-lg"><div class="flex flex-col gap-space-sm"><span class="font-display-lg text-[13px] uppercase tracking-widest text-on-surface font-semibold">Products</span><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-semibold"><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="products" href="products.html">Face Formulations</a><a aria-current="page" class="transition-colors text-primary font-semibold" data-path="flagship-face-care" href="product-detail.html">Flagship Regimen</a><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="products" href="products.html">Dermal Recovery</a><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="products" href="products.html">Barrier Defense</a></nav></div><div class="flex flex-col gap-space-sm"><span class="font-display-lg text-[13px] uppercase tracking-widest text-on-surface font-semibold">Clinical</span><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-semibold"><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="quality-science" href="#">Laboratory Science</a><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="medical-guidance" href="monographs.html">Medical Guidance</a><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="quality-science" href="#">Cleanroom Specs</a><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="quality-science" href="#">Bioactive Sourcing</a></nav></div><div class="flex flex-col gap-space-sm"><span class="font-display-lg text-[13px] uppercase tracking-widest text-on-surface font-semibold">B2B Partners</span><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-semibold"><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="b2b-distribution" href="#">Wholesale Inquiry</a><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="b2b-distribution" href="#">Clinic Onboarding</a><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="b2b-distribution" href="#">Hospital Supply</a><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="quality-science" href="#">Certifications</a></nav></div></div><div class="lg:col-span-3 flex flex-col gap-space-sm"><span class="font-display-lg text-[13px] uppercase tracking-widest text-on-surface font-semibold">Clinical Journal</span><p class="text-[13px] text-on-surface-variant leading-relaxed">Receive quarterly dermatological trials, formulation monographs, and hospital supply updates.</p><div class="flex flex-col gap-space-xs pt-space-2xs"><input aria-label="Email for clinical journal" class="w-full px-space-md py-space-xs rounded bg-surface text-[14px] text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest" placeholder="clinician@hospital.org.np" type="email"><button class="w-full py-space-xs px-space-md rounded bg-secondary text-on-secondary text-[13px] font-medium tracking-wide hover:bg-primary transition-colors" type="button">Subscribe to Monographs</button></div></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-[13px] text-outline"><p class="">© 2025 CDerma Nepal Ltd. Formulated in Koshi Province, Nepal. All rights reserved.</p><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" data-path="legal-compliance" href="#">NMID Compliance</a><a class="hover:text-on-surface transition-colors" data-path="legal-compliance" href="#">Privacy Policy</a><a class="hover:text-on-surface transition-colors" data-path="legal-compliance" href="#">Distribution Terms</a></div></div></div></footer>
+
+<script src="/assets/js/cderma-client.js"></script>
+</body></html>

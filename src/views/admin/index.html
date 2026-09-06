@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CDerma Nepal — CMS Administration & Content Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1E2322',
+            secondary: '#3D5A50',
+            tertiary: '#5A7B6F',
+            surface: '#FAF9F6',
+            'surface-container': '#F4F6F4',
+            'surface-dark': '#181C1B',
+            'outline-border': '#E4E7E4'
+          },
+          fontFamily: {
+            serif: ['Playfair Display', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .tab-btn.active {
+      background-color: #3D5A50;
+      color: #FAF9F6;
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+  </style>
+</head>
+<body class="bg-surface text-primary font-sans min-h-screen flex">
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform transition-all duration-300 translate-y-20 opacity-0 pointer-events-none flex items-center gap-3 px-5 py-3 rounded-lg shadow-xl text-xs font-semibold uppercase tracking-wider text-white bg-primary border border-secondary">
+    <span id="toastIcon" class="material-symbols-outlined text-sm">check_circle</span>
+    <span id="toastMessage">Success</span>
+  </div>
+
+  <!-- Sidebar -->
+  <aside class="w-64 bg-surface-dark text-white flex flex-col shrink-0 border-r border-white/10 select-none">
+    <div class="p-6 border-b border-white/10 flex items-center justify-between">
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="font-serif text-lg font-semibold tracking-wide">CDERMA</span>
+        </div>
+        <p class="text-[10px] uppercase tracking-widest text-emerald-400/80 mt-0.5">Control Center • Node.js</p>
+      </div>
+      <a href="/" target="_blank" title="View Public Website" class="p-1.5 rounded-md hover:bg-white/10 text-white/70 hover:text-white transition-colors">
+        <span class="material-symbols-outlined text-sm">open_in_new</span>
+      </a>
+    </div>
+
+    <!-- Navigation items -->
+    <nav class="p-3 space-y-1 text-xs font-medium tracking-wide flex-1 overflow-y-auto">
+      <button onclick="switchTab('overview')" class="tab-btn active w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-left" data-tab="overview">
+        <span class="material-symbols-outlined text-lg">dashboard</span>
+        <span>Overview Dashboard</span>
+      </button>
+      <button onclick="switchTab('settings')" class="tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="settings">
+        <span class="material-symbols-outlined text-lg">edit_document</span>
+        <span>Site Copy & Headlines</span>
+      </button>
+      <button onclick="switchTab('products')" class="tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="products">
+        <span class="material-symbols-outlined text-lg">science</span>
+        <span>Products Formulary</span>
+      </button>
+      <button onclick="switchTab('clinics')" class="tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="clinics">
+        <span class="material-symbols-outlined text-lg">local_hospital</span>
+        <span>Clinics & Dispensaries</span>
+      </button>
+      <button onclick="switchTab('monographs')" class="tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="monographs">
+        <span class="material-symbols-outlined text-lg">menu_book</span>
+        <span>Clinical Monographs</span>
+      </button>
+      <button onclick="switchTab('b2b')" class="tab-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="b2b">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-lg">storefront</span>
+          <span>B2B Applications</span>
+        </div>
+        <span id="badgeB2B" class="hidden px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500 text-white">0</span>
+      </button>
+      <button onclick="switchTab('inquiries')" class="tab-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="inquiries">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-lg">mail</span>
+          <span>Medical Inquiries</span>
+        </div>
+        <span id="badgeInquiries" class="hidden px-2 py-0.5 rounded-full text-[10px] font-bold bg-secondary text-white">0</span>
+      </button>
+    </nav>
+
+    <!-- Footer user & logout -->
+    <div class="p-4 border-t border-white/10 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-7 h-7 rounded-full bg-secondary flex items-center justify-center text-[11px] font-bold">A</div>
+        <div class="truncate">
+          <p id="adminUserDisplay" class="text-xs font-semibold text-white leading-tight">Admin</p>
+          <p class="text-[10px] text-white/50">Hostinger Business</p>
+        </div>
+      </div>
+      <button onclick="handleLogout()" title="Logout" class="p-1.5 rounded-md hover:bg-white/10 text-white/60 hover:text-rose-400 transition-colors">
+        <span class="material-symbols-outlined text-base">logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="flex-1 flex flex-col min-w-0 h-screen overflow-y-auto">
+    <!-- Top Bar -->
+    <header class="h-16 bg-white border-b border-outline-border px-8 flex items-center justify-between shrink-0">
+      <div>
+        <h2 id="pageTitle" class="font-serif text-xl font-semibold text-primary">Overview Dashboard</h2>
+        <p class="text-[11px] text-gray-500">Real-time content management and clinic order governance</p>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="/" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-surface border border-outline-border text-xs font-medium text-primary hover:bg-surface-container flex items-center gap-1.5 transition-colors">
+          <span>Live Site</span>
+          <span class="material-symbols-outlined text-sm">visibility</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Content Sections -->
+    <div class="p-8 flex-1">
+
+      <!-- 1. OVERVIEW TAB -->
+      <section id="tab-overview" class="space-y-8">
+        <!-- Metric Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="bg-white p-5 rounded-xl border border-outline-border shadow-sm">
+            <div class="flex items-center justify-between text-gray-500 mb-2">
+              <span class="text-xs uppercase tracking-wider font-semibold">Pending B2B Accounts</span>
+              <span class="material-symbols-outlined text-amber-500">pending_actions</span>
+            </div>
+            <p id="metricPendingB2B" class="text-3xl font-serif font-bold text-primary">0</p>
+            <p class="text-[11px] text-gray-400 mt-1">Requires clinic verification</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-xl border border-outline-border shadow-sm">
+            <div class="flex items-center justify-between text-gray-500 mb-2">
+              <span class="text-xs uppercase tracking-wider font-semibold">Active Formulations</span>
+              <span class="material-symbols-outlined text-secondary">science</span>
+            </div>
+            <p id="metricTotalProducts" class="text-3xl font-serif font-bold text-primary">0</p>
+            <p class="text-[11px] text-gray-400 mt-1">Live in product catalog</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-xl border border-outline-border shadow-sm">
+            <div class="flex items-center justify-between text-gray-500 mb-2">
+              <span class="text-xs uppercase tracking-wider font-semibold">Partner Clinics</span>
+              <span class="material-symbols-outlined text-emerald-600">domain</span>
+            </div>
+            <p id="metricTotalClinics" class="text-3xl font-serif font-bold text-primary">0</p>
+            <p class="text-[11px] text-gray-400 mt-1">Dispensary directory locations</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-xl border border-outline-border shadow-sm">
+            <div class="flex items-center justify-between text-gray-500 mb-2">
+              <span class="text-xs uppercase tracking-wider font-semibold">Medical Inquiries</span>
+              <span class="material-symbols-outlined text-blue-600">contact_support</span>
+            </div>
+            <p id="metricUnreadInquiries" class="text-3xl font-serif font-bold text-primary">0</p>
+            <p class="text-[11px] text-gray-400 mt-1">Pending response</p>
+          </div>
+        </div>
+
+        <!-- Recent Applications Table -->
+        <div class="bg-white rounded-xl border border-outline-border shadow-sm p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-serif text-base font-semibold text-primary">Recent B2B Clinic Partnership Inquiries</h3>
+            <button onclick="switchTab('b2b')" class="text-xs font-semibold text-secondary hover:underline">View All →</button>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-surface border-y border-outline-border uppercase text-[10px] tracking-wider text-gray-500">
+                <tr>
+                  <th class="py-2.5 px-3">Practice / Clinic</th>
+                  <th class="py-2.5 px-3">Contact</th>
+                  <th class="py-2.5 px-3">Category</th>
+                  <th class="py-2.5 px-3">Province</th>
+                  <th class="py-2.5 px-3">Status</th>
+                  <th class="py-2.5 px-3">Submitted</th>
+                </tr>
+              </thead>
+              <tbody id="recentB2BTable" class="divide-y divide-outline-border">
+                <tr><td colspan="6" class="py-4 text-center text-gray-400">Loading applications...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. SITE COPY & SETTINGS TAB -->
+      <section id="tab-settings" class="hidden space-y-6">
+        <div class="bg-white rounded-xl border border-outline-border shadow-sm p-6">
+          <div class="flex items-center justify-between pb-4 border-b border-outline-border mb-6">
+            <div>
+              <h3 class="font-serif text-lg font-semibold text-primary">Global Site Copy & Headlines</h3>
+              <p class="text-xs text-gray-500">Edit every headline, subtext, address, and cleanroom specification across the platform.</p>
+            </div>
+            <button onclick="saveAllSettings()" class="px-5 py-2.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold uppercase tracking-wider transition-colors shadow flex items-center gap-2">
+              <span class="material-symbols-outlined text-sm">save</span>
+              <span>Save Changes</span>
+            </button>
+          </div>
+
+          <div id="settingsContainer" class="space-y-6">
+            <p class="text-xs text-gray-400">Loading configuration settings...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. PRODUCTS FORMULARY TAB -->
+      <section id="tab-products" class="hidden space-y-6">
+        <div class="bg-white rounded-xl border border-outline-border shadow-sm p-6">
+          <div class="flex items-center justify-between pb-4 border-b border-outline-border mb-6">
+            <div>
+              <h3 class="font-serif text-lg font-semibold text-primary">Product Formulary Catalog</h3>
+              <p class="text-xs text-gray-500">Manage formulation cards, INCI ingredients, prices, and sizes.</p>
+            </div>
+            <button onclick="openProductModal()" class="px-4 py-2.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold uppercase tracking-wider transition-colors shadow flex items-center gap-2">
+              <span class="material-symbols-outlined text-sm">add</span>
+              <span>Add New Formulation</span>
+            </button>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-surface border-y border-outline-border uppercase text-[10px] tracking-wider text-gray-500">
+                <tr>
+                  <th class="py-3 px-3">Product</th>
+                  <th class="py-3 px-3">Category</th>
+                  <th class="py-3 px-3">Volume</th>
+                  <th class="py-3 px-3">Price (NPR)</th>
+                  <th class="py-3 px-3">Featured</th>
+                  <th class="py-3 px-3">Status</th>
+                  <th class="py-3 px-3 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="productsTable" class="divide-y divide-outline-border">
+                <tr><td colspan="7" class="py-4 text-center text-gray-400">Loading products...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. CLINICS & DISPENSARIES TAB -->
+      <section id="tab-clinics" class="hidden space-y-6">
+        <div class="bg-white rounded-xl border border-outline-border shadow-sm p-6">
+          <div class="flex items-center justify-between pb-4 border-b border-outline-border mb-6">
+            <div>
+              <h3 class="font-serif text-lg font-semibold text-primary">Authorized Clinic Locator Directory</h3>
+              <p class="text-xs text-gray-500">Add and manage authorized dispensing hospitals and clinics across Nepal.</p>
+            </div>
+            <button onclick="openClinicModal()" class="px-4 py-2.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold uppercase tracking-wider transition-colors shadow flex items-center gap-2">
+              <span class="material-symbols-outlined text-sm">add_location_alt</span>
+              <span>Add New Clinic</span>
+            </button>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-surface border-y border-outline-border uppercase text-[10px] tracking-wider text-gray-500">
+                <tr>
+                  <th class="py-3 px-3">Facility Name</th>
+                  <th class="py-3 px-3">City & Province</th>
+                  <th class="py-3 px-3">Lead Physician</th>
+                  <th class="py-3 px-3">Phone</th>
+                  <th class="py-3 px-3">Verified</th>
+                  <th class="py-3 px-3 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="clinicsTable" class="divide-y divide-outline-border">
+                <tr><td colspan="6" class="py-4 text-center text-gray-400">Loading clinics...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. CLINICAL MONOGRAPHS TAB -->
+      <section id="tab-monographs" class="hidden space-y-6">
+        <div class="bg-white rounded-xl border border-outline-border shadow-sm p-6">
+          <div class="flex items-center justify-between pb-4 border-b border-outline-border mb-6">
+            <div>
+              <h3 class="font-serif text-lg font-semibold text-primary">Clinical Monographs & Prescribing Protocols</h3>
+              <p class="text-xs text-gray-500">Publish protocols for laser recovery, barrier maintenance, and cold urticaria.</p>
+            </div>
+            <button onclick="openMonographModal()" class="px-4 py-2.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold uppercase tracking-wider transition-colors shadow flex items-center gap-2">
+              <span class="material-symbols-outlined text-sm">note_add</span>
+              <span>Add Monograph</span>
+            </button>
+          </div>
+
+          <div id="monographsList" class="space-y-4">
+            <p class="text-xs text-gray-400">Loading monographs...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. B2B APPLICATIONS TAB -->
+      <section id="tab-b2b" class="hidden space-y-6">
+        <div class="bg-white rounded-xl border border-outline-border shadow-sm p-6">
+          <div class="flex items-center justify-between pb-4 border-b border-outline-border mb-6">
+            <div>
+              <h3 class="font-serif text-lg font-semibold text-primary">Clinic Wholesale Applications</h3>
+              <p class="text-xs text-gray-500">Review credential verification, PAN/DDA details, and approve accounts.</p>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-surface border-y border-outline-border uppercase text-[10px] tracking-wider text-gray-500">
+                <tr>
+                  <th class="py-3 px-3">Practice / Clinic</th>
+                  <th class="py-3 px-3">License / PAN</th>
+                  <th class="py-3 px-3">Contact</th>
+                  <th class="py-3 px-3">Volume Tier</th>
+                  <th class="py-3 px-3">Tester Kit</th>
+                  <th class="py-3 px-3">Status</th>
+                  <th class="py-3 px-3 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="b2bApplicationsTable" class="divide-y divide-outline-border">
+                <tr><td colspan="7" class="py-4 text-center text-gray-400">Loading applications...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. MEDICAL INQUIRIES TAB -->
+      <section id="tab-inquiries" class="hidden space-y-6">
+        <div class="bg-white rounded-xl border border-outline-border shadow-sm p-6">
+          <h3 class="font-serif text-lg font-semibold text-primary mb-4">Patient & Practitioner Inquiries</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-surface border-y border-outline-border uppercase text-[10px] tracking-wider text-gray-500">
+                <tr>
+                  <th class="py-3 px-3">Sender</th>
+                  <th class="py-3 px-3">Contact</th>
+                  <th class="py-3 px-3">Subject</th>
+                  <th class="py-3 px-3">Message</th>
+                  <th class="py-3 px-3">Status</th>
+                  <th class="py-3 px-3 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody id="inquiriesTable" class="divide-y divide-outline-border">
+                <tr><td colspan="6" class="py-4 text-center text-gray-400">Loading inquiries...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==================== PRODUCT MODAL ==================== -->
+  <div id="productModal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col border border-outline-border">
+      <div class="p-6 border-b border-outline-border flex items-center justify-between">
+        <h3 id="productModalTitle" class="font-serif text-lg font-semibold text-primary">Edit Formulation</h3>
+        <button onclick="closeProductModal()" class="text-gray-400 hover:text-gray-600">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <form id="productForm" class="p-6 overflow-y-auto space-y-4 text-xs">
+        <input type="hidden" id="prodId">
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Product Title *</label>
+            <input type="text" id="prodTitle" required class="w-full p-2.5 rounded border border-outline-border">
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">URL Slug</label>
+            <input type="text" id="prodSlug" class="w-full p-2.5 rounded border border-outline-border">
+          </div>
+        </div>
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Subtitle / Key Active Highlight</label>
+          <input type="text" id="prodSubtitle" class="w-full p-2.5 rounded border border-outline-border">
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Category *</label>
+            <input type="text" id="prodCategory" required class="w-full p-2.5 rounded border border-outline-border" placeholder="e.g. Barrier Repair">
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Volume</label>
+            <input type="text" id="prodVolume" class="w-full p-2.5 rounded border border-outline-border" placeholder="e.g. 30 ml">
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Price (NPR)</label>
+            <input type="number" id="prodPrice" class="w-full p-2.5 rounded border border-outline-border" placeholder="e.g. 3200">
+          </div>
+        </div>
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Clinical Badge Text</label>
+          <input type="text" id="prodBadge" class="w-full p-2.5 rounded border border-outline-border" placeholder="e.g. Flagship Formulation">
+        </div>
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Summary Description</label>
+          <textarea id="prodSummary" rows="2" class="w-full p-2.5 rounded border border-outline-border"></textarea>
+        </div>
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Full INCI Ingredient List</label>
+          <textarea id="prodInci" rows="3" class="w-full p-2.5 rounded border border-outline-border font-mono text-[11px]"></textarea>
+        </div>
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Usage Protocol Instructions</label>
+          <textarea id="prodUsage" rows="2" class="w-full p-2.5 rounded border border-outline-border"></textarea>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Image URL / Path</label>
+            <input type="text" id="prodImage" class="w-full p-2.5 rounded border border-outline-border">
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Upload New Image</label>
+            <input type="file" id="prodImageFile" accept="image/*" class="w-full p-2 rounded border border-outline-border text-[11px]">
+          </div>
+        </div>
+        <div class="flex items-center gap-6 pt-2">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="prodFeatured" class="rounded accent-primary">
+            <span>Featured on Homepage</span>
+          </label>
+          <div class="flex items-center gap-2">
+            <label class="font-semibold text-gray-600">Status:</label>
+            <select id="prodStatus" class="p-1.5 rounded border border-outline-border text-xs">
+              <option value="active">Active</option>
+              <option value="draft">Draft</option>
+              <option value="archived">Archived</option>
+            </select>
+          </div>
+        </div>
+        <div class="pt-4 border-t border-outline-border flex justify-end gap-3">
+          <button type="button" onclick="closeProductModal()" class="px-4 py-2 rounded border border-outline-border text-gray-600 hover:bg-gray-50">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded bg-primary text-white hover:bg-secondary font-semibold">Save Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== CLINIC MODAL ==================== -->
+  <div id="clinicModal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full max-h-[90vh] flex flex-col border border-outline-border">
+      <div class="p-6 border-b border-outline-border flex items-center justify-between">
+        <h3 id="clinicModalTitle" class="font-serif text-lg font-semibold text-primary">Clinic Location</h3>
+        <button onclick="closeClinicModal()" class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">close</span></button>
+      </div>
+      <form id="clinicForm" class="p-6 overflow-y-auto space-y-4 text-xs">
+        <input type="hidden" id="clinicId">
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Facility Name *</label>
+          <input type="text" id="clinicName" required class="w-full p-2.5 rounded border border-outline-border">
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">City *</label>
+            <input type="text" id="clinicCity" required class="w-full p-2.5 rounded border border-outline-border">
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Province *</label>
+            <select id="clinicProvince" required class="w-full p-2.5 rounded border border-outline-border">
+              <option value="Bagmati">Bagmati</option>
+              <option value="Koshi">Koshi</option>
+              <option value="Gandaki">Gandaki</option>
+              <option value="Lumbini">Lumbini</option>
+              <option value="Madhesh">Madhesh</option>
+              <option value="Karnali">Karnali</option>
+              <option value="Sudurpashchim">Sudurpashchim</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Street Address</label>
+          <input type="text" id="clinicAddress" required class="w-full p-2.5 rounded border border-outline-border">
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Contact Phone</label>
+            <input type="text" id="clinicPhone" class="w-full p-2.5 rounded border border-outline-border">
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Lead Physician</label>
+            <input type="text" id="clinicDoctor" class="w-full p-2.5 rounded border border-outline-border">
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <label class="flex items-center gap-2">
+            <input type="checkbox" id="clinicVerified" checked class="rounded accent-primary">
+            <span>Verified Dispensary</span>
+          </label>
+        </div>
+        <div class="pt-4 border-t border-outline-border flex justify-end gap-3">
+          <button type="button" onclick="closeClinicModal()" class="px-4 py-2 rounded border border-outline-border text-gray-600 hover:bg-gray-50">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded bg-primary text-white hover:bg-secondary font-semibold">Save Clinic</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Client-side CMS Script -->
+  <script>
+    // State
+    let currentSettings = [];
+    let currentProducts = [];
+    let currentClinics = [];
+    let currentMonographs = [];
+    let currentB2B = [];
+    let currentInquiries = [];
+
+    // Toast helper
+    function showToast(msg, isError = false) {
+      const toast = document.getElementById('toast');
+      const icon = document.getElementById('toastIcon');
+      const text = document.getElementById('toastMessage');
+
+      text.textContent = msg;
+      icon.textContent = isError ? 'error' : 'check_circle';
+      toast.className = `fixed bottom-6 right-6 z-50 transform transition-all duration-300 flex items-center gap-3 px-5 py-3 rounded-lg shadow-xl text-xs font-semibold uppercase tracking-wider text-white ${isError ? 'bg-rose-700 border-rose-800' : 'bg-primary border-secondary'}`;
+      
+      toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+      }, 3500);
+    }
+
+    // Tab switcher
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.tab === tabId);
+      });
+      document.querySelectorAll('main section').forEach(sec => sec.classList.add('hidden'));
+      const activeSec = document.getElementById(`tab-${tabId}`);
+      if (activeSec) activeSec.classList.remove('hidden');
+
+      const titles = {
+        overview: 'Overview Dashboard',
+        settings: 'Site Copy & Headlines Editor',
+        products: 'Product Formulary Catalog',
+        clinics: 'Authorized Clinic Directory',
+        monographs: 'Clinical Guidance & Monographs',
+        b2b: 'B2B Wholesale Account Inquiries',
+        inquiries: 'Patient & Practitioner Messages'
+      };
+      document.getElementById('pageTitle').textContent = titles[tabId] || 'Administration';
+
+      // Load tab-specific data
+      if (tabId === 'settings') loadSettings();
+      if (tabId === 'products') loadProducts();
+      if (tabId === 'clinics') loadClinics();
+      if (tabId === 'monographs') loadMonographs();
+      if (tabId === 'b2b') loadB2B();
+      if (tabId === 'inquiries') loadInquiries();
+    }
+
+    // Initial load
+    async function initDashboard() {
+      try {
+        const res = await fetch('/admin/api/stats');
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('metricPendingB2B').textContent = data.stats.pendingB2B;
+          document.getElementById('metricTotalProducts').textContent = data.stats.totalProducts;
+          document.getElementById('metricTotalClinics').textContent = data.stats.totalClinics;
+          document.getElementById('metricUnreadInquiries').textContent = data.stats.unreadInquiries;
+
+          if (data.stats.pendingB2B > 0) {
+            const b = document.getElementById('badgeB2B');
+            b.textContent = data.stats.pendingB2B;
+            b.classList.remove('hidden');
+          }
+          if (data.stats.unreadInquiries > 0) {
+            const b = document.getElementById('badgeInquiries');
+            b.textContent = data.stats.unreadInquiries;
+            b.classList.remove('hidden');
+          }
+
+          if (data.currentUser) {
+            document.getElementById('adminUserDisplay').textContent = data.currentUser.username;
+          }
+
+          renderRecentApplications(data.recentApplications);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    function renderRecentApplications(apps) {
+      const tbody = document.getElementById('recentB2BTable');
+      if (!apps || !apps.length) {
+        tbody.innerHTML = '<tr><td colspan="6" class="py-4 text-center text-gray-400">No applications received yet.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = apps.map(a => `
+        <tr class="hover:bg-surface/50">
+          <td class="py-3 px-3 font-semibold text-primary">${escapeHtml(a.practice_name)}</td>
+          <td class="py-3 px-3 text-gray-600">${escapeHtml(a.contact_person)}<br><span class="text-gray-400 text-[11px]">${escapeHtml(a.email)}</span></td>
+          <td class="py-3 px-3">${escapeHtml(a.facility_category)}</td>
+          <td class="py-3 px-3">${escapeHtml(a.province)}</td>
+          <td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${getStatusClass(a.status)}">${escapeHtml(a.status.toUpperCase())}</span></td>
+          <td class="py-3 px-3 text-gray-400 text-[11px]">${new Date(a.created_at).toLocaleDateString()}</td>
+        </tr>
+      `).join('');
+    }
+
+    // ==================== SETTINGS ====================
+    async function loadSettings() {
+      try {
+        const res = await fetch('/admin/api/settings');
+        const data = await res.json();
+        if (data.success) {
+          currentSettings = data.settings;
+          const container = document.getElementById('settingsContainer');
+          
+          // Group by category
+          const groups = {};
+          data.settings.forEach(s => {
+            const cat = s.category || 'general';
+            if (!groups[cat]) groups[cat] = [];
+            groups[cat].push(s);
+          });
+
+          container.innerHTML = Object.entries(groups).map(([cat, items]) => `
+            <div class="border border-outline-border rounded-lg p-5 bg-surface/30">
+              <h4 class="font-serif text-sm font-semibold uppercase tracking-wider text-secondary mb-4">${escapeHtml(cat)} Section</h4>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                ${items.map(item => `
+                  <div class="${item.value && item.value.length > 80 ? 'md:col-span-2' : ''}">
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">${escapeHtml(item.label || item.key)}</label>
+                    ${item.value && item.value.length > 80 ? `
+                      <textarea id="setting_${item.key}" class="w-full p-2.5 rounded border border-outline-border bg-white text-xs text-primary focus:border-secondary focus:outline-none" rows="3">${escapeHtml(item.value || '')}</textarea>
+                    ` : `
+                      <input type="text" id="setting_${item.key}" value="${escapeHtml(item.value || '')}" class="w-full p-2.5 rounded border border-outline-border bg-white text-xs text-primary focus:border-secondary focus:outline-none">
+                    `}
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `).join('');
+        }
+      } catch (err) {
+        showToast('Error loading settings', true);
+      }
+    }
+
+    async function saveAllSettings() {
+      const updates = {};
+      currentSettings.forEach(s => {
+        const el = document.getElementById(`setting_${s.key}`);
+        if (el) updates[s.key] = el.value;
+      });
+
+      try {
+        const res = await fetch('/admin/api/settings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ settings: updates })
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Site settings saved successfully!');
+        } else {
+          showToast(data.message || 'Error saving settings', true);
+        }
+      } catch (err) {
+        showToast('Connection error', true);
+      }
+    }
+
+    // ==================== PRODUCTS ====================
+    async function loadProducts() {
+      try {
+        const res = await fetch('/admin/api/products');
+        const data = await res.json();
+        if (data.success) {
+          currentProducts = data.products;
+          const tbody = document.getElementById('productsTable');
+          if (!data.products.length) {
+            tbody.innerHTML = '<tr><td colspan="7" class="py-4 text-center text-gray-400">No products configured.</td></tr>';
+            return;
+          }
+          tbody.innerHTML = data.products.map(p => `
+            <tr class="hover:bg-surface/50">
+              <td class="py-3 px-3">
+                <div class="flex items-center gap-3">
+                  <img src="${escapeHtml(p.image_url || 'assets/images/product-packaging-dropper.png')}" class="w-10 h-10 object-contain rounded border border-outline-border bg-surface p-0.5">
+                  <div>
+                    <p class="font-semibold text-primary">${escapeHtml(p.title)}</p>
+                    <p class="text-[11px] text-gray-400 font-mono">${escapeHtml(p.slug)}</p>
+                  </div>
+                </div>
+              </td>
+              <td class="py-3 px-3 text-gray-600">${escapeHtml(p.category)}</td>
+              <td class="py-3 px-3 text-gray-600">${escapeHtml(p.volume || '—')}</td>
+              <td class="py-3 px-3 font-semibold">NPR ${p.price_npr ? p.price_npr.toLocaleString() : '0'}</td>
+              <td class="py-3 px-3">${p.is_featured ? '<span class="text-amber-600 font-bold">★ Yes</span>' : '<span class="text-gray-400">No</span>'}</td>
+              <td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${p.status === 'active' ? 'bg-emerald-100 text-emerald-800' : 'bg-gray-100 text-gray-600'}">${escapeHtml(p.status)}</span></td>
+              <td class="py-3 px-3 text-right space-x-2">
+                <button onclick="editProduct(${p.id})" class="p-1 text-secondary hover:text-primary"><span class="material-symbols-outlined text-base">edit</span></button>
+                <button onclick="deleteProduct(${p.id})" class="p-1 text-gray-400 hover:text-rose-600"><span class="material-symbols-outlined text-base">delete</span></button>
+              </td>
+            </tr>
+          `).join('');
+        }
+      } catch (err) {
+        showToast('Error loading products', true);
+      }
+    }
+
+    function openProductModal(prod = null) {
+      document.getElementById('productForm').reset();
+      document.getElementById('prodId').value = prod ? prod.id : '';
+      document.getElementById('productModalTitle').textContent = prod ? 'Edit Formulation' : 'Add New Formulation';
+      
+      if (prod) {
+        document.getElementById('prodTitle').value = prod.title || '';
+        document.getElementById('prodSlug').value = prod.slug || '';
+        document.getElementById('prodSubtitle').value = prod.subtitle || '';
+        document.getElementById('prodCategory').value = prod.category || '';
+        document.getElementById('prodVolume').value = prod.volume || '';
+        document.getElementById('prodPrice').value = prod.price_npr || '';
+        document.getElementById('prodBadge').value = prod.clinical_badge || '';
+        document.getElementById('prodSummary').value = prod.summary || '';
+        document.getElementById('prodInci').value = prod.inci_full || '';
+        document.getElementById('prodUsage').value = prod.usage_instructions || '';
+        document.getElementById('prodImage').value = prod.image_url || '';
+        document.getElementById('prodFeatured').checked = Boolean(prod.is_featured);
+        document.getElementById('prodStatus').value = prod.status || 'active';
+      }
+      document.getElementById('productModal').classList.remove('hidden');
+    }
+
+    function closeProductModal() {
+      document.getElementById('productModal').classList.add('hidden');
+    }
+
+    function editProduct(id) {
+      const p = currentProducts.find(x => x.id === id);
+      if (p) openProductModal(p);
+    }
+
+    async function deleteProduct(id) {
+      if (!confirm('Are you sure you want to remove this product?')) return;
+      try {
+        const res = await fetch(`/admin/api/products/${id}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Product deleted');
+          loadProducts();
+        }
+      } catch (err) {
+        showToast('Error deleting product', true);
+      }
+    }
+
+    document.getElementById('productForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('prodId').value;
+      const fileInput = document.getElementById('prodImageFile');
+
+      let imageUrl = document.getElementById('prodImage').value;
+
+      // Handle file upload if provided
+      if (fileInput.files.length > 0) {
+        const formData = new FormData();
+        formData.append('file', fileInput.files[0]);
+        try {
+          const uploadRes = await fetch('/admin/api/upload', { method: 'POST', body: formData });
+          const uploadData = await uploadRes.json();
+          if (uploadData.success) {
+            imageUrl = uploadData.url;
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      }
+
+      const payload = {
+        title: document.getElementById('prodTitle').value,
+        slug: document.getElementById('prodSlug').value,
+        subtitle: document.getElementById('prodSubtitle').value,
+        category: document.getElementById('prodCategory').value,
+        volume: document.getElementById('prodVolume').value,
+        price_npr: document.getElementById('prodPrice').value,
+        clinical_badge: document.getElementById('prodBadge').value,
+        summary: document.getElementById('prodSummary').value,
+        inci_full: document.getElementById('prodInci').value,
+        usage_instructions: document.getElementById('prodUsage').value,
+        image_url: imageUrl,
+        is_featured: document.getElementById('prodFeatured').checked ? 1 : 0,
+        status: document.getElementById('prodStatus').value
+      };
+
+      const method = id ? 'PUT' : 'POST';
+      const url = id ? `/admin/api/products/${id}` : '/admin/api/products';
+
+      try {
+        const res = await fetch(url, {
+          method,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(id ? 'Product updated' : 'Product created');
+          closeProductModal();
+          loadProducts();
+        } else {
+          showToast(data.message || 'Error saving product', true);
+        }
+      } catch (err) {
+        showToast('Connection error', true);
+      }
+    });
+
+    // ==================== CLINICS ====================
+    async function loadClinics() {
+      try {
+        const res = await fetch('/admin/api/clinics');
+        const data = await res.json();
+        if (data.success) {
+          currentClinics = data.clinics;
+          const tbody = document.getElementById('clinicsTable');
+          if (!data.clinics.length) {
+            tbody.innerHTML = '<tr><td colspan="6" class="py-4 text-center text-gray-400">No clinics configured.</td></tr>';
+            return;
+          }
+          tbody.innerHTML = data.clinics.map(c => `
+            <tr class="hover:bg-surface/50">
+              <td class="py-3 px-3 font-semibold text-primary">${escapeHtml(c.name)}<br><span class="text-[11px] text-gray-400 font-normal">${escapeHtml(c.address)}</span></td>
+              <td class="py-3 px-3">${escapeHtml(c.city)}, ${escapeHtml(c.province)}</td>
+              <td class="py-3 px-3 text-gray-600">${escapeHtml(c.lead_doctor || '—')}</td>
+              <td class="py-3 px-3">${escapeHtml(c.phone || '—')}</td>
+              <td class="py-3 px-3">${c.is_verified ? '<span class="text-emerald-700 font-bold">✓ Verified</span>' : '<span class="text-gray-400">Standard</span>'}</td>
+              <td class="py-3 px-3 text-right space-x-2">
+                <button onclick="editClinic(${c.id})" class="p-1 text-secondary hover:text-primary"><span class="material-symbols-outlined text-base">edit</span></button>
+                <button onclick="deleteClinic(${c.id})" class="p-1 text-gray-400 hover:text-rose-600"><span class="material-symbols-outlined text-base">delete</span></button>
+              </td>
+            </tr>
+          `).join('');
+        }
+      } catch (err) {
+        showToast('Error loading clinics', true);
+      }
+    }
+
+    function openClinicModal(c = null) {
+      document.getElementById('clinicForm').reset();
+      document.getElementById('clinicId').value = c ? c.id : '';
+      document.getElementById('clinicModalTitle').textContent = c ? 'Edit Clinic Location' : 'Add New Clinic';
+      if (c) {
+        document.getElementById('clinicName').value = c.name || '';
+        document.getElementById('clinicCity').value = c.city || '';
+        document.getElementById('clinicProvince').value = c.province || 'Bagmati';
+        document.getElementById('clinicAddress').value = c.address || '';
+        document.getElementById('clinicPhone').value = c.phone || '';
+        document.getElementById('clinicDoctor').value = c.lead_doctor || '';
+        document.getElementById('clinicVerified').checked = Boolean(c.is_verified);
+      }
+      document.getElementById('clinicModal').classList.remove('hidden');
+    }
+
+    function closeClinicModal() {
+      document.getElementById('clinicModal').classList.add('hidden');
+    }
+
+    function editClinic(id) {
+      const c = currentClinics.find(x => x.id === id);
+      if (c) openClinicModal(c);
+    }
+
+    async function deleteClinic(id) {
+      if (!confirm('Delete this clinic location?')) return;
+      try {
+        const res = await fetch(`/admin/api/clinics/${id}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Clinic deleted');
+          loadClinics();
+        }
+      } catch (err) {
+        showToast('Error deleting clinic', true);
+      }
+    }
+
+    document.getElementById('clinicForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('clinicId').value;
+      const payload = {
+        name: document.getElementById('clinicName').value,
+        city: document.getElementById('clinicCity').value,
+        province: document.getElementById('clinicProvince').value,
+        address: document.getElementById('clinicAddress').value,
+        phone: document.getElementById('clinicPhone').value,
+        lead_doctor: document.getElementById('clinicDoctor').value,
+        is_verified: document.getElementById('clinicVerified').checked ? 1 : 0
+      };
+
+      const method = id ? 'PUT' : 'POST';
+      const url = id ? `/admin/api/clinics/${id}` : '/admin/api/clinics';
+
+      try {
+        const res = await fetch(url, {
+          method,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(id ? 'Clinic updated' : 'Clinic added');
+          closeClinicModal();
+          loadClinics();
+        }
+      } catch (err) {
+        showToast('Connection error', true);
+      }
+    });
+
+    // ==================== MONOGRAPHS ====================
+    async function loadMonographs() {
+      try {
+        const res = await fetch('/admin/api/monographs');
+        const data = await res.json();
+        if (data.success) {
+          currentMonographs = data.monographs;
+          const container = document.getElementById('monographsList');
+          if (!data.monographs.length) {
+            container.innerHTML = '<p class="text-xs text-gray-400">No clinical monographs available.</p>';
+            return;
+          }
+          container.innerHTML = data.monographs.map(m => `
+            <div class="border border-outline-border rounded-lg p-4 bg-white hover:border-secondary transition-colors">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded bg-surface border border-outline-border font-mono text-[10px] text-secondary font-bold">${escapeHtml(m.code)}</span>
+                <span class="text-[11px] text-gray-500">${escapeHtml(m.category || '')}</span>
+              </div>
+              <h4 class="font-serif text-sm font-semibold text-primary mb-1">${escapeHtml(m.title)}</h4>
+              <p class="text-xs text-gray-600 mb-2"><strong>Indication:</strong> ${escapeHtml(m.indication || '—')}</p>
+              <p class="text-[11px] text-gray-500"><strong>Active Compounds:</strong> ${escapeHtml(m.active_compounds || '—')}</p>
+            </div>
+          `).join('');
+        }
+      } catch (err) {
+        showToast('Error loading monographs', true);
+      }
+    }
+
+    // ==================== B2B APPLICATIONS ====================
+    async function loadB2B() {
+      try {
+        const res = await fetch('/admin/api/b2b-applications');
+        const data = await res.json();
+        if (data.success) {
+          currentB2B = data.applications;
+          const tbody = document.getElementById('b2bApplicationsTable');
+          if (!data.applications.length) {
+            tbody.innerHTML = '<tr><td colspan="7" class="py-4 text-center text-gray-400">No B2B wholesale applications received.</td></tr>';
+            return;
+          }
+          tbody.innerHTML = data.applications.map(a => `
+            <tr class="hover:bg-surface/50">
+              <td class="py-3 px-3 font-semibold text-primary">${escapeHtml(a.practice_name)}<br><span class="text-[11px] text-gray-400 font-normal">${escapeHtml(a.facility_category)}</span></td>
+              <td class="py-3 px-3 font-mono text-xs text-gray-700">${escapeHtml(a.reg_number || 'N/A')}</td>
+              <td class="py-3 px-3">${escapeHtml(a.contact_person)}<br><span class="text-[11px] text-gray-400">${escapeHtml(a.email)} | ${escapeHtml(a.phone)}</span></td>
+              <td class="py-3 px-3 uppercase text-[11px]">${escapeHtml(a.volume_tier)}</td>
+              <td class="py-3 px-3">${a.sample_kit_requested ? '<span class="text-emerald-700 font-bold">✓ Requested</span>' : '<span class="text-gray-400">No</span>'}</td>
+              <td class="py-3 px-3">
+                <select onchange="updateB2BStatus(${a.id}, this.value)" class="p-1 rounded text-[11px] font-bold border border-outline-border ${getStatusClass(a.status)}">
+                  <option value="pending" ${a.status === 'pending' ? 'selected' : ''}>PENDING</option>
+                  <option value="reviewed" ${a.status === 'reviewed' ? 'selected' : ''}>REVIEWED</option>
+                  <option value="approved" ${a.status === 'approved' ? 'selected' : ''}>APPROVED</option>
+                  <option value="declined" ${a.status === 'declined' ? 'selected' : ''}>DECLINED</option>
+                </select>
+              </td>
+              <td class="py-3 px-3 text-right">
+                <span class="text-[11px] text-gray-400">${new Date(a.created_at).toLocaleDateString()}</span>
+              </td>
+            </tr>
+          `).join('');
+        }
+      } catch (err) {
+        showToast('Error loading B2B applications', true);
+      }
+    }
+
+    async function updateB2BStatus(id, newStatus) {
+      try {
+        const res = await fetch(`/admin/api/b2b-applications/${id}/status`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status: newStatus })
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(`Application updated to ${newStatus}`);
+        }
+      } catch (err) {
+        showToast('Error updating status', true);
+      }
+    }
+
+    // ==================== INQUIRIES ====================
+    async function loadInquiries() {
+      try {
+        const res = await fetch('/admin/api/inquiries');
+        const data = await res.json();
+        if (data.success) {
+          currentInquiries = data.inquiries;
+          const tbody = document.getElementById('inquiriesTable');
+          if (!data.inquiries.length) {
+            tbody.innerHTML = '<tr><td colspan="6" class="py-4 text-center text-gray-400">No inquiries received.</td></tr>';
+            return;
+          }
+          tbody.innerHTML = data.inquiries.map(i => `
+            <tr class="hover:bg-surface/50">
+              <td class="py-3 px-3 font-semibold text-primary">${escapeHtml(i.name)}</td>
+              <td class="py-3 px-3 text-gray-600">${escapeHtml(i.email)}<br><span class="text-gray-400 text-[11px]">${escapeHtml(i.phone || '')}</span></td>
+              <td class="py-3 px-3 font-medium">${escapeHtml(i.subject || 'General')}</td>
+              <td class="py-3 px-3 text-gray-600 max-w-xs truncate">${escapeHtml(i.message || '')}</td>
+              <td class="py-3 px-3"><span class="px-2 py-0.5 rounded text-[10px] font-bold ${i.status === 'unread' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-600'}">${escapeHtml(i.status)}</span></td>
+              <td class="py-3 px-3 text-right">
+                <button onclick="toggleInquiryStatus(${i.id}, '${i.status === 'unread' ? 'replied' : 'unread'}')" class="text-xs text-secondary hover:underline">
+                  Mark ${i.status === 'unread' ? 'Replied' : 'Unread'}
+                </button>
+              </td>
+            </tr>
+          `).join('');
+        }
+      } catch (err) {
+        showToast('Error loading inquiries', true);
+      }
+    }
+
+    async function toggleInquiryStatus(id, newStatus) {
+      try {
+        await fetch(`/admin/api/inquiries/${id}/status`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status: newStatus })
+        });
+        loadInquiries();
+      } catch (err) {
+        showToast('Error updating inquiry', true);
+      }
+    }
+
+    // Helper utilities
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    function getStatusClass(st) {
+      if (st === 'approved') return 'bg-emerald-100 text-emerald-800';
+      if (st === 'pending') return 'bg-amber-100 text-amber-800';
+      if (st === 'reviewed') return 'bg-blue-100 text-blue-800';
+      return 'bg-gray-100 text-gray-700';
+    }
+
+    async function handleLogout() {
+      try {
+        await fetch('/admin/logout', { method: 'POST' });
+        window.location.href = '/admin/login';
+      } catch (err) {
+        window.location.href = '/admin/login';
+      }
+    }
+
+    // Init
+    initDashboard();
+  </script>
+</body>
+</html>

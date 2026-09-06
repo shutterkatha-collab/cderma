@@ -1,0 +1,346 @@
+{
+  "name": "projects/3396987082855017763",
+  "title": "CDerma Nepal Premium Skincare Web Experience",
+  "visibility": "PUBLIC",
+  "createTime": "2026-09-06T04:05:08.848160Z",
+  "updateTime": "2026-09-06T09:04:40.555085Z",
+  "projectType": "TEXT_TO_UI_PRO",
+  "thumbnailScreenshot": {
+    "name": "projects/3396987082855017763/screens/587779233bcf4b32b36dc2c210afe333/fileEntries/screenshot",
+    "downloadUrl": "https://lh3.googleusercontent.com/aida/AEtjO1VvjG6d1KDS28RhG9NOtb2_1l25rDQ_1WYthzgwO4mcCkDoJCLcrluX76gqhkKwF9viCAFYMImKOvd4dPbWSpf35_Thq8JdnFSBBlbyTlbB0RZ66NejT-gyhSJKpY_aAVzd9Z4t8R_Yb0CieP4GaxzSRfgJNxM9cytJLJaG4hXnKe3LzfuAD85u9oHa91FTIyiYzZlLEAq748QKvq0bicpKoq8iYx8pg963spXZlfrzRTZd4QeG2rQfcA"
+  },
+  "origin": "STITCH",
+  "deviceType": "DESKTOP",
+  "designTheme": {
+    "colorMode": "LIGHT",
+    "font": "PLAYFAIR_DISPLAY",
+    "roundness": "ROUND_FOUR",
+    "customColor": "#1e2322",
+    "headlineFont": "PLAYFAIR_DISPLAY",
+    "bodyFont": "PLUS_JAKARTA_SANS",
+    "labelFont": "PLUS_JAKARTA_SANS",
+    "namedColors": {
+      "error_container": "#ffdad6",
+      "secondary_container": "#c9eadc",
+      "on_secondary": "#ffffff",
+      "tertiary_fixed": "#c6eadc",
+      "tertiary_container": "#04271e",
+      "on_tertiary": "#ffffff",
+      "primary_fixed": "#dfe3e1",
+      "outline": "#747877",
+      "inverse_on_surface": "#f2f1ee",
+      "on_error": "#ffffff",
+      "surface_bright": "#faf9f6",
+      "surface_dim": "#dbdad7",
+      "primary_container": "#1e2322",
+      "secondary": "#47645a",
+      "surface_container_highest": "#e3e2e0",
+      "on_surface_variant": "#434846",
+      "tertiary_fixed_dim": "#abcec0",
+      "surface_container_low": "#f4f3f1",
+      "on_primary_fixed_variant": "#434847",
+      "on_surface": "#1a1c1a",
+      "background": "#faf9f6",
+      "on_secondary_fixed_variant": "#304c43",
+      "on_tertiary_fixed_variant": "#2d4d42",
+      "primary_fixed_dim": "#c3c7c6",
+      "surface_variant": "#e3e2e0",
+      "surface": "#faf9f6",
+      "on_primary": "#ffffff",
+      "surface_container_high": "#e9e8e5",
+      "error": "#ba1a1a",
+      "primary": "#080d0c",
+      "tertiary": "#000e09",
+      "inverse_surface": "#2f312f",
+      "on_tertiary_fixed": "#002118",
+      "on_background": "#1a1c1a",
+      "on_primary_fixed": "#181d1c",
+      "on_primary_container": "#858a89",
+      "on_secondary_fixed": "#022018",
+      "outline_variant": "#c3c7c5",
+      "inverse_primary": "#c3c7c6",
+      "surface_container": "#efeeeb",
+      "secondary_fixed": "#c9eadc",
+      "surface_tint": "#5a5f5e",
+      "on_secondary_container": "#4d6a60",
+      "on_tertiary_container": "#6f9084",
+      "secondary_fixed_dim": "#aecdc1",
+      "surface_container_lowest": "#ffffff",
+      "on_error_container": "#93000a"
+    },
+    "designMd": "---\nname: Clinical Botanical Luxury\ncolors:\n  surface: '#faf9f6'\n  surface-dim: '#dbdad7'\n  surface-bright: '#faf9f6'\n  surface-container-lowest: '#ffffff'\n  surface-container-low: '#f4f3f1'\n  surface-container: '#efeeeb'\n  surface-container-high: '#e9e8e5'\n  surface-container-highest: '#e3e2e0'\n  on-surface: '#1a1c1a'\n  on-surface-variant: '#434846'\n  inverse-surface: '#2f312f'\n  inverse-on-surface: '#f2f1ee'\n  outline: '#747877'\n  outline-variant: '#c3c7c5'\n  surface-tint: '#5a5f5e'\n  primary: '#080d0c'\n  on-primary: '#ffffff'\n  primary-container: '#1e2322'\n  on-primary-container: '#858a89'\n  inverse-primary: '#c3c7c6'\n  secondary: '#47645a'\n  on-secondary: '#ffffff'\n  secondary-container: '#c9eadc'\n  on-secondary-container: '#4d6a60'\n  tertiary: '#000e09'\n  on-tertiary: '#ffffff'\n  tertiary-container: '#04271e'\n  on-tertiary-container: '#6f9084'\n  error: '#ba1a1a'\n  on-error: '#ffffff'\n  error-container: '#ffdad6'\n  on-error-container: '#93000a'\n  primary-fixed: '#dfe3e1'\n  primary-fixed-dim: '#c3c7c6'\n  on-primary-fixed: '#181d1c'\n  on-primary-fixed-variant: '#434847'\n  secondary-fixed: '#c9eadc'\n  secondary-fixed-dim: '#aecdc1'\n  on-secondary-fixed: '#022018'\n  on-secondary-fixed-variant: '#304c43'\n  tertiary-fixed: '#c6eadc'\n  tertiary-fixed-dim: '#abcec0'\n  on-tertiary-fixed: '#002118'\n  on-tertiary-fixed-variant: '#2d4d42'\n  background: '#faf9f6'\n  on-background: '#1a1c1a'\n  surface-variant: '#e3e2e0'\ntypography:\n  display-lg:\n    fontFamily: Playfair Display\n    fontSize: 56px\n    fontWeight: '400'\n    lineHeight: 64px\n    letterSpacing: -0.02em\n  display-lg-mobile:\n    fontFamily: Playfair Display\n    fontSize: 38px\n    fontWeight: '400'\n    lineHeight: 46px\n    letterSpacing: -0.015em\n  headline-lg:\n    fontFamily: Playfair Display\n    fontSize: 40px\n    fontWeight: '400'\n    lineHeight: 48px\n    letterSpacing: -0.01em\n  headline-lg-mobile:\n    fontFamily: Playfair Display\n    fontSize: 30px\n    fontWeight: '400'\n    lineHeight: 38px\n    letterSpacing: -0.01em\n  headline-md:\n    fontFamily: Playfair Display\n    fontSize: 28px\n    fontWeight: '500'\n    lineHeight: 36px\n    letterSpacing: -0.005em\n  headline-sm:\n    fontFamily: Playfair Display\n    fontSize: 22px\n    fontWeight: '600'\n    lineHeight: 30px\n    letterSpacing: 0em\n  body-lg:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 18px\n    fontWeight: '400'\n    lineHeight: 28px\n    letterSpacing: -0.01em\n  body-md:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 15px\n    fontWeight: '400'\n    lineHeight: 24px\n    letterSpacing: 0em\n  body-sm:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 13px\n    fontWeight: '400'\n    lineHeight: 20px\n    letterSpacing: 0.01em\n  label-caps-md:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 11px\n    fontWeight: '600'\n    lineHeight: 16px\n    letterSpacing: 0.14em\n  label-caps-sm:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 10px\n    fontWeight: '700'\n    lineHeight: 14px\n    letterSpacing: 0.18em\n  metric-clinical:\n    fontFamily: Plus Jakarta Sans\n    fontSize: 32px\n    fontWeight: '300'\n    lineHeight: 36px\n    letterSpacing: -0.02em\nrounded:\n  sm: 0.125rem\n  DEFAULT: 0.25rem\n  md: 0.375rem\n  lg: 0.5rem\n  xl: 0.75rem\n  full: 9999px\nspacing:\n  space-2xs: 0.25rem\n  space-xs: 0.5rem\n  space-sm: 0.75rem\n  space-md: 1rem\n  space-lg: 1.5rem\n  space-xl: 2rem\n  space-2xl: 3rem\n  space-3xl: 4.5rem\n  space-4xl: 6rem\n  gutter-desktop: 2rem\n  gutter-mobile: 1rem\n  container-max: 1360px\n---\n\n## Brand & Style\nThis design system articulates an intersection of rigorous cosmetic science and contemplative Himalayan botanicals. The brand ethos is rooted in clinical luxury: credible, uncompromisingly pure, and editorially disciplined. It rejects exaggerated clinical claims in favor of quiet dermatological authority, transparent formulation data, and refined tactile minimalism.\n\nThe aesthetic fuses the restrained apothecary architecture of Aesop with the diagnostic precision of SkinCeuticals and the elevated purity of Dr. Barbara Sturm. Visual composition relies on generous negative space, deliberate typographic tension between poetic serifs and precise grotesques, and a tactile, near-architectural surface treatment.\n\n## Colors\nThe palette evokes pharmaceutical cleanrooms and quiet sub-alpine botanic gardens. Primary emphasis rests on high-value contrasts between light atmospheric backdrops and deep graphite typography.\n\n- **Primary (`#1E2322`)**: Deep Graphite. Anchors all primary text, structural framing, high-emphasis interaction states, and clinical branding marks.\n- **Secondary (`#3D5A50`)**: Deep Botanical Sage. Selected for primary CTA surfaces, scientific indicators, active toggle states, and key botanical ingredient callouts.\n- **Tertiary (`#5A7B6F`)**: Muted Alpine Green. Used for auxiliary tags, hovered states, and subtle botanical iconography.\n- **Neutral Base (`#FAF9F6`)**: Warm Alabaster/Ivory. Serves as the global canvas, warming the clinical atmosphere away from sterile hospital whites toward luxury editorial paper.\n- **Clinical Surface (`#F4F6F4`)**: Soft Clinical Sage-Grey. Used for nested cards, formulation specification tables, and tonal layering.\n- **Mineral Accent (`#EBF1F2`)**: Clinical Glacial Blue. Applied in diagnostic badges, clinical trial data cards, and interactive hover planes.\n- **Subtle Outline (`#E4E7E4`)**: Neutral ghost border used for hairline dividers and structural grid containment.\n\n## Typography\nTypographic rhythm relies on the tension between classical editorial luxury and clinical taxonomy:\n\n- **Editorial Headings**: Set in **Playfair Display**. Renders formulations, benefits, and narrative anchors with literary gravitas. Headings prioritize high letter-form clarity with disciplined tracking and organic baseline pacing.\n- **Formulation & Technical Copy**: Set in **Plus Jakarta Sans**. Delivers medical transparency, ingredient dosages, clinical protocols, and navigational ease with humanist warmth and crisp geometry.\n- **Diagnostic Badges & Metadata**: Set in small-caps or uppercase **Plus Jakarta Sans** with wide letter-spacing (`0.14em` to `0.18em`) to mirror international pharmacopeia labeling and laboratory batch documentation.\n\n## Layout & Spacing\nThe layout adheres to an architectural 12-column grid system built on an 8pt baseline, prioritized to preserve generous breathing room around photography and editorial typography:\n\n- **Breakpoints**: Mobile (`< 768px`), Tablet (`768px - 1023px`), Desktop (`\u2265 1024px`).\n- **Margins & Gutters**:\n  - Desktop: 12 columns, `gutter-desktop` (32px), side margins dynamic up to `container-max` (1360px).\n  - Tablet: 8 columns, 24px gutters, 32px safe outer padding.\n  - Mobile: 4 columns, `gutter-mobile` (16px), 20px outer margin.\n- **Negative Space**: Editorial section breaks lean on `space-3xl` (72px) and `space-4xl` (96px) to emulate high-end print journals and prevent information crowding.\n\n## Elevation & Depth\nDepth is created through tonal layering and low-contrast boundaries rather than heavy drop shadows:\n\n- **Tonal Tiers**: Visual hierarchy stacks surfaces logically:\n  - Base canvas: `#FAF9F6` (Warm Alabaster).\n  - Secondary card containers: `#F4F6F4` (Clinical Sage-Grey).\n  - Elevated modal/drawer overlays: Pure `#FFFFFF` resting on `#1E2322` at 20% opacity backdrop blur (4px).\n- **Hairline Framing**: Structural separation uses clean 1px hairline borders tinted in `#E4E7E4` (or `#3D5A50` at 12% opacity).\n- **Shadows**: Restrained and ambient only. Elevated elements employ an ultra-diffused shadow tinted with graphite pigment: `0 12px 32px -4px rgba(30, 35, 34, 0.05)`. Floating navigation bars utilize subtle glassmorphism: `background: rgba(250, 249, 246, 0.88)` with `backdrop-filter: blur(12px)` and a 1px border (`rgba(30, 35, 34, 0.06)`).\n\n## Shapes\nGeometry is disciplined and architectural. The shape system relies on an understated `0.25rem` (4px) baseline radius for interactive components, cards, and input modules.\n\n- Standard buttons, input fields, cards, and dialogue frames utilize subtle softened corners (`0.25rem`) that nod to clinical glass slides, packaging cartons, and laboratory precision.\n- Ingredient pills and botanical percentage tags strictly use full pill geometry (`9999px`) to create clear differentiation between interactive actionable items and passive scientific metadata.\n\n## Components\n\n### Buttons\n- **Primary Action**: Solid `#1E2322` background with `#FAF9F6` text. 44px minimum touch height, `0.25rem` radius, 0.5px subtle border. Hover transitions to `#3D5A50` with a smooth 200ms ease. Typography set to `label-caps-md`.\n- **Secondary / Scientific Consult**: Outlined variant with 1px border in `#1E2322`, transparent background, and `#1E2322` text. Hover fills with `#F4F6F4`.\n- **Ghost / Editorial Link**: Text-only button in `#3D5A50` with a persistent 1px hairline underline offset by 4px. Hover deepens to `#1E2322`.\n\n### Cards (Product & Clinical Journal)\n- Background is set to `#F4F6F4` or `#FFFFFF` bounded by a 1px `#E4E7E4` border. Padding is strictly `space-xl` (32px) on desktop, `space-lg` (24px) on mobile.\n- Cards maintain zero elevation by default; on hover, they apply a 1px border color transition to `#3D5A50` (30% opacity) and an ambient shadow (`0 12px 28px rgba(30, 35, 34, 0.04)`).\n\n### Input Fields & Selectors\n- Flat `#FAF9F6` background paired with a crisp bottom or full 1px border in `#D2D7D3`. Padding: 12px 16px. Active focus states replace the border with `#3D5A50` (no outer glow or halo). Labels sit above in `label-caps-sm`.\n\n### Checkboxes & Radio Elements\n- Custom 18x18mm square boxes with a `2px` micro-radius. Unchecked state uses a 1px border in `#5A7B6F`. Checked state fills `#3D5A50` with a sharp, minimalist white checkmark.\n\n### Metadata Chips & Diagnostic Badges\n- **Active Botanical Ingredient Chip**: Rounded-full pill with `#EBF1F2` background, `#3D5A50` text, and uppercase `label-caps-sm`.\n- **Clinical Trial Percentage Badge**: Neutral `#FAF9F6` background, bordered with `#E4E7E4`, highlighting metrics via `metric-clinical` typography.\n\n### Clinical Formulation Drawer / Accordion\n- Bordered sequentially by top and bottom 1px `#E4E7E4` dividers. Expandable panels showcase full INCI ingredient transparency, laboratory pH levels, and dermatological patch test documentation without clutter.",
+    "colorVariant": "FIDELITY",
+    "overridePrimaryColor": "#1e2322",
+    "overrideSecondaryColor": "#3d5a50",
+    "overrideTertiaryColor": "#5a7b6f",
+    "overrideNeutralColor": "#faf9f6",
+    "spacingScale": 2,
+    "typography": {
+      "body-lg": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "18px",
+        "fontWeight": "400",
+        "lineHeight": "28px",
+        "letterSpacing": "-0.01em"
+      },
+      "label-caps-md": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "11px",
+        "fontWeight": "600",
+        "lineHeight": "16px",
+        "letterSpacing": "0.14em"
+      },
+      "headline-lg": {
+        "fontFamily": "Playfair Display",
+        "fontSize": "40px",
+        "fontWeight": "400",
+        "lineHeight": "48px",
+        "letterSpacing": "-0.01em"
+      },
+      "headline-sm": {
+        "fontFamily": "Playfair Display",
+        "fontSize": "22px",
+        "fontWeight": "600",
+        "lineHeight": "30px",
+        "letterSpacing": "0em"
+      },
+      "headline-lg-mobile": {
+        "fontFamily": "Playfair Display",
+        "fontSize": "30px",
+        "fontWeight": "400",
+        "lineHeight": "38px",
+        "letterSpacing": "-0.01em"
+      },
+      "label-caps-sm": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "10px",
+        "fontWeight": "700",
+        "lineHeight": "14px",
+        "letterSpacing": "0.18em"
+      },
+      "display-lg-mobile": {
+        "fontFamily": "Playfair Display",
+        "fontSize": "38px",
+        "fontWeight": "400",
+        "lineHeight": "46px",
+        "letterSpacing": "-0.015em"
+      },
+      "body-md": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "15px",
+        "fontWeight": "400",
+        "lineHeight": "24px",
+        "letterSpacing": "0em"
+      },
+      "metric-clinical": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "32px",
+        "fontWeight": "300",
+        "lineHeight": "36px",
+        "letterSpacing": "-0.02em"
+      },
+      "headline-md": {
+        "fontFamily": "Playfair Display",
+        "fontSize": "28px",
+        "fontWeight": "500",
+        "lineHeight": "36px",
+        "letterSpacing": "-0.005em"
+      },
+      "display-lg": {
+        "fontFamily": "Playfair Display",
+        "fontSize": "56px",
+        "fontWeight": "400",
+        "lineHeight": "64px",
+        "letterSpacing": "-0.02em"
+      },
+      "body-sm": {
+        "fontFamily": "Plus Jakarta Sans",
+        "fontSize": "13px",
+        "fontWeight": "400",
+        "lineHeight": "20px",
+        "letterSpacing": "0.01em"
+      }
+    },
+    "spacing": {
+      "space-3xl": "4.5rem",
+      "space-2xs": "0.25rem",
+      "space-md": "1rem",
+      "space-4xl": "6rem",
+      "space-2xl": "3rem",
+      "space-lg": "1.5rem",
+      "gutter-desktop": "2rem",
+      "space-xl": "2rem",
+      "space-xs": "0.5rem",
+      "gutter-mobile": "1rem",
+      "container-max": "1360px",
+      "space-sm": "0.75rem"
+    },
+    "headlineFontFamily": "Playfair Display",
+    "bodyFontFamily": "Plus Jakarta Sans",
+    "labelFontFamily": "Plus Jakarta Sans"
+  },
+  "screenInstances": [
+    {
+      "id": "224c121bdaa245eca78f5712d3c439df",
+      "sourceScreen": "projects/3396987082855017763/screens/224c121bdaa245eca78f5712d3c439df",
+      "x": 1425,
+      "y": 842,
+      "width": 512,
+      "height": 286
+    },
+    {
+      "id": "224c121bdaa245eca78f5712d3c439df-1788684930009",
+      "sourceScreen": "projects/3396987082855017763/screens/4438679700230867539",
+      "x": 1475,
+      "y": 892,
+      "width": 512,
+      "height": 286
+    },
+    {
+      "id": "243d664aed104c52bf85bec6ff3a027d",
+      "sourceScreen": "projects/3396987082855017763/screens/9aa82c5b029a4ab4bb18a1fb5413d041",
+      "x": 2171,
+      "y": 40,
+      "width": 1497,
+      "height": 8932,
+      "hidden": true
+    },
+    {
+      "id": "4cd5e34a1eda4f64992e2fc47f9917df",
+      "sourceScreen": "projects/3396987082855017763/screens/4cd5e34a1eda4f64992e2fc47f9917df",
+      "x": 9738,
+      "y": 127,
+      "width": 1280,
+      "height": 4519
+    },
+    {
+      "id": "51c5518ab0784cfd866a62446db57921",
+      "sourceScreen": "projects/3396987082855017763/screens/51c5518ab0784cfd866a62446db57921",
+      "x": 2268,
+      "y": 144,
+      "width": 512,
+      "height": 512
+    },
+    {
+      "id": "587779233bcf4b32b36dc2c210afe333",
+      "sourceScreen": "projects/3396987082855017763/screens/587779233bcf4b32b36dc2c210afe333",
+      "x": 1504,
+      "y": 126,
+      "width": 512,
+      "height": 512,
+      "label": "CDerma Nepal",
+      "hidden": true
+    },
+    {
+      "id": "6fc2f80ed93243728114d8d7a74d2f22",
+      "sourceScreen": "projects/3396987082855017763/screens/6fc2f80ed93243728114d8d7a74d2f22",
+      "x": 8394,
+      "y": 127,
+      "width": 1280,
+      "height": 4710
+    },
+    {
+      "id": "9488ffd10ff841c89cbafa9faf4e8e2a",
+      "sourceScreen": "projects/3396987082855017763/screens/9488ffd10ff841c89cbafa9faf4e8e2a",
+      "x": 3112,
+      "y": 923,
+      "width": 512,
+      "height": 286
+    },
+    {
+      "id": "98759e6c7853489abe8ea836cf51fa7d",
+      "sourceScreen": "projects/3396987082855017763/screens/98759e6c7853489abe8ea836cf51fa7d",
+      "x": 3112,
+      "y": 1323,
+      "width": 512,
+      "height": 382
+    },
+    {
+      "id": "9ca5b1ab427e425daca51d891335b26c",
+      "sourceScreen": "projects/3396987082855017763/screens/9ca5b1ab427e425daca51d891335b26c",
+      "x": 2404,
+      "y": 1614,
+      "width": 512,
+      "height": 382
+    },
+    {
+      "id": "a8d9057b92884095b36941ee380ba940",
+      "sourceScreen": "projects/3396987082855017763/screens/a8d9057b92884095b36941ee380ba940",
+      "x": 7050,
+      "y": 127,
+      "width": 1280,
+      "height": 5649
+    },
+    {
+      "id": "af3ea219-742c-407b-8514-10e8115ddbf8",
+      "sourceScreen": "projects/3396987082855017763/screens/7924938902675647049",
+      "y": 9592,
+      "width": 512,
+      "height": 222,
+      "hidden": true,
+      "type": "SCREEN_INSTANCE"
+    },
+    {
+      "id": "assets_476d0d9d72004a55b78829220a716cbd",
+      "x": 3011,
+      "y": 162,
+      "width": 960,
+      "height": 540,
+      "sourceAsset": "assets/476d0d9d72004a55b78829220a716cbd",
+      "type": "DESIGN_SYSTEM_INSTANCE"
+    },
+    {
+      "id": "b385c21e71474734af09117686634b89",
+      "sourceScreen": "projects/3396987082855017763/screens/a1a9cad00a584837a030b3f2e5af1c1f",
+      "x": 4011,
+      "y": 179,
+      "width": 1462,
+      "height": 11174,
+      "isResized": true
+    },
+    {
+      "id": "b7eb14cebca64ef1bf8152997900e076",
+      "sourceScreen": "projects/3396987082855017763/screens/b7eb14cebca64ef1bf8152997900e076",
+      "x": 2314,
+      "y": 859,
+      "width": 512,
+      "height": 512
+    },
+    {
+      "id": "cab93b82-dd51-4313-a963-a94b9d050aac",
+      "sourceScreen": "projects/3396987082855017763/screens/1822722789397205396",
+      "x": 1626,
+      "y": 188,
+      "width": 512,
+      "height": 222,
+      "type": "SCREEN_INSTANCE"
+    },
+    {
+      "id": "e3678de9b3c641238fff221ea5bf5e6b",
+      "sourceScreen": "projects/3396987082855017763/screens/e3678de9b3c641238fff221ea5bf5e6b",
+      "x": 5706,
+      "y": 127,
+      "width": 1280,
+      "height": 3677
+    },
+    {
+      "id": "eb7c03284b0b4ba3bb78b78cfdfaac0b",
+      "sourceScreen": "projects/3396987082855017763/screens/eb7c03284b0b4ba3bb78b78cfdfaac0b",
+      "x": 11267,
+      "y": 201,
+      "width": 1280,
+      "height": 6219
+    },
+    {
+      "id": "fba91b76053a48f9a2a8963279d687a0",
+      "sourceScreen": "projects/3396987082855017763/screens/fba91b76053a48f9a2a8963279d687a0",
+      "x": 12741,
+      "y": 189,
+      "width": 1280,
+      "height": 4018
+    }
+  ],
+  "metadata": {
+    "userRole": "OWNER"
+  }
+}

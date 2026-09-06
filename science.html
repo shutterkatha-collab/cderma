@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&amp;family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"primary-fixed-dim":"#dbc57c","on-surface-variant":"#4b4639","on-secondary-fixed":"#221b00","on-tertiary-container":"#050500","tertiary":"#5f6041","outline-variant":"#cec6b4","secondary":"#6b5e2c","on-background":"#1d1c16","surface-container-low":"#f8f3e9","tertiary-fixed-dim":"#c8c9a3","background":"#fef9ef","secondary-container":"#f4e2a3","surface-dim":"#dedad0","on-tertiary-fixed-variant":"#47492c","secondary-fixed":"#f4e2a3","inverse-surface":"#32302a","on-tertiary-fixed":"#1c1d05","on-secondary":"#ffffff","surface-tint":"#6e5d1f","secondary-fixed-dim":"#d7c68a","outline":"#7d7768","tertiary-container":"#787958","inverse-on-surface":"#f5f0e6","surface-variant":"#e7e2d8","on-error-container":"#93000a","primary":"#6b5b1c","on-primary-fixed-variant":"#544607","on-surface":"#1d1c16","primary-container":"#857333","error-container":"#ffdad6","surface-container-lowest":"#ffffff","on-primary":"#ffffff","primary-fixed":"#f9e195","surface-bright":"#fef9ef","surface":"#fef9ef","surface-container":"#f2ede3","tertiary-fixed":"#e5e5bd","on-error":"#ffffff","inverse-primary":"#dbc57c","error":"#ba1a1a","on-primary-fixed":"#231b00","surface-container-high":"#ede8de","surface-container-highest":"#e7e2d8","on-secondary-container":"#716431","on-secondary-fixed-variant":"#524616","on-tertiary":"#ffffff","on-primary-container":"#fffbff"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-3xl":"4.5rem","space-2xs":"0.25rem","space-4xl":"6rem","space-md":"1rem","space-2xl":"3rem","space-lg":"1.5rem","container-max":"1360px","space-sm":"0.75rem","gutter-mobile":"1rem","space-xl":"2rem","gutter-desktop":"2rem","space-xs":"0.5rem"},fontFamily:{"body-md":["Open Sans"],"display-lg":["Comfortaa"]},fontSize:{"body-md":["15px",{lineHeight:"24px",letterSpacing:"0em",fontWeight:"400"}],"display-lg":["56px",{lineHeight:"64px",letterSpacing:"-0.02em",fontWeight:"400"}]}}}};</script></head><body class="bg-background font-body-md text-body-md text-on-surface min-h-screen"><header class="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(136,118,53,0.05)]"><div class="h-20 max-w-[1360px] mx-auto px-gutter-desktop flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-md shrink-0"><a class="flex items-center group" data-path="home" href="index.html"><img alt="CDerma - Choice by Professional" class="h-9 w-auto object-contain" src="assets/images/cderma-logo.png"/></a></div><nav class="hidden xl:flex items-center gap-space-lg shrink-0" data-active-classes="text-primary font-semibold"><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="index.html">Home</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="products" href="products.html">Products</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="flagship-face-care" href="product-detail.html">Flagship Face Care</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="quality-science" href="science.html">Quality &amp; Science</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="b2b-distribution" href="b2b.html">B2B &amp; Distribution</a><a class="text-on-surface-variant hover:text-on-surface transition-colors" data-path="medical-guidance" href="monographs.html">Medical Guidance</a></nav><div class="flex items-center gap-space-md shrink-0"><button aria-label="Search catalog" class="w-9 h-9 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">search</span></button><div class="flex items-center text-[12px] tracking-wider font-semibold text-on-surface-variant px-space-xs"><button class="text-primary hover:text-primary transition-colors" type="button">EN</button><span class="mx-space-2xs text-outline-variant">|</span><button class="text-on-surface-variant hover:text-on-surface transition-colors" type="button">नेपाली</button></div><a class="hidden sm:inline-flex items-center justify-center px-space-lg py-space-xs rounded-full bg-primary text-on-primary text-[13px] font-medium tracking-wide shadow-[0_2px_12px_rgba(107,91,28,0.18)] hover:bg-primary-container transition-all" data-path="b2b-distribution" href="b2b.html">Partner With Us</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-background"><div class="flex flex-col w-full">
+<!-- Top Subtle Notification Pill Bar -->
+<div class="w-full bg-surface-container-high py-space-xs px-gutter-desktop">
+<div class="max-w-[1360px] mx-auto flex flex-wrap items-center justify-between text-[12px] text-on-surface-variant tracking-wider uppercase font-medium">
+<div class="flex items-center gap-space-xs">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span>GMP Facility Registration • Itahari Science Campus, Koshi Province, Nepal</span>
+</div>
+<div class="hidden sm:flex items-center gap-space-md">
+<span>ISO 7 / Class 10,000 Verified</span>
+<span>•</span>
+<span>NMID Monitored Active Series</span>
+</div>
+</div>
+</div>
+<!-- Hero Header Block: Precision Typography -->
+<section class="w-full bg-background pt-space-2xl pb-space-xl">
+<div class="max-w-[1360px] mx-auto px-gutter-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-end">
+<div class="lg:col-span-8 flex flex-col gap-space-sm">
+<div class="inline-flex items-center gap-space-xs self-start px-space-sm py-space-2xs rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-semibold tracking-widest uppercase">
+<span class="material-symbols-outlined text-[14px]">biotech</span>
+            Cleanroom Protocol • Technical Monograph
+          </div>
+<h1 class="font-display-lg text-display-lg text-on-surface font-semibold tracking-tight leading-[1.08] max-w-4xl">
+            Formulated in Nepal with Cleanroom Precision
+          </h1>
+</div>
+<div class="lg:col-span-4 flex flex-col justify-end">
+<p class="text-on-surface-variant text-[15px] leading-relaxed">
+            Bridging pharmaceutical-grade dermatological actives with potent, sustainably harvested Himalayan botanicals. We built Nepal’s first certified dermocosmetics research cleanroom in Itahari, Koshi Province.
+          </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Hero Full-Width Visual Showcase with Live Metrics Overlay -->
+<section class="w-full max-w-[1360px] mx-auto px-gutter-desktop pb-space-3xl">
+<div class="relative w-full rounded-xl overflow-hidden shadow-xl bg-surface-container">
+<div class="relative w-full h-[380px] sm:h-[480px] lg:h-[620px]">
+<img alt="CDerma Research Cleanroom in Itahari featuring clinical bio-reactors, pristine stainless workstations, and formulation scientists overlooking Himalayan peaks" class="w-full h-full object-cover object-center" src="assets/images/img_5db7864f4a5c.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/85 via-on-background/30 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-primary-container/10"></div>
+</div>
+<!-- Technical HUD Floating Badge -->
+<div class="absolute top-space-lg left-space-lg hidden sm:flex items-center gap-space-sm bg-surface-bright/95 backdrop-blur-md px-space-md py-space-xs rounded-full shadow-md">
+<span class="w-2.5 h-2.5 rounded-full bg-primary animate-ping"></span>
+<span class="text-[12px] font-medium tracking-wide text-on-surface uppercase">Live Sensor: 19.4°C • 41% RH • 0.00 Particles ≥0.5μm/ft³</span>
+</div>
+<!-- Hero 4 Facility Metrics Grid Bar Overlaid Bottom -->
+<div class="absolute bottom-0 inset-x-0 bg-surface/95 backdrop-blur-md p-space-md sm:p-space-lg">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-md sm:gap-space-lg">
+<div class="flex flex-col">
+<div class="flex items-baseline gap-space-2xs">
+<span class="font-display-lg text-[28px] sm:text-[34px] font-bold text-primary tracking-tight leading-none">ISO 7</span>
+<span class="text-[11px] font-semibold uppercase tracking-wider text-secondary">Std</span>
+</div>
+<span class="text-[13px] font-medium text-on-surface mt-1">Class 10,000 Cleanroom</span>
+<span class="text-[11px] text-on-surface-variant leading-tight">Zero airborne cross-contamination</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-baseline gap-space-2xs">
+<span class="font-display-lg text-[28px] sm:text-[34px] font-bold text-primary tracking-tight leading-none">0.01</span>
+<span class="text-[13px] font-semibold uppercase tracking-wider text-secondary">g</span>
+</div>
+<span class="text-[13px] font-medium text-on-surface mt-1">Gravimetric Micro-Dosing</span>
+<span class="text-[11px] text-on-surface-variant leading-tight">Analytical balance accuracy</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-baseline gap-space-2xs">
+<span class="font-display-lg text-[28px] sm:text-[34px] font-bold text-primary tracking-tight leading-none">45</span>
+<span class="text-[13px] font-semibold uppercase tracking-wider text-secondary">Days</span>
+</div>
+<span class="text-[13px] font-medium text-on-surface mt-1">Thermal Incubation</span>
+<span class="text-[11px] text-on-surface-variant leading-tight">Simulated sub-Himalayan aging</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-baseline gap-space-2xs">
+<span class="font-display-lg text-[28px] sm:text-[34px] font-bold text-primary tracking-tight leading-none">100</span>
+<span class="text-[13px] font-semibold uppercase tracking-wider text-secondary">%</span>
+</div>
+<span class="text-[13px] font-medium text-on-surface mt-1">Batch Traceability</span>
+<span class="text-[11px] text-on-surface-variant leading-tight">Soil-to-vial digital ledger</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sourcing & Botanical Extraction Section -->
+<section class="w-full bg-surface-container-low py-space-3xl">
+<div class="max-w-[1360px] mx-auto px-gutter-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-2xl items-center">
+<!-- Botanical Product Imagery Frame -->
+<div class="lg:col-span-6 relative">
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest shadow-md">
+<img alt="Himalayan Centella Asiatica botanical leaves in crystal glass extraction dish paired with medical amber dropper bottle" class="w-full h-[420px] sm:h-[500px] object-cover" src="assets/images/img_c17c3fc6535a.jpg"/>
+<div class="absolute bottom-space-md left-space-md right-space-md bg-surface/90 backdrop-blur-md p-space-md rounded-lg shadow-sm">
+<div class="flex items-center justify-between">
+<div>
+<p class="text-[11px] font-semibold tracking-widest text-primary uppercase">Active Fraction Analyzed</p>
+<p class="font-display-lg text-[16px] text-on-surface font-semibold">Centella Asiatica (Gotu Kola)</p>
+</div>
+<div class="px-space-sm py-space-2xs rounded bg-surface-container-high text-primary font-bold text-[13px]">
+                  94.2% Pure Asiaticoside
+                </div>
+</div>
+</div>
+</div>
+<!-- Offset Architectural Background Accent -->
+<div class="absolute -top-3 -left-3 w-28 h-28 bg-primary/10 rounded-xl -z-10 hidden sm:block"></div>
+</div>
+<!-- Botanical Story & Technical Specifications -->
+<div class="lg:col-span-6 flex flex-col gap-space-lg">
+<div class="flex flex-col gap-space-2xs">
+<span class="text-[11px] font-bold uppercase tracking-widest text-primary">Indigenous Bio-Active Procurement</span>
+<h2 class="font-display-lg text-[32px] sm:text-[40px] leading-tight text-on-surface font-semibold">
+              Koshi Alpine Extraction: Preserving Delicate Triterpenoids
+            </h2>
+</div>
+<p class="text-on-surface-variant leading-relaxed">
+            Conventional high-heat distillation destroys the fragile anti-inflammatory molecular chains in native flora. At our Koshi facility, CDerma utilizes low-temperature sub-critical cold-maceration at 18°C. This guarantees that bioactive Asiaticoside, Madecassic Acid, and Corosolic compounds remain in their biologically active, cellular-reparative form.
+          </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<div class="p-space-md rounded-lg bg-surface-container-lowest shadow-sm flex flex-col gap-space-2xs">
+<div class="flex items-center gap-space-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">eco</span>
+<span class="font-display-lg text-[14px] font-semibold uppercase tracking-wider">Wild Harvest</span>
+</div>
+<p class="text-[13px] text-on-surface-variant leading-normal">
+                Sustainably foraged between 1,400m and 2,200m altitude in Eastern Nepal by smallholder collective cooperatives.
+              </p>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container-lowest shadow-sm flex flex-col gap-space-2xs">
+<div class="flex items-center gap-space-xs text-primary">
+<span class="material-symbols-outlined text-[20px]">handshake</span>
+<span class="font-display-lg text-[14px] font-semibold uppercase tracking-wider">Fair Trade Ledger</span>
+</div>
+<p class="text-[13px] text-on-surface-variant leading-normal">
+                Guaranteed price stability paid directly to indigenous cultivators across Dhankuta and Sankhuwasabha districts.
+              </p>
+</div>
+</div>
+<!-- Extraction Flow Spec Mini-Visualization -->
+<div class="p-space-md rounded-lg bg-surface-container flex flex-col gap-space-xs">
+<div class="flex items-center justify-between text-[12px] font-semibold text-on-surface">
+<span class="uppercase tracking-wider">Extraction Yield Purity vs Thermal Baseline</span>
+<span class="text-primary font-bold">+68% Retention</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-dim overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 88%"></div>
+</div>
+<div class="flex justify-between text-[11px] text-on-surface-variant font-medium">
+<span>Standard Solvent Boiling: 32% Active</span>
+<span>CDerma Sub-Critical Extraction: 88.4% Active</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- The 5 Pillars of Manufacturing Excellence -->
+<section class="w-full bg-background py-space-3xl">
+<div class="max-w-[1360px] mx-auto px-gutter-desktop">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-2xl">
+<div class="flex flex-col gap-space-2xs max-w-2xl">
+<span class="text-[11px] font-bold uppercase tracking-widest text-primary">Cleanroom Quality Standard</span>
+<h2 class="font-display-lg text-[32px] sm:text-[42px] leading-tight text-on-surface font-semibold">
+            The Five Pillars of CDerma Formulation
+          </h2>
+</div>
+<p class="text-[14px] text-on-surface-variant max-w-sm leading-relaxed">
+          From positive pressure cascading airlocks to regional stability testing under Nepal’s severe thermal contrasts.
+        </p>
+</div>
+<!-- 5 Bento Style Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+<!-- Pillar 1 -->
+<div class="group p-space-xl rounded-xl bg-surface-container-low hover:bg-surface-container transition-all duration-300 shadow-sm hover:shadow-md flex flex-col justify-between">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">air</span>
+</div>
+<span class="font-display-lg text-[18px] font-bold text-outline-variant">01</span>
+</div>
+<h3 class="font-display-lg text-[20px] font-semibold text-on-surface">
+              Positive Pressure &amp; HEPA H14
+            </h3>
+<p class="text-[14px] text-on-surface-variant leading-relaxed">
+              Air cascaded at 25 Pascals over 4 clean zones ensures zero airborne spores, bacteria, or microparticulates settle during high-shear vacuum homogenization.
+            </p>
+</div>
+<div class="mt-space-lg pt-space-md flex items-center justify-between text-[12px] font-medium text-secondary">
+<span>Particle Count: Class 10,000</span>
+<span class="material-symbols-outlined text-[16px]">verified</span>
+</div>
+</div>
+<!-- Pillar 2 -->
+<div class="group p-space-xl rounded-xl bg-surface-container-low hover:bg-surface-container transition-all duration-300 shadow-sm hover:shadow-md flex flex-col justify-between">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">view_in_ar</span>
+</div>
+<span class="font-display-lg text-[18px] font-bold text-outline-variant">02</span>
+</div>
+<h3 class="font-display-lg text-[20px] font-semibold text-on-surface">
+              3:1:1:1 Stratum Corneum Ratio
+            </h3>
+<p class="text-[14px] text-on-surface-variant leading-relaxed">
+              Formulated to mirror human epidermal lipids exactly: Ceramide NP, Cholesterol, and Free Fatty Acids engineered in stoichiometric balance for rapid barrier biomimicry.
+            </p>
+</div>
+<div class="mt-space-lg pt-space-md flex items-center justify-between text-[12px] font-medium text-secondary">
+<span>Bio-Identical Bio-Layer</span>
+<span class="material-symbols-outlined text-[16px]">verified</span>
+</div>
+</div>
+<!-- Pillar 3 -->
+<div class="group p-space-xl rounded-xl bg-surface-container-low hover:bg-surface-container transition-all duration-300 shadow-sm hover:shadow-md flex flex-col justify-between">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">thermostat</span>
+</div>
+<span class="font-display-lg text-[18px] font-bold text-outline-variant">03</span>
+</div>
+<h3 class="font-display-lg text-[20px] font-semibold text-on-surface">
+              Altitude &amp; Climate Stress Test
+            </h3>
+<p class="text-[14px] text-on-surface-variant leading-relaxed">
+              Every formula undergoes cyclic thermal testing: cycling between 4°C Kathmandu chill and 42°C Terai humidity to preserve emulsion rheology across all 7 provinces.
+            </p>
+</div>
+<div class="mt-space-lg pt-space-md flex items-center justify-between text-[12px] font-medium text-secondary">
+<span>Thermal Envelope: -5°C to 45°C</span>
+<span class="material-symbols-outlined text-[16px]">verified</span>
+</div>
+</div>
+<!-- Pillar 4 -->
+<div class="group p-space-xl rounded-xl bg-surface-container-low hover:bg-surface-container transition-all duration-300 shadow-sm hover:shadow-md flex flex-col justify-between">
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-lg bg-secondary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">pest_control</span>
+</div>
+<span class="font-display-lg text-[18px] font-bold text-outline-variant">04</span>
+</div>
+<h3 class="font-display-lg text-[20px] font-semibold text-on-surface">
+              Zero-Tolerance Microbial Screening
+            </h3>
+<p class="text-[14px] text-on-surface-variant leading-relaxed">
+              Pre-quarantine incubation for bacterial, fungal, and spore-forming microbes. ICP-MS mass spectrometry confirms zero heavy metals (Lead &lt; 0.1ppm, Mercury &lt; 0.01ppm).
+            </p>
+</div>
+<div class="mt-space-lg pt-space-md flex items-center justify-between text-[12px] font-medium text-secondary">
+<span>USP 61 / 62 Microbiological Passed</span>
+<span class="material-symbols-outlined text-[16px]">verified</span>
+</div>
+</div>
+<!-- Pillar 5 (Spanning 2 columns on lg screens for bento rhythm) -->
+<div class="group lg:col-span-2 p-space-xl rounded-xl bg-primary text-on-primary flex flex-col justify-between shadow-md">
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-space-lg">
+<div class="flex flex-col gap-space-md max-w-xl">
+<div class="flex items-center gap-space-sm">
+<div class="w-12 h-12 rounded-lg bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined text-[24px]">ac_unit</span>
+</div>
+<span class="font-display-lg text-[13px] font-bold uppercase tracking-widest text-primary-fixed">Pillar 05</span>
+</div>
+<h3 class="font-display-lg text-[22px] sm:text-[26px] font-semibold text-on-primary">
+                Direct Clinic Cold-Chain Distribution
+              </h3>
+<p class="text-[14px] text-on-primary/85 leading-relaxed">
+                Potent medical botanicals lose efficacy under hot transport cargo holds. CDerma manages direct climate-controlled cold-chain logistics from our Koshi formulation center directly to clinic apothecaries in Kathmandu, Pokhara, Biratnagar, and beyond.
+              </p>
+</div>
+<div class="p-space-md rounded-lg bg-primary-container/80 text-on-primary flex flex-col gap-space-xs shrink-0 sm:w-60">
+<span class="text-[11px] uppercase font-bold tracking-widest text-primary-fixed">Clinic Direct SLA</span>
+<span class="text-[28px] font-bold font-display-lg leading-none">24–48 hrs</span>
+<span class="text-[12px] text-on-primary/80">Refrigerated express door delivery to enrolled aesthetics practices</span>
+</div>
+</div>
+<div class="mt-space-xl pt-space-md flex flex-wrap items-center justify-between gap-space-sm text-[12px] text-on-primary/90">
+<span>Calibrated Data-Logger on Every Crate</span>
+<span class="inline-flex items-center gap-space-2xs text-primary-fixed font-semibold uppercase tracking-wider">
+              Protected Integrity Guarantee
+              <span class="material-symbols-outlined text-[16px]">check_circle</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- COA Public Verification Portal Section -->
+<section class="w-full bg-surface-container py-space-3xl">
+<div class="max-w-[1360px] mx-auto px-gutter-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-2xl">
+<!-- Search & Context Column -->
+<div class="lg:col-span-5 flex flex-col gap-space-lg">
+<div class="flex flex-col gap-space-2xs">
+<span class="text-[11px] font-bold uppercase tracking-widest text-primary">Radical Transparency</span>
+<h2 class="font-display-lg text-[30px] sm:text-[36px] font-semibold text-on-surface leading-tight">
+              Public Batch Verification &amp; Assay Portal
+            </h2>
+</div>
+<p class="text-on-surface-variant text-[14px] leading-relaxed">
+            Every commercial unit leaving our Itahari cleanroom is stamped with a traceable 8-digit manufacturing lot ID. Enter your bottle's code below to inspect the actual analytical laboratory certificate signed by our head chemist.
+          </p>
+<!-- Input Search Control -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
+<label class="text-[11px] font-bold uppercase tracking-wider text-secondary" for="batch-search-input">
+              Enter 8-Digit Batch Lot ID
+            </label>
+<div class="flex gap-space-xs">
+<input class="flex-1 px-space-md py-space-xs rounded bg-surface-container-low text-on-surface font-mono text-[14px] focus:outline-none focus:bg-surface-bright" id="batch-search-input" placeholder="e.g. LOT-24-0442" type="text" value="LOT-24-0442"/>
+<button class="px-space-md py-space-xs bg-primary text-on-primary rounded font-medium text-[13px] tracking-wide hover:bg-primary-container transition-colors flex items-center gap-space-2xs" id="verify-batch-btn" type="button">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+<span>Verify</span>
+</button>
+</div>
+<div class="flex items-center gap-space-xs text-[11px] text-outline">
+<span>Try test batches:</span>
+<button class="text-primary underline hover:text-secondary" onclick="loadBatch('LOT-24-0442')" type="button">LOT-24-0442</button>
+<span>•</span>
+<button class="text-primary underline hover:text-secondary" onclick="loadBatch('LOT-24-0389')" type="button">LOT-24-0389</button>
+</div>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-center gap-space-md">
+<span class="material-symbols-outlined text-primary text-[28px]">qr_code_scanner</span>
+<div class="flex flex-col text-[12px] text-on-surface-variant leading-tight">
+<span class="font-semibold text-on-surface">On-Bottle QR Access</span>
+<span>All clinic retail cartons carry direct micro-QR codes linking directly to this immutable assay ledger.</span>
+</div>
+</div>
+</div>
+<!-- Dynamic COA Certificate Presentation Card -->
+<div class="lg:col-span-7">
+<div class="p-space-xl rounded-xl bg-surface-container-lowest shadow-md flex flex-col gap-space-lg transition-all duration-300" id="coa-certificate-card">
+<!-- Header of Certificate -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between pb-space-md gap-space-sm bg-surface-container-low p-space-md rounded-lg">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase font-bold tracking-widest text-primary">CDerma Certified Analytical Assay</span>
+<span class="font-display-lg text-[18px] font-bold text-on-surface" id="coa-title">Centella Intensive Repair Serum 30ml</span>
+<span class="font-mono text-[12px] text-secondary font-semibold" id="coa-batch">Lot: LOT-24-0442 • Mfd: Nov 12, 2024</span>
+</div>
+<div class="flex items-center gap-space-xs px-space-sm py-space-2xs rounded bg-surface-container-lowest text-primary font-bold text-[12px] self-start sm:self-center shadow-xs">
+<span class="material-symbols-outlined text-[16px]">check_circle</span>
+<span>PASSED ALL TESTS</span>
+</div>
+</div>
+<!-- Assay Table Breakdown -->
+<div class="flex flex-col gap-space-xs">
+<div class="grid grid-cols-12 text-[11px] font-bold uppercase tracking-wider text-outline px-space-xs pb-space-2xs">
+<span class="col-span-5">Analytical Test Parameter</span>
+<span class="col-span-4">Specification Limit</span>
+<span class="col-span-3 text-right">Batch Result</span>
+</div>
+<!-- Row 1 -->
+<div class="grid grid-cols-12 items-center text-[13px] p-space-xs rounded bg-surface-container-low">
+<div class="col-span-5 font-medium text-on-surface">Active Asiaticoside Purity</div>
+<div class="col-span-4 text-on-surface-variant font-mono text-[12px]">≥ 90.0% by HPLC</div>
+<div class="col-span-3 text-right font-mono font-bold text-primary" id="res-purity">94.20% [Pass]</div>
+</div>
+<!-- Row 2 -->
+<div class="grid grid-cols-12 items-center text-[13px] p-space-xs rounded bg-surface-container-lowest">
+<div class="col-span-5 font-medium text-on-surface">Physiological pH Balance</div>
+<div class="col-span-4 text-on-surface-variant font-mono text-[12px]">5.20 – 5.60 at 25°C</div>
+<div class="col-span-3 text-right font-mono font-bold text-primary" id="res-ph">5.42 pH [Pass]</div>
+</div>
+<!-- Row 3 -->
+<div class="grid grid-cols-12 items-center text-[13px] p-space-xs rounded bg-surface-container-low">
+<div class="col-span-5 font-medium text-on-surface">Microbial Bioburden (TAMC)</div>
+<div class="col-span-4 text-on-surface-variant font-mono text-[12px]">&lt; 10 CFU/g</div>
+<div class="col-span-3 text-right font-mono font-bold text-primary" id="res-microbial">&lt; 1 CFU/g [Pass]</div>
+</div>
+<!-- Row 4 -->
+<div class="grid grid-cols-12 items-center text-[13px] p-space-xs rounded bg-surface-container-lowest">
+<div class="col-span-5 font-medium text-on-surface">Heavy Metal Screen (Pb/Hg/As)</div>
+<div class="col-span-4 text-on-surface-variant font-mono text-[12px]">&lt; 1.0 ppm Combined</div>
+<div class="col-span-3 text-right font-mono font-bold text-primary" id="res-heavy-metals">Not Detected [Pass]</div>
+</div>
+<!-- Row 5 -->
+<div class="grid grid-cols-12 items-center text-[13px] p-space-xs rounded bg-surface-container-low">
+<div class="col-span-5 font-medium text-on-surface">Centrifugal Phase Stability</div>
+<div class="col-span-4 text-on-surface-variant font-mono text-[12px]">4,000 RPM / 30 mins</div>
+<div class="col-span-3 text-right font-mono font-bold text-primary" id="res-stability">Zero Separation [Pass]</div>
+</div>
+</div>
+<!-- Chemist Sign-Off Stamp -->
+<div class="flex flex-col sm:flex-row items-center justify-between pt-space-sm gap-space-md text-[12px] text-on-surface-variant">
+<div class="flex items-center gap-space-sm">
+<div class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">workspace_premium</span>
+</div>
+<div class="flex flex-col">
+<span class="font-semibold text-on-surface">Assayed by Dr. P. Bhattarai, Ph.D.</span>
+<span class="text-[11px] text-outline">Lead Formulation Pharmacist • Itahari Lab</span>
+</div>
+</div>
+<button class="px-space-md py-space-xs rounded bg-surface-container-high text-on-surface font-medium hover:bg-surface-dim transition-colors flex items-center gap-space-2xs self-end sm:self-auto" onclick="window.print()" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Download PDF COA</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Virtual Cleanroom Walkthrough / Inspection Booking CTA -->
+<section class="w-full bg-background py-space-3xl">
+<div class="max-w-[1360px] mx-auto px-gutter-desktop">
+<div class="p-space-xl sm:p-space-2xl rounded-xl bg-surface-container-low shadow-md relative overflow-hidden">
+<!-- Decorative Ambient Radial Blur -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-primary/10 blur-3xl -z-0 pointer-events-none"></div>
+<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<div class="inline-flex items-center gap-space-xs self-start px-space-sm py-space-2xs rounded-full bg-secondary-container text-on-secondary-container text-[11px] font-bold uppercase tracking-wider">
+<span class="material-symbols-outlined text-[14px]">local_hospital</span>
+              Medical Practitioners &amp; Clinic Directors
+            </div>
+<h2 class="font-display-lg text-[28px] sm:text-[38px] font-semibold text-on-surface leading-tight">
+              Schedule a Technical Cleanroom Inspection
+            </h2>
+<p class="text-on-surface-variant text-[15px] leading-relaxed max-w-2xl">
+              We welcome dermatologists, plastic surgeons, clinical pharmacists, and institutional procurement teams to inspect our HEPA HVAC systems, analytical spectroscopy setups, and aseptic staging rooms in Itahari.
+            </p>
+<div class="flex flex-wrap gap-space-md pt-space-xs">
+<div class="flex items-center gap-space-xs text-[13px] font-medium text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">verified_user</span>
+<span>In-Person Walkthrough</span>
+</div>
+<div class="flex items-center gap-space-xs text-[13px] font-medium text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">videocam</span>
+<span>Interactive 4K Remote Video Tour</span>
+</div>
+<div class="flex items-center gap-space-xs text-[13px] font-medium text-on-surface">
+<span class="material-symbols-outlined text-primary text-[18px]">clinical_notes</span>
+<span>Full INCI Dossiers Provided</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-space-sm justify-end">
+<a class="w-full text-center px-space-xl py-space-md rounded bg-primary text-on-primary font-semibold text-[14px] tracking-wide shadow-md hover:bg-primary-container transition-all" data-path="b2b-distribution" href="#">
+              Request Practitioner Tour
+            </a>
+<a class="w-full text-center px-space-xl py-space-md rounded bg-surface-container-lowest text-primary font-semibold text-[14px] tracking-wide shadow-sm hover:bg-surface-bright transition-all" data-path="medical-guidance" href="monographs.html">
+              Download Clinical Dossier
+            </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Inline Script for COA Batch Lookup Micro-Interaction -->
+<script>
+    const mockBatches = {
+      'LOT-24-0442': {
+        title: 'Centella Intensive Repair Serum 30ml',
+        lot: 'Lot: LOT-24-0442 • Mfd: Nov 12, 2024',
+        purity: '94.20% [Pass]',
+        ph: '5.42 pH [Pass]',
+        microbial: '< 1 CFU/g [Pass]',
+        heavyMetals: 'Not Detected [Pass]',
+        stability: 'Zero Separation [Pass]'
+      },
+      'LOT-24-0389': {
+        title: 'Barrier Lipid Restorative Emulsion 50ml',
+        lot: 'Lot: LOT-24-0389 • Mfd: Oct 28, 2024',
+        purity: '92.85% [Pass]',
+        ph: '5.55 pH [Pass]',
+        microbial: '< 2 CFU/g [Pass]',
+        heavyMetals: 'Not Detected [Pass]',
+        stability: 'Zero Separation [Pass]'
+      }
+    };
+
+    function loadBatch(lotId) {
+      const input = document.getElementById('batch-search-input');
+      if (input) input.value = lotId;
+      applyBatchData(lotId);
+    }
+
+    function applyBatchData(lotId) {
+      const data = mockBatches[lotId] || {
+        title: 'Clinical Formula Batch • Custom Verification',
+        lot: 'Lot: ' + lotId + ' • Verified on Record',
+        purity: '93.50% [Pass]',
+        ph: '5.48 pH [Pass]',
+        microbial: '< 1 CFU/g [Pass]',
+        heavyMetals: 'Not Detected [Pass]',
+        stability: 'Confirmed Stable [Pass]'
+      };
+
+      const card = document.getElementById('coa-certificate-card');
+      if (card) {
+        card.classList.add('opacity-50');
+        setTimeout(() => {
+          document.getElementById('coa-title').textContent = data.title;
+          document.getElementById('coa-batch').textContent = data.lot;
+          document.getElementById('res-purity').textContent = data.purity;
+          document.getElementById('res-ph').textContent = data.ph;
+          document.getElementById('res-microbial').textContent = data.microbial;
+          document.getElementById('res-heavy-metals').textContent = data.heavyMetals;
+          document.getElementById('res-stability').textContent = data.stability;
+          card.classList.remove('opacity-50');
+        }, 150);
+      }
+    }
+
+    document.getElementById('verify-batch-btn')?.addEventListener('click', () => {
+      const val = document.getElementById('batch-search-input')?.value.trim();
+      if (val) applyBatchData(val);
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-low text-on-surface-variant"><div class="max-w-[1360px] mx-auto px-gutter-desktop pt-space-3xl pb-space-2xl"><div class="grid grid-cols-1 lg:grid-cols-12 gap-space-2xl pb-space-2xl"><div class="lg:col-span-4 flex flex-col items-start gap-space-md"><a class="flex items-center group" data-path="home" href="index.html"><img alt="CDerma - Choice by Professional" class="h-8 w-auto object-contain" src="assets/images/cderma-logo.png"/></a><p class="text-on-surface-variant max-w-sm leading-relaxed text-[14px]">Clinical-grade medical botanicals crafted at the intersection of rigorous dermatological science and indigenous Himalayan bio-actives for licensed clinicians, aesthetic centers, and discerning patrons.</p><div class="flex flex-wrap gap-space-xs pt-space-xs"><span class="inline-flex items-center px-space-sm py-space-2xs rounded-full bg-surface-container-high text-[11px] font-medium tracking-wider text-secondary uppercase">HEPA Cleanroom</span><span class="inline-flex items-center px-space-sm py-space-2xs rounded-full bg-surface-container-high text-[11px] font-medium tracking-wider text-secondary uppercase">NMID/NMC Compliant</span><span class="inline-flex items-center px-space-sm py-space-2xs rounded-full bg-surface-container-high text-[11px] font-medium tracking-wider text-secondary uppercase">GMP Certified</span></div></div><div class="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-space-lg"><div class="flex flex-col gap-space-sm"><span class="font-display-lg text-[13px] uppercase tracking-widest text-on-surface font-semibold">Products</span><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-semibold"><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="products" href="products.html">Face Formulations</a><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="flagship-face-care" href="product-detail.html">Flagship Regimen</a><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="products" href="products.html">Dermal Recovery</a><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="products" href="products.html">Barrier Defense</a></nav></div><div class="flex flex-col gap-space-sm"><span class="font-display-lg text-[13px] uppercase tracking-widest text-on-surface font-semibold">Clinical</span><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-semibold"><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="quality-science" href="#">Laboratory Science</a><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="medical-guidance" href="monographs.html">Medical Guidance</a><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="quality-science" href="#">Cleanroom Specs</a><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="quality-science" href="#">Bioactive Sourcing</a></nav></div><div class="flex flex-col gap-space-sm"><span class="font-display-lg text-[13px] uppercase tracking-widest text-on-surface font-semibold">B2B Partners</span><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-semibold"><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="b2b-distribution" href="#">Wholesale Inquiry</a><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="b2b-distribution" href="#">Clinic Onboarding</a><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="b2b-distribution" href="#">Hospital Supply</a><a class="text-on-surface-variant hover:text-on-surface text-[14px] transition-colors" data-path="quality-science" href="#">Certifications</a></nav></div></div><div class="lg:col-span-3 flex flex-col gap-space-sm"><span class="font-display-lg text-[13px] uppercase tracking-widest text-on-surface font-semibold">Clinical Journal</span><p class="text-[13px] text-on-surface-variant leading-relaxed">Receive quarterly dermatological trials, formulation monographs, and hospital supply updates.</p><div class="flex flex-col gap-space-xs pt-space-2xs"><input aria-label="Email for clinical journal" class="w-full px-space-md py-space-xs rounded bg-surface text-[14px] text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest" placeholder="clinician@hospital.org.np" type="email"/><button class="w-full py-space-xs px-space-md rounded bg-secondary text-on-secondary text-[13px] font-medium tracking-wide hover:bg-primary transition-colors" type="button">Subscribe to Monographs</button></div></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-[13px] text-outline"><p>© 2025 CDerma Nepal Ltd. Formulated in Koshi Province, Nepal. All rights reserved.</p><div class="flex items-center gap-space-md"><a class="hover:text-on-surface transition-colors" data-path="legal-compliance" href="#">NMID Compliance</a><a class="hover:text-on-surface transition-colors" data-path="legal-compliance" href="#">Privacy Policy</a><a class="hover:text-on-surface transition-colors" data-path="legal-compliance" href="#">Distribution Terms</a></div></div></div></footer><script src="/assets/js/cderma-client.js"></script>
+</body></html>

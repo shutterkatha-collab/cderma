@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&amp;family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "outline": "#7d7768", "on-tertiary": "#ffffff", "surface-bright": "#fef9ef", "surface-container-high": "#ede8de", "secondary-container": "#f4e2a3", "tertiary-fixed": "#e5e5bd", "inverse-on-surface": "#f5f0e6", "secondary": "#6b5e2c", "on-surface": "#1d1c16", "error-container": "#ffdad6", "surface-variant": "#e7e2d8", "surface-container-low": "#f8f3e9", "on-error": "#ffffff", "secondary-fixed-dim": "#d7c68a", "on-error-container": "#93000a", "primary-fixed": "#f9e195", "on-secondary-fixed-variant": "#524616", "error": "#ba1a1a", "on-tertiary-container": "#050500", "background": "#fef9ef", "tertiary-container": "#787958", "surface-tint": "#6e5d1f", "on-primary-container": "#fffbff", "primary": "#6b5b1c", "on-tertiary-fixed-variant": "#47492c", "surface-container-highest": "#e7e2d8", "outline-variant": "#cec6b4", "surface-container": "#f2ede3", "on-secondary-fixed": "#221b00", "primary-container": "#857333", "on-secondary": "#ffffff", "primary-fixed-dim": "#dbc57c", "surface-container-lowest": "#ffffff", "tertiary": "#5f6041", "surface": "#fef9ef", "on-background": "#1d1c16", "on-surface-variant": "#4b4639", "on-primary-fixed": "#231b00", "inverse-primary": "#dbc57c", "on-tertiary-fixed": "#1c1d05", "on-secondary-container": "#716431", "inverse-surface": "#32302a", "secondary-fixed": "#f4e2a3", "tertiary-fixed-dim": "#c8c9a3", "surface-dim": "#dedad0", "on-primary-fixed-variant": "#544607", "on-primary": "#ffffff" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "space-2xl": "3rem", "space-4xl": "6rem", "space-sm": "0.75rem", "gutter-desktop": "2rem", "space-2xs": "0.25rem", "container-max": "1360px", "space-md": "1rem", "gutter-mobile": "1rem", "space-3xl": "4.5rem", "space-xl": "2rem", "space-lg": "1.5rem", "space-xs": "0.5rem" }, fontFamily: { "body-md": ["Open Sans"], "display-lg": ["Comfortaa"] }, fontSize: { "body-md": ["15px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }], "display-lg": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "400" }] } } } }</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 w-full z-50 bg-surface/90 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-[1360px] mx-auto px-gutter-mobile lg:px-gutter-desktop flex items-center justify-between gap-space-md"><a class="flex items-center shrink-0 group" data-path="home" href="index.html"><img alt="CDerma - Choice by Professional" class="h-9 w-auto object-contain" src="assets/images/cderma-logo.png"/></a><nav class="hidden xl:flex items-center gap-space-xs" data-active-classes="bg-surface-container-high text-on-surface font-semibold rounded-lg"><a class="px-space-xs py-space-2xs text-on-surface-variant hover:text-on-surface transition-colors" data-path="home" href="index.html">Home</a><a class="px-space-xs py-space-2xs text-on-surface-variant hover:text-on-surface transition-colors" data-path="products-formulary" href="products.html">Products / Formulary</a><a class="px-space-xs py-space-2xs text-on-surface-variant hover:text-on-surface transition-colors" data-path="flagship-care" href="product-detail.html">Flagship Care</a><a class="px-space-xs py-space-2xs text-on-surface-variant hover:text-on-surface transition-colors" data-path="quality-cleanroom-science" href="science.html">Quality &amp; Cleanroom Science</a><a class="px-space-xs py-space-2xs text-on-surface-variant hover:text-on-surface transition-colors" data-path="b2b-distribution" href="b2b.html">B2B &amp; Distribution</a><a aria-current="page" class="px-space-xs py-space-2xs transition-colors bg-surface-container-high text-on-surface font-semibold rounded-lg" data-path="clinic-locator" href="clinics.html">Clinic Locator</a><a class="px-space-xs py-space-2xs text-on-surface-variant hover:text-on-surface transition-colors" data-path="medical-guidance-monographs" href="monographs.html">Medical Guidance &amp; Monographs</a></nav><div class="flex items-center gap-space-sm shrink-0"><button aria-label="Search Scientific Archive" class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">search</span></button><div class="hidden md:flex items-center bg-surface-container px-space-xs py-1 rounded-lg text-[12px] leading-[16px] text-on-surface-variant"><span class="font-bold text-on-surface">EN</span><span class="mx-1 text-outline-variant">|</span><button class="hover:text-on-surface transition-colors">नेपाली</button></div><a class="hidden sm:inline-flex items-center justify-center h-10 px-space-md rounded-lg bg-primary text-on-primary text-[13px] uppercase tracking-wider font-semibold hover:bg-primary-container transition-colors shadow-[0_4px_12px_rgba(107,91,28,0.12)]" data-path="partner-clinics" href="b2b.html">Partner With Us / Find Clinics</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Top Minimalist Utility / Breadcrumb Header -->
+<section class="w-full bg-surface-container-lowest">
+<div class="max-w-[1360px] mx-auto px-gutter-mobile lg:px-gutter-desktop py-space-sm">
+<div class="flex flex-wrap items-center justify-between gap-space-xs text-[13px] text-on-surface-variant font-body-md">
+<div class="flex items-center gap-space-xs">
+<a class="hover:text-primary transition-colors" href="index.html">Home</a>
+<span class="text-outline-variant">/</span>
+<span class="text-on-surface font-semibold">Authorized Dispensary Network</span>
+<span class="text-outline-variant">/</span>
+<span class="text-secondary font-medium">Verified Clinic Locator</span>
+</div>
+<div class="flex items-center gap-space-xs bg-surface-container px-space-xs py-1 rounded-full text-[11px] uppercase tracking-wider font-semibold text-secondary">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span>Live Provincial Registry • 164 Accredited Centers</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Editorial Hero & Query Console -->
+<section class="w-full bg-surface-container-low py-space-2xl relative overflow-hidden">
+<div class="max-w-[1360px] mx-auto px-gutter-mobile lg:px-gutter-desktop relative z-10">
+<div class="max-w-3xl mb-space-xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/40 text-on-secondary-fixed-variant text-[11px] font-semibold tracking-widest uppercase mb-space-sm">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+          Verified Medical Dispensary Network • Nepal
+        </div>
+<h1 class="font-display-lg text-[34px] lg:text-[46px] leading-[1.15] text-on-surface font-light tracking-tight mb-space-sm">
+          Locate an <span class="font-normal text-primary">Authorized Clinic</span> &amp; Prescribing Dermatologist
+        </h1>
+<p class="font-body-md text-on-surface-variant text-[15px] lg:text-[16px] leading-relaxed max-w-2xl">
+          CDerma clinical actives are dispensed exclusively under registered dermatological supervision. Discover certified aesthetic clinics, tertiary teaching hospital dispensaries, and compounding pharmacy partners across Nepal.
+        </p>
+</div>
+<!-- Advanced Search Console -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md lg:p-space-lg shadow-[0_12px_36px_rgba(107,91,28,0.06)]">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-sm items-center">
+<!-- Text Query -->
+<div class="lg:col-span-6 relative">
+<label class="block text-[11px] uppercase tracking-widest text-outline font-semibold mb-1">Clinic, Doctor, or City</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-surface-container-low text-on-surface text-[14px] rounded-lg focus:outline-none focus:bg-surface transition-all placeholder:text-outline/70" id="search-input" placeholder="e.g. Kathmandu, Biratnagar, Dr. Karki, Naxal..." type="text" value="Kathmandu"/>
+</div>
+</div>
+<!-- Province Selector -->
+<div class="lg:col-span-3">
+<label class="block text-[11px] uppercase tracking-widest text-outline font-semibold mb-1">Province / Jurisdiction</label>
+<div class="relative">
+<select class="w-full px-3 py-2.5 bg-surface-container-low text-on-surface text-[14px] rounded-lg appearance-none focus:outline-none pr-8 cursor-pointer font-body-md">
+<option selected="">Bagmati &amp; Koshi (Active)</option>
+<option>All 7 Provinces</option>
+<option>Gandaki (Pokhara Valley)</option>
+<option>Lumbini (Butwal/Bhairahawa)</option>
+<option>Madhesh (Janakpur/Birgunj)</option>
+<option>Sudurpashchim &amp; Karnali</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px] pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Real-Time Status Toggle -->
+<div class="lg:col-span-3 flex flex-col justify-end">
+<label class="block text-[11px] uppercase tracking-widest text-outline font-semibold mb-1">Batch Availability</label>
+<div class="flex items-center justify-between px-3 py-2.5 bg-surface-container-low rounded-lg h-[42px]">
+<span class="text-[13px] font-medium text-on-surface flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span> Verified In-Stock
+              </span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Filter Chips Bar -->
+<div class="mt-space-md pt-space-sm flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="text-[11px] uppercase tracking-wider text-outline font-semibold mr-1">Facility:</span>
+<button class="px-3 py-1 rounded-full text-[12px] font-semibold bg-primary text-on-primary">All Facilities (164)</button>
+<button class="px-3 py-1 rounded-full text-[12px] font-medium bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors">Dermatology Centers (82)</button>
+<button class="px-3 py-1 rounded-full text-[12px] font-medium bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors">Hospital Pharmacies (45)</button>
+<button class="px-3 py-1 rounded-full text-[12px] font-medium bg-surface-container text-on-surface-variant hover:text-on-surface transition-colors">Aesthetic &amp; Laser Institutes (37)</button>
+</div>
+<div class="text-[12px] text-secondary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">pin_drop</span>
+            GPS: Kathmandu Valley (27.7172° N, 85.3240° E)
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Split Interactive Architecture: Clinic Directory & Stylized Tactical Map -->
+<section class="w-full bg-surface py-space-xl">
+<div class="max-w-[1360px] mx-auto px-gutter-mobile lg:px-gutter-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Left 5 Columns: Dispensary List & Practitioner Cards -->
+<div class="lg:col-span-5 flex flex-col gap-space-sm">
+<div class="flex items-center justify-between pb-space-xs">
+<div>
+<span class="font-display-lg text-[15px] font-bold text-on-surface block">Available Locations (5 Priority Matches)</span>
+<p class="text-[12px] text-on-surface-variant">Cold-chain authenticated batches guaranteed</p>
+</div>
+<span class="text-[11px] px-2.5 py-1 rounded bg-surface-container-high text-on-surface font-mono font-medium">Sorted: Radius</span>
+</div>
+<!-- Featured Clinic 1 -->
+<article class="bg-surface-container-lowest p-space-md rounded-xl shadow-[0_4px_20px_rgba(107,91,28,0.04)] relative transition-all group">
+<div class="absolute top-space-md right-space-md flex flex-col items-end">
+<span class="text-[11px] font-mono font-bold text-primary bg-primary-fixed/40 px-2 py-0.5 rounded">1.2 km</span>
+<span class="text-[10px] text-emerald-700 font-semibold mt-1 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> In Stock
+              </span>
+</div>
+<div class="pr-16">
+<span class="text-[11px] font-semibold text-secondary uppercase tracking-wider block">Tertiary Dermal Hospital</span>
+<h2 class="font-display-lg text-[17px] font-bold text-on-surface group-hover:text-primary transition-colors">
+                Kathmandu Aesthetic &amp; Skin Care Hospital
+              </h2>
+</div>
+<!-- Doctor Bio Pill -->
+<div class="flex items-center gap-space-xs mt-space-xs bg-surface-container-low p-2 rounded-lg">
+<img class="w-10 h-10 rounded-full object-cover shrink-0" data-alt="Professional clinical headshot portrait of Dr. A. Karki, a licensed female Nepali dermatologist wearing a white medical lab coat, stethoscope, and blue clinical scrubs in a bright consultation room in Kathmandu, Nepal." src="assets/images/img_204637447def.jpg"/>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-1">
+<p class="text-[13px] font-bold text-on-surface truncate">Dr. A. Karki, MD Dermatology</p>
+<span class="material-symbols-outlined text-primary text-[14px]">verified</span>
+</div>
+<p class="text-[11px] text-on-surface-variant font-mono">NMC #9482 • Senior Consultant</p>
+</div>
+</div>
+<div class="mt-space-sm space-y-1 text-[13px] text-on-surface-variant">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline mt-0.5 shrink-0">location_on</span>
+<span>Marg 4, Naxal (Opposite Bhagwati Temple), Kathmandu</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline shrink-0">call</span>
+<span class="font-mono text-[12px] text-on-surface">+977 1-4421098 / 4421099</span>
+</div>
+<div class="flex items-center gap-2 text-secondary font-medium">
+<span class="material-symbols-outlined text-[16px] text-secondary shrink-0">medication</span>
+<span class="text-[12px]">Formulary: Centella Barrier Restore, Ceramide Deep Cream, Mandelic Peel</span>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center gap-2">
+<a class="flex-1 text-center py-2 px-3 rounded-lg bg-primary text-on-primary text-[12px] uppercase font-bold tracking-wider hover:bg-primary-container transition-colors" href="tel:+97714421098">
+                Book Consultation
+              </a>
+<button class="px-3 py-2 rounded-lg bg-surface-container text-on-surface text-[12px] font-semibold flex items-center gap-1 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[16px]">navigation</span>
+                Directions
+              </button>
+</div>
+</article>
+<!-- Clinic 2: Biratnagar -->
+<article class="bg-surface-container-lowest p-space-md rounded-xl transition-all group">
+<div class="flex items-start justify-between">
+<div>
+<span class="text-[11px] font-semibold text-secondary uppercase tracking-wider block">Koshi Regional Referral Hub</span>
+<h3 class="font-display-lg text-[16px] font-bold text-on-surface group-hover:text-primary transition-colors">
+                  Koshi Regional Medical Skin Outpost
+                </h3>
+<p class="text-[12px] text-on-surface-variant font-mono mt-0.5">Dr. R. Shrestha, MBBS, DDVL (NMC #6521)</p>
+</div>
+<div class="text-right shrink-0">
+<span class="text-[11px] font-mono font-medium text-outline">Koshi Dist.</span>
+<span class="text-[10px] text-emerald-700 font-semibold block mt-1">Direct Lab Node</span>
+</div>
+</div>
+<div class="mt-space-xs text-[12px] text-on-surface-variant space-y-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
+<span>Hospital Road, Ward 4, Biratnagar, Koshi Province</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline">check_circle</span>
+<span class="text-secondary font-medium">Complete Himalayan Bio-Active Batch Stock (Lot #2409)</span>
+</div>
+</div>
+<div class="mt-space-sm pt-space-xs flex items-center gap-2">
+<button class="flex-1 text-center py-2 px-3 rounded-lg bg-surface-container text-on-surface text-[12px] uppercase font-bold tracking-wider hover:bg-surface-container-high transition-colors">
+                Contact Dispensary Counter
+              </button>
+<button class="p-2 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</button>
+</div>
+</article>
+<!-- Clinic 3: Pokhara -->
+<article class="bg-surface-container-lowest p-space-md rounded-xl transition-all group">
+<div class="flex items-start justify-between">
+<div>
+<span class="text-[11px] font-semibold text-secondary uppercase tracking-wider block">Laser &amp; Phototherapy Center</span>
+<h3 class="font-display-lg text-[16px] font-bold text-on-surface group-hover:text-primary transition-colors">
+                  Western Skin Clinic &amp; Laser Center
+                </h3>
+<p class="text-[12px] text-on-surface-variant font-mono mt-0.5">Dr. A. Bastola, MD (NMC #7812)</p>
+</div>
+<span class="text-[11px] font-mono font-medium text-outline">Gandaki</span>
+</div>
+<p class="text-[12px] text-on-surface-variant mt-space-xs flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
+              New Road, Pokhara-8 (Near Annapurna Complex)
+            </p>
+<div class="mt-space-xs flex items-center gap-2 text-[11px] font-medium text-secondary">
+<span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+              Barrier Care Complex &amp; Mineral Photoprotection In Stock
+            </div>
+</article>
+<!-- Clinic 4: Lalitpur -->
+<article class="bg-surface-container-lowest p-space-md rounded-xl transition-all group">
+<div class="flex items-start justify-between">
+<div>
+<span class="text-[11px] font-semibold text-secondary uppercase tracking-wider block">Aesthetic Dispensary</span>
+<h3 class="font-display-lg text-[16px] font-bold text-on-surface group-hover:text-primary transition-colors">
+                  Lalitpur Dermal Aesthetics
+                </h3>
+<p class="text-[12px] text-on-surface-variant font-mono mt-0.5">Dr. P. Thapa, Consultant Cosmetologist</p>
+</div>
+<span class="text-[11px] font-mono font-medium text-outline">3.0 km</span>
+</div>
+<p class="text-[12px] text-on-surface-variant mt-space-xs flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
+              Pulchowk Heights, Lalitpur
+            </p>
+<span class="inline-block mt-space-xs px-2 py-0.5 rounded bg-surface-container text-[11px] text-on-surface font-medium">
+              Specialized Post-Laser Recovery Formulations
+            </span>
+</article>
+<!-- Clinic 5: Chitwan -->
+<article class="bg-surface-container-lowest p-space-md rounded-xl transition-all group">
+<div class="flex items-start justify-between">
+<div>
+<span class="text-[11px] font-semibold text-secondary uppercase tracking-wider block">Hospital Pharmacy Wing</span>
+<h3 class="font-display-lg text-[16px] font-bold text-on-surface group-hover:text-primary transition-colors">
+                  Chitwan Healthcare Dermatology Unit
+                </h3>
+</div>
+<span class="text-[11px] font-mono font-medium text-outline">Chitwan</span>
+</div>
+<p class="text-[12px] text-on-surface-variant mt-space-xs flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-outline">location_on</span>
+              Bharatpur-10, Chitwan
+            </p>
+<div class="mt-space-xs flex items-center gap-2 text-[11px] text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[14px]">science</span>
+              Official Compounding &amp; Monograph Dispensing Center
+            </div>
+</article>
+</div>
+<!-- Right 7 Columns: Architectural Interactive Map Canvas -->
+<div class="lg:col-span-7 flex flex-col gap-space-md sticky top-24">
+<div class="relative w-full bg-surface-container-high rounded-xl overflow-hidden min-h-[580px] flex flex-col justify-between p-space-md">
+<!-- Map Top Bar Overlay -->
+<div class="relative z-20 flex flex-wrap items-center justify-between gap-2 bg-surface/90 backdrop-blur-md p-3 rounded-lg shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">explore</span>
+<span class="font-display-lg text-[13px] font-bold text-on-surface">Nepal Provincial Distribution Grid</span>
+</div>
+<div class="flex items-center gap-3 text-[11px] font-body-md text-on-surface-variant">
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span> Verified Dispensary</span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-secondary"></span> CDerma Cleanroom Node</span>
+</div>
+</div>
+<!-- Stylized Cartographic Canvas -->
+<div class="absolute inset-0 z-10 flex items-center justify-center p-space-md opacity-95">
+<!-- Inline Architectural Vector Map Representation of Nepal & Hubs -->
+<svg class="w-full h-full object-contain" fill="none" viewbox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+<!-- Nepal Simplified Topographic Contour Silhouettes -->
+<path class="fill-surface-container-lowest" d="M45,210 C90,170 140,140 210,135 C280,130 350,165 420,150 C490,135 560,110 650,120 C730,128 810,185 855,230 C860,265 820,295 780,310 C720,330 630,315 540,335 C450,355 350,360 270,345 C190,330 110,305 60,270 Z"></path>
+<path class="fill-surface-container" d="M70,225 C120,185 180,165 240,160 C320,155 380,180 460,170 C530,160 610,145 700,150 C770,155 810,210 830,245 C810,280 750,295 680,300 C600,305 500,325 410,325 C320,325 220,310 140,280 Z"></path>
+<!-- Elevation Contour Lines -->
+<path d="M120,200 Q260,170 410,190 T720,170" fill="none" stroke="#cec6b4" stroke-dasharray="4 4" stroke-width="1.2"></path>
+<path d="M160,240 Q320,210 500,225 T790,210" fill="none" stroke="#cec6b4" stroke-dasharray="3 3" stroke-width="1"></path>
+<path d="M220,270 Q400,250 590,255 T820,260" fill="none" stroke="#cec6b4" stroke-dasharray="6 4" stroke-width="1.2"></path>
+<!-- Provincial Hub Connections / Logistics Routes -->
+<line stroke="#857333" stroke-opacity="0.3" stroke-width="1.5" x1="220" x2="380" y1="230" y2="240"></line>
+<line stroke="#857333" stroke-opacity="0.5" stroke-width="2" x1="380" x2="520" y1="240" y2="230"></line>
+<line stroke="#857333" stroke-opacity="0.6" stroke-width="2" x1="520" x2="550" y1="230" y2="245"></line>
+<line stroke="#857333" stroke-dasharray="5 3" stroke-opacity="0.5" stroke-width="2" x1="520" x2="740" y1="230" y2="280"></line>
+<line stroke="#857333" stroke-opacity="0.4" stroke-width="1.5" x1="740" x2="770" y1="280" y2="250"></line>
+<!-- City Pins / Hotspots -->
+<!-- Dhangadhi -->
+<circle class="fill-surface-variant" cx="130" cy="220" r="4"></circle>
+<text fill="#7d7768" font-family="Open Sans" font-size="10" text-anchor="middle" x="130" y="238">Dhangadhi</text>
+<!-- Nepalgunj -->
+<circle class="fill-outline" cx="230" cy="240" r="4"></circle>
+<text fill="#7d7768" font-family="Open Sans" font-size="10" text-anchor="middle" x="230" y="258">Nepalgunj</text>
+<!-- Butwal -->
+<circle class="fill-outline" cx="370" cy="255" r="5"></circle>
+<text fill="#4b4639" font-family="Open Sans" font-size="10" font-weight="600" text-anchor="middle" x="370" y="273">Butwal</text>
+<!-- Pokhara -->
+<circle class="fill-secondary" cx="430" cy="210" r="6"></circle>
+<circle cx="430" cy="210" fill="none" r="12" stroke="#6b5e2c" stroke-opacity="0.3" stroke-width="1"></circle>
+<text fill="#1d1c16" font-family="Open Sans" font-size="11" font-weight="bold" text-anchor="middle" x="430" y="196">Pokhara</text>
+<!-- Bharatpur / Chitwan -->
+<circle class="fill-outline" cx="465" cy="265" r="5"></circle>
+<text fill="#4b4639" font-family="Open Sans" font-size="10" font-weight="600" text-anchor="middle" x="465" y="283">Bharatpur</text>
+<!-- Kathmandu Valley Mega Hub -->
+<circle class="fill-primary/20" cx="525" cy="225" r="10"></circle>
+<circle class="fill-primary" cx="525" cy="225" r="5"></circle>
+<text fill="#6b5b1c" font-family="Comfortaa" font-size="12" font-weight="bold" text-anchor="middle" x="525" y="208">Kathmandu</text>
+<!-- Lalitpur -->
+<circle class="fill-secondary" cx="532" cy="236" r="3.5"></circle>
+<text fill="#4b4639" font-family="Open Sans" font-size="10" text-anchor="start" x="562" y="243">Lalitpur</text>
+<!-- Koshi Cleanroom & Biratnagar Mega Hub -->
+<circle class="fill-primary/20" cx="740" cy="285" r="12"></circle>
+<circle class="fill-primary" cx="740" cy="285" r="6"></circle>
+<circle cx="740" cy="285" fill="none" r="18" stroke="#857333" stroke-opacity="0.4" stroke-width="1"></circle>
+<text fill="#6b5b1c" font-family="Comfortaa" font-size="11" font-weight="bold" text-anchor="middle" x="740" y="312">Biratnagar</text>
+<text fill="#787958" font-family="Open Sans" font-size="9" text-anchor="middle" x="740" y="324">Primary Lab &amp; Dispensary</text>
+<!-- Dharan -->
+<circle class="fill-secondary" cx="755" cy="255" r="4.5"></circle>
+<text fill="#4b4639" font-family="Open Sans" font-size="10" text-anchor="start" x="770" y="260">Dharan</text>
+<!-- Itahari -->
+<circle class="fill-outline" cx="745" cy="270" r="4"></circle>
+</svg>
+</div>
+<!-- Active Floating Pin Card over Kathmandu Selection -->
+<div class="relative z-20 self-center lg:self-start lg:ml-12 mt-16 max-w-sm w-full bg-surface-container-lowest p-space-md rounded-xl shadow-[0_12px_32px_rgba(107,91,28,0.14)]">
+<div class="flex items-center justify-between mb-2">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] uppercase font-bold tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Active Dispensary Node
+                </span>
+<span class="font-mono text-[11px] text-outline">Kathmandu Hub #01</span>
+</div>
+<h3 class="font-display-lg text-[15px] font-bold text-on-surface">Kathmandu Aesthetic &amp; Skin Care Hospital</h3>
+<p class="text-[12px] text-on-surface-variant mt-1">Supervising Physician: <strong class="text-on-surface">Dr. A. Karki (NMC 9482)</strong></p>
+<div class="mt-space-xs p-2 bg-surface-container-low rounded text-[11px] font-mono space-y-0.5 text-on-surface-variant">
+<div class="flex justify-between"><span>Batch Inventory:</span> <span class="text-emerald-700 font-bold">148 Units Verified</span></div>
+<div class="flex justify-between"><span>Cold-Chain Temp:</span> <span class="text-on-surface font-semibold">18.4°C Controlled</span></div>
+<div class="flex justify-between"><span>Dispensary Hours:</span> <span class="text-on-surface font-semibold">09:00 - 19:30 (Sun-Fri)</span></div>
+</div>
+<div class="mt-space-xs flex items-center justify-between text-[11px] text-primary font-bold">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">local_shipping</span> Koshi Lab Transit: Direct</span>
+<a class="underline hover:text-primary-container" href="#">View Monograph Dossier</a>
+</div>
+</div>
+<!-- Map Control & Logistics Watermark -->
+<div class="relative z-20 flex flex-wrap items-center justify-between gap-space-xs bg-surface/90 backdrop-blur-sm px-space-md py-2 rounded-lg text-[12px] text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[16px]">ac_unit</span>
+<span>Nepal Pharmacopeia &amp; Cold-Chain Logistical Assurance</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-7 h-7 rounded bg-surface-container flex items-center justify-center font-bold text-on-surface hover:bg-surface-container-high">+</button>
+<button class="w-7 h-7 rounded bg-surface-container flex items-center justify-center font-bold text-on-surface hover:bg-surface-container-high">-</button>
+<button class="px-2 h-7 rounded bg-surface-container text-[11px] font-semibold text-on-surface hover:bg-surface-container-high">Reset Map</button>
+</div>
+</div>
+</div>
+<!-- Cleanroom Direct Notice Banner -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
+<span class="material-symbols-outlined text-[24px]">science</span>
+</div>
+<div class="text-[13px]">
+<span class="font-bold text-on-surface block font-display-lg text-[14px]">Direct Cleanroom Dispatch Protocol</span>
+<p class="text-on-surface-variant">
+                CDerma products cannot be purchased online without physician monograph verification. Hospital dispensaries receive direct bi-weekly shipments sealed in nitrogen-purged containers from our Biratnagar facility.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Patient Guidance Protocol: 'How Prescriptions & Clinic Purchases Work' -->
+<section class="w-full bg-surface-container-lowest py-space-3xl">
+<div class="max-w-[1360px] mx-auto px-gutter-mobile lg:px-gutter-desktop">
+<div class="text-center max-w-2xl mx-auto mb-space-2xl">
+<span class="text-[11px] uppercase tracking-widest font-semibold text-secondary block mb-1">Dermatological Integrity Protocol</span>
+<h2 class="font-display-lg text-[28px] lg:text-[36px] font-light text-on-surface tracking-tight">
+          How Clinical Prescriptions &amp; Dispensation Work
+        </h2>
+<p class="text-on-surface-variant font-body-md text-[14px] mt-2">
+          CDerma maintains an apothecary-level standard. Formulations are biologically active, unbuffered by synthetic fillers, and require structured medical oversight.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Step 1 -->
+<div class="bg-surface-container-low p-space-xl rounded-xl relative flex flex-col justify-between">
+<span class="text-secondary font-mono text-[12px] font-bold tracking-wider">PHASE 01 // DIAGNOSIS</span>
+<div class="my-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-primary mb-space-sm">
+<span class="material-symbols-outlined text-[26px]">clinical_notes</span>
+</div>
+<h3 class="font-display-lg text-[18px] font-bold text-on-surface mb-space-xs">Clinical Skin Evaluation</h3>
+<p class="text-[13px] text-on-surface-variant leading-relaxed">
+              Visit any authorized dermatologist or hospital aesthetic unit for barrier profiling, stratum corneum hydration testing, and dermatological consultation.
+            </p>
+</div>
+<div class="text-[11px] font-mono text-outline pt-space-xs">
+            NMC Registered Practitioners Only
+          </div>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-low p-space-xl rounded-xl relative flex flex-col justify-between">
+<span class="text-secondary font-mono text-[12px] font-bold tracking-wider">PHASE 02 // FORMULATION</span>
+<div class="my-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-primary mb-space-sm">
+<span class="material-symbols-outlined text-[26px]">prescriptions</span>
+</div>
+<h3 class="font-display-lg text-[18px] font-bold text-on-surface mb-space-xs">Monograph &amp; Lot Assignment</h3>
+<p class="text-[13px] text-on-surface-variant leading-relaxed">
+              Your clinician matches specific Himalayan phytochemical actives (Centella, Rhododendron anthopogon, Lichenic acids) and assigns a unique traceability lot code.
+            </p>
+</div>
+<div class="text-[11px] font-mono text-outline pt-space-xs">
+            Lot Tracked via Koshi Cleanroom QA
+          </div>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-low p-space-xl rounded-xl relative flex flex-col justify-between">
+<span class="text-secondary font-mono text-[12px] font-bold tracking-wider">PHASE 03 // DISPENSATION</span>
+<div class="my-space-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-primary mb-space-sm">
+<span class="material-symbols-outlined text-[26px]">inventory_2</span>
+</div>
+<h3 class="font-display-lg text-[18px] font-bold text-on-surface mb-space-xs">Hospital Counter Collection</h3>
+<p class="text-[13px] text-on-surface-variant leading-relaxed">
+              Receive your freshly compounded formulation directly at the clinic's certified dispensary or authorized hospital pharmacy counter with tamper-evident nitrogen seals intact.
+            </p>
+</div>
+<div class="text-[11px] font-mono text-outline pt-space-xs">
+            Zero E-Commerce Diversion Guaranteed
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Cleanroom Facility Showcase Section -->
+<section class="w-full bg-surface-container py-space-3xl">
+<div class="max-w-[1360px] mx-auto px-gutter-mobile lg:px-gutter-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<div class="lg:col-span-6">
+<span class="text-[11px] uppercase tracking-widest font-semibold text-secondary block mb-space-xs">Domestic Manufacturing Standard</span>
+<h2 class="font-display-lg text-[28px] lg:text-[38px] font-light text-on-surface leading-tight mb-space-sm">
+            Himalayan Cleanroom Science <br class="hidden sm:inline"/><span class="font-normal text-primary">Manufactured in Biratnagar</span>
+</h2>
+<p class="font-body-md text-on-surface-variant text-[14px] leading-relaxed mb-space-md">
+            Every CDerma bottle originates within our Class 10,000 cleanroom research facility in Koshi Province, framed by the Himalayan ranges. We combine indigenous high-altitude botanical extracts with ISO 22716 pharmaceutical cosmetics standards.
+          </p>
+<div class="grid grid-cols-2 gap-space-sm mb-space-md">
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<span class="font-mono text-[18px] font-bold text-primary block">ISO 22716</span>
+<span class="text-[11px] text-on-surface-variant uppercase font-semibold">GMP Certified Plant</span>
+</div>
+<div class="bg-surface-container-lowest p-3 rounded-lg">
+<span class="font-mono text-[18px] font-bold text-primary block">3,400+ MASL</span>
+<span class="text-[11px] text-on-surface-variant uppercase font-semibold">Ethical Foraging Altitude</span>
+</div>
+</div>
+<div class="flex items-center gap-space-sm">
+<a class="inline-flex items-center gap-1 text-[13px] font-bold text-primary hover:text-primary-container" href="#">
+              Read Cleanroom Quality Whitepaper
+              <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="lg:col-span-6 relative">
+<div class="w-full h-80 lg:h-96 rounded-xl overflow-hidden shadow-[0_16px_40px_rgba(107,91,28,0.08)] relative">
+<img class="w-full h-full object-cover" data-alt="Two research scientists and pharmaceutical chemists in full cleanroom suits, lab coats, and safety goggles analyzing herbal extracts inside a modern sterile ISO laboratory with stainless steel extraction equipment and Himalayan mountain vistas through large cleanroom glass windows in Nepal." src="assets/images/img_2bb12128dd04.jpg"/>
+<div class="absolute bottom-4 left-4 right-4 bg-surface-container-lowest/90 backdrop-blur-md p-3 rounded-lg flex items-center justify-between">
+<div>
+<p class="text-[12px] font-bold text-on-surface">Biratnagar Central Extraction Laboratory</p>
+<p class="text-[10px] text-on-surface-variant font-mono">Lot Testing Facility • Koshi Province</p>
+</div>
+<span class="px-2 py-1 rounded bg-secondary-container text-on-secondary-fixed-variant text-[10px] font-mono font-bold">NMID Audit 2024</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Healthcare Practitioner Onboarding Callout Banner -->
+<section class="w-full bg-surface-container-highest py-space-2xl">
+<div class="max-w-[1360px] mx-auto px-gutter-mobile lg:px-gutter-desktop">
+<div class="bg-primary text-on-primary rounded-xl p-space-xl lg:p-space-2xl relative overflow-hidden shadow-[0_12px_32px_rgba(107,91,28,0.18)]">
+<div class="relative z-10 max-w-2xl">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-container text-on-primary text-[11px] font-mono uppercase tracking-wider mb-space-sm">
+<span class="material-symbols-outlined text-[14px]">medical_services</span>
+            Practitioner Dispensing Inquiries
+          </div>
+<h2 class="font-display-lg text-[26px] lg:text-[34px] font-bold tracking-tight mb-space-xs text-on-primary">
+            Are You a Licensed Medical Clinic or Dermatologist?
+          </h2>
+<p class="text-[14px] text-on-primary/80 leading-relaxed font-body-md mb-space-lg">
+            Join the CDerma authorized hospital and dispensary network. Ensure your patients receive stable, active domestic cosmeceuticals formulated specifically for Nepalese cutaneous phenotypes.
+          </p>
+<div class="flex flex-wrap items-center gap-space-sm">
+<a class="px-space-md py-3 rounded-lg bg-surface-container-lowest text-primary text-[13px] uppercase font-bold tracking-wider hover:bg-surface transition-colors" href="#">
+              Register Your Practice
+            </a>
+<a class="px-space-md py-3 rounded-lg bg-primary-container text-on-primary text-[13px] uppercase font-bold tracking-wider hover:bg-opacity-90 transition-colors" href="#">
+              Request Clinical Sample Kit
+            </a>
+</div>
+</div>
+<!-- Decorative Watermark in background -->
+<div class="absolute -right-12 -bottom-12 opacity-10 pointer-events-none text-on-primary select-none">
+<span class="material-symbols-outlined text-[280px]">chips</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<script>
+  // Simple interactive filter simulation for query console
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const val = e.target.value.toLowerCase();
+        const articles = document.querySelectorAll('article');
+        articles.forEach(art => {
+          const txt = art.innerText.toLowerCase();
+          if (txt.includes(val) || val === '') {
+            art.style.display = 'block';
+          } else {
+            art.style.display = 'none';
+          }
+        });
+      });
+    }
+  });
+</script></main><footer class="w-full bg-surface-container-low mt-space-3xl"><div class="max-w-[1360px] mx-auto px-gutter-mobile lg:px-gutter-desktop pt-space-3xl pb-space-2xl">
+<div class="mb-space-xl"><a class="inline-flex items-center group" data-path="home" href="index.html"><img alt="CDerma - Choice by Professional" class="h-8 w-auto object-contain" src="assets/images/cderma-logo.png"/></a></div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-xl mb-space-2xl"><div><h4 class="font-display-lg text-[16px] leading-[22px] font-bold text-on-surface uppercase tracking-wider mb-space-md">Company</h4><ul class="space-y-space-xs font-body-md text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" data-path="home" href="index.html">Botanical Heritage &amp; Mission</a></li><li><a class="hover:text-on-surface transition-colors" data-path="quality-cleanroom-science" href="#">Scientific Governance</a></li><li><a class="hover:text-on-surface transition-colors" data-path="flagship-care" href="#">Kathmandu &amp; Biratnagar Centers</a></li><li><a class="hover:text-on-surface transition-colors" data-path="partner-clinics" href="#">Institutional Careers</a></li></ul></div><div><h4 class="font-display-lg text-[16px] leading-[22px] font-bold text-on-surface uppercase tracking-wider mb-space-md">Clinical Formulations</h4><ul class="space-y-space-xs font-body-md text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" data-path="products-formulary" href="#">Himalayan Bio-Active Serums</a></li><li><a class="hover:text-on-surface transition-colors" data-path="products-formulary" href="#">Barrier Restoration Creams</a></li><li><a class="hover:text-on-surface transition-colors" data-path="products-formulary" href="#">Photoprotection &amp; Sun Care</a></li><li><a class="hover:text-on-surface transition-colors" data-path="medical-guidance-monographs" href="#">Compounding Dispensary Data</a></li></ul></div><div><h4 class="font-display-lg text-[16px] leading-[22px] font-bold text-on-surface uppercase tracking-wider mb-space-md">Healthcare Partners</h4><ul class="space-y-space-xs font-body-md text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" data-path="b2b-distribution" href="#">Dermatologist Onboarding</a></li><li><a class="hover:text-on-surface transition-colors" data-path="clinic-locator" href="#">National Hospital Network</a></li><li><a class="hover:text-on-surface transition-colors" data-path="b2b-distribution" href="#">Pharmacy Formulary Stocking</a></li><li><a class="hover:text-on-surface transition-colors" data-path="partner-clinics" href="#">Aesthetic Practitioner Access</a></li></ul></div><div><h4 class="font-display-lg text-[16px] leading-[22px] font-bold text-on-surface uppercase tracking-wider mb-space-md">Monograph &amp; Journal</h4><ul class="space-y-space-xs font-body-md text-on-surface-variant"><li><a class="hover:text-on-surface transition-colors" data-path="medical-guidance-monographs" href="#">Clinical Efficacy Trials 2024</a></li><li><a class="hover:text-on-surface transition-colors" data-path="medical-guidance-monographs" href="#">Nepal Botanical Extracts Monograph</a></li><li><a class="hover:text-on-surface transition-colors" data-path="quality-cleanroom-science" href="#">HEPA Class 100 Standards</a></li><li><a class="hover:text-on-surface transition-colors" data-path="medical-guidance-monographs" href="#">Adverse Reactions Reporting</a></li></ul></div></div><div class="bg-surface-container rounded-xl p-space-md mb-space-2xl flex flex-wrap items-center justify-between gap-space-md"><div class="flex flex-wrap items-center gap-space-md"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[20px]">verified</span><span class="font-body-md text-[13px] uppercase tracking-wider font-semibold text-on-surface">HEPA Cleanroom Facility</span></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[20px]">health_and_safety</span><span class="font-body-md text-[13px] uppercase tracking-wider font-semibold text-on-surface">NMID / NMC Compliant</span></div><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[20px]">science</span><span class="font-body-md text-[13px] uppercase tracking-wider font-semibold text-on-surface">GMP Certified Laboratory</span></div></div><div class="text-[12px] text-on-surface-variant">Strict Professional Medical Dispensation Only</div></div><div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm pt-space-md text-[13px] text-on-surface-variant"><div>© 2025 CDerma Nepal Ltd., Koshi Province, Nepal. All rights reserved.</div><div class="flex items-center gap-space-md"><span class="hover:text-on-surface cursor-pointer">Privacy Policy</span><span class="hover:text-on-surface cursor-pointer">Terms of Formulary Use</span><span class="hover:text-on-surface cursor-pointer">Regulatory Disclosures</span></div></div></div></footer><script src="/assets/js/cderma-client.js"></script>
+</body></html>
