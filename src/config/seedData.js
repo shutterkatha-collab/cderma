@@ -1,34 +1,133 @@
 /**
  * CDerma Nepal - Initial Seed Data
- * Contains full initial content for site settings, products, clinics, and monographs.
+ * Contains comprehensive seed content for all site text, media slots, products, clinics, and monographs.
  */
 
 const defaultSettings = [
-  // Hero Section
-  { key: 'hero_title', value: 'Precision Dermatological Science. Pure Himalayan Bio-Actives.', category: 'hero', label: 'Hero Main Headline' },
-  { key: 'hero_subtitle', value: 'Medical-grade barrier repair, regenerative serums, and post-procedure dermatological care formulated in our Koshi cleanroom facility.', category: 'hero', label: 'Hero Subtitle' },
-  { key: 'hero_badge', value: 'ISO Class 7 Cleanroom Certified • Itahari, Nepal', category: 'hero', label: 'Hero Pill Badge' },
-  { key: 'hero_cta_primary', value: 'Explore Face Care', category: 'hero', label: 'Primary CTA Button Text' },
-  { key: 'hero_cta_secondary', value: 'B2B Wholesale Portal', category: 'hero', label: 'Secondary CTA Button Text' },
-  
-  // Brand & Science Story
-  { key: 'brand_name', value: 'CDerma Choice by Professional', category: 'general', label: 'Brand Name' },
-  { key: 'brand_tagline', value: 'Choice by Professional', category: 'general', label: 'Tagline' },
-  { key: 'about_heading', value: 'Rooted in Alpine Botany. Proven in Clinical Practice.', category: 'about', label: 'About Heading' },
-  { key: 'about_body', value: 'CDerma bridges uncompromising pharmaceutical manufacturing rigor with high-altitude botanical resilience. Crafted for licensed dermatologists, plastic surgeons, and skin wellness centers throughout Nepal.', category: 'about', label: 'About Description' },
-  
-  // Facility & Cleanroom
-  { key: 'cleanroom_iso', value: 'ISO Class 7 (Class 10,000)', category: 'science', label: 'Cleanroom ISO Standard' },
-  { key: 'cleanroom_location', value: 'Itahari Formulation Facility, Koshi Province', category: 'science', label: 'Facility Location' },
-  { key: 'cleanroom_testing', value: '100% Dermatologically Tested on South Asian Skin', category: 'science', label: 'Testing Specification' },
-  { key: 'cleanroom_ph', value: 'Physiological pH 5.2 – 5.5', category: 'science', label: 'Target pH' },
-  
-  // Contact & Distribution
-  { key: 'contact_email', value: 'clinical@cderma.com.np', category: 'contact', label: 'Official Medical Email' },
-  { key: 'contact_phone', value: '+977 1 4421098', category: 'contact', label: 'Direct Medical Liaison' },
-  { key: 'contact_whatsapp', value: '+977 9801234567', category: 'contact', label: 'Practitioner WhatsApp' },
-  { key: 'contact_address', value: 'K&K Trading Concern, Industrial Estate, Itahari, Koshi Province, Nepal', category: 'contact', label: 'Manufacturing & Corporate Address' },
-  { key: 'corporate_reg', value: 'DDA / PAN: 609874123 • GMP Compliant Facility', category: 'contact', label: 'Registration & Compliance Notice' }
+  // General Brand Info
+  { key: 'brand_name', value: 'CDerma Choice by Professional', category: 'General', label: 'Brand Name' },
+  { key: 'brand_tagline', value: 'Choice by Professional', category: 'General', label: 'Tagline' },
+  { key: 'topbar_announcement', value: 'Authorized Clinical Dispensaries Nationwide • Koshi Province Formulation Facility • ISO Class 7 Certified', category: 'General', label: 'Top Announcement Banner' },
+
+  // Home Page - Hero Section
+  { key: 'hero_title', value: 'Precision Dermatological Science. Pure Himalayan Bio-Actives.', category: 'Home Page', label: 'Hero Main Headline' },
+  { key: 'hero_subtitle', value: 'Medical-grade barrier repair, regenerative serums, and post-procedure dermatological care formulated in our Koshi cleanroom facility.', category: 'Home Page', label: 'Hero Subtitle' },
+  { key: 'hero_badge', value: 'ISO Class 7 Cleanroom Certified • Itahari, Nepal', category: 'Home Page', label: 'Hero Pill Badge' },
+  { key: 'hero_cta_primary', value: 'Explore Face Care', category: 'Home Page', label: 'Primary CTA Button Text' },
+  { key: 'hero_cta_secondary', value: 'B2B Wholesale Portal', category: 'Home Page', label: 'Secondary CTA Button Text' },
+  { key: 'hero_stat_1_val', value: '94%', category: 'Home Page', label: 'Hero Stat 1 Value' },
+  { key: 'hero_stat_1_lbl', value: 'Barrier Repair Within 72h', category: 'Home Page', label: 'Hero Stat 1 Label' },
+  { key: 'hero_stat_2_val', value: '5.0%', category: 'Home Page', label: 'Hero Stat 2 Value' },
+  { key: 'hero_stat_2_lbl', value: 'Bio-Identical Ceramides', category: 'Home Page', label: 'Hero Stat 2 Label' },
+  { key: 'hero_stat_3_val', value: 'pH 5.4', category: 'Home Page', label: 'Hero Stat 3 Value' },
+  { key: 'hero_stat_3_lbl', value: 'Physiological Acid Mantle', category: 'Home Page', label: 'Hero Stat 3 Label' },
+
+  // Home Page - Flagship Face Care Spotlight
+  { key: 'home_flagship_title', value: 'Centella Barrier Restore Concentrate', category: 'Home Page', label: 'Flagship Product Title' },
+  { key: 'home_flagship_badge', value: 'Flagship Formulation • Clinical Trial Verified', category: 'Home Page', label: 'Flagship Badge' },
+  { key: 'home_flagship_subtitle', value: '5% Multi-Ceramide Complex (NP/AP/EOP) + 15% Sub-Alpine Centella Asiatica Triterpenes', category: 'Home Page', label: 'Flagship Subtitle' },
+  { key: 'home_flagship_desc', value: 'Engineered for compromised epidermal barriers, post-laser erythema, and sub-Himalayan dry altitude climates. Restores the stratum corneum lipid matrix in a biomimetic 3:1:1 ratio.', category: 'Home Page', label: 'Flagship Description' },
+  { key: 'home_flagship_price', value: 'NPR 3,200', category: 'Home Page', label: 'Flagship Display Price' },
+  { key: 'home_flagship_volume', value: '30 ml / 1.0 fl. oz.', category: 'Home Page', label: 'Flagship Volume' },
+
+  // About & Science Story
+  { key: 'about_heading', value: 'Rooted in Alpine Botany. Proven in Clinical Practice.', category: 'Science & About', label: 'About Section Headline' },
+  { key: 'about_body', value: 'CDerma was founded to bring uncompromising pharmaceutical manufacturing rigor to skincare in Nepal. Combining high-altitude wild Centella Asiatica with bio-identical ceramides, peptides, and niacinamide for licensed dermatologists and aesthetic clinics.', category: 'Science & About', label: 'About Section Description' },
+  { key: 'science_cleanroom_title', value: 'State-of-the-Art Pharmaceutical Cleanroom in Koshi Province', category: 'Science & About', label: 'Cleanroom Section Title' },
+  { key: 'science_cleanroom_desc', value: 'Our facility in Itahari operates under ISO Class 7 (Class 10,000) air purity standards with positive HEPA filtration, automated batch traceability, and strict GMP protocols.', category: 'Science & About', label: 'Cleanroom Section Description' },
+  { key: 'cleanroom_iso', value: 'ISO Class 7 (Class 10,000)', category: 'Science & About', label: 'Cleanroom ISO Grade' },
+  { key: 'cleanroom_location', value: 'Itahari Formulation Facility, Koshi Province', category: 'Science & About', label: 'Facility Location' },
+  { key: 'cleanroom_testing', value: '100% Dermatologically Tested on South Asian Skin', category: 'Science & About', label: 'Testing Specification' },
+  { key: 'cleanroom_ph', value: 'Physiological pH 5.2 – 5.5', category: 'Science & About', label: 'Target Physiological pH' },
+
+  // B2B & Wholesale Portal
+  { key: 'b2b_hero_title', value: 'Direct B2B Clinic & Wholesale Distribution', category: 'B2B Wholesale', label: 'B2B Main Headline' },
+  { key: 'b2b_hero_subtitle', value: 'Institutional supply agreements, medical sample kits, and direct dispensary pricing for licensed dermatology clinics, aesthetic centers, and hospital pharmacies.', category: 'B2B Wholesale', label: 'B2B Subtitle' },
+  { key: 'b2b_form_title', value: 'Clinic Partnership & Wholesale Application', category: 'B2B Wholesale', label: 'Application Form Title' },
+  { key: 'b2b_form_subtitle', value: 'Apply for direct practitioner wholesale tier pricing and doctor trial kits.', category: 'B2B Wholesale', label: 'Application Form Subtitle' },
+
+  // Clinic Directory
+  { key: 'clinics_hero_title', value: 'Authorized Clinic Locator & Dispensary Directory', category: 'Clinics', label: 'Clinic Locator Headline' },
+  { key: 'clinics_hero_subtitle', value: 'Discover certified medical clinics, hospital dispensaries, and aesthetic centers stocking official CDerma clinical formulations across Nepal.', category: 'Clinics', label: 'Clinic Locator Subtitle' },
+
+  // Monographs & Guidance
+  { key: 'monographs_hero_title', value: 'Medical Guidance & Clinical Monographs', category: 'Monographs', label: 'Monographs Headline' },
+  { key: 'monographs_hero_subtitle', value: 'Evidence-based dermatological prescribing protocols, post-procedure recovery schedules, and peer-reviewed formulation monographs for healthcare practitioners.', category: 'Monographs', label: 'Monographs Subtitle' },
+
+  // Contact & Footer
+  { key: 'contact_email', value: 'clinical@cderma.com.np', category: 'Contact & Footer', label: 'Official Medical Email' },
+  { key: 'contact_phone', value: '+977 1 4421098', category: 'Contact & Footer', label: 'Direct Medical Liaison Phone' },
+  { key: 'contact_whatsapp', value: '+977 9801234567', category: 'Contact & Footer', label: 'Practitioner WhatsApp' },
+  { key: 'contact_address', value: 'K&K Trading Concern, Industrial Estate, Itahari, Koshi Province, Nepal', category: 'Contact & Footer', label: 'Manufacturing & Corporate Address' },
+  { key: 'corporate_reg', value: 'DDA / PAN: 609874123 • GMP Compliant Facility', category: 'Contact & Footer', label: 'Registration & Compliance Notice' },
+  { key: 'footer_mission', value: 'Professional skincare, made with care in Itahari, Nepal. Bridging clinical formulation rigor with high-altitude botanical resilience for dermatological clarity.', category: 'Contact & Footer', label: 'Footer Brand Mission Statement' },
+  { key: 'footer_copyright', value: '© 2026 K&K Trading Concern. All rights reserved. Professional Formulation Facility, Itahari, Koshi Province.', category: 'Contact & Footer', label: 'Footer Copyright Notice' }
+];
+
+const defaultMedia = [
+  {
+    slot_key: 'site_logo',
+    slot_label: 'Main Site Logo (Header & Light Surfaces)',
+    page: 'Global',
+    description: 'The official CDerma Choice by Professional logo in Deep Graphite (#1E2322) for navigation headers and light backgrounds.',
+    image_url: 'assets/images/cderma-logo.png'
+  },
+  {
+    slot_key: 'site_logo_white',
+    slot_label: 'Inverted White Logo (Dark Surfaces & Admin)',
+    page: 'Global',
+    description: 'High-contrast Warm Alabaster (#FAF9F6) logo used on dark backgrounds like the Admin sidebar.',
+    image_url: 'assets/images/cderma-logo-white.png'
+  },
+  {
+    slot_key: 'hero_flagship_bottle',
+    slot_label: 'Homepage Hero Dropper Bottle',
+    page: 'Home Page',
+    description: 'Ultra-luxury cosmetic packaging shot of the flagship frosted glass dropper bottle.',
+    image_url: 'assets/images/product-packaging-dropper.png'
+  },
+  {
+    slot_key: 'hero_model_portrait',
+    slot_label: 'Radiant Skin Model Banner',
+    page: 'Home Page',
+    description: 'Editorial skincare photography featuring South Asian woman with radiant, healthy dewy bare skin.',
+    image_url: 'assets/images/radiant-skin-model.png'
+  },
+  {
+    slot_key: 'science_cleanroom',
+    slot_label: 'Cleanroom Formulation Facility',
+    page: 'Science & About',
+    description: 'Architectural cleanroom photograph showing stainless steel bioreactors and cleanroom gowns in Itahari facility.',
+    image_url: 'assets/images/cleanroom-facility.png'
+  },
+  {
+    slot_key: 'science_botanical',
+    slot_label: 'Centella Botanical Extraction Still-Life',
+    page: 'Science & About',
+    description: 'Alpine Centella Asiatica leaves and pristine water droplets resting on frosted laboratory glass.',
+    image_url: 'assets/images/centella-botanical-extract.png'
+  },
+  {
+    slot_key: 'science_texture',
+    slot_label: 'Facial Cream & Serum Texture Swatch',
+    page: 'Home & Products',
+    description: 'Rich creamy velvety facial moisturizer droplet and silky golden serum texture smear on stone slab.',
+    image_url: 'assets/images/texture-swatch.png'
+  },
+  {
+    slot_key: 'science_doctor',
+    slot_label: 'Consultant Dermatologist Portrait',
+    page: 'Home & Science',
+    description: 'Authentic portrait of consultant dermatologist doctor in white clinical coat.',
+    image_url: 'assets/images/dr-karki-portrait.png'
+  },
+  {
+    slot_key: 'b2b_banner',
+    slot_label: 'B2B Wholesale Cleanroom Laboratory',
+    page: 'B2B Portal',
+    description: 'Wide laboratory cleanroom research and manufacturing overview banner.',
+    image_url: 'assets/images/cleanroom-lab-wide.png'
+  }
 ];
 
 const defaultProducts = [
@@ -125,7 +224,7 @@ const defaultProducts = [
     price_npr: 3500,
     clinical_badge: 'Broad Spectrum UVA/UVB/HEV Shield',
     summary: 'Medical-grade mineral sunscreen engineered for extreme high-altitude Himalayan ultraviolet radiation and post-laser skin vulnerability.',
-    description: 'Features micronized, non-nano zinc oxide with zero white cast on Fitzpatick Skin Types III–V. Infused with ectoin and alpine edelweiss extract to neutralize high-elevation blue light and free radicals.',
+    description: 'Features micronized, non-nano zinc oxide with zero white cast on South Asian skin. Infused with ectoin and alpine edelweiss extract to neutralize high-elevation blue light and free radicals.',
     key_benefits: JSON.stringify([
       'Critical UV protection for extreme elevations (>1,400m)',
       'Invisible sheer finish without chalky residue on South Asian skin',
@@ -311,6 +410,7 @@ const defaultMonographs = [
 
 module.exports = {
   defaultSettings,
+  defaultMedia,
   defaultProducts,
   defaultClinics,
   defaultMonographs

@@ -16,6 +16,20 @@ router.get('/settings', (req, res) => {
   }
 });
 
+// GET /api/media - Fetch all public site media and images
+router.get('/media', (req, res) => {
+  try {
+    const media = db.prepare('SELECT slot_key, slot_label, page, description, image_url FROM site_media').all();
+    const mediaMap = {};
+    for (const m of media) {
+      mediaMap[m.slot_key] = m.image_url;
+    }
+    res.json({ success: true, media: mediaMap, slots: media });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // GET /api/products - List active products
 router.get('/products', (req, res) => {
   try {

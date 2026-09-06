@@ -71,6 +71,10 @@
         <span class="material-symbols-outlined text-lg">edit_document</span>
         <span>Site Copy & Headlines</span>
       </button>
+      <button onclick="switchTab('media')" class="tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="media">
+        <span class="material-symbols-outlined text-lg">image</span>
+        <span>Media & Images</span>
+      </button>
       <button onclick="switchTab('products')" class="tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="products">
         <span class="material-symbols-outlined text-lg">science</span>
         <span>Products Formulary</span>
@@ -136,41 +140,50 @@
       <!-- 1. OVERVIEW TAB -->
       <section id="tab-overview" class="space-y-8">
         <!-- Metric Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           <div class="bg-white p-5 rounded-xl border border-outline-border shadow-sm">
             <div class="flex items-center justify-between text-gray-500 mb-2">
-              <span class="text-xs uppercase tracking-wider font-semibold">Pending B2B Accounts</span>
+              <span class="text-[11px] uppercase tracking-wider font-semibold">Pending B2B</span>
               <span class="material-symbols-outlined text-amber-500">pending_actions</span>
             </div>
-            <p id="metricPendingB2B" class="text-3xl font-serif font-bold text-primary">0</p>
-            <p class="text-[11px] text-gray-400 mt-1">Requires clinic verification</p>
+            <p id="metricPendingB2B" class="text-2xl font-serif font-bold text-primary">0</p>
+            <p class="text-[10px] text-gray-400 mt-1">Requires clinic verification</p>
           </div>
 
           <div class="bg-white p-5 rounded-xl border border-outline-border shadow-sm">
             <div class="flex items-center justify-between text-gray-500 mb-2">
-              <span class="text-xs uppercase tracking-wider font-semibold">Active Formulations</span>
+              <span class="text-[11px] uppercase tracking-wider font-semibold">Formulations</span>
               <span class="material-symbols-outlined text-secondary">science</span>
             </div>
-            <p id="metricTotalProducts" class="text-3xl font-serif font-bold text-primary">0</p>
-            <p class="text-[11px] text-gray-400 mt-1">Live in product catalog</p>
+            <p id="metricTotalProducts" class="text-2xl font-serif font-bold text-primary">0</p>
+            <p class="text-[10px] text-gray-400 mt-1">Live in product catalog</p>
           </div>
 
           <div class="bg-white p-5 rounded-xl border border-outline-border shadow-sm">
             <div class="flex items-center justify-between text-gray-500 mb-2">
-              <span class="text-xs uppercase tracking-wider font-semibold">Partner Clinics</span>
+              <span class="text-[11px] uppercase tracking-wider font-semibold">Partner Clinics</span>
               <span class="material-symbols-outlined text-emerald-600">domain</span>
             </div>
-            <p id="metricTotalClinics" class="text-3xl font-serif font-bold text-primary">0</p>
-            <p class="text-[11px] text-gray-400 mt-1">Dispensary directory locations</p>
+            <p id="metricTotalClinics" class="text-2xl font-serif font-bold text-primary">0</p>
+            <p class="text-[10px] text-gray-400 mt-1">Dispensary directory</p>
           </div>
 
           <div class="bg-white p-5 rounded-xl border border-outline-border shadow-sm">
             <div class="flex items-center justify-between text-gray-500 mb-2">
-              <span class="text-xs uppercase tracking-wider font-semibold">Medical Inquiries</span>
+              <span class="text-[11px] uppercase tracking-wider font-semibold">Media Slots</span>
+              <span class="material-symbols-outlined text-purple-600">photo_library</span>
+            </div>
+            <p id="metricTotalMedia" class="text-2xl font-serif font-bold text-primary">0</p>
+            <p class="text-[10px] text-gray-400 mt-1">Customizable visual slots</p>
+          </div>
+
+          <div class="bg-white p-5 rounded-xl border border-outline-border shadow-sm">
+            <div class="flex items-center justify-between text-gray-500 mb-2">
+              <span class="text-[11px] uppercase tracking-wider font-semibold">Inquiries</span>
               <span class="material-symbols-outlined text-blue-600">contact_support</span>
             </div>
-            <p id="metricUnreadInquiries" class="text-3xl font-serif font-bold text-primary">0</p>
-            <p class="text-[11px] text-gray-400 mt-1">Pending response</p>
+            <p id="metricUnreadInquiries" class="text-2xl font-serif font-bold text-primary">0</p>
+            <p class="text-[10px] text-gray-400 mt-1">Pending response</p>
           </div>
         </div>
 
@@ -203,19 +216,88 @@
       <!-- 2. SITE COPY & SETTINGS TAB -->
       <section id="tab-settings" class="hidden space-y-6">
         <div class="bg-white rounded-xl border border-outline-border shadow-sm p-6">
-          <div class="flex items-center justify-between pb-4 border-b border-outline-border mb-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-outline-border mb-6">
             <div>
-              <h3 class="font-serif text-lg font-semibold text-primary">Global Site Copy & Headlines</h3>
-              <p class="text-xs text-gray-500">Edit every headline, subtext, address, and cleanroom specification across the platform.</p>
+              <h3 class="font-serif text-lg font-semibold text-primary">Global Site Copy & Headlines Editor</h3>
+              <p class="text-xs text-gray-500">Edit every headline, subtext, address, and specification across all pages without coding.</p>
             </div>
-            <button onclick="saveAllSettings()" class="px-5 py-2.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold uppercase tracking-wider transition-colors shadow flex items-center gap-2">
-              <span class="material-symbols-outlined text-sm">save</span>
-              <span>Save Changes</span>
-            </button>
+            <div class="flex items-center gap-3">
+              <div class="relative">
+                <span class="material-symbols-outlined absolute left-3 top-2.5 text-gray-400 text-sm">search</span>
+                <input type="text" id="settingsSearch" oninput="handleSettingsSearch(this.value)" placeholder="Search copy or key..." class="pl-9 pr-3 py-2 rounded-lg border border-outline-border text-xs w-48 sm:w-64 focus:border-secondary focus:outline-none bg-surface">
+              </div>
+              <button onclick="saveAllSettings()" class="px-5 py-2.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold uppercase tracking-wider transition-colors shadow flex items-center gap-2 shrink-0">
+                <span class="material-symbols-outlined text-sm">save</span>
+                <span>Save All Changes</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Category Filter Pills -->
+          <div class="flex flex-wrap gap-2 mb-6" id="settingsCategoryFilters">
+            <button onclick="filterSettingsCat('all')" class="settings-cat-btn active px-3 py-1 rounded-full text-xs font-semibold bg-secondary text-white transition-all" data-cat="all">All Sections</button>
+            <button onclick="filterSettingsCat('General')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="General">General & Brand</button>
+            <button onclick="filterSettingsCat('Home Page')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Home Page">Home Page</button>
+            <button onclick="filterSettingsCat('Science & About')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Science & About">Science & Cleanroom</button>
+            <button onclick="filterSettingsCat('B2B Wholesale')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="B2B Wholesale">B2B Wholesale</button>
+            <button onclick="filterSettingsCat('Clinics')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Clinics">Clinics Locator</button>
+            <button onclick="filterSettingsCat('Monographs')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Monographs">Monographs</button>
+            <button onclick="filterSettingsCat('Contact & Footer')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Contact & Footer">Contact & Footer</button>
           </div>
 
           <div id="settingsContainer" class="space-y-6">
             <p class="text-xs text-gray-400">Loading configuration settings...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2b. SITE MEDIA & IMAGES TAB -->
+      <section id="tab-media" class="hidden space-y-6">
+        <!-- Banner & General Uploader -->
+        <div class="bg-white rounded-xl border border-outline-border shadow-sm p-6">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-outline-border mb-6">
+            <div>
+              <h3 class="font-serif text-lg font-semibold text-primary">Media & Visual Assets Control Center</h3>
+              <p class="text-xs text-gray-500">Upload and instantly swap any image, brand logo, or laboratory visual across the website.</p>
+            </div>
+            <!-- Quick Asset Uploader Form -->
+            <div class="flex items-center gap-2 bg-surface p-2.5 rounded-lg border border-outline-border">
+              <span class="material-symbols-outlined text-secondary text-base">cloud_upload</span>
+              <span class="text-xs font-semibold text-primary">Upload Asset:</span>
+              <input type="file" id="generalAssetInput" accept="image/*" class="text-xs w-44 text-gray-500 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-[11px] file:font-semibold file:bg-primary file:text-white hover:file:bg-secondary">
+              <button onclick="handleGeneralAssetUpload()" class="px-3 py-1.5 rounded bg-primary hover:bg-secondary text-white text-xs font-semibold transition-colors">Upload</button>
+            </div>
+          </div>
+
+          <!-- Recently Uploaded URL Banner (if any) -->
+          <div id="recentUploadBanner" class="hidden mb-6 p-3.5 bg-emerald-50 border border-emerald-200 rounded-lg flex items-center justify-between text-xs text-emerald-900">
+            <div class="flex items-center gap-3">
+              <img id="recentUploadImg" src="" class="w-10 h-10 object-cover rounded border border-emerald-300">
+              <div>
+                <p class="font-bold">File Uploaded Successfully!</p>
+                <p id="recentUploadUrl" class="font-mono text-[11px] text-emerald-700 select-all"></p>
+              </div>
+            </div>
+            <button onclick="copyRecentUploadUrl()" class="px-3 py-1 rounded bg-emerald-700 text-white hover:bg-emerald-800 text-[11px] font-semibold flex items-center gap-1">
+              <span class="material-symbols-outlined text-xs">content_copy</span>
+              <span>Copy URL</span>
+            </button>
+          </div>
+
+          <!-- Page Filter for Media Slots -->
+          <div class="flex flex-wrap gap-2 mb-6" id="mediaPageFilters">
+            <button onclick="filterMediaPage('all')" class="media-cat-btn active px-3 py-1 rounded-full text-xs font-semibold bg-secondary text-white transition-all" data-cat="all">All Image Slots</button>
+            <button onclick="filterMediaPage('Global')" class="media-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Global">Logos & Header</button>
+            <button onclick="filterMediaPage('Home Page')" class="media-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Home Page">Home Hero & Model</button>
+            <button onclick="filterMediaPage('Science & About')" class="media-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Science & About">Cleanroom & Science</button>
+            <button onclick="filterMediaPage('Home & Products')" class="media-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Home & Products">Texture Swatch</button>
+            <button onclick="filterMediaPage('Home & Science')" class="media-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Home & Science">Doctor Portrait</button>
+            <button onclick="filterMediaPage('B2B Portal')" class="media-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="B2B Portal">B2B Portal</button>
+          </div>
+
+          <!-- Media Slots Grid -->
+          <div id="mediaGrid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            <p class="text-xs text-gray-400 col-span-3">Loading media slots...</p>
           </div>
         </div>
       </section>
@@ -517,6 +599,10 @@
   <script>
     // State
     let currentSettings = [];
+    let currentMedia = [];
+    let selectedSettingsCat = 'all';
+    let settingsSearchTerm = '';
+    let selectedMediaCat = 'all';
     let currentProducts = [];
     let currentClinics = [];
     let currentMonographs = [];
@@ -551,6 +637,7 @@
       const titles = {
         overview: 'Overview Dashboard',
         settings: 'Site Copy & Headlines Editor',
+        media: 'Media & Visual Assets Control Center',
         products: 'Product Formulary Catalog',
         clinics: 'Authorized Clinic Directory',
         monographs: 'Clinical Guidance & Monographs',
@@ -561,6 +648,7 @@
 
       // Load tab-specific data
       if (tabId === 'settings') loadSettings();
+      if (tabId === 'media') loadMedia();
       if (tabId === 'products') loadProducts();
       if (tabId === 'clinics') loadClinics();
       if (tabId === 'monographs') loadMonographs();
@@ -577,6 +665,9 @@
           document.getElementById('metricPendingB2B').textContent = data.stats.pendingB2B;
           document.getElementById('metricTotalProducts').textContent = data.stats.totalProducts;
           document.getElementById('metricTotalClinics').textContent = data.stats.totalClinics;
+          if (document.getElementById('metricTotalMedia')) {
+            document.getElementById('metricTotalMedia').textContent = data.stats.totalMediaSlots || 0;
+          }
           document.getElementById('metricUnreadInquiries').textContent = data.stats.unreadInquiries;
 
           if (data.stats.pendingB2B > 0) {
@@ -619,43 +710,268 @@
       `).join('');
     }
 
-    // ==================== SETTINGS ====================
+    // ==================== SETTINGS (COPY) ====================
     async function loadSettings() {
       try {
         const res = await fetch('/admin/api/settings');
         const data = await res.json();
         if (data.success) {
           currentSettings = data.settings;
-          const container = document.getElementById('settingsContainer');
-          
-          // Group by category
-          const groups = {};
-          data.settings.forEach(s => {
-            const cat = s.category || 'general';
-            if (!groups[cat]) groups[cat] = [];
-            groups[cat].push(s);
-          });
-
-          container.innerHTML = Object.entries(groups).map(([cat, items]) => `
-            <div class="border border-outline-border rounded-lg p-5 bg-surface/30">
-              <h4 class="font-serif text-sm font-semibold uppercase tracking-wider text-secondary mb-4">${escapeHtml(cat)} Section</h4>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                ${items.map(item => `
-                  <div class="${item.value && item.value.length > 80 ? 'md:col-span-2' : ''}">
-                    <label class="block text-xs font-semibold text-gray-600 mb-1">${escapeHtml(item.label || item.key)}</label>
-                    ${item.value && item.value.length > 80 ? `
-                      <textarea id="setting_${item.key}" class="w-full p-2.5 rounded border border-outline-border bg-white text-xs text-primary focus:border-secondary focus:outline-none" rows="3">${escapeHtml(item.value || '')}</textarea>
-                    ` : `
-                      <input type="text" id="setting_${item.key}" value="${escapeHtml(item.value || '')}" class="w-full p-2.5 rounded border border-outline-border bg-white text-xs text-primary focus:border-secondary focus:outline-none">
-                    `}
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-          `).join('');
+          renderSettings();
         }
       } catch (err) {
         showToast('Error loading settings', true);
+      }
+    }
+
+    function filterSettingsCat(cat) {
+      selectedSettingsCat = cat;
+      document.querySelectorAll('.settings-cat-btn').forEach(b => {
+        const isActive = b.dataset.cat === cat;
+        b.className = `settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold transition-all ${isActive ? 'bg-secondary text-white active' : 'bg-surface border border-outline-border text-gray-600 hover:bg-surface-container'}`;
+      });
+      renderSettings();
+    }
+
+    function handleSettingsSearch(term) {
+      settingsSearchTerm = (term || '').toLowerCase().trim();
+      renderSettings();
+    }
+
+    function renderSettings() {
+      const container = document.getElementById('settingsContainer');
+      let filtered = currentSettings;
+
+      if (selectedSettingsCat !== 'all') {
+        filtered = filtered.filter(s => (s.category || '').toLowerCase() === selectedSettingsCat.toLowerCase());
+      }
+
+      if (settingsSearchTerm) {
+        filtered = filtered.filter(s => 
+          (s.key || '').toLowerCase().includes(settingsSearchTerm) ||
+          (s.label || '').toLowerCase().includes(settingsSearchTerm) ||
+          (s.value || '').toLowerCase().includes(settingsSearchTerm)
+        );
+      }
+
+      if (!filtered.length) {
+        container.innerHTML = '<div class="p-8 text-center text-gray-400 bg-surface/30 rounded-lg">No configuration fields match your search or filter.</div>';
+        return;
+      }
+
+      // Group by category
+      const groups = {};
+      filtered.forEach(s => {
+        const cat = s.category || 'General';
+        if (!groups[cat]) groups[cat] = [];
+        groups[cat].push(s);
+      });
+
+      container.innerHTML = Object.entries(groups).map(([cat, items]) => `
+        <div class="border border-outline-border rounded-lg p-5 bg-surface/30">
+          <div class="flex items-center justify-between mb-4 border-b border-outline-border/60 pb-2">
+            <h4 class="font-serif text-sm font-semibold uppercase tracking-wider text-secondary">${escapeHtml(cat)} Section</h4>
+            <span class="text-[11px] text-gray-400">${items.length} fields</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            ${items.map(item => `
+              <div class="${item.value && item.value.length > 80 ? 'md:col-span-2' : ''}">
+                <div class="flex items-center justify-between mb-1">
+                  <label class="block text-xs font-semibold text-gray-700">${escapeHtml(item.label || item.key)}</label>
+                  <span class="font-mono text-[10px] text-gray-400 select-all">${escapeHtml(item.key)}</span>
+                </div>
+                ${item.value && (item.value.length > 80 || item.key.includes('desc') || item.key.includes('body') || item.key.includes('mission')) ? `
+                  <textarea id="setting_${item.key}" class="w-full p-2.5 rounded border border-outline-border bg-white text-xs text-primary focus:border-secondary focus:outline-none transition-colors" rows="3">${escapeHtml(item.value || '')}</textarea>
+                ` : `
+                  <input type="text" id="setting_${item.key}" value="${escapeHtml(item.value || '')}" class="w-full p-2.5 rounded border border-outline-border bg-white text-xs text-primary focus:border-secondary focus:outline-none transition-colors">
+                `}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ==================== MEDIA MANAGEMENT ====================
+    async function loadMedia() {
+      try {
+        const res = await fetch('/admin/api/media');
+        const data = await res.json();
+        if (data.success) {
+          currentMedia = data.media;
+          renderMediaCards();
+        }
+      } catch (err) {
+        showToast('Error loading media assets', true);
+      }
+    }
+
+    function filterMediaPage(cat) {
+      selectedMediaCat = cat;
+      document.querySelectorAll('.media-cat-btn').forEach(b => {
+        const isActive = b.dataset.cat === cat;
+        b.className = `media-cat-btn px-3 py-1 rounded-full text-xs font-semibold transition-all ${isActive ? 'bg-secondary text-white active' : 'bg-surface border border-outline-border text-gray-600 hover:bg-surface-container'}`;
+      });
+      renderMediaCards();
+    }
+
+    function renderMediaCards() {
+      const grid = document.getElementById('mediaGrid');
+      let filtered = currentMedia;
+      if (selectedMediaCat !== 'all') {
+        filtered = filtered.filter(m => (m.page || '').toLowerCase() === selectedMediaCat.toLowerCase());
+      }
+
+      if (!filtered.length) {
+        grid.innerHTML = '<div class="col-span-3 p-8 text-center text-gray-400 bg-surface/30 rounded-lg">No media slots in this category.</div>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(m => `
+        <div class="bg-white rounded-xl border border-outline-border overflow-hidden shadow-sm flex flex-col justify-between hover:border-secondary/50 transition-all">
+          <div>
+            <!-- Image Thumbnail & Badges -->
+            <div class="relative h-44 w-full bg-surface-container flex items-center justify-center overflow-hidden border-b border-outline-border group">
+              <img id="preview_${m.slot_key}" src="${escapeHtml(m.image_url)}" alt="${escapeHtml(m.slot_label)}" class="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-300" onerror="this.src='/assets/images/cderma-logo.png'">
+              <div class="absolute top-2 left-2 flex gap-1">
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-primary/80 text-white backdrop-blur-sm">${escapeHtml(m.page || 'Global')}</span>
+              </div>
+              <a href="${escapeHtml(m.image_url)}" target="_blank" class="absolute bottom-2 right-2 p-1.5 rounded-full bg-white/90 hover:bg-white text-primary shadow opacity-0 group-hover:opacity-100 transition-opacity" title="View Full Size">
+                <span class="material-symbols-outlined text-xs">open_in_new</span>
+              </a>
+            </div>
+
+            <!-- Meta Details -->
+            <div class="p-4 space-y-2">
+              <div class="flex items-center justify-between">
+                <h4 class="font-serif text-sm font-semibold text-primary leading-tight">${escapeHtml(m.slot_label)}</h4>
+              </div>
+              <p class="font-mono text-[10px] text-gray-400 bg-surface px-1.5 py-0.5 rounded inline-block select-all">${escapeHtml(m.slot_key)}</p>
+              <p class="text-[11px] text-gray-500 leading-snug line-clamp-2">${escapeHtml(m.description || '')}</p>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="p-4 pt-0 border-t border-outline-border/60 bg-surface/20 space-y-3">
+            <!-- 1. File Upload Form -->
+            <div class="pt-3">
+              <label class="block text-[10px] font-bold uppercase text-gray-500 mb-1">Replace Image File:</label>
+              <div class="flex items-center gap-1.5">
+                <input type="file" id="file_${m.slot_key}" accept="image/*" class="text-[11px] w-full text-gray-500 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-[10px] file:font-semibold file:bg-surface-container file:text-primary hover:file:bg-outline-border">
+                <button onclick="uploadMediaSlotFile('${m.slot_key}')" class="px-2.5 py-1 rounded bg-secondary hover:bg-primary text-white text-[11px] font-semibold transition-colors shrink-0 flex items-center gap-1">
+                  <span class="material-symbols-outlined text-xs">upload</span>
+                  <span>Upload</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. Or Custom URL -->
+            <div>
+              <label class="block text-[10px] font-bold uppercase text-gray-500 mb-1">Or Direct Path / URL:</label>
+              <div class="flex items-center gap-1.5">
+                <input type="text" id="url_${m.slot_key}" value="${escapeHtml(m.image_url)}" class="w-full p-1.5 text-xs rounded border border-outline-border bg-white text-primary focus:border-secondary focus:outline-none">
+                <button onclick="saveMediaSlotUrl('${m.slot_key}')" class="px-2.5 py-1 rounded bg-primary hover:bg-secondary text-white text-[11px] font-semibold transition-colors shrink-0">Save</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function uploadMediaSlotFile(slotKey) {
+      const fileInput = document.getElementById(`file_${slotKey}`);
+      if (!fileInput || !fileInput.files.length) {
+        showToast('Please select a file to upload first', true);
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', fileInput.files[0]);
+
+      try {
+        const res = await fetch(`/admin/api/media/${slotKey}`, {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(`Image "${slotKey}" updated successfully!`);
+          const idx = currentMedia.findIndex(m => m.slot_key === slotKey);
+          if (idx !== -1) currentMedia[idx] = data.slot;
+          renderMediaCards();
+        } else {
+          showToast(data.message || 'Error updating image', true);
+        }
+      } catch (err) {
+        showToast('Upload failed', true);
+      }
+    }
+
+    async function saveMediaSlotUrl(slotKey) {
+      const urlInput = document.getElementById(`url_${slotKey}`);
+      if (!urlInput || !urlInput.value.trim()) {
+        showToast('Please provide a valid image URL or path', true);
+        return;
+      }
+
+      try {
+        const res = await fetch(`/admin/api/media/${slotKey}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ image_url: urlInput.value.trim() })
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(`Image "${slotKey}" updated successfully!`);
+          const idx = currentMedia.findIndex(m => m.slot_key === slotKey);
+          if (idx !== -1) currentMedia[idx] = data.slot;
+          renderMediaCards();
+        } else {
+          showToast(data.message || 'Error saving image URL', true);
+        }
+      } catch (err) {
+        showToast('Save failed', true);
+      }
+    }
+
+    async function handleGeneralAssetUpload() {
+      const input = document.getElementById('generalAssetInput');
+      if (!input || !input.files.length) {
+        showToast('Please select an image file to upload', true);
+        return;
+      }
+
+      const formData = new FormData();
+      formData.append('file', input.files[0]);
+
+      try {
+        const res = await fetch('/admin/api/upload', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Asset uploaded successfully!');
+          const banner = document.getElementById('recentUploadBanner');
+          const img = document.getElementById('recentUploadImg');
+          const urlEl = document.getElementById('recentUploadUrl');
+          img.src = data.url;
+          urlEl.textContent = data.url;
+          banner.classList.remove('hidden');
+          input.value = '';
+        } else {
+          showToast(data.message || 'Upload error', true);
+        }
+      } catch (err) {
+        showToast('Upload connection error', true);
+      }
+    }
+
+    function copyRecentUploadUrl() {
+      const text = document.getElementById('recentUploadUrl').textContent;
+      if (text) {
+        navigator.clipboard.writeText(text);
+        showToast('Asset URL copied to clipboard!');
       }
     }
 

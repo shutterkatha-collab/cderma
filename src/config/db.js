@@ -3,6 +3,7 @@ const path = require('path');
 const bcrypt = require('bcryptjs');
 const {
   defaultSettings,
+  defaultMedia,
   defaultProducts,
   defaultClinics,
   defaultMonographs
@@ -23,6 +24,19 @@ function initDatabase() {
       value TEXT,
       category TEXT DEFAULT 'general',
       label TEXT,
+      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+  `);
+
+  // 1b. Site Media & Images Table
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS site_media (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      slot_key TEXT UNIQUE NOT NULL,
+      slot_label TEXT NOT NULL,
+      page TEXT DEFAULT 'Global',
+      description TEXT,
+      image_url TEXT NOT NULL,
       updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
   `);
@@ -143,18 +157,26 @@ function initDatabase() {
 }
 
 function seedInitialData() {
-  // Seed Site Settings
-  const settingCount = db.prepare('SELECT COUNT(*) as count FROM site_settings').get().count;
-  if (settingCount === 0) {
-    const insertSetting = db.prepare('INSERT OR IGNORE INTO site_settings (key, value, category, label) VALUES (?, ?, ?, ?)');
-    const insertMany = db.transaction((settings) => {
-      for (const s of settings) {
-        insertSetting.run(s.key, s.value, s.category, s.label);
-      }
-    });
-    insertMany(defaultSettings);
-    console.log('🌱 Seeded site settings.');
-  }
+  // Seed Site Settings (insert or ignore so new keys are automatically added)
+  const insertSetting = db.prepare('INSERT OR IGNORE INTO site_settings (key, value, category, label) VALUES (?, ?, ?, ?)');
+  const insertManySettings = db.transaction((settings) => {
+    for (const s of settings) {
+      insertSetting.run(s.key, s.value, s.category, s.label);
+    }
+  });
+  insertManySettings(defaultSettings);
+
+  // Seed Site Media Slots (insert or ignore)
+  const insertMedia = db.prepare(`
+    INSERT OR IGNORE INTO site_media (slot_key, slot_label, page, description, image_url)
+    VALUES (?, ?, ?, ?, ?)
+  `);
+  const insertManyMedia = db.transaction((mediaItems) => {
+    for (const m of mediaItems) {
+      insertMedia.run(m.slot_key, m.slot_label, m.page, m.description, m.image_url);
+    }
+  });
+  insertManyMedia(defaultMedia);
 
   // Seed Products
   const productCount = db.prepare('SELECT COUNT(*) as count FROM products').get().count;

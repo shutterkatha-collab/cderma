@@ -59,6 +59,7 @@ router.get('/api/stats', requireAdmin, (req, res) => {
     const totalProducts = db.prepare('SELECT COUNT(*) as count FROM products').get().count;
     const totalClinics = db.prepare("SELECT COUNT(*) as count FROM clinics WHERE status = 'active'").get().count;
     const totalMonographs = db.prepare('SELECT COUNT(*) as count FROM monographs WHERE is_published = 1').get().count;
+    const totalMediaSlots = db.prepare('SELECT COUNT(*) as count FROM site_media').get().count;
 
     const recentApplications = db.prepare('SELECT * FROM b2b_applications ORDER BY created_at DESC LIMIT 5').all();
     const recentInquiries = db.prepare('SELECT * FROM inquiries ORDER BY created_at DESC LIMIT 5').all();
@@ -71,7 +72,8 @@ router.get('/api/stats', requireAdmin, (req, res) => {
         unreadInquiries,
         totalProducts,
         totalClinics,
-        totalMonographs
+        totalMonographs,
+        totalMediaSlots
       },
       recentApplications,
       recentInquiries,
@@ -408,9 +410,68 @@ router.put('/api/inquiries/:id/status', requireAdmin, (req, res) => {
   }
 });
 
-// ==================== 7. MEDIA UPLOAD API ====================
+// ==================== 7. MEDIA & ASSET MANAGEMENT API ====================
 
-// POST /admin/api/upload
+// GET /admin/api/media - Fetch all media slots
+router.get('/api/media', requireAdmin, (req, res) => {
+  try {
+    const slots = db.prepare('SELECT * FROM site_media ORDER BY page ASC, id ASC').all();
+    res.json({ success: true, count: slots.length, media: slots });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// POST /admin/api/media/:slot_key - Update specific image slot (via file or URL)
+router.post('/api/media/:slot_key', requireAdmin, upload.single('file'), (req, res) => {
+  try {
+    const { slot_key } = req.params;
+    let imageUrl = req.body.image_url;
+
+    if (req.file) {
+      imageUrl = `uploads/${req.file.filename}`;
+    }
+
+    if (!imageUrl) {
+      return res.status(400).json({ success: false, message: 'Please provide an image file or an image URL.' });
+    }
+
+    const slotLabel = req.body.slot_label;
+    const description = req.body.description;
+    const page = req.body.page || 'Global';
+
+    // Check if slot exists
+    const existing = db.prepare('SELECT * FROM site_media WHERE slot_key = ?').get(slot_key);
+
+    if (existing) {
+      db.prepare(`
+        UPDATE site_media
+        SET image_url = ?,
+            slot_label = COALESCE(?, slot_label),
+            description = COALESCE(?, description),
+            page = COALESCE(?, page),
+            updated_at = CURRENT_TIMESTAMP
+        WHERE slot_key = ?
+      `).run(imageUrl, slotLabel || null, description || null, page || null, slot_key);
+    } else {
+      db.prepare(`
+        INSERT INTO site_media (slot_key, slot_label, page, description, image_url)
+        VALUES (?, ?, ?, ?, ?)
+      `).run(slot_key, slotLabel || slot_key, page, description || '', imageUrl);
+    }
+
+    const updated = db.prepare('SELECT * FROM site_media WHERE slot_key = ?').get(slot_key);
+    res.json({
+      success: true,
+      message: `Image slot "${slot_key}" updated successfully!`,
+      slot: updated
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// POST /admin/api/upload - General Asset Uploader
 router.post('/api/upload', requireAdmin, upload.single('file'), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ success: false, message: 'No file uploaded.' });

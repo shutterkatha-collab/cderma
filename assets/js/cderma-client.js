@@ -4,23 +4,38 @@
  */
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // 1. Sync Dynamic Site Settings
+  // 1. Sync Dynamic Site Settings & Copy
   try {
     const res = await fetch('/api/settings');
     const data = await res.json();
     if (data.success && data.settings) {
       const s = data.settings;
 
-      // Update Hero Title & Subtitle if present
-      const heroTitleEl = document.querySelector('[data-cms="hero_title"]') || document.querySelector('h1');
-      if (heroTitleEl && s.hero_title) {
-        // If element is the main hero h1
-        if (heroTitleEl.textContent.includes('Dermatological') || heroTitleEl.hasAttribute('data-cms')) {
-          heroTitleEl.textContent = s.hero_title;
+      // Universal [data-cms] text binder
+      document.querySelectorAll('[data-cms]').forEach(el => {
+        const key = el.getAttribute('data-cms');
+        if (s[key] !== undefined && s[key] !== null) {
+          el.textContent = s[key];
         }
-      }
+      });
 
-      // Update Contact Phone/Email across footers
+      // Universal [data-cms-href] link binder
+      document.querySelectorAll('[data-cms-href]').forEach(el => {
+        const key = el.getAttribute('data-cms-href');
+        if (s[key]) {
+          if (key.includes('phone')) {
+            el.href = `tel:${s[key].replace(/\s+/g, '')}`;
+          } else if (key.includes('email')) {
+            el.href = `mailto:${s[key].trim()}`;
+          } else if (key.includes('whatsapp')) {
+            el.href = `https://wa.me/${s[key].replace(/\D/g, '')}`;
+          } else {
+            el.href = s[key];
+          }
+        }
+      });
+
+      // Global Header/Footer fallbacks
       if (s.contact_phone) {
         document.querySelectorAll('a[href^="tel:"]').forEach(el => {
           el.href = `tel:${s.contact_phone.replace(/\s+/g, '')}`;
@@ -34,6 +49,42 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   } catch (err) {
     console.debug('CMS settings sync running in fallback mode');
+  }
+
+  // 1b. Sync Dynamic Site Images & Graphics
+  try {
+    const mediaRes = await fetch('/api/media');
+    const mediaData = await mediaRes.json();
+    if (mediaData.success && mediaData.media) {
+      const m = mediaData.media;
+
+      // Universal [data-cms-img] image binder
+      document.querySelectorAll('[data-cms-img]').forEach(img => {
+        const slotKey = img.getAttribute('data-cms-img');
+        if (m[slotKey]) {
+          img.src = m[slotKey];
+        }
+      });
+
+      // Background image binder
+      document.querySelectorAll('[data-cms-bg]').forEach(el => {
+        const slotKey = el.getAttribute('data-cms-bg');
+        if (m[slotKey]) {
+          el.style.backgroundImage = `url('${m[slotKey]}')`;
+        }
+      });
+
+      // Global logo auto-sync if not explicitly tagged
+      if (m.site_logo) {
+        document.querySelectorAll('header img[src*="logo"], footer img[src*="logo"]').forEach(img => {
+          if (!img.hasAttribute('data-cms-img') && !img.src.includes('white')) {
+            img.src = m.site_logo;
+          }
+        });
+      }
+    }
+  } catch (err) {
+    console.debug('CMS media sync running in fallback mode');
   }
 
   // 2. Wire B2B Wholesale Application Form (b2b.html)
