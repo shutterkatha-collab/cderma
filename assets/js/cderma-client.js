@@ -446,7 +446,7 @@ const CDERMA_NEPALI_DICTIONARY = {
   "Province": "प्रदेश",
   "Estimated Monthly Volume": "अनुमानित मासिक परिमाण",
   "Request CDerma Professional Sample Kit (Includes tester bottles & monographs)": "सिडर्मा व्यावसायिक नमुना किट अनुरोध गर्नुहोस् (टेस्टर र मोनोग्राफ समावेश)",
-  "Submit Wholesale Application": "थोक आवेदन पेश गर्नुहोस्",
+  "Submit Wholesale Application": "थोक साझेदारी आवेदन पेश गर्नुहोस्",
   "Submitting Application...": "आवेदन पेश हुँदैछ...",
   "Clinical Monographs & Doctor's Advice": "क्लिनिकल मोनोग्राफ तथा डाक्टरको सल्लाह",
   "Peer-reviewed dermatological guides, ingredient monographs, and clinical treatment protocols for healthcare professionals and skincare enthusiasts in Nepal.": "नेपालका स्वास्थ्यकर्मी तथा छाला प्रेमीहरूका लागि प्रमाणित डर्माटोलोजिकल गाइड, सामग्री मोनोग्राफ र क्लिनिकल उपचार प्रोटोकल।",
@@ -457,7 +457,7 @@ const CDERMA_NEPALI_DICTIONARY = {
   "Timing matters more than you think. Applying moisturiser on damp skin locks in 3x more water than applying on dry skin.": "समयको महत्त्व तपाईंले सोचेभन्दा बढी छ। ओसिलो छालामा मोइस्चराइजर लगाउँदा सुख्खा छालाको तुलनामा ३ गुणा बढी पानी सुरक्षित रहन्छ।",
   "What Actually Causes Pimples — And What You Can Do About It": "डण्डीफोर आउनुको वास्तविक कारण र यसको प्रभावकारी समाधान",
   "Read Article": "लेख पढ्नुहोस्",
-  "5 min read": "५ मिनेट अध्ययन",
+  "5 min read": "५ मिनेट पढाइ",
   "4 min read": "४ मिनेट अध्ययन",
   "6 min read": "६ मिनेट अध्ययन",
   "7 min read": "७ मिनेट अध्ययन",
@@ -492,7 +492,7 @@ const CDERMA_NEPALI_DICTIONARY = {
   "Moisture Lock": "ओस सुरक्षा",
   "Environmental Defense": "वातावरणीय सुरक्षा",
   "Dermatological Protocol": "डर्माटोलोजिकल प्रोटोकल",
-  "VERIFIED THROUGH CDERMA CLINICAL REGISTRY · ID #BRT-441": "सिडर्मा क्लिनिकल रजिस्ट्री मार्फत प्रमाणित · ID #BRT-441",
+  "VERIFIED THROUGH CDERMA CLINICAL REGISTRY · ID #BRT-441": "सिडर्मा क्लिनिकल रजिस्ट्री मार्फत प्रमाणित · आईडी #BRT-441",
   "VERIFIED THROUGH CDERMA CLINICAL REGISTRY · ID #PKR-302": "सिडर्मा क्लिनिकल रजिस्ट्री मार्फत प्रमाणित · ID #PKR-302",
   "VERIFIED THROUGH CDERMA CLINICAL REGISTRY · ID #KTM-891": "सिडर्मा क्लिनिकल रजिस्ट्री मार्फत प्रमाणित · ID #KTM-891",
   "Western Skin Clinic, Pokhara": "वेस्टर्न स्किन क्लिनिक, पोखरा",
@@ -542,7 +542,7 @@ const CDERMA_NEPALI_DICTIONARY = {
   "Batch Authenticated": "ब्याच प्रमाणित",
   "In Stock · Direct Dispense": "उपलब्ध · प्रत्यक्ष वितरण",
   "Clinical Summary": "क्लिनिकल सारांश",
-  "Key Benefits": "प्रमुख फाइदाहरू",
+  "Key Benefits": "मुख्य फाइदाहरू",
   "Clinical Efficacy": "क्लिनिकल प्रभावकारिता",
   "How to Use": "प्रयोग विधि",
   "Full INCI": "सम्पूर्ण सामग्री",
@@ -650,12 +650,902 @@ const CDERMA_NEPALI_DICTIONARY = {
   "Why Nepal's Winter Air Damages Your Skin — And the Easy Fix": "नेपालको जाडो हावाले छालालाई किन असर गर्छ — र यसको सजिलो समाधान",
   "Cold, dry air pulls moisture right out of your skin. In Kathmandu and across Nepal, winter means tight, flaky cheeks. Here is how to fix it.": "चिसो र सुख्खा हावाले छालाको आद्रता खोस्छ। जाडोमा छाला फुस्रो हुन नदिन अपनाउनुपर्ने उपायहरू जान्नुहोस्।",
   "Pimples happen when your pores get blocked by oil and dead skin cells. Learn what really works — and the common mistakes that make acne worse.": "छिद्रहरू तेल र मृत छालाले बन्द हुँदा डण्डीफोर आउँछ। के ले वास्तवमा काम गर्छ र के गल्तीहरूले यसलाई बढाउँछन् जान्नुहोस्।",
-  "No articles in this category yet. Check back soon!": "यस वर्गमा अहिले कुनै लेख छैन। चाँडै नयाँ लेख थपिनेछ!"
+  "No articles in this category yet. Check back soon!": "यस वर्गमा अहिले कुनै लेख छैन। चाँडै नयाँ लेख थपिनेछ!",
+  "CDerma Nepal's complete wholesale formulation catalog. Doctor-recommended clinical face care systems — Centella barrier serums, pH-balanced cleansers, and mineral sunscreens — available for B2B distribution to cosmetic stores, pharmacies, salons, and dermatology clinics across Nepal.": "सिडर्मा नेपालको पूर्ण थोक फर्मुलेशन क्याटलग। चिकित्सकद्वारा सिफारिस गरिएको क्लिनिकल फेस केयर प्रणाली — सेन्टेला ब्यारियर सिरम, pH-सन्तुलित क्लिन्जर र मिनरल सनस्क्रिन — नेपालभरिका कस्मेटिक स्टोर, फार्मेसी, सैलुन तथा छाला क्लिनिकहरूमा बी२बी वितरणका लागि उपलब्ध।",
+  "Order an authenticated Retail & Practitioner Onboarding Sample Kit containing all 6 formulations, complete Certificate of Analysis (COA) batch monographs, cosmetic counter displays, and product guidance brochures.": "सबै ६ वटा उत्पादनहरू, पूर्ण प्रयोगशाला विश्लेषण प्रमाणपत्र (COA), काउन्टर डिस्प्ले र उत्पादन ब्रोसरहरू समावेश भएको आधिकारिक खुद्रा तथा चिकित्सक अनबोर्डिङ स्याम्पल किट अर्डर गर्नुहोस्।",
+  "CDerma’s Doctor's Advice portal provides peer-reviewed dermatological guidance on skin barrier restoration, acne care, high-altitude sun protection, and physiological hydration customized for individuals living in Nepal's varied climate zones.": "सिडर्माको डाक्टर परामर्श पोर्टलले नेपालका विभिन्न हावापानी क्षेत्रहरूमा बसोबास गर्ने व्यक्तिहरूका लागि छालाको ब्यारियर मर्मत, डण्डिफोरको हेरचाह, उच्च-उचाइको घामबाट सुरक्षा र आद्रता सन्तुलन सम्बन्धी प्रमाण-आधारित मार्गदर्शन प्रदान गर्दछ।",
+  "Authentic CDerma products are available online with direct cold-chain dispatch from our Itahari laboratory, and through authorized cosmetic stores and hospital pharmacies across Kathmandu, Pokhara, Biratnagar, and Dharan.": "असली सिडर्मा उत्पादनहरू हाम्रो इटहरी प्रयोगशालाबाट प्रत्यक्ष कोल्ड-चेन डेलिभरी मार्फत अनलाइन उपलब्ध छन्, साथै काठमाडौँ, पोखरा, विराटनगर र धरानका अधिकृत कस्मेटिक पसल तथा अस्पताल फार्मेसीहरूमा पाइन्छन्।",
+  "If you've tried three different creams and your face still feels tight and flaky, you're not alone. Many people in Nepal deal with this, especially in winter or at high altitude. The problem usually isn't your moisturiser — it's something happening deeper in your skin barrier.": "यदि तपाईंले विभिन्न क्रिमहरू प्रयोग गर्दा पनि अनुहार तन्किने र फुस्रो हुने समस्या छ भने तपाईं एक्लो हुनुहुन्न। नेपालमा विशेष गरी जाडोयाम र उच्च हिमाली भेगमा धेरै मानिसहरू यस समस्याबाट पीडित छन्। यसको मुख्य कारण मोइस्चराइजर नभई छालाको सुरक्षात्मक पर्खाल (ब्यारियर) कमजोर हुनु हो।",
+  "If you've tried three different creams and your face still feels tight and flaky, you're not alone. Many people in Nepal deal with this, especially in winter or at high altitude. The problem usually isn't your moisturiser &mdash; it's something happening deeper in your skin barrier.": "यदि तपाईंले विभिन्न क्रिमहरू प्रयोग गर्दा पनि अनुहार तन्किने र फुस्रो हुने समस्या छ भने तपाईं एक्लो हुनुहुन्न। नेपालमा विशेष गरी जाडोयाम र उच्च हिमाली भेगमा धेरै मानिसहरू यस समस्याबाट पीडित छन्। यसको मुख्य कारण मोइस्चराइजर नभई छालाको सुरक्षात्मक पर्खाल (ब्यारियर) कमजोर हुनु हो।",
+  ". Think of it like a brick wall — the bricks are your skin cells and the mortar between them is made of natural fats called ceramides. When that mortar breaks down, moisture escapes easily and your skin dries out.": "यसलाई इँटाको पर्खाल जस्तै सम्झनुहोस् — इँटाहरू छालाका कोषिका हुन् र तिनीहरूलाई जोड्ने सिमेन्ट भनेको सेरामाइड नामक प्राकृतिक लिपिड हो। जब यो सिमेन्ट कमजोर हुन्छ, छालाबाट पानी बाहिर निस्कन्छ र छाला सुख्खा हुन्छ।",
+  ". Think of it like a brick wall &mdash; the bricks are your skin cells and the mortar between them is made of natural fats called ceramides. When that mortar breaks down, moisture escapes easily and your skin dries out.": "यसलाई इँटाको पर्खाल जस्तै सम्झनुहोस् — इँटाहरू छालाका कोषिका हुन् र तिनीहरूलाई जोड्ने सिमेन्ट भनेको सेरामाइड नामक प्राकृतिक लिपिड हो। जब यो सिमेन्ट कमजोर हुन्छ, छालाबाट पानी बाहिर निस्कन्छ र छाला सुख्खा हुन्छ।",
+  "Cold, dry air pulls moisture right out of your skin. In Kathmandu, Pokhara, and high-altitude areas, this is a real problem from October to February. Here is how to protect your skin during those months.": "चिसो र सुख्खा हावाले छालाको आद्रता तुरुन्तै खोस्छ। काठमाडौँ, पोखरा र हिमाली भेगमा असोजदेखि फागुनसम्म यो ठूलो समस्या बन्छ। ती महिनाहरूमा छालालाई सुरक्षित राख्ने उपायहरू यहाँ प्रस्तुत छन्।",
+  "CDerma formulas use 5% bio-active Centella Asiatica and physiological ceramides without artificial perfumes, harsh bleaching agents, or steroid fillers, preventing rebound irritation in Nepal's climate.": "सिडर्माका उत्पादनहरूमा ५% जैविक सेन्टेला एसियाटिका र सेरामाइड प्रयोग गरिन्छ, जसमा कुनै कृत्रिम सुगन्ध, हानिकारक ब्लीच वा स्टेरोइड हुँदैन। यसले नेपालको मौसममा छालालाई जलनबाट जोगाउँछ।",
+  "Pimples happen when your pores get blocked by oil and dead skin cells. The key to preventing them is keeping your skin clean but not over-washing — and choosing products that won't clog pores.": "छालाका छिद्रहरू अतिरिक्त तेल र मृत कोषिकाहरूले बन्द हुँदा डण्डिफोर आउँछन्। यसबाट बच्न छालालाई सफा राख्ने तर अत्यधिक नधुने र छिद्र नथुन्ने उत्पादनहरू प्रयोग गर्नुपर्छ।",
+  "Pimples happen when your pores get blocked by oil and dead skin cells. The key to preventing them is keeping your skin clean but not over-washing &mdash; and choosing products that won't clog pores.": "छालाका छिद्रहरू अतिरिक्त तेल र मृत कोषिकाहरूले बन्द हुँदा डण्डिफोर आउँछन्। यसबाट बच्न छालालाई सफा राख्ने तर अत्यधिक नधुने र छिद्र नथुन्ने उत्पादनहरू प्रयोग गर्नुपर्छ।",
+  "Whether you run a cosmetic store, a clinic, or you just have questions about your skin — we are happy to help. Send us a message on WhatsApp and we will get back to you with honest advice.": "तपाईं कस्मेटिक स्टोर चलाउनुहुन्छ, क्लिनिक सञ्चालन गर्नुहुन्छ वा छाला सम्बन्धी व्यक्तिगत जिज्ञासा छ भने हामी सहयोग गर्न सधैं तत्पर छौं। हामीलाई ह्वाट्सएपमा सन्देश पठाउनुहोस्, हामी इमानदार सल्लाह दिनेछौं।",
+  "Whether you run a cosmetic store, a clinic, or you just have questions about your skin &mdash; we are happy to help. Send us a message on WhatsApp and we will get back to you with honest advice.": "तपाईं कस्मेटिक स्टोर चलाउनुहुन्छ, क्लिनिक सञ्चालन गर्नुहुन्छ वा छाला सम्बन्धी व्यक्तिगत जिज्ञासा छ भने हामी सहयोग गर्न सधैं तत्पर छौं। हामीलाई ह्वाट्सएपमा सन्देश पठाउनुहोस्, हामी इमानदार सल्लाह दिनेछौं।",
+  "CDerma Nepal supplies over 198 authorized cosmetic stores, dermatology practices, aesthetic clinics, and hospital pharmacies in Kathmandu, Lalitpur, Pokhara, Biratnagar, Dharan, and Itahari. All locations carry verified fresh batches manufactured in Koshi Province.": "सिडर्मा नेपालले काठमाडौँ, ललितपुर, पोखरा, विराटनगर, धरान र इटहरीका १९८ भन्दा बढी अधिकृत कस्मेटिक स्टोर, छाला क्लिनिक र अस्पताल फार्मेसीहरूमा आपूर्ति गर्दछ। सबै स्थानमा कोशी प्रदेशमा निर्मित ताजा ब्याचहरू उपलब्ध छन्।",
+  "Every CDerma bottle originates within our Class 10,000 cleanroom research facility in Koshi Province, framed by the Himalayan ranges. We combine indigenous high-altitude botanical extracts with ISO 9001:2015 certified quality standards.": "सिडर्माको प्रत्येक बोतल कोशी प्रदेशस्थित हाम्रो क्लास १०,००० क्लिनरुम प्रयोगशालामा उत्पादन गरिन्छ। हामी उच्च हिमाली जडीबुटीका अर्कलाई ISO ९००१:२०१५ प्रमाणित गुणस्तर मापदण्डसँग संयोजन गर्दछौं।",
+  "CDerma products cannot be purchased online without physician monograph verification. Hospital dispensaries receive direct bi-weekly shipments sealed in nitrogen-purged containers from our Biratnagar facility.": "सिडर्माका उत्पादनहरू अस्पताल र क्लिनिकहरूमा नाइट्रोजन-सिलबन्दी कन्टेनरहरूमा पाक्षिक रूपमा सिधै आपूर्ति गरिन्छ।",
+  "CDerma clinical actives are available through certified cosmetic stores, premium beauty retailers, aesthetic clinics, tertiary hospital dispensaries, and compounding pharmacy partners across Nepal.": "सिडर्माका क्लिनिकल उत्पादनहरू नेपालभरिका प्रमाणित कस्मेटिक स्टोर, ब्युटी रिटेलर, एस्थेटिक क्लिनिक र अस्पताल फार्मेसी साझेदारहरू मार्फत उपलब्ध छन्।",
+  "Join the CDerma authorized hospital and dispensary network. Ensure your patients receive stable, active domestic cosmeceuticals formulated specifically for Nepalese cutaneous phenotypes.": "सिडर्माको अधिकृत अस्पताल तथा औषधालय सञ्जालमा आबद्ध हुनुहोस्। आफ्ना बिरामीहरूलाई नेपाली छालाको प्रकृति अनुकूल तयार पारिएका गुणस्तरीय उत्पादनहरू उपलब्ध गराउनुहोस्।",
+  "Potent medical botanicals lose efficacy under hot transport cargo holds. CDerma manages direct climate-controlled cold-chain logistics from our Koshi formulation center directly to clinic apothecaries in Kathmandu, Pokhara, Biratnagar, and beyond.": "कडा घाम र गर्मीमा ढुवानी गर्दा जडीबुटीको गुणस्तर घट्न सक्छ। त्यसैले सिडर्माले कोशी केन्द्रबाट काठमाडौँ, पोखरा, विराटनगर लगायत देशभरका क्लिनिकहरूमा तापक्रम-नियन्त्रित कोल्ड-चेन ढुवानी गर्दछ।",
+  "Every commercial unit leaving our Itahari cleanroom is stamped with a traceable 8-digit manufacturing lot ID. Enter your bottle's code below to inspect the actual analytical laboratory certificate signed by our head chemist.": "हाम्रो इटहरी क्लिनरुमबाट निस्कने प्रत्येक बोतलमा ८-अङ्कको ब्याच लट आईडी हुन्छ। हाम्रो प्रमुख केमिस्टद्वारा प्रमाणित प्रयोगशाला प्रमाणपत्र हेर्न आफ्नो बोतलको कोड प्रविष्ट गर्नुहोस्।",
+  "We welcome dermatologists, plastic surgeons, clinical pharmacists, and institutional procurement teams to inspect our HEPA HVAC systems, analytical spectroscopy setups, and aseptic staging rooms in Itahari.": "हामी चर्मरोग विशेषज्ञ, प्लास्टिक सर्जन, क्लिनिकल फार्मासिस्ट र अस्पताल खरिद समितिलाई इटहरीस्थित हाम्रो हेपा फिल्टर, स्पेक्ट्रोस्कोपी ल्याब र क्लिनरुम निरीक्षण गर्न हार्दिक स्वागत गर्दछौं।",
+  "Bridging pharmaceutical-grade dermatological actives with potent, sustainably harvested Himalayan botanicals. We built Nepal’s first certified dermocosmetics research cleanroom in Itahari, Sunsari.": "फर्मास्युटिकल-ग्रेड सक्रिय तत्वहरू र दिगो रूपमा संकलित हिमाली जडीबुटीको संगम। हामीले इटहरी, सुनसरीमा नेपालकै पहिलो प्रमाणित डर्मोकोस्मेटिक्स क्लिनरुम निर्माण गरेका छौं।",
+  "is an authorized doctor-formulated skincare manufacturer based in Itahari, Sunsari, Koshi Province. CDerma supplies verified cosmetic stores, retail pharmacies, and dermatology practices across all 7 provinces of Nepal with direct cleanroom batch pricing, fresh inventory, and guaranteed 24-48 hour dispatch.": "इटहरी, सुनसरी, कोशी प्रदेशमा अवस्थित अधिकृत चिकित्सक-प्रमाणित छाला हेरचाह निर्माता हो। सिडर्माले नेपालका सबै ७ प्रदेशका कस्मेटिक स्टोर, फार्मेसी र छाला क्लिनिकहरूलाई प्रत्यक्ष क्लिनरुम थोक मूल्य, ताजा मौज्दात र २४–४८ घण्टाभित्र डेलिभरी उपलब्ध गराउँछ।",
+  "“CDerma’s Himalayan lipid-barrier complex has transformed our post-fractional laser outcomes. The non-comedogenic base prevents rebound erythema without aggravating congested skin. Having guaranteed domestic stock within 24 hours removes our clinic’s reliance on inconsistent third-party couriers.”": "“सिडर्माको लिपिड-ब्यारियर कम्प्लेक्सले लेजर उपचारपछिको नतिजामा उल्लेख्य सुधार ल्याएको छ। यसले छाला रातो हुन दिँदैन र छिद्र बन्द गर्दैन। २४ घण्टाभित्र नेपालमै ताजा स्टक प्राप्त हुनाले हाम्रो क्लिनिकको काम धेरै सहज भएको छ।”",
+  "We supply premier cosmetic stores, retail beauty dispensaries, certified dermatology clinics, aesthetic laser centers, and hospital pharmacies across all seven provinces of Nepal with reliable domestic stock, protected retail margins, and accredited partner support.": "हामी नेपालका सबै सात प्रदेशका प्रतिष्ठित कस्मेटिक स्टोर, ब्युटी शप, छाला क्लिनिक, लेजर सेन्टर र अस्पताल फार्मेसीहरूलाई भरपर्दो स्टक, सुरक्षित मुनाफा र व्यावसायिक समर्थन प्रदान गर्दछौं।",
+  "“Our retail hospital pharmacy dispatches CDerma daily. Patient adherence is exceptionally high because the textures are elegant, and the batch freshness is palpable compared to stale foreign consignments.”": "“हाम्रो अस्पताल फार्मेसीबाट सिडर्मा दैनिक रूपमा बिक्री हुन्छ। यसको बनावट अत्यन्तै हल्का र ताजा हुनाले बिरामीहरूले यसलाई धेरै रुचाएका छन्।”",
+  "Formulated and packaged in Koshi Province under ISO 9001:2015 certified quality protocols. Eliminate customs holds, import tariff surcharges, and compromised heat-exposed shipments.": "कोशी प्रदेशमा ISO ९००१:२०१५ गुणस्तर मापदण्ड अन्तर्गत उत्पादित। भन्सार झन्झट, चर्को कर र गर्मीमा बिग्रने विदेशी उत्पादनको समस्याबाट मुक्त।",
+  "Strict Minimum Advertised Price (MAP) enforcement prevents undercut pricing online. Tiered wholesale pricing unlocks sustainable returns for cosmetic stores and clinical practices.": "कडा मूल्य नीतिका कारण अनलाइनमा अस्वस्थ प्रतिस्पर्धा रोकिन्छ। तहगत थोक मूल्यले कस्मेटिक स्टोर र क्लिनिकहरूलाई दिगो नाफा सुनिश्चित गर्दछ।",
+  "Thank you for partnering with CDerma Nepal. Your regional territory representative will verify your business credentials and transmit the wholesale price schedule within 24 hours.": "सिडर्मा नेपालसँग साझेदारी गर्नुभएकोमा धन्यवाद। हाम्रा क्षेत्रीय प्रतिनिधिले तपाईंको व्यवसाय प्रमाणीकरण गरी २४ घण्टाभित्र थोक मूल्य तालिका पठाउनुहुनेछ।",
+  "Join over 160+ medical clinics, dermatology practices, and certified retail pharmacies. Enjoy wholesale bracket pricing, direct batch dispatch, and physician marketing toolkits.": "१६० भन्दा बढी मेडिकल क्लिनिक, छाला उपचार केन्द्र र फार्मेसीहरूको सञ्जालमा जोडिनुहोस्। आकर्षक थोक मूल्य, प्रत्यक्ष ब्याच डेलिभरी र मार्केटिङ सामग्री प्राप्त गर्नुहोस्।",
+  "Our formulation scientists host interactive training covering barrier restoration biochemistry, cosmetic retail consultations, laser aftercare protocols, and regimen pairing.": "हाम्रा वैज्ञानिकहरूले छालाको ब्यारियर विज्ञान, कस्मेटिक परामर्श, लेजरपछिको हेरचाह र उत्पादन सिफारिस सम्बन्धी विशेष तालिम प्रदान गर्दछन्।",
+  "Unlike imported dermaceuticals prone to erratic border holdups and grey market diversion, CDerma guarantees pristine stability, authentic origin, and domestic continuity.": "सिमानामा रोकिने र नक्कली सामान आउने विदेशी ब्रान्डहरूको विपरीत, सिडर्माले १००% गुणस्तर, असली स्रोत र निरन्तर आपूर्तिको ग्यारेन्टी दिन्छ।",
+  "Complimentary 15ml post-procedure trial sachets, luxury cosmetic counter acrylic displays, and patient regimen journals delivered with every opening volume order.": "प्रत्येक पहिलो थोक अर्डरसँगै १५ मिलि परीक्षण स्यासे, काउन्टर डिस्प्ले स्ट्यान्ड र बिरामी हेरचाह पुस्तिका निःशुल्क प्रदान गरिन्छ।",
+  "Verified cosmetic store and clinic partners receive targeted customer referrals through CDerma's national portal and geolocated partner network.": "प्रमाणित कस्मेटिक स्टोर र क्लिनिक साझेदारहरूले सिडर्माको राष्ट्रिय वेबसाइट मार्फत ग्राहक सिफारिस प्राप्त गर्दछन्।",
+  "Complete active ingredient profiles, lab pH metrics, clinical case imagery, and unit wholesale breakdown (24 Pages, PDF, 4.2 MB).": "सक्रिय तत्वहरूको विवरण, प्रयोगशाला pH मापन, क्लिनिकल तस्बिरहरू र थोक मूल्य विवरण (२४ पृष्ठ, PDF, ४.२ MB)।",
+  "Continuous temperature-regulated cold dispatch preserving sensitive active botanicals across mountain and lowland territories.": "पहाडी तथा तराईका सबै भूभागमा संवेदनशील जडीबुटी सुरक्षित राख्न निरन्तर तापक्रम-नियन्त्रित ढुवानी।",
+  "Direct courier hand-off from formulation laboratory facility. Immediate stock replacement for intensive clinical consumption.": "प्रयोगशाला केन्द्रबाट सिधै कुरियर डेलिभरी। क्लिनिकहरूको आवश्यकता अनुसार तत्काल स्टक पुनःपूर्ति।",
+  "Handled via Naxal Central Depot with dedicated pharmaceutical logistics personnel and insured door-to-pharmacy drop.": "नक्साल केन्द्रीय डिपो मार्फत समर्पित फार्मास्युटिकल कर्मचारीहरूद्वारा फार्मेसीसम्म सुरक्षित र बीमा गरिएको डेलिभरी।",
+  "Insulated shock-proof packaging preserving emulsion integrity across transit altitudes and varying thermal zones.": "ढुवानीको समयमा उचाइ र तापक्रम परिवर्तनबाट जोगाउने सुरक्षित इन्सुलेटेड प्याकेजिङ।",
+  "A dedicated regional enterprise manager will provide the trade wholesale tier within one business day.": "हाम्रा समर्पित क्षेत्रीय प्रबन्धकले एक कार्यदिनभित्र थोक मूल्य तालिका उपलब्ध गराउनुहुनेछ।",
+  "Certified clinics receive full-sized retail testers alongside Certificate of Analysis (COA) files.": "प्रमाणित क्लिनिकहरूले प्रयोगशाला परीक्षण रिपोर्ट (COA) सहित पूर्ण आकारका टेस्टरहरू प्राप्त गर्दछन्।",
+  "Include Tester Sample Kit, display stand, and full COA testing verification files.": "टेस्टर स्याम्पल किट, डिस्प्ले स्ट्यान्ड र पूर्ण COA परीक्षण फाइलहरू समावेश गर्नुहोस्।",
+  "Specially created to deeply soothe damaged skin, calm irritation after facials or sun exposure, and lock in moisture against cold dry air and sun. Made with calming cica and natural skin-repairing ceramides.": "क्षतिग्रस्त छालालाई गहिरो शान्ति दिन, फेसियल वा घामको जलन कम गर्न र चिसो सुख्खा हावाबाट जोगाउन विशेष निर्मित। शान्त पार्ने सिका र सेरामाइडयुक्त।",
+  "Carefully blended and bottled in our certified laboratory in Itahari, Nepal, under strict hygiene and air-filtered conditions.": "हाम्रो इटहरीस्थित प्रमाणित प्रयोगशालामा कडा सरसफाइ र फिल्टर गरिएको हावायुक्त वातावरणमा तयार पारिएको।",
+  "No artificial scents or harsh perfumes that cause irritation or burning. Safe and soothing for even the most sensitive skin.": "जलन वा पोलाइ गराउने कुनै कृत्रिम सुगन्ध नभएको। अति संवेदनशील छालाका लागि पनि पूर्ण सुरक्षित।",
+  "Lightweight daily mineral sunscreen with SPF 50+ protection that leaves zero white cast and protects against sun spots.": "SPF ५०+ सुरक्षा दिने हल्का दैनिक मिनरल सनस्क्रिन, जसले कुनै सेतो दाग छोड्दैन र कालो पोतोबाट जोगाउँछ।",
+  "Tested to keep your skin hydrated, clear, and glowing through dry winter winds, summer sun, and city dust across Nepal.": "नेपालको जाडोको हावा, गर्मीको घाम र सहरी धुलोमा पनि छालालाई ओसिलो, सफा र चम्किलो राख्न परीक्षण गरिएको।",
+  "Gentle night facial oil that smooths fine lines and restores radiant, firm skin overnight without peeling or redness.": "छाला नखुम्चिने गरी रातभरिमा चाउरीपना हटाउने र प्राकृतिक चमक दिने कोमल रात्रिकालीन फेसियल तेल।",
+  "Pure natural plant extracts like centella and seabuckthorn sustainably harvested from high-altitude valleys in Nepal.": "नेपालका उच्च हिमाली उपत्यकाहरूबाट दिगो रूपमा संकलित सेन्टेला र सीबकथोर्न जस्ता शुद्ध प्राकृतिक जडीबुटी।",
+  "Rich, soothing moisturizer that locks in deep hydration all day and shields skin from cold dry winds and pollution.": "दिनभर गहिरो ओस सुरक्षित राख्ने र चिसो हावा तथा प्रदूषणबाट जोगाउने पोषणयुक्त मोइस्चराइजर।",
+  "Pure cica and 5% niacinamide to quickly calm redness, soothe irritation, and rebuild your skin's moisture barrier.": "रातोपन छिट्टै शान्त पार्न, जलन कम गर्न र छालाको ब्यारियर पुनः निर्माण गर्न शुद्ध सिका र ५% नियासिनामाइड।",
+  "Refreshing face mist packed with multi-layer hyaluronic acid to instantly quench dry, dehydrated skin on the go.": "सुख्खा छालालाई तत्काल ताजा र ओसिलो बनाउन मल्टि-लेयर हायलुरोनिक एसिडयुक्त फेस मिस्ट।",
+  "Gentle foaming wash that clears daily dirt and pollution without making your skin feel tight, dry, or stripped.": "छालालाई नतन्काई वा नसुकाई दैनिक धुलो र प्रदूषण सफा गर्ने कोमल फोमिङ फेस वास।",
+  "Available at leading cosmetic stores, beauty retailers, and certified skin clinics across Nepal.": "नेपालभरिका प्रमुख कस्मेटिक स्टोर, ब्युटी रिटेलर र प्रमाणित छाला क्लिनिकहरूमा उपलब्ध छन्।",
+  "Pre-quarantine incubation for bacterial, fungal, and spore-forming microbes. ICP-MS mass spectrometry confirms zero heavy metals (Lead < 0.1ppm, Mercury < 0.01ppm).": "ब्याक्टेरिया र ढुसीको सूक्ष्म जाँच। मास स्पेक्ट्रोमेट्री परीक्षणबाट शून्य हेभी मेटल (सिसा < ०.१ppm, पारो < ०.०१ppm) प्रमाणित।",
+  "Pre-quarantine incubation for bacterial, fungal, and spore-forming microbes. ICP-MS mass spectrometry confirms zero heavy metals (Lead &lt; 0.1ppm, Mercury &lt; 0.01ppm).": "ब्याक्टेरिया र ढुसीको सूक्ष्म जाँच। मास स्पेक्ट्रोमेट्री परीक्षणबाट शून्य हेभी मेटल (सिसा < ०.१ppm, पारो < ०.०१ppm) प्रमाणित।",
+  "Formulated to mirror human epidermal lipids exactly: Ceramide NP, Cholesterol, and Free Fatty Acids engineered in stoichiometric balance for rapid barrier biomimicry.": "मानव छालाको प्राकृतिक लिपिड संरचनासँग हुबहु मेल खाने: सेरामाइड NP, कोलेस्ट्रोल र फ्याटी एसिडको वैज्ञानिक सन्तुलन।",
+  "Every formula undergoes cyclic thermal testing: cycling between 4°C Kathmandu chill and 42°C Terai humidity to preserve emulsion rheology across all 7 provinces.": "चक्रीय थर्मल परीक्षण: सबै ७ प्रदेशमा क्रिमको गुणस्तर कायम राख्न काठमाडौँको ४° सेन्टिग्रेड चिसो र तराईको ४२° सेन्टिग्रेड तापक्रममा परीक्षण।",
+  "Air cascaded at 25 Pascals over 4 clean zones ensures zero airborne spores, bacteria, or microparticulates settle during high-shear vacuum homogenization.": "४ वटा क्लिन जोनमा २५ पास्कलको वायु दबाबले उत्पादनको क्रममा हावाबाट कुनै पनि धुलो वा ब्याक्टेरिया पर्न दिँदैन।",
+  "Sustainably foraged between 1,400m and 2,200m altitude in Eastern Nepal by smallholder collective cooperatives.": "पूर्वी नेपालको १,४०० देखि २,२०० मिटर उचाइमा साना किसान सहकारीहरूद्वारा दिगो रूपमा संकलित।",
+  "Guaranteed price stability paid directly to indigenous cultivators across Dhankuta and Sankhuwasabha districts.": "धनकुटा र संखुवासभा जिल्लाका स्थानीय कृषकहरूलाई उचित मूल्यको ग्यारेन्टी।",
+  "From positive pressure cascading airlocks to regional stability testing under Nepal’s severe thermal contrasts.": "पोजिटिभ प्रेसर एयरलकदेखि नेपालको तीव्र मौसमी भिन्नतामा क्षेत्रीय स्थिरता परीक्षणसम्म।",
+  "All clinic retail cartons carry direct micro-QR codes linking directly to this immutable assay ledger.": "सबै बट्टामा डिजिटल क्युआर कोड रहेको छ जसबाट सिधै प्रयोगशाला परीक्षण रिपोर्ट हेर्न सकिन्छ।",
+  "PASSED ALL TESTS": "सबै परीक्षणहरू सफल",
+  "Download PDF COA": "PDF रिपोर्ट डाउनलोड गर्नुहोस्",
+  "Batch Traceability": "ब्याच ट्र्याकिङ",
+  "Fair Trade Ledger": "उचित व्यापार अभिलेख",
+  "Clinic Direct SLA": "क्लिनिक प्रत्यक्ष आपूर्ति सम्झौता",
+  "Try test batches:": "परीक्षण नमुनाहरू हेर्नुहोस्:",
+  "Wild Harvest": "जंगली जडीबुटी संकलन",
+  "Batch Result": "ब्याच नतिजा",
+  "Verify": "प्रमाणीकरण गर्नुहोस्",
+  "Days": "दिन",
+  "Std": "मापदण्ड",
+  "≥ 90.0% by HPLC": "≥ ९०.०% HPLC विधिबाट",
+  "94.20% [Pass]": "९४.२०% [सफल]",
+  "5.42 pH [Pass]": "५.४२ pH [सफल]",
+  "+68% Retention": "+६८% आद्रता सुरक्षा",
+  "< 10 CFU/g": "< १० CFU/ग्राम",
+  "&lt; 10 CFU/g": "< १० CFU/ग्राम",
+  "CDerma maintains an apothecary-level standard. Formulations are biologically active, unbuffered by synthetic fillers, and require structured medical oversight.": "सिडर्माले उच्च औषधीय मापदण्ड कायम राख्छ। हाम्रा फर्मुलेसनहरू जैविक रूपमा सक्रिय छन् र कुनै कृत्रिम मिसावट छैन।",
+  "Receive your freshly compounded formulation directly at the clinic's certified dispensary or authorized hospital pharmacy counter with tamper-evident nitrogen seals intact.": "आफ्नो ताजा तयार पारिएको उत्पादन क्लिनिकको प्रमाणित औषधालय वा अस्पताल फार्मेसीबाट सुरक्षित नाइट्रोजन सिलसहित प्राप्त गर्नुहोस्।",
+  "Your clinician matches specific Himalayan phytochemical actives (Centella, Rhododendron anthopogon, Lichenic acids) and assigns a unique traceability lot code.": "तपाईंको चिकित्सकले हिमाली वनस्पति सक्रिय तत्वहरू छानेर उत्पादनको ब्याच लट कोड प्रमाणीकरण गर्नुहुन्छ।",
+  "Visit any authorized dermatologist or hospital aesthetic unit for barrier profiling, stratum corneum hydration testing, and dermatological consultation.": "छालाको ब्यारियर परीक्षण र परामर्शका लागि कुनै पनि अधिकृत छाला विशेषज्ञ वा अस्पतालमा जानुहोस्।",
+  "Locate an Authorized Store or Clinic": "अधिकृत स्टोर वा क्लिनिक खोज्नुहोस्",
+  "All Outlets": "सबै आउटलेटहरू",
+  "Cosmetic Stores": "कस्मेटिक स्टोरहरू",
+  "Dermatology Clinics": "डर्माटोलोजी क्लिनिकहरू",
+  "Hospital Pharmacies": "अस्पताल फार्मेसीहरू",
+  "Aesthetic Centers": "एस्थेटिक सेन्टरहरू",
+  "All 7 Provinces": "सबै ७ प्रदेशहरू",
+  "Search by cosmetic store, clinic name, doctor, city (Kathmandu, Pokhara, Biratnagar)...": "कस्मेटिक स्टोर, क्लिनिकको नाम, चिकित्सक वा सहरबाट खोज्नुहोस्...",
+  "Only show locations with verified in-stock batches": "स्टक प्रमाणित भएका आउटलेटहरू मात्र देखाउनुहोस्",
+  "Reset Map": "नक्सा रिसेट गर्नुहोस्",
+  "Selected Hub": "चयन गरिएको केन्द्र",
+  "Batch Inventory:": "ब्याच मौज्दात:",
+  "Cold-Chain Temp:": "कोल्ड-चेन तापक्रम:",
+  "Dispensary Hours:": "खुल्ने समय:",
+  "148 Units Verified": "१४८ युनिट प्रमाणित",
+  "18.4°C Controlled": "१८.४° सेन्टिग्रेड नियन्त्रित",
+  "Verified Dispensary Node": "प्रमाणित औषधालय केन्द्र",
+  "Authorized Outlet Node": "अधिकृत आउटलेट केन्द्र",
+  "Licensed Chief Pharmacist": "इजाजतपत्र प्राप्त मुख्य फार्मासिस्ट",
+  "Direct Lab Outpost": "प्रत्यक्ष प्रयोगशाला शाखा",
+  "Same-Day Dispatch": "सोही दिन डेलिभरी",
+  "Express Cold-Chain 24h": "२४ घण्टे एक्सप्रेस कोल्ड-चेन",
+  "Koshi Lab Transit:": "कोशी ल्याब ढुवानी:",
+  "Contact Store": "स्टोरमा सम्पर्क गर्नुहोस्",
+  "Book Consultation": "परामर्श बुक गर्नुहोस्",
+  "Directions": "दिशा निर्देशन",
+  "In Stock": "स्टकमा उपलब्ध",
+  "Allocated": "रिजर्भ गरिएको",
+  "Batch Availability": "ब्याच उपलब्धता",
+  "Verified In-Stock": "स्टक प्रमाणित",
+  "Sorted: Priority": "प्राथमिकता अनुसार",
+  "All Outlets (": "सबै आउटलेटहरू (",
+  "Cosmetic Stores (": "कस्मेटिक स्टोरहरू (",
+  "Dermatology (": "डर्माटोलोजी (",
+  "Hospitals (": "अस्पतालहरू (",
+  "Aesthetic (": "एस्थेटिक (",
+  "NMID Audit 2024": "NMID अडिट २०२४",
+  "3,400+ MASL": "३,४००+ मिटर उचाइ",
+  "Laboratory Swatch No. 044: Rapid spreadability test on calibrated high-porosity slate substrate.": "प्रयोगशाला स्वाच नं. ०४४: उच्च-छिद्रयुक्त सतहमा द्रुत फैलावट परीक्षण।",
+  "Deep hydration: tiny molecules hydrate deep below, while larger ones lock water on top.": "गहिरो आद्रता: सूक्ष्म अणुहरूले छालाको गहिराइसम्म पोषण दिन्छन् र ठूला अणुहरूले बाहिरी सतहमा ओस सुरक्षित राख्छन्।",
+  "A gentle, clean herbal scent directly from pure fresh Himalayan centella leaf water.": "ताजा हिमाली सेन्टेला पातको पानीबाट प्राप्त शुद्ध र कोमल प्राकृतिक जडीबुटी सुगन्ध।",
+  "Softens rough texture, speeds up skin healing, and boosts bounce and elasticity.": "फुस्रोपन हटाई छाला नरम बनाउँछ, निको हुने गति बढाउँछ र प्राकृतिक लचिलोपन दिन्छ।",
+  "Won't Clog Pores": "छिद्र बन्द गर्दैन (नन-कमेडोजेनिक)",
+  "Active Potency": "सक्रिय प्रभावकारिता",
+  "pH 5.4 - 5.8": "pH ५.४ - ५.८",
+  "Fast Absorption": "द्रुत अवशोषण",
+  "Dewy Serum Finish": "प्राकृतिक चम्किलो फिनिश",
+  "Alpine Flora": "हिमाली वनस्पति",
+  "30 ml Dropper": "३० मिलि ड्रपर",
+  "Source": "स्रोत",
+  "Strength": "मात्रा",
+  "Lab Sealed": "ल्याब सिलबन्दी",
+  "Cold Chain": "कोल्ड चेन",
+  "Clinical Guidance Notice": "क्लिनिकल मार्गदर्शन सूचना",
+  "Dispensed through authorized cosmetic stores, beauty retailers, licensed dermatology clinics, and hospital pharmacies across Nepal.": "नेपालभरिका अधिकृत कस्मेटिक स्टोर, ब्युटी रिटेलर, छाला क्लिनिक र अस्पताल फार्मेसीहरूबाट उपलब्ध।",
+  "Have questions regarding your specific skin condition, prescription compatibility, or hospital order batching? Our pharmacological team is on standby.": "आफ्नो छालाको अवस्था, अन्य औषधिसँगको अनुकूलता वा अस्पताल अर्डर सम्बन्धी कुनै प्रश्न छन्? हाम्रो विज्ञ टोली सहयोगका लागि तयार छ।",
+  "Available through authorized aesthetic & dermatology centers in Pokhara, Biratnagar, Chitwan & Butwal.": "पोखरा, विराटनगर, चितवन र बुटवलका अधिकृत एस्थेटिक तथा डर्माटोलोजी केन्द्रहरूमा उपलब्ध।",
+  "Clinical Batch: Verified": "क्लिनिकल ब्याच: प्रमाणित",
+  "ISO Class 7": "आईएसओ क्लास ७",
+  "Product Details": "उत्पादन विवरण",
+  "Find In Stores": "स्टोरहरूमा खोज्नुहोस्",
+  "Centella Barrier Restore Concentrate — Doctor-Recommended Face Care for Wholesale Distribution": "सेन्टेला ब्यारियर रिस्टोर कन्सन्ट्रेट — थोक वितरणका लागि चिकित्सक सिफारिस फेस केयर",
+  "Centella Barrier Restore Serum | Doctor-Recommended Face Care Nepal | CDerma Wholesale": "सेन्टेला ब्यारियर रिस्टोर सिरम | चिकित्सक सिफारिस फेस केयर नेपाल | सिडर्मा थोक",
+  "is a doctor-formulated face care serum manufactured in Itahari, Nepal, designed to repair compromised skin barriers and reverse high-altitude trans-epidermal water loss (TEWL).": "इटहरी, नेपालमा उत्पादित चिकित्सकद्वारा प्रमाणित फेस केयर सिरम हो, जसले क्षतिग्रस्त छालाको ब्यारियर मर्मत गर्दछ र उच्च उचाइमा हुने पानीको क्षतिलाई रोक्दछ।",
+  "We write these posts to help you understand your skin — no confusing words, no sales tricks. Just simple, practical advice from doctors who care about your skin health.": "हामी तपाईंलाई आफ्नो छाला बुझ्न मद्दत गर्न यी लेखहरू लेख्छौं — कुनै अप्ठ्यारो शब्द वा व्यापारिक दाउपेच बिना। केवल तपाईंको छालाको स्वास्थ्य चाहने डाक्टरहरूको सरल र व्यावहारिक सल्लाह।",
+  "We write these posts to help you understand your skin &mdash; no confusing words, no sales tricks. Just simple, practical advice from doctors who care about your skin health.": "हामी तपाईंलाई आफ्नो छाला बुझ्न मद्दत गर्न यी लेखहरू लेख्छौं — कुनै अप्ठ्यारो शब्द वा व्यापारिक दाउपेच बिना। केवल तपाईंको छालाको स्वास्थ्य चाहने डाक्टरहरूको सरल र व्यावहारिक सल्लाह।",
+  "Timing matters more than you think. Applying moisturiser on damp skin — right after washing your face — locks in up to 3x more water than applying it on dry skin.": "समय तपाईंले सोचेभन्दा बढी महत्त्वपूर्ण हुन्छ। मुख धोएपछि हल्का ओसिलो छालामा मोइस्चराइजर लगाउँदा सुख्खा छालामा भन्दा ३ गुणा बढी पानी सुरक्षित रहन्छ।",
+  "Timing matters more than you think. Applying moisturiser on damp skin &mdash; right after washing your face &mdash; locks in up to 3x more water than applying it on dry skin.": "समय तपाईंले सोचेभन्दा बढी महत्त्वपूर्ण हुन्छ। मुख धोएपछि हल्का ओसिलो छालामा मोइस्चराइजर लगाउँदा सुख्खा छालामा भन्दा ३ गुणा बढी पानी सुरक्षित रहन्छ।",
+  "Direct answers from our consultant dermatologists regarding barrier restoration, Nepal's climate challenges, and daily application.": "छालाको ब्यारियर मर्मत, नेपालको हावापानीका चुनौतीहरू र दैनिक प्रयोग सम्बन्धी हाम्रा कन्सल्टेन्ट छाला विशेषज्ञहरूबाट प्रत्यक्ष जवाफ।",
+  "Your skin repairs itself at night. Poor sleep means dull, tired-looking skin. Aim for 7–8 hours.": "राति सुत्दा छालाले आफूलाई मर्मत गर्दछ। कम सुत्दा छाला फुस्रो र थकित देखिन्छ। दैनिक ७–८ घण्टा सुत्नुहोस्।",
+  "Your skin repairs itself at night. Poor sleep means dull, tired-looking skin. Aim for 7&ndash;8 hours.": "राति सुत्दा छालाले आफूलाई मर्मत गर्दछ। कम सुत्दा छाला फुस्रो र थकित देखिन्छ। दैनिक ७–८ घण्टा सुत्नुहोस्।",
+  "Over-washing strips your skin's natural oils and makes it worse, not better. Twice a day is enough.": "धेरै पटक मुख धुँदा प्राकृतिक तेल नष्ट हुन्छ र छाला झन् बिग्रन्छ। दिनको दुई पटक धुनु पर्याप्त हुन्छ।",
+  "Dehydration shows up on your face fast — as dullness, tightness, and deeper-looking lines.": "पानीको कमी अनुहारमा तुरुन्तै देखिन्छ — फुस्रोपन, छाला तन्किने र चाउरीपनाको रूपमा।",
+  "Dehydration shows up on your face fast &mdash; as dullness, tightness, and deeper-looking lines.": "पानीको कमी अनुहारमा तुरुन्तै देखिन्छ — फुस्रोपन, छाला तन्किने र चाउरीपनाको रूपमा।",
+  "Your hands carry bacteria and oil. Touching your face is one of the biggest causes of breakouts.": "हातमा धुलो र ब्याक्टेरिया हुन्छ। अनुहार बारम्बार छुँदा डण्डिफोर आउने मुख्य कारण बन्छ।",
+  "Even on cloudy days, UV rays can damage your skin and cause dark spots over time.": "बादल लागेको दिनमा पनि घामको पराबैजनी किरणले छालालाई हानि पुर्याउन र कालो पोतो ल्याउन सक्छ।",
+  "Quick Doctor Tips": "चिकित्सकका उपयोगी सुझावहरू",
+  "Sleep heals skin.": "निन्द्राले छाला निको पार्छ।",
+  "Wash gently.": "कोमल रूपमा धुनुहोस्।",
+  "Read Full Article": "पूरा लेख पढ्नुहोस्",
+  "Talk to Our Team.": "हाम्रो टोलीसँग कुरा गर्नुहोस्।",
+  "From Our Doctors": "हाम्रा चिकित्सकहरूबाट",
+  "Acne & Pimples": "डण्डिफोर र दाग",
+  "Sensitive Skin": "संवेदनशील छाला",
+  "Daily Routine": "दैनिक दिनचर्या",
+  "Editor's Pick": "सम्पादकको रोजाइ",
+  "Brightening": "छालाको चमक",
+  "All Topics": "सबै विषयहरू",
+  "Read": "पढ्नुहोस्",
+  "Dr. P. Bhattarai": "डा. पी. भट्टराई",
+  "Dr. R. Shrestha": "डा. आर. श्रेष्ठ",
+  "Dr. S. Karki": "डा. एस. कार्की",
+  "skin barrier": "छालाको ब्यारियर",
+  "March 2025": "मार्च २०२५",
+  "Jan 2025": "जनवरी २०२५",
+  "Feb 2025": "फेब्रुअरी २०२५",
+  "Mar 2025": "मार्च २०२५",
+  "Apr 2025": "अप्रिल २०२५",
+  "Q:": "प्र:",
+  "VERIFIED THROUGH CDERMA CLINICAL REGISTRY · ID #KTM-109": "सिडर्मा क्लिनिकल रजिस्ट्री मार्फत प्रमाणित · आईडी #KTM-109",
+  "VERIFIED THROUGH CDERMA CLINICAL REGISTRY · ID #PKR-208": "सिडर्मा क्लिनिकल रजिस्ट्री मार्फत प्रमाणित · आईडी #PKR-208",
+  "Doctor-Recommended Face Care Nepal | Skincare Manufacturer & Wholesale Supplier | CDerma": "नेपालमा डाक्टरद्वारा सिफारिस गरिएको फेस केयर | छाला हेरचाह निर्माता तथा थोक आपूर्तिकर्ता | सिडर्मा",
+  "Skincare Products Nepal | CDerma Wholesale Formulations Catalog for Retailers & Clinics": "छाला हेरचाह उत्पादनहरू नेपाल | बिक्रेता तथा क्लिनिकहरूका लागि थोक क्याटलग",
+  "We maintain accessible introductory tiers for local independent businesses starting from 24 units across mixed SKUs, complete with counter displays and tester units.": "हामी स्थानीय स्वतन्त्र पसलहरूका लागि २४ युनिटबाट सुरु हुने सरल प्रारम्भिक योजना प्रदान गर्दछौं, जसमा काउन्टर डिस्प्ले र टेस्टर युनिटहरू समावेश छन्।",
+  "Kathmandu (24h)": "काठमाडौँ (२४ घण्टा)",
+  "Pokhara (36h)": "पोखरा (३६ घण्टा)",
+  "Itahari Hub": "इटहरी केन्द्र",
+  "Eastern Hubs": "पूर्वी केन्द्रहरू",
+  "Partner With Us": "हामीसँग सहकार्य गर्नुहोस्",
+  "LOT: NP-ITH-0442": "लट: NP-ITH-0442",
+  "LOT-24-0442": "लट-२४-०४४२",
+  "LOT-24-0389": "लट-२४-०३८९",
+  "(Completely Safe)": "(पूर्ण रूपमा सुरक्षित)",
+  "(Gentle on Face)": "(अनुहारका लागि कोमल)",
+  "(100% Sterile)": "(१००% जीवाणुरहित)",
+  "Face Care · 30ml": "फेस केयर · ३० मिलि",
+  "Cleansers · 150ml": "क्लिन्जर · १५० मिलि",
+  "Rx / Clinic Only": "क्लिनिक तथा अस्पतालका लागि",
+  "Prescription Info": "चिकित्सकीय परामर्श जानकारी",
+  "Low-Grade Fillers": "कम गुणस्तरको मिसावट",
+  "Aesthetic Clinics": "एस्थेटिक क्लिनिकहरू",
+  "Equilibrium": "सन्तुलन",
+  "Fast Absorb": "छिटो सोसिने",
+  "pH 5.5 Calm": "pH ५.५ शान्त",
+  "Standard 01": "मापदण्ड ०१",
+  "Standard 02": "मापदण्ड ०२",
+  "Standard 03": "मापदण्ड ०३",
+  "Standard 04": "मापदण्ड ०४",
+  "Lipid Rich": "लिपिड युक्त",
+  "Biratnagar": "विराटनगर",
+  "Itahari HQ": "इटहरी मुख्य कार्यालय",
+  "Dhangadhi": "धनगढी",
+  "Kathmandu": "काठमाडौं",
+  "Pokhara": "पोखरा",
+  "Chitwan": "चितवन",
+  "Butwal": "बुटवल",
+  "Dharan": "धरान",
+  "All (12)": "सबै (१२)",
+  "Serums": "सिरमहरू",
+  "Moisturizers": "मोइस्चराइजरहरू",
+  "SPF 50+": "एसपीएफ ५०+",
+  "Zinc PCA": "जिंक पिसिए",
+  "Allantoin": "एलान्टोइन",
+  "Chamomile Water": "क्यामोमाइल पानी",
+  "Snow Mushroom": "स्नो मशरुम",
+  "Bakuchiol 1%": "बाकुचियोल १%",
+  "Apple Amino Acids": "स्याउ अमिनो एसिड",
+  "Seabuckthorn Seed": "सीबकथोर्न बीउ",
+  "Ectoin": "एक्टोइन",
+  "5% Niacinamide": "५% नियासिनामाइड",
+  "Phytoceramides": "फाइटोसेरामाइड्स",
+  "D-Panthenol 2%": "डी-प्यान्थेनोल २%",
+  "Broad Spectrum": "ब्रॉड स्पेक्ट्रम",
+  "98.4% Soothing": "९८.४% शान्त पार्ने",
+  "Gentle On Skin": "छालामा कोमल",
+  "Sulfate-Free": "सल्फेटरहित",
+  "Doctor Grade": "डाक्टर ग्रेड",
+  "Catalog Standard": "क्याटलग मापदण्ड",
+  "Formulation Base": "फर्मुलेशन बेस",
+  "Primary Concern:": "मुख्य समस्या:",
+  "Review Lab Trials": "ल्याब परीक्षण हेर्नुहोस्",
+  "Gentle Night Care": "कोमल रात्रिकालीन हेरचाह",
+  "Hyperpigmentation": "कालो पोतो र दाग",
+  "Skin Type:": "छालाको प्रकार:",
+  "Key Actives": "मुख्य सक्रिय तत्वहरू",
+  "5.4 Balance": "५.४ सन्तुलन",
+  "pH 5.2": "pH ५.२",
+  "pH 5.5": "pH ५.५",
+  "pH 5.8": "pH ५.८",
+  "Serial 01 • 150ml": "सिरियल ०१ • १५० मिलि",
+  "Serial 02 • 100ml": "सिरियल ०२ • १०० मिलि",
+  "Serial 04 • 30ml": "सिरियल ०४ • ३० मिलि",
+  "Serial 07 • 50ml": "सिरियल ०७ • ५० मिलि",
+  "Serial 08 • 30ml": "सिरियल ०८ • ३० मिलि",
+  "Serial 09 • 50ml": "सिरियल ०९ • ५० मिलि",
+  "18.5% Zinc Oxide": "१८.५% जिंक अक्साइड",
+  "© 2025 K&K Trading Concern. Imported & Marketed in Nepal | Itahari, Sunsari | Exim Code: 3049904360114NP": "© २०२५ के एण्ड के ट्रेडिङ कन्सर्न। नेपालमा अधिकृत आयात तथा वितरण | इटहरी, सुनसरी | एग्जिम कोड: 3049904360114NP",
+  "© 2026 K&K Trading Concern. Imported & Marketed in Nepal | Itahari, Sunsari | Exim Code: 3049904360114NP": "© २०२६ के एण्ड के ट्रेडिङ कन्सर्न। नेपालमा अधिकृत आयात तथा वितरण | इटहरी, सुनसरी | एग्जिम कोड: 3049904360114NP",
+  "Contact Phone": "सम्पर्क फोन",
+  "Hydration Vehicle": "हाइड्रेशन माध्यम",
+  "Supply Network": "आपूर्ति सञ्जाल",
+  "Koshi Dispatch": "कोशी डेलिभरी",
+  "Hero Formulation": "प्रमुख फर्मुलेशन",
+  "Molecular Active": "आणविक सक्रिय तत्व",
+  "Alpine Botanical": "हिमाली वनस्पति",
+  "Structural Lipid": "संरचनात्मक लिपिड",
+  "Direct Treatment": "प्रत्यक्ष उपचार",
+  "Matrix Complex": "म्याट्रिक्स कम्प्लेक्स",
+  "City": "सहर",
+  "Zero": "शून्य",
+  "or": "वा",
+  "Cdrema Nepal": "सिडर्मा नेपाल",
+  "Business Legal Name *": "व्यवसायको कानुनी नाम *",
+  "Registration / PAN Number *": "दर्ता / प्यान नम्बर *",
+  "Contact Person Name *": "सम्पर्क व्यक्तिको नाम *",
+  "Primary Mobile / WhatsApp *": "मोबाइल / ह्वाट्सएप नम्बर *",
+  "Official Email *": "आधिकारिक इमेल *",
+  "Facility Category *": "संस्थाको वर्ग *",
+  "Select Facility Category": "संस्थाको वर्ग चयन गर्नुहोस्",
+  "Cosmetic Store / Retail Outlet": "कस्मेटिक पसल / खुद्रा बिक्रेता",
+  "Dermatology / Aesthetic Clinic": "छाला तथा एस्थेटिक क्लिनिक",
+  "Hospital Pharmacy / Dispensary": "अस्पताल फार्मेसी / औषधालय",
+  "Salon & Spa / Aesthetician": "सैलुन, स्पा तथा एस्थेटिसियन",
+  "Wholesale Stockist / Regional Distributor": "थोक बिक्रेता / क्षेत्रीय वितरक",
+  "Primary Province *": "मुख्य प्रदेश *",
+  "Select Province": "प्रदेश चयन गर्नुहोस्",
+  "Koshi Province (Immediate Dispatch)": "कोशी प्रदेश (तत्काल डेलिभरी)",
+  "Madhesh Province": "मधेश प्रदेश",
+  "Bagmati Province (Kathmandu / Lalitpur)": "बागमती प्रदेश (काठमाडौँ / ललितपुर)",
+  "Gandaki Province (Pokhara)": "गण्डकी प्रदेश (पोखरा)",
+  "Lumbini Province (Butwal / Bhairahawa)": "लुम्बिनी प्रदेश (बुटवल / भैरहवा)",
+  "Karnali Province": "कर्णाली प्रदेश",
+  "Sudurpashchim Province": "सुदूरपश्चिम प्रदेश",
+  "Complete Physical Address *": "पूरा ठेगाना *",
+  "Estimated Initial Order Volume *": "अनुमानित प्रारम्भिक अर्डर मात्रा *",
+  "Starter Order (24 - 48 Units)": "सुरुवाती अर्डर (२४ - ४८ थान)",
+  "Mid-Tier Clinic Stock (50 - 150 Units)": "क्लिनिक मध्यम स्टक (५० - १५० थान)",
+  "Institutional Supply (200+ Units)": "संस्थागत आपूर्ति (२००+ थान)",
+  "Additional Clinical or Business Inquiries": "थप क्लिनिकल वा व्यावसायिक सोधपुछ",
+  "Apply for direct cosmetic retailer, clinic dispensary wholesale pricing, counter tester units, and clinical trial kits.": "प्रत्यक्ष खुद्रा विक्रेता, क्लिनिक थोक मूल्य, काउन्टर टेस्टर र क्लिनिकल परीक्षण किटका लागि आवेदन दिनुहोस्।",
+  "Modules Included": "समावेश मोड्युलहरू",
+  "Express Dispatch": "द्रुत डेलिभरी",
+  "Zone 1: Koshi Belt": "क्षेत्र १: कोशी क्षेत्र",
+  "Zone 2: Kathmandu Valley": "क्षेत्र २: काठमाडौँ उपत्यका",
+  "Zone 3: Western Hubs": "क्षेत्र ३: पश्चिम क्षेत्र",
+  "Manufacturing Base": "उत्पादन केन्द्र",
+  "Cleanroom Standard": "क्लिनरुम मापदण्ड",
+  "Same-Day Courier": "सोही दिन डेलिभरी",
+  "NMC Reg: 11482": "NMC दर्ता: ११४८२",
+  "24 - 48 Hours": "२४ - ४८ घण्टा",
+  "NMC Compliant": "NMC अनुरूप",
+  "Regional Centers:": "क्षेत्रीय केन्द्रहरू:",
+  "Facility:": "संस्था:",
+  "Locate an": "खोज्नुहोस्",
+  "& Clinic": "र क्लिनिक",
+  "Same-Day": "सोही दिन",
+  "Every CDerma product balances lipid richness with quick molecular absorption. Notice the distinct difference between our high-potency golden Centella serum and our velvety bio-identical ceramide cream—crafted to lock moisture in high-altitude environments without heaviness.": "सिडर्माका प्रत्येक उत्पादनले लिपिड पोषण र द्रुत अवशोषण बीच सन्तुलन कायम गर्दछ। हाम्रो उच्च-सक्रिय सुनौलो सेन्टेला सिरम र रेशमी बायो-आइडेन्टिकल सेरामाइड क्रिम बीचको भिन्नता अनुभव गर्नुहोस्—जसले कुनै चिपचिपापन बिना उच्च हिमाली वातावरणमा आद्रता सुरक्षित राख्दछ।",
+  "Niacinamide 5% + Centella Extract": "५% नियासिनामाइड + सेन्टेला अर्क",
+  "Amino Acids + Chamomile Hydrosol": "अमिनो एसिड + क्यामोमाइल हाइड्रोसोल",
+  "Tri-Ceramides + Botanical Squalane": "ट्राइ-सेरामाइड्स + बोटानिकल स्क्वालेन",
+  "All doctors citing or recommending CDerma are registered under the Nepal Medical Council (NMC). We do not pay for endorsements; practitioners independently evaluate our batch Certificates of Analysis, physiological active percentages, and patient barrier response.": "सिडर्मा सिफारिस गर्ने सबै चिकित्सकहरू नेपाल मेडिकल काउन्सिल (NMC) मा दर्ता हुनुहुन्छ। हामी कुनै सशुल्क विज्ञापन गर्दैनौं; चिकित्सकहरूले हाम्रो ब्याच विश्लेषण प्रमाणपत्र (COA) र बिरामीको नतिजाका आधारमा स्वतन्त्र रूपमा सिफारिस गर्नुहुन्छ।",
+  "Yes. We regularly host scheduled audit walkthroughs for registered clinic partners, cosmetic physicians, and official distributors to inspect our cleanrooms, HEPA ventilation protocols, and storage archives in Sunsari.": "हो। हामी दर्ता भएका क्लिनिक साझेदार, चर्मरोग विशेषज्ञ र अधिकृत वितरकहरूका लागि सुनसरीस्थित हाम्रो क्लिनरुम, हेपा भेन्टिलेसन र भण्डारण केन्द्रको नियमित निरीक्षण भ्रमण आयोजना गर्दछौं।",
+  "Our products hold a sealed shelf-life of 24 months from manufacture date, and 6 to 12 months after opening (PAO). Our frosted amber glass packaging guards botanical actives from oxidative photodegradation.": "हाम्रा उत्पादनहरूको सिलबन्दी अवस्थामा उत्पादन मितिबाट २४ महिना र खोलेपछि ६ देखि १२ महिना (PAO) सम्म प्रयोग गर्न सकिन्छ। हाम्रो एम्बर ग्लास प्याकेजिङले सक्रिय वनस्पति तत्वहरूलाई घामको किरणबाट जोगाउँछ।",
+  "Nepal’s skin concerns are uniquely driven by high altitude ultraviolet exposure, pervasive winter dry spells, and intense summer dust particulate. CDerma formulas prioritize rapid calming with Centella while reinforcing intercellular ceramide bonds without clogging pores.": "नेपालमा उच्च उचाइको कडा घाम, सुख्खा जाडो मौसम र सहरी धुलोले गर्दा छालाका समस्याहरू धेरै देखिन्छन्। सिडर्माका फर्मुलाहरूले छिद्र नथुनी सेन्टेलाद्वारा जलन तुरुन्तै शान्त पार्ने र सेरामाइड जोड्ने कार्यलाई प्राथमिकता दिन्छन्।",
+  "CDerma Nepal's flagship clinical formulation for wholesale B2B supply to pharmacies, cosmetic retailers, salons, and dermatology clinics. Manufactured in Itahari featuring 5% ultra-pure Madecassoside, wild alpine Centella Asiatica, and a 3-part bio-identical Ceramide complex (NP, AP, EOP).": "फार्मेसी, कस्मेटिक बिक्रेता, सैलुन तथा क्लिनिकहरूका लागि सिडर्मा नेपालको प्रमुख क्लिनिकल फर्मुलेशन। इटहरीमा उत्पादित यसमा ५% शुद्ध मेडकासोसाइड, हिमाली सेन्टेला र ३ प्रकारका सेरामाइडहरू समावेश छन्।",
+  "Professional Retail & Clinical Protocol Standard": "व्यावसायिक खुद्रा तथा क्लिनिकल प्रोटोकल मापदण्ड",
+  "Silky golden drops that melt into your skin instantly upon gentle touch.": "रेशमी सुनौला थोपाहरू जसले कोमल स्पर्शमै छालामा तुरुन्तै समाहित हुन्छ।",
+  "Aqua (Himalayan Spring Distillate), Niacinamide, Centella Asiatica Leaf Extract, Ceramide NP, Ceramide AP, Ceramide EOP, Phytosphingosine, Cholesterol, Sodium Hyaluronate (Multi-Fraction), D-Panthenol, Glycerin (Vegetable), Allantoin, Xanthan Gum, Sodium Lauroyl Lactylate, Carbomer, Phenoxyethanol, Ethylhexylglycerin.": "एक्वा (हिमालयन स्प्रिङ डिस्टिलेट), नियासिनामाइड, सेन्टेला एसियाटिका पातको अर्क, सेरामाइड NP, सेरामाइड AP, सेरामाइड EOP, फाइटोस्फिङ्गोसाइन, कोलेस्ट्रोल, सोडियम हायलुरोनेट, डी-प्यान्थेनोल, ग्लिसरिन, एलान्टोइन, ज्यान्थन गम।",
+  "Sun - Fri, 9:00 AM - 6:00 PM NPT": "आइत - शुक्र, बिहान ९:०० - साँझ ६:००",
+  "Centella Barrier Restore Concentrate": "सेन्टेला ब्यारियर रिस्टोर कन्सन्ट्रेट",
+  "Doctor Grade • Available In Stores & Clinics": "डाक्टर ग्रेड • स्टोर तथा क्लिनिकहरूमा उपलब्ध",
+  "Stores & Clinics Across Nepal": "नेपालभरिका स्टोर तथा क्लिनिकहरू",
+  "Conventional high-heat distillation destroys the fragile anti-inflammatory molecular chains in native flora. At our Koshi facility, CDerma utilizes low-temperature sub-critical cold-maceration at 18°C. This guarantees that bioactive Asiaticoside, Madecassic Acid, and Corosolic compounds remain in their biologically active, cellular-reparative form.": "परम्परागत उच्च-ताप डिस्टिलेसनले स्थानीय वनस्पतिका संवेदनशील एन्टी-इन्फ्लेमेटरी मोलिक्युलर चेनहरू नष्ट गर्दछ। हाम्रो कोशी प्रयोगशालामा सिडर्माले १८° सेन्टिग्रेडमा न्यून-ताप सब-क्रिटिकल कोल्ड-म्यासेरेसन प्रविधि प्रयोग गर्दछ।",
+  "Evaluated across 400+ clinical patch trials in high-altitude environments.": "उच्च हिमाली भेगमा ४०० भन्दा बढी क्लिनिकल प्याच परीक्षणहरूद्वारा मूल्याङ्कन गरिएको।",
+  "Niacinamide (Vitamin B3) is one of the safest and most effective skin-brightening ingredients available. It reduces dark spots, evens skin tone, and strengthens your skin barrier all at once.": "नियासिनामाइड (भिटामिन B3) छाला चम्किलो बनाउने सबैभन्दा सुरक्षित र प्रभावकारी सामग्रीहरू मध्ये एक हो। यसले कालो दाग घटाउँछ, छालाको रंग एकनास बनाउँछ र ब्यारियरलाई बलियो बनाउँछ।",
+  "Redness, stinging after washing, or a tight uncomfortable feeling? These are signs of sensitive skin. The good news: it's very manageable with the right gentle products and a simple routine.": "मुख धुँदा रातो हुने, पोल्ने वा तन्किने महसुस हुन्छ? यी संवेदनशील छालाका लक्षण हुन्। खुसीको कुरा: सही कोमल उत्पादन र सरल दिनचर्याले यसलाई सजिलै समाधान गर्न सकिन्छ।",
+  "You don't need a complicated 12-step routine. A gentle cleanser, a ceramide serum, and a moisturiser with SPF — that's all your skin needs every morning to look and feel great.": "तपाईंलाई जटिल १२-चरणको दिनचर्या आवश्यक पर्दैन। एक कोमल क्लिन्जर, सेरामाइड सिरम, र SPF युक्त मोइस्चराइजर — हरेक बिहान तपाईंको छालालाई स्वस्थ र सुन्दर राख्न यति नै पर्याप्त हुन्छ।",
+  "Bleaching creams thin the epidermis, causing rebound hyperpigmentation under intense Himalayan UV rays. Barrier serums restore lipid membranes to naturally protect and brighten skin.": "ब्लीचिङ क्रिमले छालाको बाहिरी पत्र पातलो बनाउँछ, जसले कडा हिमाली घाममा झन् बढी कालो पोतो ल्याउँछ। ब्यारियर सिरमले छालाको प्राकृतिक पत्र मर्मत गरी सुरक्षित रूपमा चम्किलो बनाउँछ।",
+  "Switch to a gentle pH 5.5 gel cleanser, layer a concentrated Centella barrier serum onto damp skin, and seal with a ceramide deep cream to counteract dry mountain winds and heating dryness.": "कोमल pH ५.५ जेल क्लिन्जर प्रयोग गर्नुहोस्, हल्का ओसिलो छालामा सेन्टेला ब्यारियर सिरम लगाउनुहोस्, र चिसो हिमाली हावाबाट जोगाउन सेरामाइड डिप क्रिमले लक गर्नुहोस्।",
+  "Yes, CDerma formulations undergo rigorous clinical patch testing to verify emulsion stability and barrier lipid replenishment across both humid lowlands and high-altitude dry climates.": "हो, सिडर्माका उत्पादनहरू तराईको ओसिलो र हिमालको सुख्खा दुवै मौसममा क्रिमको स्थिरता र छालाको पोषण प्रमाणित गर्न कडा क्लिनिकल परीक्षणबाट गुज्रन्छन्।",
+  "Completely. The formula is free of coconut-derived comedogenic lipids, heavy esters, polysorbates, and synthetic fragrance. High-purity Centella Asiatica provides rapid calming against inflammatory acne lesions, while niacinamide regulates sebaceous gland hyper-secretion.": "पूर्ण रूपमा सुरक्षित। यो फर्मुलामा छिद्र थुन्ने कुनै पनि चिल्लो पदार्थ, हेभी एस्टर, पोलिसोर्बेट वा कृत्रिम सुगन्ध छैन। उच्च-शुद्धताको सेन्टेला एसियाटिकाले डण्डिफोरको जलनलाई तुरुन्तै शान्त पार्छ र नियासिनामाइडले अतिरिक्त तेल उत्पादनलाई नियन्त्रण गर्छ।",
+  "Yes. Formulated at a physiologically harmonized pH of 5.5, our 5% Niacinamide and Ceramide matrix buffers against the common irritation caused by pure L-ascorbic acid and topical retinoic acid. We suggest applying this concentrate first, allowing 60 seconds to absorb, then following with your prescription active.": "हो। छाला-अनुकूल pH ५.५ मा तयार गरिएको हाम्रो ५% नियासिनामाइड र सेरामाइडले रेटिनोल वा भिटामिन सीले गराउन सक्ने जलनलाई कम गर्छ। यो सिरम लगाएर ६० सेकेन्ड सोसिन दिनुहोस्, त्यसपछि अन्य औषधीय क्रिम लगाउनुहोस्।",
+  "Unopened bottles maintain stability for 24 months from the manufacturing batch date indicated on the carton base. Once unsealed, maintain below 25°C away from direct Himalayan sunlight. In hot Terai summer months, refrigeration is acceptable though not required.": "नखोलिएको बोतल प्याकिङमा उल्लेख भएको मितिबाट २४ महिनासम्म सुरक्षित रहन्छ। खोलेपछि २५° सेन्टिग्रेड भन्दा कम तापक्रममा घामबाट टाढा राख्नुहोस्। तराईको गर्मीमा फ्रिजमा राख्न पनि सकिन्छ।",
+  "This formula is distributed directly to authorized cosmetic stores, premium beauty retailers, licensed dermatologists, and hospital pharmacies from our central Koshi distribution depot. Store owners and medical practices can register via our B2B portal to receive wholesale pricing schedules and product tester displays. Consumers can purchase through any accredited partner location across Nepal.": "यो उत्पादन हाम्रो केन्द्रीय कोशी डिपोबाट नेपालभरिका अधिकृत कस्मेटिक पसल, ब्युटी स्टोर, छाला विशेषज्ञ र अस्पताल फार्मेसीहरूमा प्रत्यक्ष आपूर्ति गरिन्छ। पसल सञ्चालक तथा क्लिनिकहरूले हाम्रो बी२बी पोर्टलबाट थोक मूल्य र डिस्प्लेका लागि दर्ता गर्न सक्नुहुन्छ।",
+  "\"Patients across Kathmandu Valley experience chronic micro-inflammation stemming from winter dry inversions and heavy airborne particulate matter. CDerma's formulation No. 04 is one of the few concentrates that combines clinical 5% niacinamide without flushing fillers, balanced by authentic Himalayan-harvested centella. We recommend it post-microneedling and as everyday barrier defense.\"": "\"काठमाडौँ उपत्यकामा जाडोको सुख्खा हावा र प्रदूषणका कारण बिरामीहरूमा छाला पोल्ने समस्या धेरै देखिन्छ। सिडर्माको फर्मुलेशन नं. ०४ क्लिनिकल ५% नियासिनामाइड र हिमाली सेन्टेलाको उत्कृष्ट संयोजन हो। हामी यसलाई माइक्रोनिडलिङपछि र दैनिक ब्यारियर सुरक्षाका लागि सिफारिस गर्दछौं।\"",
+  "CDerma Nepal operates an ISO Class 7 cleanroom manufacturing facility in Itahari, Sunsari. As a doctor-formulated skincare manufacturer, CDerma synthesizes high-potency dermocosmetics combining pharmaceutical ceramides and high-altitude wildcrafted Centella Asiatica with zero airborne cross-contamination.": "सिडर्मा नेपालले इटहरी, सुनसरीमा ISO क्लास ७ क्लिनरुम प्रयोगशाला सञ्चालन गर्दछ। डाक्टर-प्रमाणित निर्माताको रूपमा, सिडर्माले शून्य वायु प्रदूषणका साथ सेरामाइड र उच्च हिमाली सेन्टेला संयोजन गरी उच्च गुणस्तरका उत्पादनहरू तयार गर्दछ।",
+  "Clinical Overview": "क्लिनिकल सिंहावलोकन",
+  "Biochemical Mechanism": "बायोकेमिकल प्रक्रिया",
+  "Dermatologist Protocol": "चिकित्सकीय प्रोटोकल",
+  "Laboratory Assay": "प्रयोगशाला परीक्षण रिपोर्ट",
+  "Usage Instructions": "प्रयोग गर्ने विधि",
+  "Active Ingredients": "सक्रिय सामग्रीहरू",
+  "Full INCI Transparency": "पूर्ण INCI पारदर्शिता",
+  "Storage & Shelf Life": "भण्डारण र म्याद",
+  "Certificate of Analysis": "गुणस्तर विश्लेषण प्रमाणपत्र",
+  "Clinical Evidence Matrix": "क्लिनिकल परीक्षण नतिजा",
+  "Independent South Asian Clinical Cohort (n=120)": "दक्षिण एसियाली छालामा स्वतन्त्र परीक्षण (१२० जना)",
+  "Evaluated over 28 days of twice-daily continuous topical application under independent dermatological supervision.": "स्वतन्त्र चर्मरोग विशेषज्ञहरूको प्रत्यक्ष निगरानीमा २८ दिनसम्म दैनिक दुई पटक प्रयोग गरी मूल्याङ्कन गरिएको।",
+  "Parameter Tested": "परीक्षण गरिएको सूचक",
+  "Clinical Baseline": "प्रारम्भिक अवस्था",
+  "Day 14 Result": "१४औँ दिनको नतिजा",
+  "Day 28 Conclusion": "२८औँ दिनको निष्कर्ष",
+  "Transepidermal Water Loss (TEWL)": "छालाबाट पानीको क्षति (TEWL)",
+  "Stratum Corneum Hydration": "छालाको आन्तरिक आद्रता",
+  "Erythema / Redness Reduction": "रातोपन र जलनमा कमी",
+  "Barrier Lipids Replenishment": "ब्यारियर लिपिड पुनःस्थापना",
+  "Search by cosmetic store, clinic name, doctor, city...": "कस्मेटिक स्टोर, क्लिनिक, डाक्टर वा सहर खोज्नुहोस्...",
+  "Search archive or products...": "उत्पादन वा संग्रह खोज्नुहोस्...",
+  "Enter Lot Code": "लट कोड प्रविष्ट गर्नुहोस्",
+  "Inspect Lot": "लट जाँच गर्नुहोस्",
+  "Download Full Catalog (PDF)": "पूर्ण क्याटलग डाउनलोड गर्नुहोस् (PDF)",
+  "Apply for Wholesale Access": "थोक साझेदारीका लागि आवेदन दिनुहोस्",
+  "Download Monograph (PDF)": "मोनोग्राफ डाउनलोड गर्नुहोस् (PDF)",
+  "Contact Medical Liaison": "चिकित्सा टोलीसँग सम्पर्क गर्नुहोस्",
+  "Direct Lab Dispatch": "प्रत्यक्ष प्रयोगशाला डेलिभरी",
+  "Authorized Dispensary": "अधिकृत औषधालय",
+  "Certified Retail Partner": "प्रमाणित खुद्रा साझेदार",
+  ") is doctor-formulated specifically for Nepali dermal physiology. Unlike imported skincare that may face compromised storage conditions or generic formulations, CDerma face care products are cold-chain distributed with verifiable batch testing, zero synthetic perfume, and direct dispensing through authorized cosmetic stores, licensed dermatology clinics, and hospital pharmacies across Kathmandu, Pokhara, and Eastern Nepal.": ") नेपाली छालाको शारीरिक बनावटका लागि विशेष रूपमा डाक्टर-फर्मुलेट गरिएको हो। आयातित स्किनकेयरको विपरीत जुन प्रतिकूल भण्डारण अवस्था वा सामान्य फर्मुलेसनमा हुन सक्छन्, सी-डर्माका फेस केयर उत्पादनहरू प्रमाणित ब्याच परीक्षण, शून्य कृत्रिम सुगन्ध, र काठमाडौं, पोखरा तथा पूर्वी नेपालभर अधिकृत कस्मेटिक स्टोर, इजाजतपत्र प्राप्त डर्मेटोलोजी क्लिनिक र अस्पताल फार्मेसीहरू मार्फत कोल्ड-चेन वितरण गरिन्छन्।",
+  "is a doctor-formulated face care manufacturer and clinical skincare supplier based in Itahari, Sunsari, Koshi Province. Crafted for Nepal’s high-altitude UV, urban pollution, and dry winters, CDerma synthesizes prescription-grade Centella barrier serums, bio-identical ceramide creams, and physiological cleansers for consumers and wholesale partners nationwide.": "इटहरी, सुनसरी, कोशी प्रदेशमा अवस्थित डाक्टर-फर्मुलेटेड फेस केयर उत्पादक तथा क्लिनिकल स्किनकेयर आपूर्तिकर्ता हो। नेपालको उच्च-उचाइको UV, सहरी प्रदूषण र सुक्खा जाडोका लागि तयार गरिएको, सी-डर्माले देशभरका उपभोक्ता र थोक साझेदारहरूका लागि प्रिस्क्रिप्शन-ग्रेड सेन्टेला ब्यारियर सीरम, बायो-आइडेन्टिकल सिरामाइड क्रिम र शारीरिक क्लिन्जरहरू उत्पादन गर्दछ।",
+  "for daily skin barrier health, sensitive skin, and post-procedure recovery. Formulated in our ISO Class 7 cleanroom in Itahari, Sunsari, it integrates 5% pharmaceutical Madecassoside with bio-identical ceramides (NP, AP, EOP) designed specifically to counteract Nepal’s extreme UV exposure and elevation-driven dry climates.": "दैनिक छाला ब्यारियर स्वास्थ्य, संवेदनशील छाला र प्रक्रिया पछिको रिकभरीका लागि। इटहरी, सुनसरी स्थित हाम्रो ISO क्लास ७ क्लिनरुममा फर्मुलेट गरिएको, यसमा ५% फार्मास्युटिकल मेडकासोसाइड र बायो-आइडेन्टिकल सिरामाइड्स (NP, AP, EOP) समावेश छ, जुन विशेष रूपमा नेपालको अत्यधिक घाम र उचाइका कारण हुने सुक्खा मौसमको सामना गर्न डिजाइन गरिएको हो।",
+  "\"Most skin problems I see can be fixed with three things: a gentle cleanser, a good moisturiser, and sunscreen every single morning. You don't need 10 products — you need the right ones.\"": "\"मैले देख्ने अधिकांश छालाका समस्याहरू तीन चीजले समाधान गर्न सकिन्छ: एक कोमल क्लिन्जर, राम्रो मोइस्चराइजर, र हरेक बिहान सनस्क्रिन। तपाईंलाई १० थरी उत्पादन चाहिँदैन — सही उत्पादन चाहिन्छ।\"",
+  "Are you a cosmetic store retailer, licensed dermatologist, or aesthetic clinic?": "के तपाईं कस्मेटिक स्टोर खुद्रा बिक्रेता, इजाजतपत्र प्राप्त छाला रोग विशेषज्ञ, वा एस्थेटिक क्लिनिक हुनुहुन्छ?",
+  "Why do doctors in Nepal recommend barrier repair serums over bleaching creams?": "नेपालका डाक्टरहरूले ब्लिचिङ क्रिमभन्दा ब्यारियर रिपेयर सीरम किन सिफारिस गर्छन्?",
+  "Are CDerma formulations safe for daily use in high-altitude regions of Nepal?": "के नेपालका उच्च-उचाई भएका क्षेत्रहरूमा दैनिक प्रयोगका लागि सी-डर्मा फर्मुलेसनहरू सुरक्षित छन्?",
+  "Boosts hydration, fades dark spots and acne marks, and evens out skin tone.": "हाइड्रेशन बढाउँछ, कालो दाग र डण्डीफोरका खतहरू हटाउँछ, र छालाको रंग समान बनाउँछ।",
+  "What is the Minimum Order Quantity (MOQ) for regional salons & pharmacies?": "क्षेत्रीय सैलुन तथा फार्मेसीहरूका लागि न्यूनतम अर्डर परिमाण (MOQ) कति हो?",
+  "Fast soothing for redness, sunburn, facial irritation, and sensitive skin.": "रातोपन, घामले डढेको, अनुहारको जलन, र संवेदनशील छालाको लागि द्रुत शीतलता प्रदान गर्दछ।",
+  "Replaces natural skin lipids to repair damaged barriers and stop peeling.": "क्षतिग्रस्त ब्यारियर मर्मत गर्न र छाला उप्किनबाट रोक्न प्राकृतिक लिपिड पुनःस्थापना गर्छ।",
+  "GMP Facility Registration • Itahari Science Campus, Koshi Province, Nepal": "GMP प्रयोगशाला दर्ता • इटहरी साइन्स क्याम्पस, कोशी प्रदेश, नेपाल",
+  "What makes CDerma the best face care product in Nepal for sensitive skin?": "संवेदनशील छालाका लागि सिडर्मालाई नेपालको उत्कृष्ट फेस केयर के ले बनाउँछ?",
+  "Partner details strictly preserved under Nepal Data Privacy Regulations.": "साझेदारहरूको विवरण नेपालको गोपनीयता कानुन बमोजिम पूर्ण सुरक्षित राखिन्छ।",
+  "How should I adapt my skincare routine during Nepal's dry winter season?": "नेपालको सुख्खा जाडो मौसममा छाला हेरचाह दिनचर्या कसरी परिवर्तन गर्ने?",
+  "Consistent 28-day regimen yields permanent lipid bilayer strengthening": "नियमित २८ दिने प्रयोगले छालाको लिपिड तहलाई स्थायी रूपमा मजबुत बनाउँछ",
+  "Skincare Manufacturer & Cosmetic Wholesale Supplier Nepal | CDerma B2B": "छाला हेरचाह निर्माता तथा कस्मेटिक थोक आपूर्तिकर्ता नेपाल | सिडर्मा B2B",
+  "Empower Your Cosmetic Store & Practice With Doctor-Formulated Skincare": "आफ्नो कस्मेटिक स्टोर र क्लिनिकलाई डाक्टर-प्रमाणित स्किनकेयरबाट सशक्त बनाउनुहोस्",
+  "Where can I buy authentic doctor-recommended CDerma products in Nepal?": "नेपालमा डाक्टरद्वारा सिफारिस गरिएको असली सिडर्मा उत्पादन कहाँ किन्न सकिन्छ?",
+  "Can this concentrate be layered with Active Retinoids and Vitamin C?": "के यो कन्सन्ट्रेटलाई रेटिनोइड र भिटामिन सीसँग मिलाएर प्रयोग गर्न सकिन्छ?",
+  "AEO Quick Summary · Skincare Manufacturer & Wholesale Supplier Nepal": "AEO संक्षिप्त सारांश · छाला हेरचाह निर्माता तथा थोक आपूर्तिकर्ता नेपाल",
+  "Which is the best face care product in Nepal for daily skin repair?": "दैनिक छाला मर्मतका लागि नेपालको उत्कृष्ट फेस केयर उत्पादन कुन हो?",
+  "Refrigerated express door delivery to enrolled aesthetics practices": "सूचीकृत क्लिनिकहरूमा तापक्रम-नियन्त्रित द्रुत डेलिभरी",
+  "Why is CDerma Nepal recommended over imported face care products?": "विदेशी उत्पादन भन्दा सिडर्मा नेपाल किन बढी सिफारिस गरिन्छ?",
+  "How does cosmetic store wholesale and clinic batch ordering work?": "कस्मेटिक स्टोर थोक र क्लिनिक ब्याच अर्डर कसरी काम गर्छ?",
+  "Authorized Retailer certificate & national store locator listing": "अधिकृत बिक्रेता प्रमाणपत्र र राष्ट्रिय स्टोर सूचीमा दर्ता",
+  "Why is CDerma specifically suited for Nepali skin and climate?": "सिडर्मा नेपाली छाला र हावापानीका लागि किन विशेष अनुकूल छ?",
+  "Regional Offices: Naxal, Kathmandu & Traffic Chowk, Biratnagar": "क्षेत्रीय कार्यालयहरू: नक्साल, काठमाडौँ र ट्राफिक चोक, विराटनगर",
+  "Can pharmacists and clinic owners visit the Itahari facility?": "के फार्मासिस्ट र क्लिनिक सञ्चालकहरूले इटहरी प्रयोगशाला भ्रमण गर्न सक्छन्?",
+  "Is this safe for acne-prone, fungal acne, and sensitive skin?": "के यो डण्डिफोर आउने र संवेदनशील छालाका लागि सुरक्षित छ?",
+  "What is the shelf-life and proper storage in Nepal's climate?": "नेपालको मौसममा यसको म्याद र उचित भण्डारण विधि के हो?",
+  "Direct continuous cold-chain fleet departs 06:00 NST daily.": "प्रत्यक्ष कोल्ड-चेन ढुवानी दैनिक बिहान ६:०० बजे प्रस्थान गर्दछ।",
+  "Skincare & Face Care Products Nepal — Wholesale B2B Catalog": "छाला तथा अनुहार हेरचाह उत्पादनहरू नेपाल — थोक B2B क्याटलग",
+  "Authorized Enterprise, Cosmetic Store & Healthcare Channel": "अधिकृत व्यावसायिक, कस्मेटिक स्टोर तथा स्वास्थ्य संस्था च्यानल",
+  ". These work from the inside out, not just on the surface.": ", जसले बाहिरबाट मात्र नभई छालाको भित्री तहदेखि नै काम गर्छन्।",
+  "What is the shelf life and stability of CDerma face care?": "सिडर्मा फेस केयरको म्याद र स्थिरता कति हुन्छ?",
+  "Authorized Cosmetic Store & Clinic Locator | CDerma Nepal": "अधिकृत कस्मेटिक स्टोर तथा क्लिनिक खोजी | सिडर्मा नेपाल",
+  "Live Sensor: 19.4°C • 41% RH • 0.00 Particles ≥0.5μm/ft³": "प्रत्यक्ष सेन्सर: १९.४° सेन्टिग्रेड • ४१% RH • ०.०० कणहरू ≥०.५μm/ft³",
+  "Doctor's Advice & Skincare Tips in Nepal | CDerma Nepal": "नेपालमा डाक्टरको सल्लाह र छाला हेरचाह सुझावहरू | सिडर्मा नेपाल",
+  "Tester displays, cosmetic counter units & sample packs": "टेस्टर डिस्प्ले, काउन्टर युनिट र परीक्षण नमुना प्याकहरू",
+  "is widely regarded by practicing dermatologists as the": "चिकित्सकहरूद्वारा व्यापक रूपमा मानिएको",
+  "Weightless Absorption Meets Deep Barrier Nourishment": "हल्का अवशोषण र गहिरो ब्यारियर पोषणको संगम",
+  "Cleanroom Quality & Botanical Science | CDerma Nepal": "क्लिनरुम गुणस्तर तथा वानस्पतिक विज्ञान | सिडर्मा नेपाल",
+  "Nepal Pharmacopeia & Cold-Chain Logistical Assurance": "नेपाल फर्माकोपिया र कोल्ड-चेन ढुवानी सुनिश्चितता",
+  "Dermatologist • Kathmandu Skin & Laser Hospital": "चर्मरोग विशेषज्ञ • काठमाडौँ स्किन एण्ड लेजर हस्पिटल",
+  "Dermatologist &bull; Kathmandu Skin & Laser Hospital": "चर्मरोग विशेषज्ञ • काठमाडौँ स्किन एण्ड लेजर हस्पिटल",
+  "Your skin has a natural protective layer called the": "तपाईंको छालामा प्राकृतिक सुरक्षात्मक तह हुन्छ जसलाई",
+  "Dedicated retail & clinic account support manager": "समर्पित खुद्रा तथा क्लिनिक ग्राहक सहायता प्रबन्धक",
+  "Live Provincial Registry • 198 Authorized Outlets": "प्रत्यक्ष प्रादेशिक दर्ता • १९८ अधिकृत आउटलेटहरू",
+  "Enterprise, Cosmetic Store & Healthcare Channel": "व्यावसायिक, कस्मेटिक स्टोर तथा स्वास्थ्य संस्था च्यानल",
+  "How are CDerma doctor recommendations verified?": "सिडर्माका डाक्टर सिफारिसहरू कसरी प्रमाणित गरिन्छन्?",
+  "NMC Licensed Dermatologists & Cosmetic Surgeons": "NMC इजाजत प्राप्त चर्मरोग विशेषज्ञ तथा कस्मेटिक सर्जन",
+  "Registered Clinics, Salons & Cosmetic Retailers": "दर्ता भएका क्लिनिक, सैलुन तथा कस्मेटिक पसलहरू",
+  "Cleanroom Quality Assurance & Cold Chain Supply": "क्लिनरुम गुणस्तर सुनिश्चितता र कोल्ड-चेन आपूर्ति",
+  "Best Face Care Products in Nepal: Complete Guide": "नेपालमा उत्कृष्ट फेस केयर उत्पादनहरू: पूर्ण निर्देशिका",
+  "Direct Cold-Chain Dispatch from Koshi Facility": "कोशी केन्द्रबाट प्रत्यक्ष तापक्रम-नियन्त्रित ढुवानी",
+  "CDerma Advanced Barrier Restore Concentrate": "सिडर्मा एड्भान्स्ड ब्यारियर रिस्टोर कन्सन्ट्रेट",
+  "CDerma Centella Barrier Restore Concentrate": "सिडर्मा सेन्टेला ब्यारियर रिस्टोर कन्सन्ट्रेट",
+  "Certificate of Analysis (COA) Guarantee": "प्रयोगशाला विश्लेषण प्रमाणपत्र (COA) ग्यारेन्टी",
+  "best face care product in Nepal": "नेपालको उत्कृष्ट फेस केयर उत्पादन",
+  "CDerma Choice by Professional": "सिडर्मा च्वाइस बाइ प्रोफेसनल",
+  "Batch #NP-ITH-0442 / Koshi Facility": "ब्याच #NP-ITH-0442 / कोशी केन्द्र",
+  "FORMULATION SPEC // INCI TRANSPARENCY": "फर्मुलेशन विवरण // INCI पारदर्शिता",
+  "Immediate Stratum Assimilation": "छालाको बाहिरी पत्रमा तत्काल अवशोषण",
+  "Purity Grade: 99.4% Clinical USP": "शुद्धता ग्रेड: ९९.४% क्लिनिकल USP",
+  "Alpine Purity & Active Synergy": "हिमाली शुद्धता र सक्रिय तत्वहरूको तालमेल",
+  "Botanical & Molecular Balance": "वानस्पतिक तथा आणविक सन्तुलन",
+  "Phyto-Active + Molecular Matrix": "फाइटो-एक्टिभ + आणविक म्याट्रिक्स",
+  "Dr. R. Shrestha, MBBS, DDVL": "डा. आर. श्रेष्ठ, MBBS, DDVL",
+  "Bio-Fermented Sourced": "बायो-फर्मेन्टेड स्रोतबाट प्राप्त",
+  "High Altitude Sourced": "उच्च हिमाली भेगबाट संकलित",
+  "Press Gently Into Skin": "छालामा बिस्तारै थिचेर लगाउनुहोस्",
+  "Zero White-Cast Mineral": "सेतो दाग नछोड्ने मिनरल सनस्क्रिन",
+  "Apothecary Collection": "क्लिनिकल फेस केयर संग्रह",
+  "View Clinical Monograph": "क्लिनिकल मोनोग्राफ हेर्नुहोस्",
+  "Photoprotection · 50ml": "सन केयर · ५० मिलि",
+  "Velvet Barrier Melt": "रेशमी ब्यारियर मल्ट",
+  "Hydrating Gel Lather": "हाइड्रेटिङ जेल लेदर",
+  "Daily Solar Defense": "दैनिक घामबाट सुरक्षा",
+  "AM / PM · 60 Seconds": "बिहान / साँझ · ६० सेकेन्ड",
+  "(Even Tone & Clarity)": "(सफा र एकनास छाला)",
+  "Moisturizers · 50ml": "मोइस्चराइजर · ५० मिलि",
+  "Clinical Monograph": "क्लिनिकल मोनोग्राफ",
+  "Supervising Physician:": "निरीक्षक चिकित्सक:",
+  "Dr. A. Karki (NMC 9482)": "डा. ए. कार्की (NMC ९४८२)",
+  "Consultant Dermatologist &bull; Kathmandu Skin Center": "कन्सल्टेन्ट डर्माटोलोजिस्ट • काठमाडौं स्किन सेन्टर",
+  "Consultant Dermatologist • Kathmandu Skin Center": "कन्सल्टेन्ट डर्माटोलोजिस्ट • काठमाडौं स्किन सेन्टर",
+  "Chief Aesthetic Physician &bull; Pokhara Dermal Care": "प्रमुख एस्थेटिक फिजिसियन • पोखरा डर्मल केयर",
+  "Chief Aesthetic Physician • Pokhara Dermal Care": "प्रमुख एस्थेटिक फिजिसियन • पोखरा डर्मल केयर",
+  "Cleanroom Facility • Koshi Province": "क्लिनरुम प्रयोगशाला • कोशी प्रदेश",
+  "ISO 9001:2015 Registered Facility": "ISO ९००१:२०१५ दर्ता प्राप्त प्रयोगशाला",
+  "ISO 9001:2015 Certified Cleanroom": "ISO ९००१:२०१५ प्रमाणित क्लिनरुम",
+  "ISO Class 7 Cleanroom Protocol": "ISO क्लास ७ क्लिनरुम प्रोटोकल",
+  "Class 10,000 Cleanroom Certified": "क्लास १०,००० क्लिनरुम प्रमाणित",
+  "Air-Filtered Sterile Staging": "फिल्टर गरिएको जीवाणुरहित वातावरण",
+  "Positive Air Pressure Cascades": "पोजिटिभ प्रेसर एयर भेन्टिलेसन",
+  "HEPA Air Filtration & Airlocks": "हेपा एयर फिल्टरेशन र एयरलक प्रणाली",
+  "Microbial & Heavy Metal Purity": "माइक्रोबियल तथा हेभी मेटल शुद्धता",
+  "Independent Batch Verification": "स्वतन्त्र ब्याच प्रमाणीकरण",
+  "Zero Microbial Tolerance": "शून्य माइक्रोबियल सहनशीलता",
+  "Tamper-Evident Safety Seals": "सुरक्षित सिलबन्दी प्याकेजिङ",
+  "Batch Traceability System": "ब्याच ट्र्याकिङ प्रणाली",
+  "Cold-Chain Logistics Network": "कोल्ड-चेन ढुवानी सञ्जाल",
+  "Direct From Itahari Facility": "हाम्रो इटहरी केन्द्रबाट सिधै",
+  "Made for South Asian Skin": "दक्षिण एसियाली छालाका लागि विशेष निर्मित",
+  "Doctor Formulated Skincare": "चिकित्सकद्वारा प्रमाणित छाला हेरचाह",
+  "Physiological pH Balanced": "प्राकृतिक pH सन्तुलित",
+  "Gentle & Fragrance-Free": "कोमल तथा सुगन्ध-रहित",
+  "Sterile & Non-Comedogenic": "जीवाणुरहित र नन-कमेडोजेनिक",
+  "100% Vegan & Cruelty-Free": "१००% भेजान र क्रुरता-रहित",
+  "Safe Post-Procedure Care": "उपचारपछिको सुरक्षित हेरचाह",
+  "Clinically Tested in Nepal": "नेपालमै क्लिनिकली परीक्षण गरिएको",
+  "Centella Asiatica Leaf Water": "सेन्टेला एसियाटिका पातको पानी",
+  "Ceramide NP, AP, EOP": "सेरामाइड NP, AP, EOP",
+  "Botanical Squalane (Olive)": "बोटानिकल स्क्वालेन (जैतुन)",
+  "Zinc Oxide & Mineral Screen": "जिंक अक्साइड र मिनरल शिल्ड",
+  "Soothing Gel Cleanser": "शान्त पार्ने जेल क्लिन्जर",
+  "Barrier Repair Serum": "ब्यारियर मर्मत सिरम",
+  "Deep Hydration Cream": "गहिरो आद्रता क्रिम",
+  "Daily Mineral Sunscreen": "दैनिक मिनरल सनस्क्रिन",
+  "Clarifying Face Wash": "सफा गर्ने फेस वास",
+  "Restorative Night Oil": "रात्रिकालीन पुनर्स्थापना तेल",
+  "Refreshing Face Mist": "ताजगी दिने फेस मिस्ट",
+  "Exfoliating Treatment": "एक्सफोलिएटिंग ट्रिटमेन्ट",
+  "Soothing Lip Treatment": "कोमल ओठको मर्मत",
+  "Post-Laser Recovery Balm": "लेजरपछिको रिकभरी बाम",
+  "Hydrating Toner Essence": "हाइड्रेटिङ टोनर इसेन्स",
+  "Nourishing Eye Cream": "आँखा वरिपरिको पोषण क्रिम",
+  "Brightening Serum": "चमक दिने सिरम",
+  "Calming Face Mask": "शान्त पार्ने फेस मास्क",
+  "Wholesale Portal": "थोक पोर्टल",
+  "Retail Onboarding": "खुद्रा अनबोर्डिङ",
+  "Clinic Dispensary": "क्लिनिक औषधालय",
+  "Order Sample Kit": "स्याम्पल किट मगाउनुहोस्",
+  "Request Price List": "मूल्य सूची अनुरोध गर्नुहोस्",
+  "Apply for Partnership": "साझेदारीका लागि आवेदन दिनुहोस्",
+  "Become an Authorized Retailer": "अधिकृत बिक्रेता बन्नुहोस्",
+  "Download B2B Catalog": "B2B क्याटलग डाउनलोड गर्नुहोस्",
+  "View Certificates of Analysis": "COA रिपोर्ट हेर्नुहोस्",
+  "Track Your Batch": "आफ्नो ब्याच ट्र्याक गर्नुहोस्",
+  "Find Nearest Clinic": "नजिकको क्लिनिक खोज्नुहोस्",
+  "Contact Support Team": "ग्राहक सहायता टोलीसँग सम्पर्क गर्नुहोस्",
+  "Chat on WhatsApp": "ह्वाट्सएपमा कुरा गर्नुहोस्",
+  "Email Medical Liaison": "चिकित्सा टोलीलाई इमेल गर्नुहोस्",
+  "Call Our Itahari Office": "हाम्रो इटहरी कार्यालयमा फोन गर्नुहोस्",
+  "Visit Our Facility": "हाम्रो प्रयोगशाला भ्रमण गर्नुहोस्",
+  "Monday - Friday, 9am - 5pm": "सोमबार - शुक्रबार, बिहान ९ - साँझ ५",
+  "Sunday - Friday, 9am - 6pm": "आइतबार - शुक्रबार, बिहान ९ - साँझ ६",
+  "Emergency Inquiries": "आपतकालीन सोधपुछ",
+  "Press & Media Relations": "प्रेस तथा मिडिया सम्बन्ध",
+  "Career Opportunities": "रोजगारीका अवसरहरू",
+  "Privacy Policy": "गोपनीयता नीति",
+  "Terms of Service": "सेवाका सर्तहरू",
+  "Compliance & Standards": "अनुपालन र मापदण्डहरू",
+  "Site Map & Directory": "साइट म्याप र निर्देशिका",
+  "All Rights Reserved": "सर्वाधिकार सुरक्षित",
+  "Choice by Professional": "विज्ञहरूको विश्वासिलो रोजाइ",
+  "CDerma Nepal": "सिडर्मा नेपाल",
+  "Face Care": "फेस केयर",
+  "View Monograph": "मोनोग्राफ हेर्नुहोस्",
+  "Download Report": "रिपोर्ट डाउनलोड गर्नुहोस्",
+  "Apply Now": "अहिले आवेदन दिनुहोस्",
+  "Get In Touch": "सम्पर्क गर्नुहोस्",
+  "Learn More": "थप जान्नुहोस्",
+  "Explore": "अन्वेषण गर्नुहोस्",
+  "View All": "सबै हेर्नुहोस्",
+  "Back to Top": "माथि जानुहोस्",
+  "Close": "बन्द गर्नुहोस्",
+  "Submit": "पेश गर्नुहोस्",
+  "Search": "खोज्नुहोस्",
+  "Filter": "फिल्टर",
+  "Clear All": "सबै खाली गर्नुहोस्",
+  "Loading...": "लोड हुँदैछ...",
+  "Please Wait": "कृपया पर्खनुहोस्",
+  "Success!": "सफल भयो!",
+  "Thank You": "धन्यवाद",
+  "Standard Store / Clinic Supply (50 - 150 Units)": "मानक स्टोर / क्लिनिक आपूर्ति (५० - १५० थान)",
+  "Tiered volume pricing with predictable margins": "पूर्वानुमानित नाफा सहितको परिमाणमा आधारित मूल्य",
+  "GPS: Kathmandu Valley (27.7172° N, 85.3240° E)": "GPS: काठमाडौं उपत्यका (२७.७१७२° N, ८५.३२४०° E)",
+  "Frequently Asked Questions: Face Care in Nepal": "प्रायः सोधिने प्रश्नहरू: नेपालमा फेस केयर",
+  "Dispatched before 11:00 AM arrives by 4:00 PM": "बिहान ११:०० अघि पठाइए दिउँसो ४:०० बजेसम्म आइपुग्छ",
+  "ceramides, niacinamide, and centella asiatica": "सिरामाइड्स, नियासिनामाइड र सेन्टेला एशियाटिका",
+  "6 articles &bull; Written by verified doctors": "६ लेखहरू • प्रमाणित डाक्टरहरूद्वारा लिखित",
+  "6 articles • Written by verified doctors": "६ लेखहरू • प्रमाणित डाक्टरहरूद्वारा लिखित",
+  "Cosmetic Store & Clinical Dispensary Channel": "कस्मेटिक स्टोर तथा क्लिनिकल डिस्पेन्सरी च्यानल",
+  "Stocked at 32 certified hospital pharmacies.": "३२ प्रमाणित अस्पताल फार्मेसीहरूमा उपलब्ध।",
+  "Formulated in Nepal with Cleanroom Precision": "क्लिनरुम शुद्धताका साथ नेपालमै फर्मुलेट गरिएको",
+  "CDerma Sub-Critical Extraction: 88.4% Active": "सी-डर्मा सब-क्रिटिकल निकासी: ८८.४% सक्रिय",
+  "Verified Retail & Dispensary Network • Nepal": "प्रमाणित खुद्रा तथा डिस्पेन्सरी सञ्जाल • नेपाल",
+  "Written by doctors &bull; Easy to understand": "डाक्टरहरूद्वारा लिखित • बुझ्न सजिलो",
+  "Written by doctors • Easy to understand": "डाक्टरहरूद्वारा लिखित • बुझ्न सजिलो",
+  "Applied Chemistry &bull; CDerma Lab, Itahari": "एप्लाइड केमिस्ट्री • सी-डर्मा ल्याब, इटहरी",
+  "Applied Chemistry • CDerma Lab, Itahari": "एप्लाइड केमिस्ट्री • सी-डर्मा ल्याब, इटहरी",
+  "High-Altitude Mineral Shield SPF 50+ PA++++": "उच्च-उचाइ मिनरल शिल्ड SPF 50+ PA++++",
+  "Extraction Yield Purity vs Thermal Baseline": "निकासी शुद्धता बनाम तापीय आधार रेखा",
+  "Cosmetic Store / Practice / Business Name *": "कस्मेटिक स्टोर / क्लिनिक / व्यवसायको नाम *",
+  "AEO Quick Summary · Clinic & Store Locator:": "AEO द्रुत सारांश · क्लिनिक र स्टोर लोकेटर:",
+  "Urgent Clinical Orders / WhatsApp Dispatch": "तत्काल क्लिनिकल अर्डर / ह्वाट्सएप डिस्प्याच",
+  "Available Locations (7 Authorized Outlets)": "उपलब्ध स्थानहरू (७ अधिकृत आउटलेटहरू)",
+  "that mortar — specifically ones containing": "त्यो मोर्टार — विशेष गरी समावेश भएका",
+  "Actives: 5% Madecassoside + Ceramide Trio": "सक्रिय तत्वहरू: ५% मेडकासोसाइड + सिरामाइड त्रयी",
+  "Lead Formulation Pharmacist • Itahari Lab": "प्रमुख फर्मुलेसन फार्मासिस्ट • इटहरी ल्याब",
+  "Pure · Disciplined · Domestic Excellence": "शुद्ध · अनुशासित · स्वदेशी उत्कृष्टता",
+  "Dispensing & Distribution Classification": "वितरण तथा आपूर्ति वर्गीकरण",
+  "Cleanroom Protocol • Technical Monograph": "क्लिनरुम प्रोटोकल • प्राविधिक मोनोग्राफ",
+  "Medical Practitioners & Clinic Directors": "चिकित्सक तथा क्लिनिक निर्देशकहरू",
+  "Premium Cosmetic Store / Beauty Boutique": "प्रिमियम कस्मेटिक स्टोर / ब्युटी बुटिक",
+  "Sunsari District, Koshi Province, Nepal": "सुनसरी जिल्ला, कोशी प्रदेश, नेपाल",
+  "Cosmetic Store / Business / Clinic Name": "कस्मेटिक स्टोर / व्यवसाय / क्लिनिकको नाम",
+  "Cleanroom Verified: Koshi Province Labs": "क्लिनरुम प्रमाणित: कोशी प्रदेश प्रयोगशाला",
+  "Birat Heart & Health Center, Biratnagar": "विराट हार्ट एण्ड हेल्थ सेन्टर, विराटनगर",
+  "Cosmetic Store, Clinic, Doctor, or City": "कस्मेटिक स्टोर, क्लिनिक, डाक्टर वा शहर",
+  "Formulated Under Professional Guidance": "व्यावसायिक मार्गदर्शनमा तयार गरिएको",
+  "Clinical Batch Tested & INCI Compliant": "क्लिनिकल ब्याच परीक्षण गरिएको र INCI अनुरूप",
+  "Institutional / Bulk (150 - 500 Units)": "संस्थागत / थोक (१५० - ५०० थान)",
+  "Bagmati (Kathmandu, Lalitpur, Chitwan)": "बागमती (काठमाडौं, ललितपुर, चितवन)",
+  "Imported Actives & Sourcing Standards": "आयातित सक्रिय तत्वहरू र संकलन मापदण्ड",
+  "Kathmandu & Pokhara Clinical Standard": "काठमाडौं र पोखरा क्लिनिकल मापदण्ड",
+  "Skin Type: Sensitive, Dry, Acne-Prone": "छालाको प्रकार: संवेदनशील, सुक्खा, डण्डीफोर आउने",
+  "Optimal pH: 5.4 - 5.8 (Physiological)": "उत्कृष्ट pH: ५.४ - ५.८ (प्राकृतिक)",
+  "Calibrated Data-Logger on Every Crate": "प्रत्येक क्रेटमा क्यालिब्रेटेड डेटा-लगर",
+  "Submit Wholesale & Retail Application": "थोक तथा खुद्रा आवेदन पेश गर्नुहोस्",
+  "Air-cargo priority dispatch available": "हवाई कार्गो प्राथमिकता ढुवानी उपलब्ध",
+  "Updated regularly by our medical team": "हाम्रो मेडिकल टोलीद्वारा नियमित रूपमा अद्यावधिक",
+  "Advanced Barrier Restore Concentrate": "एडभान्स्ड ब्यारियर रिस्टोर कन्सन्ट्रेट",
+  "Standard Solvent Boiling: 32% Active": "मानक विलायक उमाल्ने: ३२% सक्रिय",
+  "Centella Intensive Repair Serum 30ml": "सेन्टेला इन्टेन्सिभ रिपेयर सीरम ३० मि.लि.",
+  "Lot: LOT-24-0442 • Mfd: Nov 12, 2024": "लट: LOT-24-0442 • उत्पादन: १२ नोभेम्बर २०२४",
+  "Zero E-Commerce Diversion Guaranteed": "कुनै ई-कमर्स विचलन नहुने ग्यारेन्टी",
+  "Itahari Industrial Formulation Park": "इटहरी औद्योगिक फर्मुलेसन पार्क",
+  "Flagship Restorative Formula No. 04": "प्रमुख पुनर्स्थापना फर्मुला नं. ०४",
+  "Guaranteed Authentic & Batch-Tested": "प्रमाणित वास्तविक र ब्याच-परीक्षण गरिएको",
+  "Works Great With Makeup & Sunscreen": "मेकअप र सनस्क्रिनसँग उत्कृष्ट काम गर्छ",
+  "Frequently Asked Clinical Questions": "प्रायः सोधिने क्लिनिकल प्रश्नहरू",
+  "Madhesh Province (Birgunj/Janakpur)": "मधेश प्रदेश (वीरगञ्ज/जनकपुर)",
+  "Koshi (Biratnagar, Itahari, Dharan)": "कोशी (विराटनगर, इटहरी, धरान)",
+  "Request Wholesale & Retail Samples": "थोक तथा खुद्रा नमूना अनुरोध गर्नुहोस्",
+  "USP 61 / 62 Microbiological Passed": "USP ६१ / ६२ माइक्रोबायोलोजिकल उत्तीर्ण",
+  "Assayed by Dr. P. Bhattarai, Ph.D.": "डा. पी. भट्टराई, Ph.D. द्वारा परीक्षण गरिएको",
+  "Koshi Province (Biratnagar/Dharan)": "कोशी प्रदेश (विराटनगर/धरान)",
+  "Trial Starter Pack (25 - 50 Units)": "परीक्षण प्रारम्भिक प्याक (२५ - ५० थान)",
+  "Authorized Retail & Clinic Network": "अधिकृत खुद्रा तथा क्लिनिक सञ्जाल",
+  "Nepal Provincial Distribution Grid": "नेपाल प्रादेशिक वितरण सञ्जाल",
+  "Direct Cleanroom Dispatch Protocol": "प्रत्यक्ष क्लिनरुम ढुवानी प्रोटोकल",
+  "Lot Tracked via Koshi Cleanroom QA": "कोशी क्लिनरुम QA मार्फत लट ट्र्याकिङ",
+  "The Short Answer (From the Doctor)": "संक्षिप्त जवाफ (डाक्टरबाट)",
+  "Zero airborne cross-contamination": "शून्य हावाजन्य क्रस-प्रदूषण",
+  "Indigenous Bio-Active Procurement": "स्थानीय जैविक-सक्रिय तत्व संकलन",
+  "CDerma Certified Analytical Assay": "सी-डर्मा प्रमाणित विश्लेषणात्मक परीक्षण",
+  "Download Wholesale Schedule (PDF)": "थोक मूल्यसूची डाउनलोड गर्नुहोस् (PDF)",
+  "Dermatological Integrity Protocol": "छाला सम्बन्धी अखण्डता प्रोटोकल",
+  "NMC Registered Practitioners Only": "NMC दर्ता प्राप्त चिकित्सकहरू मात्र",
+  "Read Cleanroom Quality Whitepaper": "क्लिनरुम गुणस्तर श्वेतपत्र पढ्नुहोस्",
+  "Practitioner Dispensing Inquiries": "चिकित्सक वितरण सोधपुछ",
+  "Apply for Retail & Clinic Supply": "खुद्रा तथा क्लिनिक आपूर्तिका लागि आवेदन दिनुहोस्",
+  "Serum Concentrate • 30ml Dropper": "सीरम कन्सन्ट्रेट • ३० मि.लि. ड्रपर",
+  "Combination / Dysregulated Sebum": "मिश्रित / असन्तुलित सेबम",
+  "Apothecary Prescription Standard": "एपोथेकेरी प्रिस्क्रिप्शन मापदण्ड",
+  "Kathmandu, Lalitpur & Bhaktapur:": "काठमाडौं, ललितपुर र भक्तपुर:",
+  "Alpine Centella Asiatica Extract": "हिमाली सेन्टेला एशियाटिका अर्क",
+  "Application Ritual & Integration": "प्रयोग विधि र दिनचर्या",
+  "Interactive 4K Remote Video Tour": "अन्तर्क्रियात्मक 4K भिडियो भ्रमण",
+  "Apply for Store / Clinic Account": "स्टोर / क्लिनिक खाताका लागि आवेदन दिनुहोस्",
+  "Patan Skin Specialists, Lalitpur": "पाटन स्किन स्पेसलिस्ट्स, ललितपुर",
+  "Regional Wholesaler (500+ Units)": "क्षेत्रीय थोक बिक्रेता (५००+ थान)",
+  "Multi-Molecular Hyaluronic Acid": "मल्टी-मोलिक्युलर हाइलुरोनिक एसिड",
+  "Full INCI Technical Declaration": "पूर्ण INCI प्राविधिक घोषणा",
+  "PAN / Business / NMC Reg Number": "प्यान / व्यवसाय / NMC दर्ता नम्बर",
+  "Daily scheduled courier transit": "दैनिक निर्धारित कुरियर ढुवानी",
+  "Domestic Manufacturing Standard": "स्वदेशी उत्पादन मापदण्ड",
+  "Selected Hub: Itahari Facility": "छनोट गरिएको हब: इटहरी प्लान्ट",
+  "REPLY WITHIN 24 BUSINESS HOURS": "२४ कार्यघण्टाभित्र जवाफ पठाइनेछ",
+  "Formula No. 04 — Medical Grade": "फर्मुला नं. ०४ — मेडिकल ग्रेड",
+  "Clinical TL;DR / Quick Summary": "क्लिनिकल TL;DR / द्रुत सारांश",
+  "Soothing After Facials & Peels": "फेसियल र पिलिङ पछिको शीतलता",
+  "Dryness & Damaged Skin Barrier": "सुक्खापन र क्षतिग्रस्त छाला ब्यारियर",
+  "Ceramide Complex (NP, AP, EOP)": "सिरामाइड कम्प्लेक्स (NP, AP, EOP)",
+  "Thermal Envelope: -5°C to 45°C": "थर्मल दायरा: -५°C देखि ४५°C",
+  "Post-Procedure Protocol Guides": "प्रक्रिया पछिको प्रोटोकल गाइडहरू",
+  "Chief Pharmacist, DDA Verified": "प्रमुख फार्मासिस्ट, DDA प्रमाणित",
+  "B2B WhatsApp: +977 982-0753751": "B2B ह्वाट्सएप: +९७७ ९८२-०७५३७५१",
+  "Not Sure What Your Skin Needs?": "तपाईंको छालालाई के चाहिन्छ थाहा छैन?",
+  "Step 03 • Concentrated Active": "चरण ०३ • कन्सन्ट्रेटेड एक्टिभ",
+  "ISO 7 / Class 10,000 Verified": "ISO ७ / क्लास १०,००० प्रमाणित",
+  "Simulated sub-Himalayan aging": "उप-हिमाली मौसम उमेर सिमुलेशन",
+  "Protected Integrity Guarantee": "सुरक्षित गुणस्तर ग्यारेन्टी",
+  "Heavy Metal Screen (Pb/Hg/As)": "हेभी मेटल परीक्षण (Pb/Hg/As)",
+  "Cosmetic Counter Sales Manual": "कस्मेटिक काउन्टर बिक्री पुस्तिका",
+  "Senior Aesthetic Practitioner": "वरिष्ठ एस्थेटिक विशेषज्ञ",
+  "Clinical FAQ & Search Queries": "क्लिनिकल FAQ र खोज प्रश्नहरू",
+  "Nepal Clinical Pharmacopoeia": "नेपाल क्लिनिकल फार्माकोपिया",
+  "Gentle Cleansers & Mists (2)": "कोमल क्लिन्जर तथा मिस्टहरू (२)",
+  "100% Artificial Perfume Free": "१००% कृत्रिम परफ्यूम रहित",
+  "D-Panthenol (Pro-Vitamin B5)": "डी-प्यान्थेनोल (प्रो-भिटामिन B5)",
+  "NMID Monitored Active Series": "NMID अनुगमन गरिएको सक्रिय श्रृंखला",
+  "Particle Count: Class 10,000": "कण गणना: क्लास १०,०००",
+  "Cosmetic Stores & Pharmacies": "कस्मेटिक स्टोर तथा फार्मेसीहरू",
+  "Zero Cost Merchandising Kits": "निःशुल्क मर्चेन्डाइजिङ किटहरू",
+  "Hospital Associated Pharmacy": "अस्पताल सम्बद्ध फार्मेसी",
+  "Retail Pharmacy / Dispensary": "खुद्रा फार्मेसी / डिस्पेन्सरी",
+  "Medical Spa & Wellness Suite": "मेडिकल स्पा तथा वेलनेस सुइट",
+  "Anticipated Monthly Volume *": "अनुमानित मासिक परिमाण *",
+  "Face Care Products in Nepal": "नेपालमा फेस केयर उत्पादनहरू",
+  "Clinical Batch: #IT-2025-08": "क्लिनिकल ब्याच: #IT-2025-08",
+  "Clinical Batch: #IT-2025-02": "क्लिनिकल ब्याच: #IT-2025-02",
+  "Clinical Batch: #IT-2025-05": "क्लिनिकल ब्याच: #IT-2025-05",
+  "Clinical Batch: #IT-2025-11": "क्लिनिकल ब्याच: #IT-2025-11",
+  "Clinical Batch: #IT-2025-03": "क्लिनिकल ब्याच: #IT-2025-03",
+  "Clinical Batch: #IT-2025-09": "क्लिनिकल ब्याच: #IT-2025-09",
+  "Shipped from Koshi Province": "कोशी प्रदेशबाट पठाइएको",
+  "Fresh Batch No: Lot 24-0442": "ताजा ब्याच नं: लट २४-०४४२",
+  "Clinician Consultation Line": "चिकित्सक परामर्श लाइन",
+  "Analytical balance accuracy": "विश्लेषणात्मक ब्यालेन्स शुद्धता",
+  "Soil-to-vial digital ledger": "माटोदेखि सिसीसम्मको डिजिटल लेजर",
+  "Centrifugal Phase Stability": "सेन्ट्रीफ्युगल फेज स्थिरता",
+  "Full INCI Dossiers Provided": "पूर्ण INCI डोजियर उपलब्ध",
+  "DDA Registered Formulations": "DDA दर्ता गरिएका फर्मुलेसनहरू",
+  "Lumbini (Butwal/Bhairahawa)": "लुम्बिनी (बुटवल/भैरहवा)",
+  "Himalayan Cleanroom Science": "हिमाली क्लिनरुम विज्ञान",
+  "Request Clinical Sample Kit": "क्लिनिकल नमूना किट अनुरोध गर्नुहोस्",
+  "From the Lead Doctor's Desk": "प्रमुख डाक्टरको डेस्कबाट",
+  "Featured Article This Month": "यस महिनाको विशेष लेख",
+  "Certified Imported Actives": "प्रमाणित आयातित सक्रिय तत्वहरू",
+  "Download B2B Catalog (PDF)": "B2B क्याटलग डाउनलोड गर्नुहोस् (PDF)",
+  "B2B & Retail Priority Desk": "B2B तथा खुद्रा प्राथमिकता डेस्क",
+  "Sinks In Within 15 Seconds": "१५ सेकेन्डभित्र छालामा समाहित हुन्छ",
+  "Cleanroom Quality Standard": "क्लिनरुम गुणस्तर मापदण्ड",
+  "Enter 8-Digit Batch Lot ID": "८-अङ्कको ब्याच लट नम्बर प्रविष्ट गर्नुहोस्",
+  "Active Asiaticoside Purity": "सक्रिय एशियाटिकोसाइड शुद्धता",
+  "Microbial Bioburden (TAMC)": "माइक्रोबियल बायोबर्डन (TAMC)",
+  "ISO Class 7 (Class 10,000)": "ISO क्लास ७ (क्लास १०,०००)",
+  "35% – 48% Margin Structure": "३५% – ४८% नाफा संरचना",
+  "35% - 48% Margin Structure": "३५% – ४८% नाफा संरचना",
+  "Dermatologist Endorsements": "छाला रोग विशेषज्ञहरूको सिफारिस",
+  "Third-Party Micro-Screened": "तेस्रो-पक्षीय माइक्रो-परीक्षण गरिएको",
+  "Beauty Salon & Skin Lounge": "ब्युटी सैलुन तथा स्किन लाउन्ज",
+  "Direct Mobile / WhatsApp *": "प्रत्यक्ष मोबाइल / ह्वाट्सएप *",
+  "Bagmati (Kathmandu Valley)": "बागमती (काठमाडौं उपत्यका)",
+  "Domestic Distribution Grid": "स्वदेशी वितरण सञ्जाल",
+  "Madhesh (Janakpur/Birgunj)": "मधेश (जनकपुर/वीरगञ्ज)",
+  "Manufactured in Biratnagar": "विराटनगरमा निर्मित",
+  "The fix? Use products that": "समाधान? त्यस्ता उत्पादनहरू प्रयोग गर्नुहोस् जसले",
+  "Zero Artificial Fragrance": "शून्य कृत्रिम सुगन्ध",
+  "Face Serums & Elixirs (2)": "फेस सीरम र अमृतहरू (२)",
+  "High-Altitude Dehydration": "उच्च-उचाइको डिहाइड्रेशन",
+  "Hypersensitive / Reactive": "अत्यधिक संवेदनशील / प्रतिक्रियात्मक",
+  "Wild Himalayan Botanicals": "जंगली हिमाली जडीबुटीहरू",
+  "Doctor Protocol Certified": "डाक्टर प्रोटोकल प्रमाणित",
+  "100% Disclosure Monograph": "१००% खुलासा मोनोग्राफ",
+  "Analytical Test Parameter": "विश्लेषणात्मक परीक्षण मापदण्ड",
+  "Request Practitioner Tour": "चिकित्सक अवलोकन भ्रमण अनुरोध",
+  "Download Clinical Dossier": "क्लिनिकल डोजियर डाउनलोड गर्नुहोस्",
+  "Enterprise Infrastructure": "इन्टरप्राइज पूर्वाधार",
+  "Cleanroom Batch Certified": "क्लिनरुम ब्याच प्रमाणित",
+  "Dermatology / Skin Clinic": "छाला रोग / स्किन क्लिनिक",
+  "Authorized Cosmetic Store": "अधिकृत कस्मेटिक स्टोर",
+  "Koshi Lab Transit: Direct": "कोशी ल्याब ढुवानी: प्रत्यक्ष",
+  "Ethical Foraging Altitude": "नैतिक संकलन उचाइ",
+  "h by k&k trading concern": "के एन्ड के ट्रेडिङ कन्सर्नद्वारा",
+  "Gentle on Sensitive Skin": "संवेदनशील छालाका लागि कोमल",
+  "Deep Moisture Creams (1)": "डिप मोइस्चर क्रिमहरू (१)",
+  "Pharmacological Standard": "औषधिविज्ञान सम्बन्धी मापदण्ड",
+  "Zero Synthetic Fragrance": "शून्य सिंथेटिक सुगन्ध",
+  "Pure Cleanroom Standards": "शुद्ध क्लिनरुम मापदण्ड",
+  "Made for Nepal's Climate": "नेपालको मौसम अनुकूल तयार गरिएको",
+  "Protected Retail Pricing": "संरक्षित खुद्रा मूल्य निर्धारण",
+  "Solukhumbu Wild Centella": "सोलुखुम्बुको जंगली सेन्टेला",
+  "142 Clinical Evaluations": "१४२ क्लिनिकल मूल्यांकनहरू",
+  "Redness & Sensitive Skin": "रातोपन र संवेदनशील छाला",
+  "Request Wholesale Sample": "थोक नमूना अनुरोध गर्नुहोस्",
+  "High-Altitude Solukhumbu": "उच्च-उचाइ सोलुखुम्बु",
+  "Gravimetric Micro-Dosing": "ग्राभिमेट्रिक माइक्रो-डोजिङ",
+  "Physiological pH Balance": "शारीरिक pH सन्तुलन",
+  "Aesthetic & Laser Center": "एस्थेटिक तथा लेजर सेन्टर",
+  "Gandaki (Pokhara Valley)": "गण्डकी (पोखरा उपत्यका)",
+  "PHASE 03 // DISPENSATION": "चरण ०३ // वितरण (DISPENSATION)",
+  "Stop touching your face.": "आफ्नो अनुहार नछुनुहोस्।",
+  "Rx / Clinical Formulary": "Rx / क्लिनिकल फर्मुलरी",
+  "Find In Store or Clinic": "स्टोर वा क्लिनिकमा फेला पार्नुहोस्",
+  "Dry to Severely Xerotic": "सुक्खा देखि अत्यधिक सुक्खा (जेरोटिक)",
+  "Sun Damage & Tan Relief": "घामको असर र ट्यानबाट राहत",
+  "100% Breathable & Light": "१००% सास फेर्ने र हलुका",
+  "Proven Results in Nepal": "नेपालमा प्रमाणित नतिजाहरू",
+  "94.2% Pure Asiaticoside": "९४.२% शुद्ध एशियाटिकोसाइड",
+  "Bio-Identical Bio-Layer": "बायो-आइडेन्टिकल बायो-लेयर",
+  "Itahari, Koshi Province": "इटहरी, कोशी प्रदेश",
+  "INCI Science Monographs": "INCI विज्ञान मोनोग्राफहरू",
+  "Fast-Track Registration": "द्रुत दर्ता प्रक्रिया",
+  "Select Facility Type...": "सुविधाको प्रकार छान्नुहोस्...",
+  "Contact Person & Role *": "सम्पर्क व्यक्ति र पद *",
+  "Inquiry Ref: CD-2025-NP": "सोधपुछ सन्दर्भ: CD-2025-NP",
+  "Zone 3: Western & Hills": "जोन ३: पश्चिमी तथा पहाडी क्षेत्र",
+  "Province / Jurisdiction": "प्रदेश / कार्यक्षेत्र",
+  "Karnali & Sudurpashchim": "कर्णाली तथा सुदूरपश्चिम",
+  "09:00 - 19:30 (Sun-Fri)": "०९:०० - १९:३० (आइत-शुक्र)",
+  "PHASE 02 // FORMULATION": "चरण ०२ // फर्मुलेसन (FORMULATION)",
+  "Dr. P. Bhattarai, Ph.D.": "डा. पी. भट्टराई, Ph.D.",
+  "Central Koshi Dispatch": "केन्द्रीय कोशी ढुवानी",
+  "Zero Synthetic Perfume": "शून्य सिंथेटिक परफ्यूम",
+  "Sun Care & SPF 50+ (1)": "सन केयर तथा SPF 50+ (१)",
+  "All Tolerance Profiles": "सबै प्रकारको सहनशीलता प्रोफाइल",
+  "Dermatologist Approved": "छाला रोग विशेषज्ञद्वारा अनुमोदित",
+  "Zero Flaking / Pilling": "कुनै पत्र ननिस्कने / नउप्किने",
+  "Zero Sticky Thickeners": "कुनै चिपचिपा बाक्लोपन नभएको",
+  "How It Helps Your Skin": "यसले तपाईंको छालालाई कसरी मद्दत गर्छ",
+  "Download Lab COA (PDF)": "ल्याब COA डाउनलोड गर्नुहोस् (PDF)",
+  "AEO Cleanroom Summary:": "AEO क्लिनरुम सारांश:",
+  "Class 10,000 Cleanroom": "क्लास १०,००० क्लिनरुम",
+  "Zero Separation [Pass]": "कुनै विभाजन नभएको [उत्तीर्ण]",
+  "Nepal Customs Immunity": "नेपाल भन्सार झन्झटमुक्त",
+  "Direct Customer Inflow": "प्रत्यक्ष ग्राहक आगमन",
+  "Zone 2: Valley Central": "जोन २: उपत्यका केन्द्र",
+  "Store & Clinic Locator": "स्टोर तथा क्लिनिक लोकेटर",
+  "Aesthetic Institutes (": "एस्थेटिक इन्स्टिच्युटहरू (",
+  "Register Your Practice": "आफ्नो क्लिनिक दर्ता गर्नुहोस्",
+  "Honest Skincare Advice": "इमानदार छाला हेरचाह सल्लाह",
+  "Live Logistics Matrix": "प्रत्यक्ष ढुवानी तालिका",
+  "Submit Direct Inquiry": "प्रत्यक्ष सोधपुछ पठाउनुहोस्",
+  "Inquiries & Assurance": "सोधपुछ तथा आश्वासन",
+  "5% Niacinamide + Cica": "५% नियासिनामाइड + सिका",
+  "Green Tea Polyphenols": "ग्रीन टी पोलिफेनल्स",
+  "45+ Aesthetic Clinics": "४५+ एस्थेटिक क्लिनिकहरू",
+  "Micro-Rheology & Feel": "माइक्रो-रियोलोजी र अनुभूति",
+  "Moisture Barrier Test": "मोइस्चर ब्यारियर परीक्षण",
+  "&lt; 1.0 ppm Combined": "< १.० ppm संयुक्त",
+  "< 1.0 ppm Combined": "< १.० ppm संयुक्त",
+  "In-Person Walkthrough": "प्रत्यक्ष अवलोकन भ्रमण",
+  "Registration Required": "दर्ता आवश्यक",
+  "Dermatology Centers (": "छाला रोग केन्द्रहरू (",
+  "Hospital Pharmacies (": "अस्पताल फार्मेसीहरू (",
+  "CDerma Cleanroom Node": "सी-डर्मा क्लिनरुम नोड",
+  "PHASE 01 // DIAGNOSIS": "चरण ०१ // निदान (DIAGNOSIS)",
+  "AEO Clinical Summary:": "AEO क्लिनिकल सारांश:",
+  "Always use sunscreen.": "सधैं सनस्क्रिन प्रयोग गर्नुहोस्।",
+  "Have a Skin Question?": "छाला सम्बन्धी प्रश्न छ?",
+  "Contact Itahari Team": "इटहरी टोलीलाई सम्पर्क गर्नुहोस्",
+  "View Product Details": "उत्पादन विवरण हेर्नुहोस्",
+  "All Formulations (6)": "सबै फर्मुलेसनहरू (६)",
+  "Ceramides 1, 3, 6-II": "सिरामाइड्स १, ३, ६-II",
+  "UVA / UVB Protection": "UVA / UVB सुरक्षा",
+  "Evaluation at Day 28": "२८ औं दिनको मूल्यांकन",
+  "Bio-Identical Lipids": "बायो-आइडेन्टिकल लिपिड्स",
+  "Pharmaceutical Grade": "औषधीय स्तर (फार्मास्युटिकल ग्रेड)",
+  "Authorized Retailers": "अधिकृत खुद्रा बिक्रेताहरू",
+  "Radical Transparency": "पूर्ण पारदर्शिता",
+  "24h Express Delivery": "२४ घण्टा एक्सप्रेस डेलिभरी",
+  "PAN / Business / NMC": "प्यान / व्यवसाय / NMC",
+  "Compromised Barrier": "क्षतिग्रस्त ब्यारियर",
+  "Post-Laser Recovery": "लेजर उपचार पछिको रिकभरी",
+  "Micro-Mist Delivery": "माइक्रो-मिस्ट डेलिभरी",
+  "Retinaldehyde 0.05%": "रेटिनाल्डिहाइड ०.०५%",
+  "Wholesale / Clinics": "थोक / क्लिनिकहरू",
+  "Ideal For Treating:": "उपचारका लागि उपयुक्त:",
+  "Evaluation at Day 2": "दोस्रो दिनको मूल्यांकन",
+  "Pure Clinical Grade": "शुद्ध क्लिनिकल ग्रेड",
+  "Plant-Based Ferment": "वनस्पतिमा आधारित फर्मेन्ट",
+  "Doctor Instructions": "डाक्टरका निर्देशनहरू",
+  "Inquiries & Support": "सोधपुछ तथा सहयोग",
+  "On-Bottle QR Access": "बोतलमा भएको QR कोड पहुँच",
+  "Specification Limit": "विशिष्टता सीमा",
+  "5.20 – 5.60 at 25°C": "५.२० – ५.६०, २५°C मा",
+  "5.20 - 5.60 at 25°C": "५.२० – ५.६०, २५°C मा",
+  "&lt; 1 CFU/g [Pass]": "< १ CFU/g [उत्तीर्ण]",
+  "< 1 CFU/g [Pass]": "< १ CFU/g [उत्तीर्ण]",
+  "Not Detected [Pass]": "पत्ता लागेन [उत्तीर्ण]",
+  "4,000 RPM / 30 mins": "४,००० RPM / ३० मिनेट",
+  "Nationwide Dispatch": "देशव्यापी ढुवानी",
+  "Verified Dispensary": "प्रमाणित डिस्पेन्सरी",
+  "GMP Certified Plant": "GMP प्रमाणित प्लान्ट",
+  "Drink enough water.": "प्रशस्त पानी पिउनुहोस्।",
+  "Partner Pharmacies": "साझेदार फार्मेसीहरू",
+  "(often searched as": "(प्रायः खोजिने नाम:",
+  "Explore Collection": "कलेक्सन हेर्नुहोस्",
+  "Himalayan Squalane": "हिमाली स्क्वालेन",
+  "4D Hyaluronic Acid": "4D हाइलुरोनिक एसिड",
+  "Kathmandu Same-Day": "काठमाडौंमा सोही दिन डेलिभरी",
+  "Thermal Incubation": "थर्मल इन्क्युबेशन",
+  "Key Ingredient": "प्रमुख तत्व",
+  "ISO 9001:2015": "ISO ९००१:२०१५",
+  "Dr. A. Karki": "डा. ए. कार्की",
+  "Download PDF": "PDF डाउनलोड गर्नुहोस्",
+  "24–48 hrs": "२४–४८ घण्टा",
+  "24-48 hrs": "२४–४८ घण्टा",
+  "Catalog": "क्याटलग",
+  "&bull;": "•",
+  "•": "•",
+  "ISO 7": "ISO ७",
+  "24h": "२४ घण्टा",
+  "e.g. Koshi Beauty Lounge or Patan Skin Care": "जस्तै: कोशी ब्युटी लाउन्ज वा पाटन स्किन केयर",
+  "+977 98...": "+९७७ ९८...",
+  "e.g. LOT-24-0442": "जस्तै: LOT-24-0442",
+  "e.g. Koshi Beauty Store or Kathmandu Skin Clinic": "जस्तै: कोशी ब्युटी स्टोर वा काठमाडौं स्किन क्लिनिक",
+  "e.g. 609874123": "जस्तै: ६०९८७४१२३",
+  "Store Owner / Dr. / Manager Name": "स्टोर मालिक / डा. / प्रबन्धकको नाम",
+  "e.g. Kathmandu, Biratnagar, Beauty Store, Naxal...": "जस्तै: काठमाडौं, विराटनगर, ब्युटी स्टोर, नक्साल...",
+  "Most skin problems I see can be fixed with three things: a gentle cleanser, a good moisturiser, and sunscreen every single morning. You don't need 10 products — you need the right ones.": "मैले देख्ने अधिकांश छालाका समस्याहरू तीन चीजले समाधान गर्न सकिन्छ: एक कोमल क्लिन्जर, राम्रो मोइस्चराइजर, र हरेक बिहान सनस्क्रिन। तपाईंलाई १० थरी उत्पादन चाहिँदैन — सही उत्पादन चाहिन्छ।",
+  "rebuild": "पुनर्निर्माण गर्ने"
 };
 
 const CDERMA_NEPALI_HTML = {
   "Clinical Summary · Doctor-Recommended Face Care Nepal": "<span class=\"font-label text-[10px] uppercase font-bold text-primary tracking-widest\">क्लिनिकल सारांश · चिकित्सकद्वारा सिफारिस गरिएको फेस केयर नेपाल</span>",
-  "CDerma Nepal is a doctor-formulated face care manufacturer and clinical skincare supplier based in Itahari, Sunsari, Koshi Province. Crafted for Nepal’s high-altitude UV, urban pollution, and dry winters, CDerma synthesizes prescription-grade Centella barrier serums, bio-identical ceramide creams, and physiological cleansers for consumers and wholesale partners nationwide.": "<strong>सिडर्मा नेपाल</strong> इटहरी, सुनसरी, कोशी प्रदेशमा अवस्थित चिकित्सकद्वारा प्रमाणित फेस केयर निर्माता तथा क्लिनिकल छाला हेरचाह आपूर्तिकर्ता हो। नेपालको उच्च उचाइको घाम, सहरी धुलो र सुख्खा जाडो मौसमलाई ध्यानमा राखी सिडर्माले उच्च गुणस्तरको सेन्टेला ब्यारियर सिरम, सेरामाइड क्रिम र क्लिन्जरहरू उत्पादन तथा वितरण गर्दछ।"
+  "CDerma Nepal is a doctor-formulated face care manufacturer and clinical skincare supplier based in Itahari, Sunsari, Koshi Province. Crafted for Nepal’s high-altitude UV, urban pollution, and dry winters, CDerma synthesizes prescription-grade Centella barrier serums, bio-identical ceramide creams, and physiological cleansers for consumers and wholesale partners nationwide.": "<strong>सिडर्मा नेपाल</strong> इटहरी, सुनसरी, कोशी प्रदेशमा अवस्थित चिकित्सकद्वारा प्रमाणित फेस केयर निर्माता तथा क्लिनिकल छाला हेरचाह आपूर्तिकर्ता हो। नेपालको उच्च उचाइको घाम, सहरी धुलो र सुख्खा जाडो मौसमलाई ध्यानमा राखी सिडर्माले उच्च गुणस्तरको सेन्टेला ब्यारियर सिरम, सेरामाइड क्रिम र क्लिन्जरहरू उत्पादन तथा वितरण गर्दछ।",
+  "CDerma Centella Barrier Restore Concentrate is widely regarded by practicing dermatologists as the best face care product in Nepal for daily skin barrier health, sensitive skin, and post-procedure recovery. Formulated in our ISO Class 7 cleanroom in Itahari, Sunsari, it integrates 5% pharmaceutical Madecassoside with bio-identical ceramides (NP, AP, EOP) designed specifically to counteract Nepal’s extreme UV exposure and elevation-driven dry climates.": "<strong>सिडर्मा सेन्टेला ब्यारियर रिस्टोर कन्सन्ट्रेट</strong> दैनिक छालाको ब्यारियर स्वास्थ्य, संवेदनशील छाला र कस्मेटिक उपचारपछिको हेरचाहका लागि चिकित्सकहरूद्वारा <strong>नेपालको उत्कृष्ट फेस केयर उत्पादन</strong> मानिन्छ। इटहरीस्थित हाम्रो ISO क्लास ७ क्लिनरुममा निर्मित यसमा ५% फार्मास्युटिकल मेडकासोसाइड र बायो-आइडेन्टिकल सेरामाइड्स (NP, AP, EOP) समावेश छ।",
+  "CDerma Nepal (often searched as CDerma Choice by Professional or Cdrema Nepal) is doctor-formulated specifically for Nepali dermal physiology. Unlike imported skincare that may face compromised storage conditions or generic formulations, CDerma face care products are cold-chain distributed with verifiable batch testing, zero synthetic perfume, and direct dispensing through authorized cosmetic stores, licensed dermatology clinics, and hospital pharmacies across Kathmandu, Pokhara, and Eastern Nepal.": "<strong>सिडर्मा नेपाल</strong> (<em>CDerma Choice by Professional</em> वा <em>Cdrema Nepal</em> को नामले समेत परिचित) नेपाली छालाको प्रकृति अनुकूल तयार पारिएको चिकित्सक-प्रमाणित ब्रान्ड हो। विदेशी उत्पादनहरूको विपरीत, सिडर्माका उत्पादनहरू प्रमाणित ब्याच परीक्षण, शून्य कृत्रिम सुगन्ध र कोल्ड-चेन ढुवानी मार्फत काठमाडौँ, पोखरा लगायत देशभरका अधिकृत स्टोर र क्लिनिकहरूमा उपलब्ध छन्।",
+  "CDerma Advanced Barrier Restore Concentrate is a doctor-formulated face care serum manufactured in Itahari, Nepal, designed to repair compromised skin barriers and reverse high-altitude trans-epidermal water loss (TEWL).": "<strong>सिडर्मा एड्भान्स्ड ब्यारियर रिस्टोर कन्सन्ट्रेट</strong> इटहरी, नेपालमा उत्पादित चिकित्सकद्वारा प्रमाणित फेस केयर सिरम हो, जसले क्षतिग्रस्त छालाको ब्यारियर मर्मत गर्दछ र उच्च उचाइमा हुने पानीको क्षति (TEWL) लाई रोक्दछ।",
+  "CDerma Nepal is an authorized doctor-formulated skincare manufacturer based in Itahari, Sunsari, Koshi Province. CDerma supplies verified cosmetic stores, retail pharmacies, and dermatology practices across all 7 provinces of Nepal with direct cleanroom batch pricing, fresh inventory, and guaranteed 24-48 hour dispatch.": "<strong>सिडर्मा नेपाल</strong> इटहरी, सुनसरी, कोशी प्रदेशमा अवस्थित अधिकृत चिकित्सक-प्रमाणित छाला हेरचाह निर्माता हो। सिडर्माले नेपालका सबै ७ प्रदेशका कस्मेटिक स्टोर, फार्मेसी र छाला क्लिनिकहरूलाई प्रत्यक्ष क्लिनरुम थोक मूल्य, ताजा मौज्दात र २४–४८ घण्टाभित्र डेलिभरी उपलब्ध गराउँछ।",
+  "Your skin has a natural protective layer called the skin barrier . Think of it like a brick wall — the bricks are your skin cells and the mortar between them is made of natural fats called ceramides. When that mortar breaks down, moisture escapes easily and your skin dries out. The fix? Use products that rebuild that mortar — specifically ones containing ceramides, niacinamide, and centella asiatica . These work from the inside out, not just on the surface.": "तपाईंको छालामा <strong>छालाको ब्यारियर</strong> भनिने प्राकृतिक सुरक्षात्मक तह हुन्छ। यसलाई इँटाको पर्खाल जस्तै सम्झनुहोस् — इँटाहरू छालाका कोषिका हुन् र तिनीहरूलाई जोड्ने सिमेन्ट भनेको सेरामाइड नामक प्राकृतिक लिपिड हो। जब त्यो सिमेन्ट कमजोर हुन्छ, छालाबाट पानी बाहिर निस्कन्छ र छाला सुख्खा हुन्छ।<br><br> समाधान के हो? त्यो सिमेन्टलाई <em>पुनः निर्माण</em> गर्ने उत्पादनहरू प्रयोग गर्नुहोस् — विशेष गरी <strong>सेरामाइड्स, नियासिनामाइड र सेन्टेला एसियाटिका</strong> युक्त उत्पादनहरू, जसले बाहिरबाट मात्र नभई छालाको भित्री तहदेखि नै काम गर्छन्।",
+  "Wash gently. Over-washing strips your skin's natural oils and makes it worse, not better. Twice a day is enough.": "<strong>कोमल रूपमा धुनुहोस्।</strong> धेरै पटक मुख धुँदा प्राकृतिक तेल नष्ट हुन्छ र छाला झन् बिग्रन्छ। दिनको दुई पटक धुनु पर्याप्त हुन्छ।",
+  "Always use sunscreen. Even on cloudy days, UV rays can damage your skin and cause dark spots over time.": "<strong>सधैं सनस्क्रिन लगाउनुहोस्।</strong> बादल लागेको दिनमा पनि घामको पराबैजनी किरणले छालालाई हानि पुर्याउन र कालो पोतो ल्याउन सक्छ।",
+  "Drink enough water. Dehydration shows up on your face fast — as dullness, tightness, and deeper-looking lines.": "<strong>प्रशस्त पानी पिउनुहोस्।</strong> पानीको कमी अनुहारमा तुरुन्तै देखिन्छ — फुस्रोपन, छाला तन्किने र चाउरीपनाको रूपमा।",
+  "Sleep heals skin. Your skin repairs itself at night. Poor sleep means dull, tired-looking skin. Aim for 7–8 hours.": "<strong>निन्द्राले छाला निको पार्छ।</strong> राति सुत्दा छालाले आफूलाई मर्मत गर्दछ। कम सुत्दा छाला फुस्रो र थकित देखिन्छ। दैनिक ७–८ घण्टा सुत्नुहोस्।",
+  "Sleep heals skin. Your skin repairs itself at night. Poor sleep means dull, tired-looking skin. Aim for 7&ndash;8 hours.": "<strong>निन्द्राले छाला निको पार्छ।</strong> राति सुत्दा छालाले आफूलाई मर्मत गर्दछ। कम सुत्दा छाला फुस्रो र थकित देखिन्छ। दैनिक ७–८ घण्टा सुत्नुहोस्।",
+  "Stop touching your face. Your hands carry bacteria and oil. Touching your face is one of the biggest causes of breakouts.": "<strong>अनुहार नछुनुहोस्।</strong> हातमा धुलो र ब्याक्टेरिया हुन्छ। अनुहार बारम्बार छुँदा डण्डिफोर आउने मुख्य कारण बन्छ।"
 };
 
 function applyBodyTranslations(lang) {
@@ -677,75 +1567,129 @@ function applyBodyTranslations(lang) {
   // 2. Search inputs & placeholders
   document.querySelectorAll('input[placeholder], textarea[placeholder]').forEach(inp => {
     if (isNe) {
-      if (!inp.dataset.enPh) inp.dataset.enPh = inp.getAttribute('placeholder') || '';
+      if (inp.dataset.enPh === undefined) inp.dataset.enPh = inp.getAttribute('placeholder') || '';
       const orig = inp.dataset.enPh.trim();
       if (CDERMA_NEPALI_DICTIONARY[orig]) {
         inp.setAttribute('placeholder', CDERMA_NEPALI_DICTIONARY[orig]);
       } else if (orig && orig.toLowerCase().includes('search')) {
         inp.setAttribute('placeholder', 'कस्मेटिक स्टोर, क्लिनिक वा शहर खोज्नुहोस्...');
       }
-    } else if (inp.dataset.enPh) {
+    } else if (inp.dataset.enPh !== undefined) {
       inp.setAttribute('placeholder', inp.dataset.enPh);
     }
   });
 
-  // 3. Body text elements (headings, paragraphs, buttons, links, cards, list items)
-  const selector = 'h1, h2, h3, h4, h5, h6, p, li, label, footer span, header a, nav a, main a, main button, main span, footer a, [data-trans]';
-  const elements = document.querySelectorAll(selector);
+  // 3. Dropdown <select> options
+  document.querySelectorAll('select option').forEach(opt => {
+    if (isNe) {
+      if (opt.dataset.enText === undefined) opt.dataset.enText = opt.textContent;
+      const clean = opt.dataset.enText.trim().replace(/\s+/g, ' ');
+      if (CDERMA_NEPALI_DICTIONARY[clean]) {
+        opt.textContent = CDERMA_NEPALI_DICTIONARY[clean];
+      }
+    } else if (opt.dataset.enText !== undefined) {
+      opt.textContent = opt.dataset.enText;
+    }
+  });
 
-  elements.forEach(el => {
-    // Skip language toggle buttons
+  // 4. HTML block replacements (CDERMA_NEPALI_HTML)
+  const blockCandidates = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, li, [data-cms], .aeo-block, article > p');
+  blockCandidates.forEach(el => {
     if (el.closest('.cderma-lang-toggle') || el.hasAttribute('data-lang-btn')) return;
-    // Skip material symbols icons & SVGs
-    if (el.classList.contains('material-symbols-outlined') || el.tagName === 'SVG' || el.closest('svg')) return;
+    const cleanText = el.textContent.trim().replace(/\s+/g, ' ');
+    if (CDERMA_NEPALI_HTML[cleanText]) {
+      if (isNe) {
+        if (el.dataset.enHtml === undefined) el.dataset.enHtml = el.innerHTML;
+        el.innerHTML = CDERMA_NEPALI_HTML[cleanText];
+        el.dataset.cdermaHtmlTrans = "true";
+      } else if (el.dataset.enHtml !== undefined) {
+        el.innerHTML = el.dataset.enHtml;
+        delete el.dataset.cdermaHtmlTrans;
+      }
+    }
+  });
+
+  // 5. Universal Text-Node TreeWalker for all visible text across the entire page
+  if (document.body) {
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode(node) {
+          const parent = node.parentElement;
+          if (!parent) return NodeFilter.FILTER_REJECT;
+          const tag = parent.tagName;
+          if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT' || tag === 'IFRAME') {
+            return NodeFilter.FILTER_REJECT;
+          }
+          if (parent.closest('.material-symbols-outlined') || parent.closest('svg') || parent.classList.contains('material-symbols-outlined')) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          if (parent.closest('.cderma-lang-toggle') || parent.closest('[data-lang-btn]')) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          if (parent.closest('[data-cderma-html-trans="true"]')) {
+            return NodeFilter.FILTER_REJECT;
+          }
+          const val = node.nodeValue;
+          if (!val || !val.trim()) return NodeFilter.FILTER_SKIP;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      }
+    );
+
+    const textNodes = [];
+    while (walker.nextNode()) {
+      textNodes.push(walker.currentNode);
+    }
+
+    textNodes.forEach(node => {
+      if (isNe) {
+        if (node._cdermaEn === undefined) {
+          node._cdermaEn = node.nodeValue;
+        }
+        const trimmed = node._cdermaEn.trim().replace(/\s+/g, ' ');
+        if (CDERMA_NEPALI_DICTIONARY[trimmed]) {
+          const leadingWs = node._cdermaEn.match(/^\s*/)[0];
+          const trailingWs = node._cdermaEn.match(/\s*$/)[0];
+          node.nodeValue = leadingWs + CDERMA_NEPALI_DICTIONARY[trimmed] + trailingWs;
+        }
+      } else {
+        if (node._cdermaEn !== undefined) {
+          node.nodeValue = node._cdermaEn;
+          delete node._cdermaEn;
+        }
+      }
+    });
+  }
+
+  // 6. Sibling-combined text elements (e.g. elements with icon + text node)
+  const compoundCandidates = document.querySelectorAll('a, button, span, div, label, p, th, td');
+  compoundCandidates.forEach(el => {
+    if (el.closest('.cderma-lang-toggle') || el.hasAttribute('data-lang-btn')) return;
+    if (el.closest('.material-symbols-outlined') || el.tagName === 'SVG' || el.closest('svg')) return;
+    if (el.dataset.cdermaHtmlTrans === "true") return;
 
     if (isNe) {
-      // Store original English HTML/Text if not already stored
-      if (el.dataset.enHtml === undefined) {
-        el.dataset.enHtml = el.innerHTML;
-        el.dataset.enText = el.textContent.trim().replace(/\s+/g, ' ');
+      if (el.dataset.enTextDirect === undefined) {
+        const directText = Array.from(el.childNodes)
+          .filter(n => n.nodeType === 3)
+          .map(n => n.nodeValue)
+          .join('')
+          .trim()
+          .replace(/\s+/g, ' ');
+        el.dataset.enTextDirect = directText;
       }
-
-      const enText = el.dataset.enText;
-      const directText = Array.from(el.childNodes)
-        .filter(n => n.nodeType === 3) // Node.TEXT_NODE
-        .map(n => n.nodeValue)
-        .join('')
-        .trim()
-        .replace(/\s+/g, ' ');
-
-      if (CDERMA_NEPALI_HTML[enText]) {
-        el.innerHTML = CDERMA_NEPALI_HTML[enText];
-      } else if (CDERMA_NEPALI_DICTIONARY[enText]) {
-        const trans = CDERMA_NEPALI_DICTIONARY[enText];
-        const iconEl = el.querySelector('.material-symbols-outlined, svg');
-        if (iconEl) {
-          let replaced = false;
-          el.childNodes.forEach(n => {
-            if (n.nodeType === 3 && n.nodeValue.trim()) {
-              n.nodeValue = ' ' + trans + ' ';
-              replaced = true;
-            }
-          });
-          if (!replaced) {
-            const spanChild = el.querySelector('span:not(.material-symbols-outlined)');
-            if (spanChild) spanChild.textContent = trans;
-          }
-        } else {
-          el.textContent = trans;
-        }
-      } else if (directText && CDERMA_NEPALI_DICTIONARY[directText]) {
-        const trans = CDERMA_NEPALI_DICTIONARY[directText];
+      const direct = el.dataset.enTextDirect;
+      if (direct && CDERMA_NEPALI_DICTIONARY[direct]) {
+        const trans = CDERMA_NEPALI_DICTIONARY[direct];
         el.childNodes.forEach(n => {
-          if (n.nodeType === 3 && n.nodeValue.trim() === directText) {
-            n.nodeValue = ' ' + trans + ' ';
+          if (n.nodeType === 3 && n.nodeValue.trim()) {
+            const leadingWs = n.nodeValue.match(/^\s*/)[0];
+            const trailingWs = n.nodeValue.match(/\s*$/)[0];
+            n.nodeValue = leadingWs + trans + trailingWs;
           }
         });
-      }
-    } else {
-      // Restore English HTML
-      if (el.dataset.enHtml !== undefined) {
-        el.innerHTML = el.dataset.enHtml;
       }
     }
   });
@@ -797,7 +1741,10 @@ document.addEventListener('DOMContentLoaded', async () => {
           el.textContent = s[key];
         }
       });
-
+      if (activeLang === 'ne') applyBodyTranslations('ne'); // Re-run on dynamic CMS settings
+      if (activeLang === 'ne') applyBodyTranslations('ne'); // Re-run on dynamic CMS settings
+      if (activeLang === 'ne') applyBodyTranslations('ne'); // Re-run on dynamic CMS settings
+      if (activeLang === 'ne') applyBodyTranslations('ne'); // Re-run on dynamic CMS settings
       // Universal [data-cms-href] link binder
       document.querySelectorAll('[data-cms-href]').forEach(el => {
         const key = el.getAttribute('data-cms-href');
@@ -1365,6 +2312,7 @@ function renderProductGrid(container, products) {
       return `<span class="px-2 py-0.5 rounded bg-surface-container text-[11px] text-on-surface-variant font-medium">${escapeHtml(text)}</span>`;
     }).join('');
 
+  if (isNe) applyBodyTranslations('ne'); // Products grid translated
     return `
       <div class="product-card group flex flex-col justify-between h-full bg-surface-container-lowest rounded-xl overflow-hidden p-space-lg hover:shadow-[0_14px_34px_rgba(107,91,28,0.06)] border border-outline-variant/20 transition-all" data-category="${escapeHtml(categoryNorm)}">
         <div class="relative w-full h-56 bg-surface-container-high rounded-lg overflow-hidden flex items-center justify-center mb-space-md">
@@ -1514,6 +2462,7 @@ async function initProductDetail() {
     if (usageEl && p.usage_instructions) {
       usageEl.textContent = p.usage_instructions;
     }
+    if (isNe) applyBodyTranslations('ne'); // Product detail translated
 
   } catch (err) {
     console.debug('Product detail dynamic sync fallback');
@@ -1873,6 +2822,7 @@ function renderClinicsList(container, clinics, onSelectClinic, selectedClinicId)
     `;
   }).join('');
 
+  if (getActiveLanguage() === 'ne') applyBodyTranslations('ne'); // Clinics list translated
   // Attach card click listeners
   container.querySelectorAll('.clinic-item-card').forEach(card => {
     card.addEventListener('click', () => {
@@ -2009,6 +2959,7 @@ function renderArticlesGrid(container, articles) {
       </article>
     `;
   }).join('');
+  if (isNe) applyBodyTranslations('ne'); // Articles grid translated
 }
 
 function escapeHtml(str) {

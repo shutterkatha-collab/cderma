@@ -26,3 +26,4 @@ public/uploads/*
 
 # IDE Agent customizations
 .agents/
+scratch/

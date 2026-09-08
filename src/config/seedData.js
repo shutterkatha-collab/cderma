@@ -48,6 +48,9 @@ const defaultSettings = [
   { key: 'home_flagship_cta', value: 'Inspect Technical Monograph', category: 'Home Page', label: 'Flagship CTA Button' },
 
   // Home Page - 3 Scientific Pillars
+  { key: 'home_pillars_badge', value: 'Quality Skincare Made in Nepal', category: 'Home Page', label: 'Home Pillars Badge' },
+  { key: 'home_pillars_title', value: 'Doctor-Grade Face Care You Can Trust.', category: 'Home Page', label: 'Home Pillars Title' },
+  { key: 'home_pillars_subtitle', value: 'We believe everyone in Nepal deserves honest, effective face care that truly works. CDerma brings you doctor-tested formulas made with pure ingredients, clear labels, and total care.', category: 'Home Page', label: 'Home Pillars Subtitle' },
   { key: 'pillar_section_badge', value: 'The CDerma Standard', category: 'Home Page', label: 'Pillars Section Badge' },
   { key: 'pillar_section_title', value: 'Three Non-Negotiable Pillars of Dermal Science', category: 'Home Page', label: 'Pillars Section Title' },
   { key: 'pillar_1_title', value: 'Bio-Identical Stratum Corneum Mimicry', category: 'Home Page', label: 'Pillar 1 Title' },
@@ -68,6 +71,9 @@ const defaultSettings = [
   { key: 'trial_metric_3_lbl', value: 'Reduction in Transepidermal Water Loss (TEWL) after 4 weeks of twice-daily use.', category: 'Home Page', label: 'Trial Metric 3 Label' },
 
   // Home Page - Testimonials
+  { key: 'home_practitioner_badge', value: 'Practitioner Validation', category: 'Home Page', label: 'Practitioner Validation Badge' },
+  { key: 'home_practitioner_title', value: 'Recommended by Doctors.', category: 'Home Page', label: 'Practitioner Validation Title' },
+  { key: 'home_practitioner_subtitle', value: 'CDerma formulations are evaluated and recommended by registered medical professionals across Nepal for reliable everyday barrier care and post-procedure hydration.', category: 'Home Page', label: 'Practitioner Validation Subtitle' },
   { key: 'testimonial_title', value: 'Prescribed by Leading Dermatologists', category: 'Home Page', label: 'Testimonial Section Title' },
   { key: 'testimonial_1_quote', value: 'CDerma provides the exact physiological barrier repair lipid ratio I have struggled to source domestically. In our procedural suites, post-chemical peel recovery time has dropped by half.', category: 'Home Page', label: 'Testimonial 1 Quote' },
   { key: 'testimonial_1_author', value: 'Dr. A. Karki, MD', category: 'Home Page', label: 'Testimonial 1 Author' },
@@ -130,6 +136,8 @@ const defaultSettings = [
   // Products Page
   { key: 'products_hero_title', value: 'Clinical Formulations Directory', category: 'Products Page', label: 'Products Hero Title' },
   { key: 'products_hero_subtitle', value: 'Medical-grade dermatological regimens, concentrated active fractions, and post-procedure barrier creams formulated for Asian skin.', category: 'Products Page', label: 'Products Hero Subtitle' },
+  { key: 'products_catalog_title', value: 'Our Complete Face Care & Daily Essentials', category: 'Products Page', label: 'Products Catalog Title' },
+  { key: 'products_catalog_subtitle', value: 'Available at leading cosmetic stores, beauty retailers, and certified skin clinics across Nepal.', category: 'Products Page', label: 'Products Catalog Subtitle' },
   { key: 'products_disclaimer', value: 'For clinical dispensary prescription, authorized cosmetic stores, and clinic dispensing. Formulated at physiological pH in our Koshi cleanroom.', category: 'Products Page', label: 'Products Advisory Notice' },
 
   // Clinic Directory
@@ -831,6 +839,13 @@ defaultMonographs.forEach(m => {
   const ne = monographsNepali[m.code];
   if (ne) {
     Object.assign(m, ne);
+  }
+});
+
+// Attach value_ne to defaultSettings
+defaultSettings.forEach(s => {
+  if (settingsNepali[s.key]) {
+    s.value_ne = settingsNepali[s.key];
   }
 });
 
