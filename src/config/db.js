@@ -345,6 +345,20 @@ async function initDatabase() {
     );
   `);
 
+  // 11. Security Audit Logs Table
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS security_audit_logs (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      event_type TEXT NOT NULL,
+      severity TEXT DEFAULT 'INFO',
+      ip_address TEXT,
+      user_agent TEXT,
+      username TEXT,
+      details TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+  `);
+
   // Run schema migrations for monographs, clinics, and bilingual columns
   migrateMonographsTable();
   migrateBilingualColumns();
@@ -353,6 +367,15 @@ async function initDatabase() {
   seedInitialData();
 
   persist();
+
+  // Automated disaster recovery snapshot
+  try {
+    const { createDatabaseBackup } = require('../services/backupService');
+    createDatabaseBackup(rawDb);
+  } catch (e) {
+    console.warn('Initial backup notice:', e.message);
+  }
+
   return db;
 }
 
@@ -777,14 +800,15 @@ function seedInitialData() {
   if (adminCount === 0) {
     const adminUser = process.env.ADMIN_USER || 'admin';
     const adminPass = process.env.ADMIN_PASS || 'cderma2026!';
-    const passwordHash = bcrypt.hashSync(adminPass, 10);
+    const { hashPassword } = require('../services/securityService');
+    const passwordHash = hashPassword(adminPass);
     db.prepare('INSERT INTO admin_users (username, email, password_hash, role) VALUES (?, ?, ?, ?)').run(
       adminUser,
       'admin@cderma.com.np',
       passwordHash,
       'admin'
     );
-    console.log(`🔐 Created default admin account (user: ${adminUser})`);
+    console.log(`🔐 Created default admin account with modern scrypt hashing (user: ${adminUser})`);
   }
 
   // Seed Default Social Channels

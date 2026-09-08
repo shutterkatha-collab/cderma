@@ -11,37 +11,114 @@ const adminRoutes = require('./src/routes/admin');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const isProduction = process.env.NODE_ENV === 'production';
 
-// Security & Body parsing
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+const { TRUSTED_HOSTS } = require('./src/services/securityService');
 
-// Session for Admin authentication
+// 1. Enable Trust Proxy (required for secure cookies and accurate client IP behind Hostinger CDN / reverse proxy)
+app.set('trust proxy', 1);
+app.disable('x-powered-by');
+
+// 2. Sensitive File Shield Middleware: Block direct downloads of database, config, and source files
+const BLOCKED_FILE_EXTENSIONS = /\.(sqlite|sqlite3|db|env|json|lock|log|git|sh|yml|yaml|md|ts|map|bak|sql)$/i;
+app.use((req, res, next) => {
+  const pathname = req.path.toLowerCase();
+  // Allow explicit legitimate public XML/TXT files
+  if (pathname === '/sitemap.xml' || pathname === '/robots.txt' || pathname === '/llms.txt' || pathname === '/llms-full.txt') {
+    return next();
+  }
+  if (BLOCKED_FILE_EXTENSIONS.test(pathname) || pathname.includes('database.sqlite')) {
+    return res.status(403).type('text/plain').send('403 Forbidden: Direct access to internal system files is prohibited.');
+  }
+  next();
+});
+
+// 3. Strict CORS Policy
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    try {
+      const hostname = new URL(origin).hostname.toLowerCase();
+      if (TRUSTED_HOSTS.has(hostname) || hostname.endsWith('.hostingersite.com')) {
+        return callback(null, true);
+      }
+      return callback(new Error('CORS request blocked from untrusted origin: ' + hostname));
+    } catch (e) {
+      return callback(new Error('Malformed origin header'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'X-CSRF-Token', 'Accept']
+};
+app.use(cors(corsOptions));
+
+// 4. Request body parsing with strict size limits (prevents payload flood / denial of service)
+app.use(express.json({ limit: '2mb' }));
+app.use(express.urlencoded({ extended: true, limit: '2mb' }));
+
+// 5. Hardened Session for Admin authentication
 app.use(session({
+  name: '__cderma_sid',
   secret: process.env.SESSION_SECRET || 'cderma_nepal_clinical_botanical_luxury_2026',
   resave: false,
   saveUninitialized: false,
+  rolling: true,
   cookie: {
-    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production' && process.env.FORCE_HTTPS === 'true'
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days max lifetime
+    httpOnly: true,                  // Mitigate XSS session theft
+    sameSite: 'lax',                 // Strict CSRF defense on top-level navigations
+    secure: isProduction             // Enforce HTTPS transmission in production
   }
 }));
 
-// Security and SEO Header Middleware
+// 6. Comprehensive Security Headers & Content Security Policy (CSP)
 app.use((req, res, next) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'SAMEORIGIN');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
-  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin-allow-popups');
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=()');
+
+  // Enforce HSTS in production or over HTTPS
+  if (isProduction || req.secure) {
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+  }
+
+  // Content Security Policy tailored for CDerma typography and UI libraries
+  res.setHeader('Content-Security-Policy', [
+    "default-src 'self'",
+    "script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com",
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+    "font-src 'self' https://fonts.gstatic.com data:",
+    "img-src 'self' data: blob: https://cderma.com.np https://antiquewhite-porcupine-932870.hostingersite.com https://*.hostingersite.com",
+    "connect-src 'self'",
+    "frame-ancestors 'self'",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'"
+  ].join('; '));
+
   next();
 });
 
-// Static Asset Directories
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
-app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
-app.use(express.static(path.join(__dirname, 'public')));
+// 7. Static Asset Directories with Content-Type and Nosniff enforcement
+app.use('/assets', express.static(path.join(__dirname, 'assets'), {
+  maxAge: '1d',
+  setHeaders: (res) => {
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+  }
+}));
+
+app.use('/uploads', (req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('Content-Disposition', 'inline');
+  next();
+}, express.static(path.join(__dirname, 'public/uploads'), {
+  maxAge: '1d'
+}));
+
+app.use(express.static(path.join(__dirname, 'public'), { maxAge: '1d' }));
 
 // Public APIs
 app.use('/api', apiRoutes);
@@ -167,12 +244,35 @@ app.get('/sitemap.xml', (req, res) => {
   }
 });
 
-// Fallback static files
-app.use(express.static(path.join(__dirname, '.')));
+// Canonical Public Web Pages
+app.get('/cleanroom', (req, res) => res.sendFile(path.join(__dirname, 'science.html')));
+app.get('/cleanroom.html', (req, res) => res.sendFile(path.join(__dirname, 'science.html')));
+app.get('/about', (req, res) => res.sendFile(path.join(__dirname, 'science.html')));
+app.get('/contact', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/privacy', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/terms', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/faq', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 
-// 404 handler
+// 404 handler (API routes return JSON, Web requests return 404 page)
 app.use((req, res) => {
+  if (req.path.startsWith('/api/') || req.path.startsWith('/admin/api/')) {
+    return res.status(404).json({ success: false, error: 'NOT_FOUND', message: 'API resource not found.' });
+  }
   res.status(404).sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Central Error Handler (prevents stack traces & internal error leakage)
+app.use((err, req, res, next) => {
+  console.error('Unhandled server error:', err);
+  if (res.headersSent) {
+    return next(err);
+  }
+  const status = err.status || 500;
+  res.status(status).json({
+    success: false,
+    error: 'INTERNAL_ERROR',
+    message: isProduction ? 'An internal error occurred. Please try again later.' : err.message
+  });
 });
 
 // Start Server

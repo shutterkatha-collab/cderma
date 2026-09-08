@@ -1,11 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcryptjs');
 const db = require('../config/db');
 const { requireAdmin } = require('../middleware/auth');
 const upload = require('../middleware/upload');
+const { verifyUploadedFile } = require('../middleware/upload');
+const {
+  verifyPassword,
+  hashPassword,
+  authRateLimiter,
+  verifyCsrfOrigin,
+  logSecurityEvent,
+  getClientIp
+} = require('../services/securityService');
+const { createDatabaseBackup, listBackups } = require('../services/backupService');
 const { generateAll, regenerateIfEnabled, LLMS_TXT_PATH, LLMS_FULL_TXT_PATH } = require('../services/llmsGenerator');
 const { validateAll } = require('../services/llmsValidator');
+
+// Apply CSRF origin verification on state-changing admin operations
+router.use(verifyCsrfOrigin);
 
 // ==================== AUTH ROUTES ====================
 
@@ -17,30 +29,81 @@ router.get('/login', (req, res) => {
   res.sendFile(require('path').resolve(__dirname, '../views/admin/login.html'));
 });
 
-// POST /admin/login - Handle Login
-router.post('/login', (req, res) => {
+// POST /admin/login - Handle Login with rate limiting, scrypt/timing attack protection, and session regeneration
+router.post('/login', authRateLimiter.middleware(), (req, res) => {
   const { username, password } = req.body;
+  const ip = getClientIp(req);
+
   if (!username || !password) {
     return res.status(400).json({ success: false, message: 'Username and password are required.' });
   }
 
-  const user = db.prepare('SELECT * FROM admin_users WHERE username = ?').get(username.trim());
-  if (!user || !bcrypt.compareSync(password, user.password_hash)) {
+  const user = db.prepare('SELECT * FROM admin_users WHERE username = ?').get(String(username).trim());
+  const { valid, needsRehash } = verifyPassword(String(password), user ? user.password_hash : null);
+
+  if (!user || !valid) {
+    logSecurityEvent(db, {
+      event_type: 'LOGIN_FAILURE',
+      severity: 'WARN',
+      ip_address: ip,
+      user_agent: req.headers['user-agent'],
+      username: String(username).trim(),
+      details: { reason: 'Invalid username or password' }
+    });
     return res.status(401).json({ success: false, message: 'Invalid credentials. Please verify username and password.' });
   }
 
-  req.session.adminUser = {
-    id: user.id,
-    username: user.username,
-    role: user.role
-  };
+  // Auto-upgrade password hash to memory-hard scrypt if legacy bcrypt detected
+  if (needsRehash) {
+    try {
+      const newHash = hashPassword(String(password));
+      db.prepare('UPDATE admin_users SET password_hash = ? WHERE id = ?').run(newHash, user.id);
+      console.log(`🔐 Auto-upgraded password hash to scrypt for user: ${user.username}`);
+    } catch (e) {
+      console.warn('Password rehash upgrade notice:', e.message);
+    }
+  }
 
-  res.json({ success: true, message: 'Authenticated successfully.', redirect: '/admin' });
+  // Session Fixation Defense: regenerate session ID on privilege transition
+  req.session.regenerate((err) => {
+    if (err) {
+      return res.status(500).json({ success: false, message: 'Failed to initialize authenticated session.' });
+    }
+
+    req.session.adminUser = {
+      id: user.id,
+      username: user.username,
+      role: user.role
+    };
+    req.session.adminLoggedIn = true;
+    req.session.lastActivity = Date.now();
+
+    logSecurityEvent(db, {
+      event_type: 'LOGIN_SUCCESS',
+      severity: 'INFO',
+      ip_address: ip,
+      user_agent: req.headers['user-agent'],
+      username: user.username,
+      details: { role: user.role }
+    });
+
+    res.json({ success: true, message: 'Authenticated successfully.', redirect: '/admin' });
+  });
 });
 
-// POST /admin/logout - Handle Logout
+// POST /admin/logout - Handle Logout with audit trail
 router.post('/logout', (req, res) => {
+  const username = req.session && req.session.adminUser ? req.session.adminUser.username : 'admin';
+  logSecurityEvent(db, {
+    event_type: 'LOGOUT',
+    severity: 'INFO',
+    ip_address: getClientIp(req),
+    user_agent: req.headers['user-agent'],
+    username
+  });
+
   req.session.destroy(() => {
+    res.clearCookie('__cderma_sid');
     res.json({ success: true, redirect: '/admin/login' });
   });
 });
@@ -221,7 +284,7 @@ router.get('/api/products', requireAdmin, (req, res) => {
 });
 
 // POST /admin/api/products - Create Product
-router.post('/api/products', requireAdmin, upload.single('image'), (req, res) => {
+router.post('/api/products', requireAdmin, upload.single('image'), verifyUploadedFile, (req, res) => {
   try {
     let {
       title, subtitle, slug, category, volume, price_npr,
@@ -270,7 +333,7 @@ router.post('/api/products', requireAdmin, upload.single('image'), (req, res) =>
 });
 
 // PUT /admin/api/products/:id - Update Product
-router.put('/api/products/:id', requireAdmin, upload.single('image'), (req, res) => {
+router.put('/api/products/:id', requireAdmin, upload.single('image'), verifyUploadedFile, (req, res) => {
   try {
     const existing = db.prepare('SELECT * FROM products WHERE id = ?').get(req.params.id);
     if (!existing) {
@@ -368,10 +431,8 @@ router.get('/api/clinics', requireAdmin, (req, res) => {
 });
 
 // POST /admin/api/clinics - Create Clinic
-router.post('/api/clinics', requireAdmin, (req, res) => {
-  upload.single('doctor_image')(req, res, (err) => {
-    if (err) return res.status(400).json({ success: false, error: err.message });
-    try {
+router.post('/api/clinics', requireAdmin, upload.single('doctor_image'), verifyUploadedFile, (req, res) => {
+  try {
       const {
         name, category, city, province, address, phone, email,
         lead_doctor, doctor_nmc, doctor_image, distance_badge,
@@ -414,14 +475,11 @@ router.post('/api/clinics', requireAdmin, (req, res) => {
     } catch (e) {
       res.status(500).json({ success: false, error: e.message });
     }
-  });
 });
 
 // PUT /admin/api/clinics/:id - Update Clinic
-router.put('/api/clinics/:id', requireAdmin, (req, res) => {
-  upload.single('doctor_image')(req, res, (err) => {
-    if (err) return res.status(400).json({ success: false, error: err.message });
-    try {
+router.put('/api/clinics/:id', requireAdmin, upload.single('doctor_image'), verifyUploadedFile, (req, res) => {
+  try {
       const {
         name, category, city, province, address, phone, email,
         lead_doctor, doctor_nmc, doctor_image, distance_badge,
@@ -480,7 +538,6 @@ router.put('/api/clinics/:id', requireAdmin, (req, res) => {
     } catch (e) {
       res.status(500).json({ success: false, error: e.message });
     }
-  });
 });
 
 // DELETE /admin/api/clinics/:id
@@ -507,7 +564,7 @@ router.get('/api/monographs', requireAdmin, (req, res) => {
 });
 
 // POST /admin/api/monographs - Create Monograph / Article
-router.post('/api/monographs', requireAdmin, upload.single('image'), (req, res) => {
+router.post('/api/monographs', requireAdmin, upload.single('image'), verifyUploadedFile, (req, res) => {
   try {
     let {
       code, title, category, indication, active_compounds,
@@ -552,7 +609,7 @@ router.post('/api/monographs', requireAdmin, upload.single('image'), (req, res) 
 });
 
 // PUT /admin/api/monographs/:id - Update Monograph / Article
-router.put('/api/monographs/:id', requireAdmin, upload.single('image'), (req, res) => {
+router.put('/api/monographs/:id', requireAdmin, upload.single('image'), verifyUploadedFile, (req, res) => {
   try {
     const existing = db.prepare('SELECT * FROM monographs WHERE id = ?').get(req.params.id);
     if (!existing) {
@@ -706,7 +763,7 @@ router.get('/api/media', requireAdmin, (req, res) => {
 });
 
 // POST /admin/api/media/:slot_key - Update specific image slot (via file or URL)
-router.post('/api/media/:slot_key', requireAdmin, upload.single('file'), (req, res) => {
+router.post('/api/media/:slot_key', requireAdmin, upload.single('file'), verifyUploadedFile, (req, res) => {
   try {
     const { slot_key } = req.params;
     let imageUrl = req.body.image_url;
@@ -755,7 +812,7 @@ router.post('/api/media/:slot_key', requireAdmin, upload.single('file'), (req, r
 });
 
 // POST /admin/api/media/custom - Register a new custom media slot
-router.post('/api/media/custom', requireAdmin, upload.single('file'), (req, res) => {
+router.post('/api/media/custom', requireAdmin, upload.single('file'), verifyUploadedFile, (req, res) => {
   try {
     const { slot_key, slot_label, page, description } = req.body;
     let imageUrl = req.body.image_url;
@@ -808,7 +865,7 @@ router.delete('/api/media/:slot_key', requireAdmin, (req, res) => {
 });
 
 // POST /admin/api/upload - General Asset Uploader
-router.post('/api/upload', requireAdmin, upload.single('file'), (req, res) => {
+router.post('/api/upload', requireAdmin, upload.single('file'), verifyUploadedFile, (req, res) => {
   if (!req.file) {
     return res.status(400).json({ success: false, message: 'No file uploaded.' });
   }
@@ -835,7 +892,7 @@ router.get('/api/hero-slides', requireAdmin, (req, res) => {
 });
 
 // POST /admin/api/hero-slides - Create new slide
-router.post('/api/hero-slides', requireAdmin, upload.single('image'), (req, res) => {
+router.post('/api/hero-slides', requireAdmin, upload.single('image'), verifyUploadedFile, (req, res) => {
   try {
     let {
       title, subtitle, badge_text, formula_number, origin_text,
@@ -886,7 +943,7 @@ router.post('/api/hero-slides', requireAdmin, upload.single('image'), (req, res)
 });
 
 // PUT /admin/api/hero-slides/:id - Update slide
-router.put('/api/hero-slides/:id', requireAdmin, upload.single('image'), (req, res) => {
+router.put('/api/hero-slides/:id', requireAdmin, upload.single('image'), verifyUploadedFile, (req, res) => {
   try {
     const { id } = req.params;
     const existing = db.prepare('SELECT * FROM hero_slides WHERE id = ?').get(id);
@@ -1092,7 +1149,7 @@ router.delete('/api/social/channels/:id', requireAdmin, (req, res) => {
 });
 
 // POST /admin/api/social/posts - Add social showcase item
-router.post('/api/social/posts', requireAdmin, upload.single('media'), (req, res) => {
+router.post('/api/social/posts', requireAdmin, upload.single('media'), verifyUploadedFile, (req, res) => {
   try {
     let { platform, title, post_url, author_handle, media_url, caption, metrics_text, is_featured, sort_order } = req.body;
     if (!title || !post_url) {
@@ -1128,7 +1185,7 @@ router.post('/api/social/posts', requireAdmin, upload.single('media'), (req, res
 });
 
 // PUT /admin/api/social/posts/:id - Update social showcase item
-router.put('/api/social/posts/:id', requireAdmin, upload.single('media'), (req, res) => {
+router.put('/api/social/posts/:id', requireAdmin, upload.single('media'), verifyUploadedFile, (req, res) => {
   try {
     const { id } = req.params;
     const post = db.prepare('SELECT * FROM social_posts WHERE id = ?').get(id);
@@ -1311,6 +1368,46 @@ router.post('/api/llms/toggle-auto', requireAdmin, (req, res) => {
     });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ==================== SECURITY & AUDIT LOGS API ====================
+
+// GET /admin/api/security/audit-logs - View recent security events
+router.get('/api/security/audit-logs', requireAdmin, (req, res) => {
+  try {
+    const limit = Math.min(100, parseInt(req.query.limit) || 30);
+    const logs = db.prepare('SELECT * FROM security_audit_logs ORDER BY id DESC LIMIT ?').all(limit);
+    res.json({ success: true, count: logs.length, logs });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to retrieve security audit logs.' });
+  }
+});
+
+// GET /admin/api/security/backups - List database disaster recovery snapshots
+router.get('/api/security/backups', requireAdmin, (req, res) => {
+  try {
+    const backups = listBackups();
+    res.json({ success: true, count: backups.length, backups });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to retrieve backup records.' });
+  }
+});
+
+// POST /admin/api/security/backups/create - Manually trigger database backup snapshot
+router.post('/api/security/backups/create', requireAdmin, (req, res) => {
+  try {
+    const result = createDatabaseBackup();
+    logSecurityEvent(db, {
+      event_type: 'DATABASE_BACKUP_CREATED',
+      severity: 'INFO',
+      ip_address: getClientIp(req),
+      username: req.session.adminUser ? req.session.adminUser.username : 'admin',
+      details: { filename: result.filename, bytes: result.bytes }
+    });
+    res.json({ success: true, message: 'Database backup snapshot created successfully.', backup: result });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Backup snapshot failed: ' + err.message });
   }
 });
 

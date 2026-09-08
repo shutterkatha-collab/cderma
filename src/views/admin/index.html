@@ -248,6 +248,13 @@
         </div>
         <span id="badgeLlms" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Active</span>
       </button>
+      <button onclick="switchTab('security')" class="tab-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="security">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-lg">shield</span>
+          <span>Security &amp; Auditing</span>
+        </div>
+        <span id="badgeSecurity" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Hardened</span>
+      </button>
     </nav>
 
     <!-- Footer user & logout -->
@@ -1317,6 +1324,113 @@ Sitemap: https://cderma.com.np/sitemap.xml
           </div>
         </div>
       </section>
+      
+      <!-- ==================== SECURITY & AUDITING ==================== -->
+      <section id="tab-security" class="hidden space-y-6">
+        <!-- Security Posture Status -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="p-4 rounded-xl bg-white border border-outline-border shadow-xs">
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-gray-500 uppercase font-semibold">Password Hash</span>
+              <span class="material-symbols-outlined text-emerald-600 text-base">verified</span>
+            </div>
+            <p class="text-base font-bold text-gray-900 mt-1">scrypt</p>
+            <p class="text-[11px] text-gray-500">Memory-hard (N=16384, r=8)</p>
+          </div>
+          <div class="p-4 rounded-xl bg-white border border-outline-border shadow-xs">
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-gray-500 uppercase font-semibold">File Shield</span>
+              <span class="material-symbols-outlined text-emerald-600 text-base">shield_lock</span>
+            </div>
+            <p class="text-base font-bold text-gray-900 mt-1">Active</p>
+            <p class="text-[11px] text-gray-500">.sqlite, .env, .git, .json blocked</p>
+          </div>
+          <div class="p-4 rounded-xl bg-white border border-outline-border shadow-xs">
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-gray-500 uppercase font-semibold">Rate Limiting</span>
+              <span class="material-symbols-outlined text-emerald-600 text-base">speed</span>
+            </div>
+            <p class="text-base font-bold text-gray-900 mt-1">Enforced</p>
+            <p class="text-[11px] text-gray-500">Sliding-window IP Throttling</p>
+          </div>
+          <div class="p-4 rounded-xl bg-white border border-outline-border shadow-xs">
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-gray-500 uppercase font-semibold">Session Defense</span>
+              <span class="material-symbols-outlined text-emerald-600 text-base">lock</span>
+            </div>
+            <p class="text-base font-bold text-gray-900 mt-1">HttpOnly / Lax</p>
+            <p class="text-[11px] text-gray-500">Rotation on auth &amp; 12h idle limit</p>
+          </div>
+        </div>
+
+        <!-- Backups & Disaster Recovery Management -->
+        <div class="bg-white rounded-xl border border-outline-border shadow-xs p-6 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h3 class="font-serif text-base font-bold text-primary flex items-center gap-2">
+                <span class="material-symbols-outlined text-secondary">database</span>
+                Database Snapshots &amp; Disaster Recovery
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">Automated startup snapshots + on-demand backups stored securely in <code>storage/backups/</code> with 7-version retention pruning.</p>
+            </div>
+            <button onclick="createManualBackup()" id="btnCreateBackup" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary hover:bg-primary/90 text-white text-xs font-semibold tracking-wider transition-all shadow-xs">
+              <span class="material-symbols-outlined text-base">backup</span>
+              <span>Create Database Snapshot</span>
+            </button>
+          </div>
+          
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead class="bg-gray-100/75 text-gray-600 uppercase text-[10px]">
+                <tr>
+                  <th class="p-3">Snapshot File</th>
+                  <th class="p-3">Size</th>
+                  <th class="p-3">Created Timestamp</th>
+                  <th class="p-3 text-right">Protection</th>
+                </tr>
+              </thead>
+              <tbody id="securityBackupsTableBody" class="divide-y divide-outline-border text-gray-700">
+                <tr><td colspan="4" class="p-4 text-center text-gray-400">Loading snapshots...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Security Audit Logs Table -->
+        <div class="bg-white rounded-xl border border-outline-border shadow-xs p-6 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h3 class="font-serif text-base font-bold text-primary flex items-center gap-2">
+                <span class="material-symbols-outlined text-rose-600">security</span>
+                Security Audit Trail &amp; Telemetry
+              </h3>
+              <p class="text-xs text-gray-500 mt-1">Immutable forensic log recording authentication attempts, privilege usage, file uploads, and rate limit triggers.</p>
+            </div>
+            <button onclick="loadSecurityData()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-xs font-semibold text-gray-700 transition-colors">
+              <span class="material-symbols-outlined text-sm">refresh</span>
+              <span>Refresh Logs</span>
+            </button>
+          </div>
+
+          <div class="overflow-x-auto max-h-96">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead class="bg-gray-100/75 text-gray-600 uppercase text-[10px] sticky top-0">
+                <tr>
+                  <th class="p-3">Timestamp</th>
+                  <th class="p-3">Severity</th>
+                  <th class="p-3">Event</th>
+                  <th class="p-3">Actor</th>
+                  <th class="p-3">IP Address</th>
+                  <th class="p-3">Details / Context</th>
+                </tr>
+              </thead>
+              <tbody id="securityAuditLogsTableBody" class="divide-y divide-outline-border text-gray-700">
+                <tr><td colspan="6" class="p-4 text-center text-gray-400">Loading audit trail...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
 
     </div>
   </main>
@@ -1970,7 +2084,8 @@ Sitemap: https://cderma.com.np/sitemap.xml
         social: 'Social Media & Omnichannel Engine',
         b2b: 'B2B Wholesale Account Inquiries',
         inquiries: 'Patient & Practitioner Messages',
-        llms: 'AI & LLM Discoverability Center'
+        llms: 'AI & LLM Discoverability Center',
+        security: 'Security & Audit Logging Console'
       };
       document.getElementById('pageTitle').textContent = titles[tabId] || 'Administration';
 
@@ -1985,6 +2100,7 @@ Sitemap: https://cderma.com.np/sitemap.xml
       if (tabId === 'b2b') loadB2B();
       if (tabId === 'inquiries') loadInquiries();
       if (tabId === 'llms') loadLlmsData();
+      if (tabId === 'security') loadSecurityData();
     }
 
     // Initial load
@@ -4202,7 +4318,12 @@ Sitemap: https://cderma.com.np/sitemap.xml
     // Helper utilities
     function escapeHtml(str) {
       if (!str) return '';
-      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
     }
 
     function getStatusClass(st) {
@@ -4488,6 +4609,115 @@ Sitemap: https://cderma.com.np/sitemap.xml
       }).catch(err => {
         showToast('Failed to copy to clipboard', 'error');
       });
+    }
+
+    // ==================== SECURITY & AUDITING ====================
+    async function loadSecurityData() {
+      await Promise.all([loadSecurityAuditLogs(), loadSecurityBackups()]);
+    }
+
+    async function loadSecurityAuditLogs() {
+      const tbody = document.getElementById('securityAuditLogsTableBody');
+      if (!tbody) return;
+      try {
+        const res = await fetch('/admin/api/security/audit-logs');
+        const data = await res.json();
+        if (!data.success) {
+          tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-rose-500">Failed to load audit logs: ${escapeHtml(data.error)}</td></tr>`;
+          return;
+        }
+
+        if (!data.logs || data.logs.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-gray-400">No security audit events recorded yet.</td></tr>`;
+          return;
+        }
+
+        tbody.innerHTML = data.logs.map(log => {
+          const dt = new Date(log.created_at).toLocaleString();
+          let sevColor = 'bg-gray-100 text-gray-700';
+          if (log.severity === 'critical') sevColor = 'bg-rose-100 text-rose-800 font-bold border border-rose-200';
+          else if (log.severity === 'high') sevColor = 'bg-red-100 text-red-700 font-semibold border border-red-200';
+          else if (log.severity === 'medium') sevColor = 'bg-amber-100 text-amber-700 border border-amber-200';
+          else if (log.severity === 'low') sevColor = 'bg-blue-100 text-blue-700';
+
+          return `
+            <tr class="hover:bg-gray-50 transition-colors">
+              <td class="p-3 font-mono text-[11px] text-gray-500 whitespace-nowrap">${escapeHtml(dt)}</td>
+              <td class="p-3"><span class="px-2 py-0.5 rounded text-[10px] uppercase ${sevColor}">${escapeHtml(log.severity)}</span></td>
+              <td class="p-3 font-semibold text-gray-900">${escapeHtml(log.event_type)}</td>
+              <td class="p-3 font-mono text-[11px] text-primary">${escapeHtml(log.username || 'anonymous')}</td>
+              <td class="p-3 font-mono text-[11px] text-gray-500">${escapeHtml(log.ip_address || 'unknown')}</td>
+              <td class="p-3 text-[11px] text-gray-600 max-w-xs truncate" title="${escapeHtml(log.details || '')}">${escapeHtml(log.details || '')}</td>
+            </tr>
+          `;
+        }).join('');
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-rose-500">Network error fetching audit logs</td></tr>`;
+      }
+    }
+
+    async function loadSecurityBackups() {
+      const tbody = document.getElementById('securityBackupsTableBody');
+      if (!tbody) return;
+      try {
+        const res = await fetch('/admin/api/security/backups');
+        const data = await res.json();
+        if (!data.success) {
+          tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-rose-500">Failed to load backups: ${escapeHtml(data.error)}</td></tr>`;
+          return;
+        }
+
+        if (!data.backups || data.backups.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-400">No database snapshots currently stored.</td></tr>`;
+          return;
+        }
+
+        tbody.innerHTML = data.backups.map(b => {
+          const dt = new Date(b.created_at).toLocaleString();
+          const sizeKb = (b.size_bytes / 1024).toFixed(1) + ' KB';
+          return `
+            <tr class="hover:bg-gray-50 transition-colors">
+              <td class="p-3 font-mono text-[11px] text-primary font-semibold flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-xs text-gray-400">inventory_2</span>
+                <span>${escapeHtml(b.filename)}</span>
+              </td>
+              <td class="p-3 font-mono text-[11px] text-gray-600">${escapeHtml(sizeKb)}</td>
+              <td class="p-3 text-[11px] text-gray-500">${escapeHtml(dt)}</td>
+              <td class="p-3 text-right">
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">Protected Outside Webroot</span>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-rose-500">Network error fetching backups</td></tr>`;
+      }
+    }
+
+    async function createManualBackup() {
+      const btn = document.getElementById('btnCreateBackup');
+      if (btn) {
+        btn.disabled = true;
+        btn.innerHTML = '<span class="material-symbols-outlined text-base animate-spin">refresh</span><span>Creating Snapshot...</span>';
+      }
+      try {
+        const res = await fetch('/admin/api/security/backups/create', { method: 'POST' });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Database snapshot created successfully', 'success');
+          await loadSecurityBackups();
+          await loadSecurityAuditLogs();
+        } else {
+          showToast(data.error || 'Failed to create backup', 'error');
+        }
+      } catch (err) {
+        showToast('Network error triggering snapshot', 'error');
+      } finally {
+        if (btn) {
+          btn.disabled = false;
+          btn.innerHTML = '<span class="material-symbols-outlined text-base">backup</span><span>Create Database Snapshot</span>';
+        }
+      }
     }
 
     // Init

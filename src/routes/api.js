@@ -1,13 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../config/db');
+const { formRateLimiter, apiRateLimiter, logSecurityEvent, getClientIp } = require('../services/securityService');
+const { validateInquiryInput, validateB2BInput } = require('../services/validatorService');
+
+// Apply general API rate limiting
+router.use(apiRateLimiter.middleware());
 
 // GET /api/auth/status - Check if active user has admin session
 router.get('/auth/status', (req, res) => {
-  const isAdmin = req.session && req.session.adminLoggedIn === true;
+  const isAdmin = req.session && (req.session.adminLoggedIn === true || !!req.session.adminUser);
   res.json({
     authenticated: isAdmin,
-    username: isAdmin ? req.session.adminUsername : null
+    username: isAdmin ? (req.session.adminUser ? req.session.adminUser.username : (req.session.adminUsername || 'admin')) : null
   });
 });
 
@@ -305,42 +310,30 @@ router.get('/blog-posts', (req, res) => {
   }
 });
 
-// POST /api/b2b/apply - Submit B2B Wholesale Application
-router.post('/b2b/apply', (req, res) => {
+// POST /api/b2b/apply - Submit B2B Wholesale Application with rate limiting & schema validation
+router.post('/b2b/apply', formRateLimiter.middleware(), (req, res) => {
   try {
-    const {
-      businessName,
-      practiceName,
-      regNumber,
-      clinicType,
-      facilityCategory,
-      contactPerson,
-      workEmail,
-      email,
-      phoneNumber,
-      phone,
-      province,
-      volumeTier,
-      sampleKitRequested,
-      sampleKitCheck
-    } = req.body;
-
-    const finalPractice = (businessName || practiceName || '').trim();
-    const finalContact = (contactPerson || '').trim();
-    const finalEmail = (workEmail || email || '').trim();
-    const finalPhone = (phoneNumber || phone || '').trim();
-    const finalCategory = (clinicType || facilityCategory || 'Dermatology Clinic').trim();
-    const finalReg = (regNumber || '').trim();
-    const finalProvince = (province || 'Bagmati').trim();
-    const finalVolume = (volumeTier || 'starter').trim();
-    const sampleKit = sampleKitRequested || sampleKitCheck ? 1 : 0;
-
-    if (!finalPractice || !finalContact || !finalEmail || !finalPhone) {
+    const validation = validateB2BInput(req.body);
+    if (!validation.isValid) {
       return res.status(400).json({
         success: false,
-        message: 'Please complete all required fields: Practice Name, Contact Person, Email, and Phone.'
+        error: 'VALIDATION_FAILED',
+        message: validation.errors[0],
+        errors: validation.errors
       });
     }
+
+    const {
+      practiceName,
+      contactPerson,
+      email,
+      phone,
+      facilityCategory,
+      regNumber,
+      province,
+      volumeTier,
+      sampleKit
+    } = validation.data;
 
     const stmt = db.prepare(`
       INSERT INTO b2b_applications (
@@ -350,16 +343,24 @@ router.post('/b2b/apply', (req, res) => {
     `);
 
     const result = stmt.run(
-      finalPractice,
-      finalReg,
-      finalCategory,
-      finalContact,
-      finalEmail,
-      finalPhone,
-      finalProvince,
-      finalVolume,
+      practiceName,
+      regNumber,
+      facilityCategory,
+      contactPerson,
+      email,
+      phone,
+      province,
+      volumeTier,
       sampleKit
     );
+
+    logSecurityEvent(db, {
+      event_type: 'B2B_APPLICATION_SUBMITTED',
+      severity: 'INFO',
+      ip_address: getClientIp(req),
+      user_agent: req.headers['user-agent'],
+      details: { applicationId: result.lastInsertRowid, practiceName, email }
+    });
 
     res.status(201).json({
       success: true,
@@ -367,18 +368,25 @@ router.post('/b2b/apply', (req, res) => {
       applicationId: result.lastInsertRowid
     });
   } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
+    console.error('Error processing B2B application:', err);
+    res.status(500).json({ success: false, message: 'Failed to record wholesale application. Please try again.' });
   }
 });
 
-// POST /api/inquiries - Submit general inquiry or doctor verification
-router.post('/inquiries', (req, res) => {
+// POST /api/inquiries - Submit general inquiry or doctor verification with rate limiting & schema validation
+router.post('/inquiries', formRateLimiter.middleware(), (req, res) => {
   try {
-    const { name, email, phone, subject, message, type } = req.body;
-
-    if (!name || !email) {
-      return res.status(400).json({ success: false, message: 'Name and Email are required.' });
+    const validation = validateInquiryInput(req.body);
+    if (!validation.isValid) {
+      return res.status(400).json({
+        success: false,
+        error: 'VALIDATION_FAILED',
+        message: validation.errors[0],
+        errors: validation.errors
+      });
     }
+
+    const { name, email, phone, subject, message, type } = validation.data;
 
     const stmt = db.prepare(`
       INSERT INTO inquiries (name, email, phone, subject, message, type, status)
@@ -386,13 +394,21 @@ router.post('/inquiries', (req, res) => {
     `);
 
     const result = stmt.run(
-      name.trim(),
-      email.trim(),
-      (phone || '').trim(),
-      (subject || 'General Inquiry').trim(),
-      (message || '').trim(),
-      type || 'general'
+      name,
+      email,
+      phone,
+      subject,
+      message,
+      type
     );
+
+    logSecurityEvent(db, {
+      event_type: 'INQUIRY_SUBMITTED',
+      severity: 'INFO',
+      ip_address: getClientIp(req),
+      user_agent: req.headers['user-agent'],
+      details: { inquiryId: result.lastInsertRowid, name, email, type }
+    });
 
     res.status(201).json({
       success: true,
@@ -400,7 +416,8 @@ router.post('/inquiries', (req, res) => {
       inquiryId: result.lastInsertRowid
     });
   } catch (err) {
-    res.status(500).json({ success: false, error: err.message });
+    console.error('Error processing inquiry:', err);
+    res.status(500).json({ success: false, message: 'Failed to submit inquiry. Please try again.' });
   }
 });
 
