@@ -62,10 +62,200 @@ try {
   }
 } catch (e) {}
 
-document.addEventListener('DOMContentLoaded', async () => {
-  // 1. Sync Dynamic Site Settings & Copy
+// ==========================================
+// Universal Language Switcher (EN / नेपाली)
+// ==========================================
+const CDERMA_LANG_KEY = 'cderma_lang';
+
+function getActiveLanguage() {
   try {
-    const res = await fetch('/api/settings');
+    const urlParams = new URLSearchParams(window.location.search);
+    const qLang = (urlParams.get('lang') || '').toLowerCase();
+    if (qLang === 'ne' || qLang === 'en') return qLang;
+  } catch (e) {}
+
+  try {
+    const match = document.cookie.match(/(?:^|;\s*)cderma_lang=([^;]*)/);
+    if (match && (match[1] === 'ne' || match[1] === 'en')) return match[1];
+  } catch (e) {}
+
+  try {
+    const stored = localStorage.getItem(CDERMA_LANG_KEY);
+    if (stored === 'ne' || stored === 'en') return stored;
+  } catch (e) {}
+
+  return 'en';
+}
+
+function setActiveLanguage(lang) {
+  if (lang !== 'ne' && lang !== 'en') lang = 'en';
+  document.cookie = `cderma_lang=${lang};path=/;max-age=31536000;SameSite=Lax`;
+  try {
+    localStorage.setItem(CDERMA_LANG_KEY, lang);
+  } catch (e) {}
+  document.documentElement.lang = lang;
+
+  updateLanguageTogglesUI(lang);
+
+  try {
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', lang);
+    window.location.href = url.toString();
+  } catch (e) {
+    window.location.reload();
+  }
+}
+
+function updateLanguageTogglesUI(activeLang) {
+  const isNe = activeLang === 'ne';
+  document.querySelectorAll('.cderma-lang-toggle').forEach(container => {
+    const isDrawer = container.closest('#cderma-mobile-drawer') !== null;
+    const enBtn = container.querySelector('[data-lang-btn="en"]');
+    const neBtn = container.querySelector('[data-lang-btn="ne"]');
+    if (!enBtn || !neBtn) return;
+
+    if (isNe) {
+      // EN is inactive
+      enBtn.className = isDrawer
+        ? 'px-2.5 py-1 rounded-full font-medium transition-all text-[#4b4639] hover:text-[#887635] bg-transparent shadow-none cursor-pointer'
+        : 'px-2.5 py-1 rounded-full font-medium transition-all text-on-surface-variant hover:text-primary bg-transparent shadow-none cursor-pointer';
+      enBtn.setAttribute('aria-pressed', 'false');
+
+      // NE is active
+      neBtn.className = isDrawer
+        ? 'px-2.5 py-1 rounded-full font-bold transition-all text-[#887635] bg-white shadow-xs cursor-default'
+        : 'px-2.5 py-1 rounded-full font-bold transition-all text-primary bg-white shadow-xs cursor-default';
+      neBtn.setAttribute('aria-pressed', 'true');
+    } else {
+      // EN is active
+      enBtn.className = isDrawer
+        ? 'px-2.5 py-1 rounded-full font-bold transition-all text-[#887635] bg-white shadow-xs cursor-default'
+        : 'px-2.5 py-1 rounded-full font-bold transition-all text-primary bg-white shadow-xs cursor-default';
+      enBtn.setAttribute('aria-pressed', 'true');
+
+      // NE is inactive
+      neBtn.className = isDrawer
+        ? 'px-2.5 py-1 rounded-full font-medium transition-all text-[#4b4639] hover:text-[#887635] bg-transparent shadow-none cursor-pointer'
+        : 'px-2.5 py-1 rounded-full font-medium transition-all text-on-surface-variant hover:text-primary bg-transparent shadow-none cursor-pointer';
+      neBtn.setAttribute('aria-pressed', 'false');
+    }
+  });
+}
+
+const STATIC_UI_NEPALI = {
+  'REGION / LANGUAGE:': 'क्षेत्र / भाषा:',
+  'Display Language': 'भाषा चयन गर्नुहोस्',
+  'Navigation': 'नेभिगेसन',
+  'Direct Connect': 'प्रत्यक्ष सम्पर्क',
+  'WhatsApp Quick Consult': 'ह्वाट्सएप परामर्श',
+  'Find In Stores & Clinics': 'स्टोर तथा क्लिनिक खोज्नुहोस्',
+  'B2B Wholesale Onboarding': 'बी२बी थोक साझेदारी',
+  'Company': 'कम्पनी',
+  'Products': 'उत्पादनहरू',
+  'B2B Partners': 'बी२बी साझेदार',
+  'Resources': 'स्रोतहरू',
+  'About Us': 'हाम्रो बारेमा',
+  'Quality Standards': 'गुणस्तर मापदण्ड',
+  'Manufacturing Facility': 'उत्पादन तथा वितरण केन्द्र',
+  'Careers & Research': 'अनुसन्धान तथा करियर',
+  'Face Care Systems': 'फेस केयर प्रणाली',
+  'Hydrating Serums': 'हाइड्रेटिङ सिरमहरू',
+  'Restorative Creams': 'रिस्टोरेटिभ क्रिमहरू',
+  'Body Care Formulations': 'बडी केयर फर्मुलाहरू',
+  'Cosmetic Store Wholesale': 'कस्मेटिक स्टोर थोक',
+  'Become a Distributor': 'वितरक बन्नुहोस्',
+  'Salon & Pharmacy Supply': 'सैलुन तथा फार्मेसी आपूर्ति',
+  'Dermatologist Portal': 'चिकित्सक पोर्टल',
+  'Skincare Guides': 'छाला हेरचाह निर्देशिका',
+  'Verified Ingredients': 'प्रमाणित सामग्रीहरू',
+  'Verification & Transparency': 'प्रमाणीकरण र पारदर्शिता',
+  'Clinical FAQs': 'क्लिनिकल प्रश्नोत्तर',
+  'Legal & Compliance': 'कानुनी र अनुपालन',
+  'Follow & Connect With Us': 'हामीसँग जोडिनुहोस्',
+  'Bottle': 'बोतल',
+  'Lab Report': 'ल्याब रिपोर्ट',
+  'Lab Report (PDF)': 'ल्याब रिपोर्ट (PDF)',
+  'Hover to Inspect Bottle': 'बोतल हेर्न कर्सर लैजानुहोस्',
+  'Certificate of Quality': 'गुणस्तर प्रमाणपत्र',
+  'TEST PASSED': 'परीक्षण सफल',
+  'Vitamin B3 (Niacinamide)': 'भिटामिन B3 (नियासिनामाइड)',
+  'Skin-Friendly pH': 'छाला-अनुकूल pH',
+  'Microbial Purity': 'माइक्रोबियल शुद्धता',
+  'Heavy Metals Check': 'हेभी मेटल जाँच',
+  'Zero Detected': 'शून्य पत्ता लाग्यो',
+  'Not Detected': 'पत्ता लागेन (१००% सुरक्षित)',
+  'Lead Chemist: S. Pokharel': 'प्रमुख केमिस्ट: एस. पोखरेल',
+  'All Products': 'सबै उत्पादनहरू',
+  'Barrier Repair': 'ब्यारियर मर्मत',
+  'Hydration': 'हाइड्रेशन',
+  'Cleansers': 'क्लिन्जर',
+  'Photoprotection': 'सन केयर',
+  'Corrective Treatments': 'उपचारात्मक सिरम'
+};
+
+function applyStaticUITranslations(lang) {
+  if (lang !== 'ne') return;
+
+  // 1. Check data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (key === 'region_language') el.textContent = 'क्षेत्र / भाषा:';
+    if (key === 'display_language') el.textContent = 'भाषा चयन गर्नुहोस्';
+  });
+
+  // 2. Footer headers and links
+  document.querySelectorAll('footer span.font-label.uppercase, footer ul a, footer span').forEach(el => {
+    const text = el.textContent.trim();
+    if (STATIC_UI_NEPALI[text]) {
+      el.textContent = STATIC_UI_NEPALI[text];
+    }
+  });
+
+  // 3. Search inputs
+  document.querySelectorAll('input[placeholder]').forEach(inp => {
+    const ph = inp.getAttribute('placeholder');
+    if (ph && (ph.includes('Search by cosmetic store') || ph.includes('Search authorized clinics'))) {
+      inp.setAttribute('placeholder', 'कस्मेटिक स्टोर, क्लिनिक वा शहर खोज्नुहोस्...');
+    } else if (ph && ph.includes('Search')) {
+      inp.setAttribute('placeholder', 'खोज्नुहोस्...');
+    }
+  });
+}
+
+function initLanguageSwitcher() {
+  const currentLang = getActiveLanguage();
+  document.documentElement.lang = currentLang;
+
+  // Sync cookie and localStorage
+  document.cookie = `cderma_lang=${currentLang};path=/;max-age=31536000;SameSite=Lax`;
+  try { localStorage.setItem(CDERMA_LANG_KEY, currentLang); } catch (e) {}
+
+  updateLanguageTogglesUI(currentLang);
+  if (currentLang === 'ne') {
+    applyStaticUITranslations('ne');
+  }
+
+  // Document-level event listener for all language toggle buttons
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-lang-btn]');
+    if (!btn) return;
+    e.preventDefault();
+    const targetLang = btn.getAttribute('data-lang-btn');
+    if (!targetLang) return;
+    const active = getActiveLanguage();
+    if (targetLang === active) return;
+    setActiveLanguage(targetLang);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  // Initialize Language Switcher & active states
+  initLanguageSwitcher();
+
+  // 1. Sync Dynamic Site Settings & Copy
+  const activeLang = getActiveLanguage();
+  try {
+    const res = await fetch(`/api/settings?lang=${activeLang}`);
     const data = await res.json();
     if (data.success && data.settings) {
       const s = data.settings;
@@ -554,7 +744,8 @@ async function initProductsCatalog() {
   if (!container) return;
 
   try {
-    const res = await fetch('/api/products');
+    const lang = getActiveLanguage();
+    const res = await fetch(`/api/products?lang=${lang}`);
     const data = await res.json();
     if (!data.success || !data.products || data.products.length === 0) return;
 
@@ -598,13 +789,13 @@ async function initProductsCatalog() {
           const filtered = window.__cderma_products.filter(p => {
             const text = `${p.title} ${p.summary} ${p.description} ${p.category}`.toLowerCase();
             if (val.includes('hypersensitive') || val.includes('reactive')) {
-              return text.includes('sensitive') || text.includes('barrier') || text.includes('calm');
+              return text.includes('centella') || text.includes('barrier') || text.includes('sensitive') || text.includes('संवेदनशील');
             }
-            if (val.includes('dry') || val.includes('xerotic')) {
-              return text.includes('dry') || text.includes('hydration') || text.includes('moisture') || text.includes('cream');
+            if (val.includes('dry') || val.includes('dehydrated')) {
+              return text.includes('ceramide') || text.includes('hyaluronic') || text.includes('आद्रता') || text.includes('सुख्खा');
             }
-            if (val.includes('combination') || val.includes('sebum')) {
-              return text.includes('cleanser') || text.includes('balancing') || text.includes('sebum') || text.includes('elixir');
+            if (val.includes('combination') || val.includes('acne')) {
+              return text.includes('cleanser') || text.includes('cleansing') || text.includes('clarity') || text.includes('क्लिन्जर');
             }
             return true;
           });
@@ -619,12 +810,14 @@ async function initProductsCatalog() {
 }
 
 function renderProductGrid(container, products) {
+  const isNe = getActiveLanguage() === 'ne';
+
   if (!products || products.length === 0) {
     container.innerHTML = `
       <div class="col-span-full text-center py-12 bg-surface-container-lowest rounded-xl border border-outline-variant/30">
         <span class="material-symbols-outlined text-4xl text-outline mb-2">inventory_2</span>
-        <p class="text-sm font-semibold text-on-surface">No products found in this category.</p>
-        <p class="text-xs text-on-surface-variant mt-1">Please select "All Formulations" or contact our medical liaison.</p>
+        <p class="text-sm font-semibold text-on-surface">${isNe ? 'यस वर्गमा कुनै उत्पादन फेला परेन।' : 'No products found in this category.'}</p>
+        <p class="text-xs text-on-surface-variant mt-1">${isNe ? 'कृपया "सबै उत्पादनहरू" चयन गर्नुहोस् वा सम्पर्क गर्नुहोस्।' : 'Please select "All Formulations" or contact our medical liaison.'}</p>
       </div>
     `;
     return;
@@ -634,7 +827,7 @@ function renderProductGrid(container, products) {
     const detailUrl = `product-detail.html?slug=${encodeURIComponent(p.slug)}`;
     const categoryNorm = (p.category || 'barrier').toLowerCase().replace(/\s+/g, '-');
     const ingredients = Array.isArray(p.active_ingredients) ? p.active_ingredients : [];
-    const displayPrice = p.price_npr ? `NPR ${Number(p.price_npr).toLocaleString()}` : '';
+    const displayPrice = p.price_npr ? (isNe ? `रु. ${Number(p.price_npr).toLocaleString()}` : `NPR ${Number(p.price_npr).toLocaleString()}`) : '';
     const volumeText = p.volume || '';
 
     const chips = ingredients.slice(0, 3).map(ing => {
@@ -648,13 +841,13 @@ function renderProductGrid(container, products) {
           <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="${escapeHtml(p.title)}" src="${escapeHtml(p.image_url || 'assets/images/product-packaging-dropper.png')}" loading="lazy" decoding="async">
           <div class="absolute top-space-xs left-space-xs">
             <span class="px-space-xs py-[2px] rounded bg-surface/90 text-primary text-[10px] uppercase tracking-wider font-semibold shadow-sm">
-              ${escapeHtml(p.clinical_badge || 'Doctor Formulated')}
+              ${escapeHtml(p.clinical_badge || (isNe ? 'चिकित्सकद्वारा प्रमाणित' : 'Doctor Formulated'))}
             </span>
           </div>
           ${p.is_featured ? `
             <div class="absolute top-space-xs right-space-xs">
               <span class="px-2 py-[2px] rounded bg-[#887635] text-white text-[10px] uppercase tracking-wider font-bold shadow-sm">
-                Flagship
+                ${isNe ? 'प्रमुख' : 'Flagship'}
               </span>
             </div>
           ` : ''}
@@ -662,8 +855,8 @@ function renderProductGrid(container, products) {
         <div class="flex flex-col flex-1 justify-between">
           <div>
             <div class="flex items-center justify-between text-[11px] text-outline uppercase tracking-wider mb-1">
-              <span>${escapeHtml(p.category || 'Clinical Regimen')}${volumeText ? ` • ${escapeHtml(volumeText)}` : ''}</span>
-              <span class="text-secondary font-semibold">${displayPrice || 'Doctor Grade'}</span>
+              <span>${escapeHtml(p.category || (isNe ? 'क्लिनिकल रेजिमेन' : 'Clinical Regimen'))}${volumeText ? ` • ${escapeHtml(volumeText)}` : ''}</span>
+              <span class="text-secondary font-semibold">${displayPrice || (isNe ? 'चिकित्सकीय ग्रेड' : 'Doctor Grade')}</span>
             </div>
             <h4 class="font-display-lg text-[17px] font-semibold text-on-surface leading-snug group-hover:text-primary transition-colors min-h-[48px] flex items-center">
               <a href="${detailUrl}">${escapeHtml(p.title)}</a>
@@ -713,7 +906,9 @@ async function initProductDetail() {
   }
 
   try {
-    const res = await fetch(`/api/products/${encodeURIComponent(slug)}`);
+    const lang = getActiveLanguage();
+    const isNe = lang === 'ne';
+    const res = await fetch(`/api/products/${encodeURIComponent(slug)}?lang=${lang}`);
     const data = await res.json();
     if (!data.success || !data.product) return;
 
@@ -732,7 +927,7 @@ async function initProductDetail() {
     if (subtitleEl) subtitleEl.textContent = p.subtitle || p.category;
 
     const badgeEl = document.getElementById('p-badge') || document.querySelector('[data-product-badge]');
-    if (badgeEl) badgeEl.textContent = p.clinical_badge || 'Medical Grade Formulation';
+    if (badgeEl) badgeEl.textContent = p.clinical_badge || (isNe ? 'चिकित्सकद्वारा प्रमाणित' : 'Medical Grade Formulation');
 
     const categoryEl = document.getElementById('p-category') || document.querySelector('[data-product-category]');
     if (categoryEl) categoryEl.textContent = p.category;
@@ -742,7 +937,7 @@ async function initProductDetail() {
 
     const priceEl = document.getElementById('p-price') || document.querySelector('[data-product-price]');
     if (priceEl && p.price_npr) {
-      priceEl.textContent = `NPR ${Number(p.price_npr).toLocaleString()}`;
+      priceEl.textContent = isNe ? `रु. ${Number(p.price_npr).toLocaleString()}` : `NPR ${Number(p.price_npr).toLocaleString()}`;
     }
 
     // 3. Descriptions & Summaries
@@ -805,7 +1000,8 @@ async function initClinicsDirectory() {
   if (!cardsContainer && !document.getElementById('clinic-province-select')) return;
 
   try {
-    const res = await fetch('/api/clinics');
+    const lang = getActiveLanguage();
+    const res = await fetch(`/api/clinics?lang=${lang}`);
     const data = await res.json();
     if (!data.success || !data.clinics || data.clinics.length === 0) return;
 
@@ -939,7 +1135,9 @@ async function initClinicsDirectory() {
       // Update count banner
       const countHeader = document.getElementById('available-locations-count');
       if (countHeader) {
-        countHeader.textContent = `Available Locations (${filtered.length} Authorized Outlets)`;
+        countHeader.textContent = lang === 'ne'
+          ? `उपलब्ध स्थानहरू (${filtered.length} अधिकृत आउटलेटहरू)`
+          : `Available Locations (${filtered.length} Authorized Outlets)`;
       }
 
       renderClinicsList(cardsContainer, filtered, selectActiveClinic, selectedClinicId);
@@ -1184,7 +1382,8 @@ async function initMonographsArticles() {
   if (!container) return;
 
   try {
-    const res = await fetch('/api/monographs');
+    const lang = getActiveLanguage();
+    const res = await fetch(`/api/monographs?lang=${lang}`);
     const data = await res.json();
     if (!data.success || !data.monographs || data.monographs.length === 0) return;
 
@@ -1223,11 +1422,13 @@ async function initMonographsArticles() {
 }
 
 function renderArticlesGrid(container, articles) {
+  const isNe = getActiveLanguage() === 'ne';
+
   if (!articles || articles.length === 0) {
     container.innerHTML = `
       <div class="col-span-full text-center py-12 bg-surface-container-lowest rounded-xl border border-outline-variant/30">
         <span class="material-symbols-outlined text-4xl text-outline mb-2">article</span>
-        <p class="text-sm font-semibold text-on-surface">No articles found in this category.</p>
+        <p class="text-sm font-semibold text-on-surface">${isNe ? 'यस वर्गमा कुनै लेख फेला परेन।' : 'No articles found in this category.'}</p>
       </div>
     `;
     return;
@@ -1235,7 +1436,7 @@ function renderArticlesGrid(container, articles) {
 
   container.innerHTML = articles.map(a => {
     const categoryNorm = (a.category || 'General').toLowerCase().replace(/\s+/g, '-');
-    const readTime = a.read_time || '5 min read';
+    const readTime = a.read_time || (isNe ? '५ मिनेट पढाइ' : '5 min read');
     const dateText = a.date_text || '2025';
     const author = a.author || 'Dr. S. Karki';
     const image = a.image_url || 'assets/images/img_7df877252467.jpg';
@@ -1246,7 +1447,7 @@ function renderArticlesGrid(container, articles) {
           <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="${escapeHtml(image)}" alt="${escapeHtml(a.title)}" loading="lazy" decoding="async">
           <div class="absolute top-3 left-3">
             <span class="px-3 py-1 bg-surface-container-lowest/90 backdrop-blur-sm text-primary rounded-full text-[10px] font-label font-bold uppercase tracking-wider shadow-sm">
-              ${escapeHtml(a.category || 'General')}
+              ${escapeHtml(a.category || (isNe ? 'सामान्य' : 'General'))}
             </span>
           </div>
         </div>
@@ -1271,7 +1472,7 @@ function renderArticlesGrid(container, articles) {
               <span class="font-label text-[11px] text-on-surface font-semibold">${escapeHtml(author)}</span>
             </div>
             <a href="#" onclick="alert('Doctor Advice: ' + ${JSON.stringify(a.title)} + '\\n\\nClinical Summary:\\n' + ${JSON.stringify(a.summary || a.content || '')} + '\\n\\nAuthor: ' + ${JSON.stringify(author)});" class="text-primary font-label text-[11px] font-bold uppercase tracking-wider hover:underline flex items-center gap-1">
-              Read <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+              ${isNe ? 'पढ्नुहोस्' : 'Read'} <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
             </a>
           </div>
         </div>
@@ -1304,14 +1505,17 @@ function initMobileNavigation() {
   const isMonographs = path.includes('monographs.html') || path.includes('doctors-advice');
   const isClinics = path.includes('clinics.html');
 
+  const lang = getActiveLanguage();
+  const isNe = lang === 'ne';
+
   const navItems = [
-    { name: 'Home', href: 'index.html', active: isHome, icon: 'home' },
-    { name: 'Products Catalog', href: 'products.html', active: isProducts, icon: 'inventory_2' },
-    { name: 'Flagship Face Care', href: 'product-detail.html', active: isFlagship, icon: 'star' },
-    { name: 'Quality & Science', href: 'science.html', active: isScience, icon: 'science' },
-    { name: 'B2B & Distribution', href: 'b2b.html', active: isB2B, icon: 'storefront' },
-    { name: "Doctor's Advice", href: 'monographs.html', active: isMonographs, icon: 'clinical_notes' },
-    { name: 'Clinics & Stores', href: 'clinics.html', active: isClinics, icon: 'location_on' },
+    { name: isNe ? 'गृहपृष्ठ' : 'Home', href: 'index.html', active: isHome, icon: 'home' },
+    { name: isNe ? 'उत्पादनहरू' : 'Products Catalog', href: 'products.html', active: isProducts, icon: 'inventory_2' },
+    { name: isNe ? 'प्रमुख फेस केयर' : 'Flagship Face Care', href: 'product-detail.html', active: isFlagship, icon: 'star' },
+    { name: isNe ? 'गुणस्तर र विज्ञान' : 'Quality & Science', href: 'science.html', active: isScience, icon: 'science' },
+    { name: isNe ? 'थोक तथा वितरण' : 'B2B & Distribution', href: 'b2b.html', active: isB2B, icon: 'storefront' },
+    { name: isNe ? 'चिकित्सकीय परामर्श' : "Doctor's Advice", href: 'monographs.html', active: isMonographs, icon: 'clinical_notes' },
+    { name: isNe ? 'स्टोर तथा क्लिनिकहरू' : 'Clinics & Stores', href: 'clinics.html', active: isClinics, icon: 'location_on' },
   ];
 
   const drawerHtml = `
@@ -1334,7 +1538,7 @@ function initMobileNavigation() {
       <div class="flex-1 overflow-y-auto p-5 space-y-4">
         <!-- Navigation Links -->
         <div class="space-y-1">
-          <span class="text-[10px] font-bold uppercase tracking-widest text-[#7d7768] px-2 mb-2 block font-label">Navigation</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-[#7d7768] px-2 mb-2 block font-label">${isNe ? 'नेभिगेसन' : 'Navigation'}</span>
           ${navItems.map(item => `
             <a href="${item.href}" class="flex items-center justify-between px-3.5 py-3 rounded-lg text-[14px] font-semibold tracking-wide transition-all ${
               item.active 
@@ -1352,31 +1556,30 @@ function initMobileNavigation() {
 
         <!-- Quick Conversion CTAs -->
         <div class="pt-4 border-t border-[#e7e2d8] space-y-2.5">
-          <span class="text-[10px] font-bold uppercase tracking-widest text-[#7d7768] px-2 block font-label">Direct Connect</span>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-[#7d7768] px-2 block font-label">${isNe ? 'प्रत्यक्ष सम्पर्क' : 'Direct Connect'}</span>
           
           <a href="https://wa.me/9779820753751" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-lg bg-[#25D366] text-white font-semibold text-[13px] shadow-sm hover:bg-[#20bd5a] transition-all">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-            <span>WhatsApp Quick Consult</span>
+            <span>${isNe ? 'ह्वाट्सएप परामर्श' : 'WhatsApp Quick Consult'}</span>
           </a>
 
           <a href="clinics.html" class="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg bg-[#f2ede3] hover:bg-[#e7e2d8] text-[#1d1c16] font-semibold text-[13px] transition-colors border border-[#cec6b4]/40">
             <span class="material-symbols-outlined text-[18px] text-[#887635]">storefront</span>
-            <span>Find In Stores & Clinics</span>
+            <span>${isNe ? 'स्टोर तथा क्लिनिक खोज्नुहोस्' : 'Find In Stores & Clinics'}</span>
           </a>
 
           <a href="b2b.html" class="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg bg-[#887635]/10 hover:bg-[#887635]/20 text-[#887635] font-semibold text-[13px] transition-colors border border-[#887635]/30">
             <span class="material-symbols-outlined text-[18px]">verified</span>
-            <span>B2B Wholesale Onboarding</span>
+            <span>${isNe ? 'बी२बी थोक साझेदारी' : 'B2B Wholesale Onboarding'}</span>
           </a>
         </div>
 
         <!-- Language Picker -->
         <div class="pt-4 border-t border-[#e7e2d8] flex items-center justify-between px-2">
-          <span class="text-[12px] text-[#7d7768] font-medium">Display Language</span>
-          <div class="flex items-center bg-[#f2ede3] border border-[#cec6b4]/60 rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-wider">
-            <span class="text-[#887635] font-bold px-1 cursor-default">EN</span>
-            <span class="text-[#cec6b4]">/</span>
-            <a class="text-[#4b4639] hover:text-[#887635] px-1 transition-colors" href="#">नेपाली</a>
+          <span class="text-[12px] text-[#7d7768] font-medium" data-i18n="display_language">${isNe ? 'भाषा चयन गर्नुहोस्' : 'Display Language'}</span>
+          <div class="cderma-lang-toggle flex items-center bg-[#f2ede3] border border-[#cec6b4]/60 rounded-full p-0.5 text-[11px] uppercase tracking-wider shadow-xs" role="group" aria-label="Language Selector">
+            <button type="button" data-lang-btn="en" class="px-2.5 py-1 rounded-full font-bold transition-all ${isNe ? 'text-[#4b4639] hover:text-[#887635] bg-transparent shadow-none cursor-pointer' : 'text-[#887635] bg-white shadow-xs cursor-default'}" title="Switch to English">EN</button>
+            <button type="button" data-lang-btn="ne" class="px-2.5 py-1 rounded-full font-medium transition-all ${isNe ? 'text-[#887635] font-bold bg-white shadow-xs cursor-default' : 'text-[#4b4639] hover:text-[#887635] bg-transparent shadow-none cursor-pointer'}" title="नेपालीमा हेर्नुहोस्">नेपाली</button>
           </div>
         </div>
       </div>
