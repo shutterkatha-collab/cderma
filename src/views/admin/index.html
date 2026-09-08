@@ -4674,7 +4674,7 @@ Sitemap: https://cderma.com.np/sitemap.xml
 
         tbody.innerHTML = data.backups.map(b => {
           const dt = new Date(b.created_at).toLocaleString();
-          const sizeKb = (b.size_bytes / 1024).toFixed(1) + ' KB';
+          const sizeKb = ((b.bytes || b.size_bytes || 0) / 1024).toFixed(1) + ' KB';
           return `
             <tr class="hover:bg-gray-50 transition-colors">
               <td class="p-3 font-mono text-[11px] text-primary font-semibold flex items-center gap-1.5">
