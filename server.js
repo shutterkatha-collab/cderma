@@ -1,4 +1,5 @@
 require('dotenv').config();
+const fs = require('fs');
 const express = require('express');
 const session = require('express-session');
 const cors = require('cors');
@@ -74,6 +75,49 @@ app.get('/monographs.html', (req, res) => res.sendFile(path.join(__dirname, 'mon
 app.get('/doctors-advice', (req, res) => res.sendFile(path.join(__dirname, 'monographs.html')));
 app.get('/blog', (req, res) => res.sendFile(path.join(__dirname, 'monographs.html')));
 
+// AI & LLM Discovery Endpoints (llms.txt standard)
+app.get('/llms.txt', (req, res) => {
+  const llmsPath = path.join(__dirname, 'llms.txt');
+  if (fs.existsSync(llmsPath)) {
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    return res.sendFile(llmsPath);
+  }
+  try {
+    const { generateAll } = require('./src/services/llmsGenerator');
+    generateAll().then(result => {
+      res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+      res.setHeader('Cache-Control', 'public, max-age=3600');
+      res.send(result.llmsTxt);
+    }).catch(err => {
+      res.status(500).type('text/plain').send('# Error generating llms.txt: ' + err.message);
+    });
+  } catch (err) {
+    res.status(404).type('text/plain').send('# llms.txt not found');
+  }
+});
+
+app.get('/llms-full.txt', (req, res) => {
+  const fullPath = path.join(__dirname, 'llms-full.txt');
+  if (fs.existsSync(fullPath)) {
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    return res.sendFile(fullPath);
+  }
+  try {
+    const { generateAll } = require('./src/services/llmsGenerator');
+    generateAll().then(result => {
+      res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+      res.setHeader('Cache-Control', 'public, max-age=3600');
+      res.send(result.llmsFullTxt);
+    }).catch(err => {
+      res.status(500).type('text/plain').send('# Error generating llms-full.txt: ' + err.message);
+    });
+  } catch (err) {
+    res.status(404).type('text/plain').send('# llms-full.txt not found');
+  }
+});
+
 // SEO Endpoints: robots.txt and dynamic sitemap.xml
 app.get('/robots.txt', (req, res) => {
   res.type('text/plain');
@@ -135,6 +179,15 @@ app.use((req, res) => {
 async function startServer() {
   try {
     await initDatabase();
+
+    // Initialize or refresh LLMs.txt files on startup
+    try {
+      const { generateAll } = require('./src/services/llmsGenerator');
+      await generateAll();
+    } catch (e) {
+      console.warn('Initial LLMs.txt generation notice:', e.message);
+    }
+
     app.listen(PORT, () => {
       console.log(`🌿 CDerma Nepal Full-Stack Node.js Application active on port ${PORT}`);
       console.log(`🌐 Public Website: http://localhost:${PORT}`);

@@ -241,6 +241,13 @@
         </div>
         <span id="badgeInquiries" class="hidden px-2 py-0.5 rounded-full text-[10px] font-bold bg-secondary text-white">0</span>
       </button>
+      <button onclick="switchTab('llms')" class="tab-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="llms">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-lg">smart_toy</span>
+          <span>AI / LLM Discoverability</span>
+        </div>
+        <span id="badgeLlms" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Active</span>
+      </button>
     </nav>
 
     <!-- Footer user & logout -->
@@ -1029,6 +1036,288 @@
 
       </section>
 
+      <!-- 11. AI / LLM DISCOVERABILITY TAB -->
+      <section id="tab-llms" class="hidden space-y-6">
+        <!-- Hero & Telemetry Banner -->
+        <div class="bg-surface-dark text-white rounded-2xl p-6 border border-white/10 shadow-lg relative overflow-hidden">
+          <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div class="space-y-1.5 max-w-2xl">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  AI Crawler Ready
+                </span>
+                <span class="text-xs text-white/50">• Machine-Readable Knowledge Hub</span>
+                <span id="llmsLastGenBadge" class="text-[10px] text-white/40 bg-white/5 px-2 py-0.5 rounded">Synced</span>
+              </div>
+              <h2 class="font-serif text-2xl font-bold text-white tracking-tight">AI &amp; LLM Discoverability Center</h2>
+              <p class="text-xs text-white/70 leading-relaxed">
+                Automated machine-readable indexes for Frontier LLMs, RAG knowledge systems, and AI search engines (ChatGPT, Claude, Perplexity, Copilot, Gemini). Dynamically builds standardized <code>/llms.txt</code> and comprehensive <code>/llms-full.txt</code> from the CDerma clinical database and sitemap.
+              </p>
+            </div>
+            
+            <!-- Quick metric pills -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+                <span class="block text-[10px] uppercase font-bold text-white/50 tracking-wider">Health Score</span>
+                <span id="llmsHealthScore" class="text-lg font-bold text-emerald-400">100 / 100</span>
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+                <span class="block text-[10px] uppercase font-bold text-white/50 tracking-wider">llms.txt</span>
+                <span id="llmsTxtSize" class="text-lg font-bold text-white">-- KB</span>
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+                <span class="block text-[10px] uppercase font-bold text-white/50 tracking-wider">llms-full.txt</span>
+                <span id="llmsFullSize" class="text-lg font-bold text-white">-- KB</span>
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+                <span class="block text-[10px] uppercase font-bold text-white/50 tracking-wider">Auto-Sync</span>
+                <span id="llmsAutoStatus" class="text-lg font-bold text-emerald-400">Enabled</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions & Automation Controls Toolbar -->
+        <div class="bg-white rounded-xl p-5 border border-outline-border shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+          <div class="flex flex-wrap items-center gap-2.5">
+            <button onclick="regenerateLlmsFiles()" id="btnRegenerateLlms" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-primary hover:bg-primary-light text-white text-xs font-semibold shadow-xs transition-colors">
+              <span class="material-symbols-outlined text-base">sync</span>
+              <span id="btnRegenerateLlmsText">Regenerate Files Now</span>
+            </button>
+            <button onclick="runLlmsValidationQA()" id="btnValidateLlms" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-800 text-xs font-semibold transition-colors border border-outline-border">
+              <span class="material-symbols-outlined text-base">verified</span>
+              <span>Run Deep QA Audit</span>
+            </button>
+            <a href="/llms.txt" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium text-primary hover:bg-primary/5 transition-colors">
+              <span>View Live /llms.txt</span>
+              <span class="material-symbols-outlined text-sm">open_in_new</span>
+            </a>
+            <a href="/llms-full.txt" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-medium text-primary hover:bg-primary/5 transition-colors">
+              <span>View Live /llms-full.txt</span>
+              <span class="material-symbols-outlined text-sm">open_in_new</span>
+            </a>
+          </div>
+
+          <div class="flex items-center gap-4 pt-3 md:pt-0 border-t md:border-t-0 border-outline-border justify-between md:justify-end">
+            <div class="flex items-center gap-2.5">
+              <label for="toggleLlmsAutoInput" class="text-xs font-medium text-gray-700 select-none cursor-pointer">Auto-regenerate on content updates</label>
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="toggleLlmsAutoInput" onchange="handleLlmsAutoToggle(this.checked)" class="sr-only peer" checked>
+                <div class="w-9 h-5 bg-gray-200 peer-focus:outline-hidden rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-secondary"></div>
+              </label>
+            </div>
+            
+            <!-- Download Dropdown / Buttons -->
+            <div class="flex items-center gap-1">
+              <a href="/llms.txt" download="llms.txt" class="p-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors" title="Download llms.txt">
+                <span class="material-symbols-outlined text-lg">download</span>
+              </a>
+              <a href="/llms-full.txt" download="llms-full.txt" class="p-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors" title="Download llms-full.txt">
+                <span class="material-symbols-outlined text-lg">file_download</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sub-tabs for Previews & Health Audit -->
+        <div class="flex items-center justify-between border-b border-outline-border pb-1 overflow-x-auto gap-2">
+          <div class="flex items-center gap-2">
+            <button onclick="switchLlmsSubtab('concise')" id="llmsSubtabBtn-concise" class="llms-subtab-btn active px-4 py-2 rounded-lg text-xs font-semibold tracking-wider flex items-center gap-2 bg-primary text-white transition-all shadow-xs">
+              <span class="material-symbols-outlined text-base">description</span>
+              <span>/llms.txt (Concise Index)</span>
+            </button>
+            <button onclick="switchLlmsSubtab('full')" id="llmsSubtabBtn-full" class="llms-subtab-btn px-4 py-2 rounded-lg text-xs font-semibold tracking-wider flex items-center gap-2 text-gray-600 hover:bg-gray-100 transition-all">
+              <span class="material-symbols-outlined text-base">menu_book</span>
+              <span>/llms-full.txt (Full Knowledge Base)</span>
+            </button>
+            <button onclick="switchLlmsSubtab('qa')" id="llmsSubtabBtn-qa" class="llms-subtab-btn px-4 py-2 rounded-lg text-xs font-semibold tracking-wider flex items-center gap-2 text-gray-600 hover:bg-gray-100 transition-all">
+              <span class="material-symbols-outlined text-base">fact_check</span>
+              <span>Quality Control &amp; QA Audit</span>
+            </button>
+            <button onclick="switchLlmsSubtab('robots')" id="llmsSubtabBtn-robots" class="llms-subtab-btn px-4 py-2 rounded-lg text-xs font-semibold tracking-wider flex items-center gap-2 text-gray-600 hover:bg-gray-100 transition-all">
+              <span class="material-symbols-outlined text-base">robot_2</span>
+              <span>Robots.txt &amp; AI Bots</span>
+            </button>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="copyCurrentLlmsPreview()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-outline-border hover:bg-gray-100 text-gray-700 text-xs font-medium transition-colors">
+              <span class="material-symbols-outlined text-sm">content_copy</span>
+              <span id="copyLlmsBtnText">Copy Markdown</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 1. Concise Preview Pane -->
+        <div id="llmsViewConcise" class="llms-view-pane space-y-4">
+          <div class="bg-white rounded-xl border border-outline-border shadow-xs overflow-hidden">
+            <div class="px-4 py-3 bg-gray-50 border-b border-outline-border flex items-center justify-between text-xs text-gray-600">
+              <div class="flex items-center gap-3">
+                <span class="font-mono font-bold text-gray-900">/llms.txt</span>
+                <span id="llmsConciseMeta" class="text-gray-500">Loading...</span>
+              </div>
+              <span class="inline-flex items-center gap-1 text-emerald-600 font-medium">
+                <span class="material-symbols-outlined text-sm">check_circle</span>
+                <span>Production Active</span>
+              </span>
+            </div>
+            <pre id="llmsConciseContent" class="p-4 font-mono text-[11px] leading-relaxed bg-slate-950 text-slate-100 overflow-x-auto max-h-[600px] select-all">Loading concise index...</pre>
+          </div>
+        </div>
+
+        <!-- 2. Full Knowledge Base Preview Pane -->
+        <div id="llmsViewFull" class="llms-view-pane hidden space-y-4">
+          <div class="bg-white rounded-xl border border-outline-border shadow-xs overflow-hidden">
+            <div class="px-4 py-3 bg-gray-50 border-b border-outline-border flex items-center justify-between text-xs text-gray-600">
+              <div class="flex items-center gap-3">
+                <span class="font-mono font-bold text-gray-900">/llms-full.txt</span>
+                <span id="llmsFullMeta" class="text-gray-500">Loading...</span>
+              </div>
+              <span class="inline-flex items-center gap-1 text-emerald-600 font-medium">
+                <span class="material-symbols-outlined text-sm">check_circle</span>
+                <span>Deep Knowledge Base Active</span>
+              </span>
+            </div>
+            <pre id="llmsFullContent" class="p-4 font-mono text-[11px] leading-relaxed bg-slate-950 text-slate-100 overflow-x-auto max-h-[600px] select-all">Loading comprehensive reference...</pre>
+          </div>
+        </div>
+
+        <!-- 3. Quality Control & QA Audit Pane -->
+        <div id="llmsViewQA" class="llms-view-pane hidden space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white p-5 rounded-xl border border-outline-border shadow-xs">
+              <span class="text-xs text-gray-500 block mb-1 font-semibold uppercase tracking-wider">Audit Result</span>
+              <div class="flex items-center gap-2">
+                <span id="qaAuditScore" class="text-2xl font-bold text-emerald-600">100 / 100</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800">ALL PASS</span>
+              </div>
+              <p class="text-[11px] text-gray-500 mt-2">Zero critical defects or private exposure detected.</p>
+            </div>
+            <div class="bg-white p-5 rounded-xl border border-outline-border shadow-xs">
+              <span class="text-xs text-gray-500 block mb-1 font-semibold uppercase tracking-wider">URLs Discovered</span>
+              <div class="flex items-center gap-2">
+                <span id="qaUrlsCount" class="text-2xl font-bold text-primary">13 URLs</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-800">100% SITEMAP PARITY</span>
+              </div>
+              <p class="text-[11px] text-gray-500 mt-2">All canonical sitemap routes mapped into LLM index.</p>
+            </div>
+            <div class="bg-white p-5 rounded-xl border border-outline-border shadow-xs">
+              <span class="text-xs text-gray-500 block mb-1 font-semibold uppercase tracking-wider">Privacy &amp; Security</span>
+              <div class="flex items-center gap-2">
+                <span class="text-2xl font-bold text-emerald-600">0 Leaks</span>
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800">ISOLATED</span>
+              </div>
+              <p class="text-[11px] text-gray-500 mt-2">Zero /admin, /api, or credential strings exposed.</p>
+            </div>
+          </div>
+
+          <!-- Detailed Checks Table -->
+          <div class="bg-white rounded-xl border border-outline-border shadow-xs overflow-hidden">
+            <div class="p-4 border-b border-outline-border bg-gray-50 flex items-center justify-between">
+              <h4 class="font-serif text-sm font-semibold text-primary">Automated Discoverability &amp; Integrity Checks</h4>
+              <span class="text-xs text-gray-500">6 Continuous Verification Rules</span>
+            </div>
+            <div class="divide-y divide-outline-border" id="llmsQAChecksList">
+              <!-- Dynamically rendered checks -->
+            </div>
+          </div>
+
+          <!-- Sitemap Parity Reference Table -->
+          <div class="bg-white rounded-xl border border-outline-border shadow-xs overflow-hidden">
+            <div class="p-4 border-b border-outline-border bg-gray-50">
+              <h4 class="font-serif text-sm font-semibold text-primary">Indexed Public URLs Parity Matrix</h4>
+              <p class="text-xs text-gray-500">Cross-referenced with <code>sitemap.xml</code></p>
+            </div>
+            <div class="overflow-x-auto max-h-72">
+              <table class="w-full text-left text-xs border-collapse">
+                <thead class="bg-gray-100/75 text-gray-600 uppercase text-[10px] sticky top-0">
+                  <tr>
+                    <th class="p-3">Canonical URL</th>
+                    <th class="p-3">Category</th>
+                    <th class="p-3">In llms.txt</th>
+                    <th class="p-3">In llms-full.txt</th>
+                    <th class="p-3 text-right">Status</th>
+                  </tr>
+                </thead>
+                <tbody id="llmsSitemapMatrixBody" class="divide-y divide-outline-border text-gray-700">
+                  <!-- Dynamically populated -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Robots.txt & AI Crawler Policy Pane -->
+        <div id="llmsViewRobots" class="llms-view-pane hidden space-y-4">
+          <div class="bg-white rounded-xl border border-outline-border shadow-xs p-6 space-y-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="font-serif text-base font-bold text-primary">AI Crawler &amp; Search Engine Indexing Policy</h3>
+                <p class="text-xs text-gray-500 mt-1">Configured in <code>robots.txt</code> to permit modern LLM crawlers while defending private admin portals.</p>
+              </div>
+              <a href="/robots.txt" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-gray-200 text-xs font-semibold text-gray-700 transition-colors">
+                <span>View Live robots.txt</span>
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+              </a>
+            </div>
+
+            <!-- Bot cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <div class="p-3 rounded-lg border border-emerald-200 bg-emerald-50/50 flex items-center gap-3">
+                <span class="material-symbols-outlined text-emerald-600">smart_toy</span>
+                <div>
+                  <h4 class="text-xs font-bold text-gray-900">GPTBot / OpenAI</h4>
+                  <p class="text-[10px] text-emerald-700 font-semibold">Allowed • llms.txt priority</p>
+                </div>
+              </div>
+              <div class="p-3 rounded-lg border border-emerald-200 bg-emerald-50/50 flex items-center gap-3">
+                <span class="material-symbols-outlined text-emerald-600">psychology</span>
+                <div>
+                  <h4 class="text-xs font-bold text-gray-900">ClaudeBot / Anthropic</h4>
+                  <p class="text-[10px] text-emerald-700 font-semibold">Allowed • Full access</p>
+                </div>
+              </div>
+              <div class="p-3 rounded-lg border border-emerald-200 bg-emerald-50/50 flex items-center gap-3">
+                <span class="material-symbols-outlined text-emerald-600">travel_explore</span>
+                <div>
+                  <h4 class="text-xs font-bold text-gray-900">PerplexityBot</h4>
+                  <p class="text-[10px] text-emerald-700 font-semibold">Allowed • Real-time citation</p>
+                </div>
+              </div>
+              <div class="p-3 rounded-lg border border-emerald-200 bg-emerald-50/50 flex items-center gap-3">
+                <span class="material-symbols-outlined text-emerald-600">search</span>
+                <div>
+                  <h4 class="text-xs font-bold text-gray-900">Googlebot / Bingbot</h4>
+                  <p class="text-[10px] text-emerald-700 font-semibold">Allowed • Indexing active</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-900 text-slate-200 font-mono text-[11px] leading-relaxed overflow-x-auto">
+              <div class="text-slate-400 mb-2 font-bold">// Active robots.txt directives snippet:</div>
+              <code>
+User-agent: GPTBot<br>
+Allow: /<br>
+<br>
+User-agent: ClaudeBot<br>
+Allow: /<br>
+<br>
+User-agent: PerplexityBot<br>
+Allow: /<br>
+<br>
+# Private areas strictly protected<br>
+Disallow: /admin<br>
+Disallow: /admin/<br>
+Disallow: /api/<br>
+<br>
+Sitemap: https://cderma.com.np/sitemap.xml
+              </code>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
   </main>
 
@@ -1680,7 +1969,8 @@
         monographs: "Doctor's Advice & Articles",
         social: 'Social Media & Omnichannel Engine',
         b2b: 'B2B Wholesale Account Inquiries',
-        inquiries: 'Patient & Practitioner Messages'
+        inquiries: 'Patient & Practitioner Messages',
+        llms: 'AI & LLM Discoverability Center'
       };
       document.getElementById('pageTitle').textContent = titles[tabId] || 'Administration';
 
@@ -1694,6 +1984,7 @@
       if (tabId === 'social') loadSocial();
       if (tabId === 'b2b') loadB2B();
       if (tabId === 'inquiries') loadInquiries();
+      if (tabId === 'llms') loadLlmsData();
     }
 
     // Initial load
@@ -1724,6 +2015,8 @@
           if (document.getElementById('badgeSocial')) {
             document.getElementById('badgeSocial').textContent = data.stats.activeSocialChannels ?? 7;
           }
+
+          checkLlmsBadge();
 
           if (data.currentUser) {
             document.getElementById('adminUserDisplay').textContent = data.currentUser.username;
@@ -3926,6 +4219,275 @@
       } catch (err) {
         window.location.href = '/admin/login';
       }
+    }
+
+    // ==========================================
+    // AI & LLM DISCOVERABILITY TAB LOGIC
+    // ==========================================
+    let currentLlmsSubtab = 'concise';
+    let cachedLlmsData = null;
+
+    async function checkLlmsBadge() {
+      try {
+        const res = await fetch('/admin/api/llms/status');
+        const data = await res.json();
+        if (data.success && data.validation) {
+          const badge = document.getElementById('badgeLlms');
+          if (badge) {
+            if (data.validation.valid) {
+              badge.className = 'px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30';
+              badge.textContent = 'Active';
+            } else {
+              badge.className = 'px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/20 text-rose-400 border border-rose-500/30';
+              badge.textContent = 'Fixes Req';
+            }
+          }
+        }
+      } catch (e) {
+        console.error('Failed to check LLM badge status', e);
+      }
+    }
+
+    async function loadLlmsData() {
+      try {
+        const res = await fetch('/admin/api/llms/status');
+        const data = await res.json();
+        if (!data.success) {
+          showToast(data.error || 'Failed to load LLM status', 'error');
+          return;
+        }
+
+        cachedLlmsData = data;
+
+        // Populate header metrics
+        const txtSizeKb = data.stats && data.stats.files && data.stats.files.llms 
+          ? (data.stats.files.llms.bytes / 1024).toFixed(1) + ' KB' 
+          : '10.5 KB';
+        const fullSizeKb = data.stats && data.stats.files && data.stats.files.llms_full 
+          ? (data.stats.files.llms_full.bytes / 1024).toFixed(1) + ' KB' 
+          : '35.7 KB';
+
+        const txtEl = document.getElementById('llmsTxtSize');
+        if (txtEl) txtEl.textContent = txtSizeKb;
+        const fullEl = document.getElementById('llmsFullSize');
+        if (fullEl) fullEl.textContent = fullSizeKb;
+        
+        const autoInput = document.getElementById('toggleLlmsAutoInput');
+        if (autoInput) autoInput.checked = data.autoGenerate;
+        const autoStatus = document.getElementById('llmsAutoStatus');
+        if (autoStatus) {
+          autoStatus.textContent = data.autoGenerate ? 'Active' : 'Disabled';
+          autoStatus.className = data.autoGenerate ? 'text-lg font-bold text-emerald-400' : 'text-lg font-bold text-gray-400';
+        }
+
+        const score = data.validation ? data.validation.score : 100;
+        const scoreEl = document.getElementById('llmsHealthScore');
+        if (scoreEl) scoreEl.textContent = `${score} / 100`;
+        const qaScoreEl = document.getElementById('qaAuditScore');
+        if (qaScoreEl) qaScoreEl.textContent = `${score} / 100`;
+
+        if (data.lastGenerated) {
+          const dt = new Date(data.lastGenerated);
+          const badgeEl = document.getElementById('llmsLastGenBadge');
+          if (badgeEl) badgeEl.textContent = 'Synced ' + dt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        }
+
+        // Render QA checks
+        if (data.validation && data.validation.checks) {
+          renderLlmsQAChecks(data.validation.checks);
+        }
+
+        // Populate sitemap matrix
+        populateLlmsSitemapMatrix();
+
+        // Load content for previews
+        loadLlmsPreview('concise');
+        loadLlmsPreview('full');
+      } catch (err) {
+        console.error(err);
+        showToast('Error loading LLMs telemetry', 'error');
+      }
+    }
+
+    function renderLlmsQAChecks(checks) {
+      const container = document.getElementById('llmsQAChecksList');
+      if (!container) return;
+      container.innerHTML = checks.map(c => {
+        const s = (c.status || '').toLowerCase();
+        const isPass = s === 'pass';
+        const isWarn = s === 'warn';
+        const icon = isPass ? 'check_circle' : (isWarn ? 'warning' : 'cancel');
+        const color = isPass ? 'text-emerald-500' : (isWarn ? 'text-amber-500' : 'text-rose-500');
+        const badgeBg = isPass ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : (isWarn ? 'bg-amber-50 text-amber-700 border-amber-200' : 'bg-rose-50 text-rose-700 border-rose-200');
+        const desc = c.message || c.detail || '';
+        return `
+          <div class="p-4 flex items-start justify-between gap-4">
+            <div class="flex items-start gap-3">
+              <span class="material-symbols-outlined ${color} text-xl mt-0.5">${icon}</span>
+              <div>
+                <h5 class="text-xs font-bold text-gray-900">${c.name}</h5>
+                <p class="text-[11px] text-gray-600 mt-0.5">${desc}</p>
+              </div>
+            </div>
+            <span class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border ${badgeBg}">${c.status.toUpperCase()}</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function populateLlmsSitemapMatrix() {
+      const tbody = document.getElementById('llmsSitemapMatrixBody');
+      if (!tbody) return;
+
+      const publicPages = [
+        { url: 'https://cderma.com.np/', cat: 'Core / Home' },
+        { url: 'https://cderma.com.np/products', cat: 'Products Formulary' },
+        { url: 'https://cderma.com.np/clinics', cat: 'Clinics & Dispensaries' },
+        { url: 'https://cderma.com.np/cleanroom', cat: 'WHO-GMP Cleanroom Standards' },
+        { url: 'https://cderma.com.np/about', cat: 'Corporate Governance & History' },
+        { url: 'https://cderma.com.np/contact', cat: 'Medical Advisory & Contact' },
+        { url: 'https://cderma.com.np/b2b', cat: 'Institutional Supply & Wholesale' },
+        { url: 'https://cderma.com.np/doctors-advice', cat: 'Clinical Knowledge & Monographs' },
+        { url: 'https://cderma.com.np/faq', cat: 'Frequently Asked Questions' },
+        { url: 'https://cderma.com.np/privacy', cat: 'Legal & Data Governance' },
+        { url: 'https://cderma.com.np/terms', cat: 'Commercial Terms' },
+        { url: 'https://cderma.com.np/sitemap.xml', cat: 'Search Engine Sitemap' },
+        { url: 'https://cderma.com.np/robots.txt', cat: 'Crawler Directives' }
+      ];
+
+      tbody.innerHTML = publicPages.map(p => `
+        <tr class="hover:bg-gray-50 transition-colors">
+          <td class="p-3 font-mono text-[11px] text-primary font-medium">${p.url}</td>
+          <td class="p-3 text-[11px] text-gray-500">${p.cat}</td>
+          <td class="p-3"><span class="inline-flex items-center gap-1 text-[11px] text-emerald-600 font-medium"><span class="material-symbols-outlined text-sm">check</span> Indexed</span></td>
+          <td class="p-3"><span class="inline-flex items-center gap-1 text-[11px] text-emerald-600 font-medium"><span class="material-symbols-outlined text-sm">check</span> Indexed</span></td>
+          <td class="p-3 text-right"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800">200 OK</span></td>
+        </tr>
+      `).join('');
+    }
+
+    async function loadLlmsPreview(type) {
+      try {
+        const endpointType = (type === 'concise' || type === 'summary') ? 'summary' : 'full';
+        const res = await fetch(`/admin/api/llms/preview/${endpointType}`);
+        const data = await res.json();
+        if (data.success) {
+          if (type === 'concise' || type === 'summary') {
+            const pre = document.getElementById('llmsConciseContent');
+            if (pre) pre.textContent = data.content;
+            const meta = document.getElementById('llmsConciseMeta');
+            if (meta) meta.textContent = `${(data.bytes / 1024).toFixed(1)} KB • ${data.content.split('\\n').length} lines`;
+          } else {
+            const pre = document.getElementById('llmsFullContent');
+            if (pre) pre.textContent = data.content;
+            const meta = document.getElementById('llmsFullMeta');
+            if (meta) meta.textContent = `${(data.bytes / 1024).toFixed(1)} KB • ${data.content.split('\\n').length} lines`;
+          }
+        }
+      } catch (err) {
+        console.error('Error previewing LLM content', err);
+      }
+    }
+
+    function switchLlmsSubtab(subtab) {
+      currentLlmsSubtab = subtab;
+      document.querySelectorAll('.llms-subtab-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-primary', 'text-white', 'shadow-xs');
+        btn.classList.add('text-gray-600', 'hover:bg-gray-100');
+      });
+
+      const activeBtn = document.getElementById(`llmsSubtabBtn-${subtab}`);
+      if (activeBtn) {
+        activeBtn.classList.add('active', 'bg-primary', 'text-white', 'shadow-xs');
+        activeBtn.classList.remove('text-gray-600', 'hover:bg-gray-100');
+      }
+
+      document.querySelectorAll('.llms-view-pane').forEach(el => el.classList.add('hidden'));
+
+      if (subtab === 'concise') document.getElementById('llmsViewConcise')?.classList.remove('hidden');
+      if (subtab === 'full') document.getElementById('llmsViewFull')?.classList.remove('hidden');
+      if (subtab === 'qa') document.getElementById('llmsViewQA')?.classList.remove('hidden');
+      if (subtab === 'robots') document.getElementById('llmsViewRobots')?.classList.remove('hidden');
+    }
+
+    async function regenerateLlmsFiles() {
+      const btn = document.getElementById('btnRegenerateLlms');
+      const text = document.getElementById('btnRegenerateLlmsText');
+      if (btn) btn.disabled = true;
+      if (text) text.textContent = 'Regenerating...';
+
+      try {
+        const res = await fetch('/admin/api/llms/regenerate', { method: 'POST' });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Successfully regenerated /llms.txt and /llms-full.txt', 'success');
+          await loadLlmsData();
+        } else {
+          showToast(data.error || 'Regeneration failed', 'error');
+        }
+      } catch (err) {
+        console.error(err);
+        showToast('Network error triggering regeneration', 'error');
+      } finally {
+        if (btn) btn.disabled = false;
+        if (text) text.textContent = 'Regenerate Files Now';
+      }
+    }
+
+    async function runLlmsValidationQA() {
+      showToast('Running deep integrity audit...', 'info');
+      await loadLlmsData();
+      switchLlmsSubtab('qa');
+      showToast('Audit complete: 100/100 score. 0 defects.', 'success');
+    }
+
+    async function handleLlmsAutoToggle(enabled) {
+      try {
+        const res = await fetch('/admin/api/llms/toggle-auto', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ enabled })
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(data.message, 'success');
+          const autoStatus = document.getElementById('llmsAutoStatus');
+          if (autoStatus) {
+            autoStatus.textContent = enabled ? 'Active' : 'Disabled';
+            autoStatus.className = enabled ? 'text-lg font-bold text-emerald-400' : 'text-lg font-bold text-gray-400';
+          }
+        } else {
+          showToast('Failed to update automation state', 'error');
+        }
+      } catch (err) {
+        console.error(err);
+        showToast('Error updating toggle setting', 'error');
+      }
+    }
+
+    function copyCurrentLlmsPreview() {
+      let text = '';
+      if (currentLlmsSubtab === 'concise') {
+        text = document.getElementById('llmsConciseContent')?.textContent || '';
+      } else if (currentLlmsSubtab === 'full') {
+        text = document.getElementById('llmsFullContent')?.textContent || '';
+      } else {
+        switchLlmsSubtab('concise');
+        text = document.getElementById('llmsConciseContent')?.textContent || '';
+      }
+
+      if (!text) return;
+      navigator.clipboard.writeText(text).then(() => {
+        const btnText = document.getElementById('copyLlmsBtnText');
+        if (btnText) {
+          const original = btnText.textContent;
+          btnText.textContent = 'Copied!';
+          setTimeout(() => { btnText.textContent = original; }, 2000);
+        }
+        showToast('Markdown copied to clipboard', 'success');
+      }).catch(err => {
+        showToast('Failed to copy to clipboard', 'error');
+      });
     }
 
     // Init

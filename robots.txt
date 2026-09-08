@@ -4,20 +4,33 @@ Disallow: /admin
 Disallow: /admin/
 Disallow: /api/
 
-# Allow major search and AI discovery engines
+# Explicitly permit and welcome major AI search engines and LLM crawlers
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
 User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
 Allow: /
 
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: ClaudeBot
+User-agent: Applebot
 Allow: /
+
+# LLM Context Directives (Machine-readable navigation index)
+# Standard Index: https://cderma.com.np/llms.txt
+# Full Documentation: https://cderma.com.np/llms-full.txt
 
 Sitemap: https://cderma.com.np/sitemap.xml

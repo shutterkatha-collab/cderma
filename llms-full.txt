@@ -1,0 +1,355 @@
+# CDerma Nepal — Comprehensive Clinical Skincare & Cleanroom Dossier
+
+> Complete authoritative documentation for AI agents, LLMs, and medical search engines. Contains full product monographs, INCI ingredients declarations, clinical advice articles, authorized dispensary registry, cleanroom manufacturing standards, and bilingual English-Nepali references.
+
+## 1. System Metadata & Index
+- Canonical Domain: https://cderma.com.np
+- Compact Index: https://cderma.com.np/llms.txt
+- Sitemap: https://cderma.com.np/sitemap.xml
+- Generation Date: 2026-09-08
+- Manufacturer: CDerma Nepal / K&K Trading Concern
+- Headquarters & Facility: Itahari, Sunsari District, Koshi Province, Nepal
+- Quality Standard: ISO Class 7 (Class 10,000) Cleanroom • GMP Guidelines • DDA Registered
+
+## 2. Core Public Web Architecture
+| Page | Canonical URL | Primary Function |
+|------|---------------|------------------|
+| Homepage | https://cderma.com.np/ | Brand identity, clinical certifications, climate adaptation, hero products, FAQs |
+| Products Catalog | https://cderma.com.np/products.html | Full medical-grade skincare formulary with category and tolerance filtering |
+| Regimen Details | https://cderma.com.np/product-detail.html | Interactive clinical detailer, INCI disclosures, usage rituals, and specifications |
+| Science & Cleanroom | https://cderma.com.np/science.html | Cleanroom standards, sub-critical Centella extraction, HEPA airflow, batch assay |
+| B2B Wholesale | https://cderma.com.np/b2b.html | Retailer margin tiers (35%–48%), direct clinic dispensary supply, application portal |
+| Clinics Directory | https://cderma.com.np/clinics.html | Verified store & clinic locator across Kathmandu, Pokhara, Biratnagar, and all 7 provinces |
+| Monographs & Blog | https://cderma.com.np/monographs.html | Clinical research monographs, doctor prescribing protocols, and evidence-based patient advice |
+
+## 3. Complete Product Formulary Monographs
+### 3.1 Centella Barrier Restore Concentrate
+- Canonical URL: https://cderma.com.np/products/centella-barrier-restore-concentrate
+- Formula Code: centella-barrier-restore-concentrate
+- Category: Barrier Repair | Volume: 30 ml / 1.0 fl. oz.
+- Pricing: NPR 3200 (Protected MAP Retail Pricing)
+- Clinical Badge: Flagship Formulation • Clinical Trial Verified
+- Nepali Title: सेन्टेला ब्यारियर रिस्टोर कन्सन्ट्रेट
+- Clinical Indication: An ultra-concentrated multi-lamellar lipid emulsion designed for rapid stratum corneum recovery and intense post-procedure epidermal soothing.
+- Full Description: Developed specifically for compromised, post-laser, or retinoid-sensitized skin exposed to harsh sub-Himalayan dry climates. Combines bio-identical ceramides (EOP, NP, AP) in a 3:1:1 physiological ratio with wild-harvested Centella Asiatica titrated triterpenes.
+- Key Clinical Benefits:
+  * 94% barrier restoration within 72 hours in clinical patch trials
+  * Instant reduction of erythema and transepidermal water loss (TEWL)
+  * Sub-alpine Centella triterpenes (Madecassoside 40%, Asiaticoside 30%)
+  * Alcohol-free, fragrance-free, non-comedogenic bio-lipid base
+- Active Compounds & Pharmacological Action:
+  * Multi-Ceramide Complex (NP, AP, EOP): Active dermal component
+  * Wild Koshi Centella Asiatica Extract: Active dermal component
+  * Niacinamide USP Grade: Active dermal component
+  * Phytosphingosine & Cholesterol: Active dermal component
+- Application Ritual & Directions: Dispense 3–4 drops onto clean, damp skin morning and evening. Gently press into the face and neck until fully absorbed before sealing with moisturizer.
+
+### 3.2 Ceramide Deep Barrier Cream
+- Canonical URL: https://cderma.com.np/products/ceramide-deep-barrier-cream
+- Formula Code: ceramide-deep-barrier-cream
+- Category: Barrier Repair | Volume: 50 ml / 1.7 fl. oz.
+- Pricing: NPR 3800 (Protected MAP Retail Pricing)
+- Clinical Badge: Medical Barrier Emulsion
+- Nepali Title: सिरामाइड डिप ब्यारियर क्रिम
+- Clinical Indication: Rich velvety biomimetic lipid cream for severe xerosis, winter barrier collapse, and post-ablative laser recovery.
+- Full Description: Formulated with ultra-pure pharmaceutical ceramides and squalane to seal microscopic stratum corneum fractures and provide 48-hour continuous moisture retention without pore congestion.
+- Key Clinical Benefits:
+  * Reinforces damaged lipid bilayer within 24 hours
+  * Non-greasy velvety finish suitable for South Asian skin tones
+  * Soothes active eczema, dermatitis, and retinol irritation
+  * Safe for immediate post-chemical peel maintenance
+- Active Compounds & Pharmacological Action:
+  * Bio-Identical Ceramide Lipids: Active dermal component
+  * Plant-Derived Squalane: Active dermal component
+  * Colloidal Oat Beta-Glucan: Active dermal component
+- Application Ritual & Directions: Warm a dime-sized amount between fingertips and smooth evenly over face and neck. Ideal as the final barrier step at night.
+
+### 3.3 Physiological Balancing Gel Cleanser
+- Canonical URL: https://cderma.com.np/products/physiological-balancing-gel-cleanser
+- Formula Code: physiological-balancing-gel-cleanser
+- Category: Cleansers | Volume: 150 ml / 5.1 fl. oz.
+- Pricing: NPR 2100 (Protected MAP Retail Pricing)
+- Clinical Badge: Sulfate-Free • Non-Stripping
+- Nepali Title: फिजियोलोजिकल ब्यालेन्सिङ जेल क्लिन्जर
+- Clinical Indication: A soap-free, amino-acid based daily foaming gel that purifies impurities while keeping the epidermal microbiome completely undisturbed.
+- Full Description: Formulated at physiological pH 5.5 using mild coconut-derived surfactants and soothing panthenol to leave sensitized skin calm, soft, and balanced.
+- Key Clinical Benefits:
+  * Zero tightness, zero stinging on inflamed or compromised skin
+  * Maintains natural skin acid mantle and microbiome balance
+  * Free from SLS, SLES, parabens, and essential oils
+- Active Compounds & Pharmacological Action:
+  * Sodium Cocoyl Apple Amino Acids: Active dermal component
+  * Pro-Vitamin B5 (Panthenol): Active dermal component
+  * Allantoin: Active dermal component
+- Application Ritual & Directions: Massage 1–2 pumps onto damp face for 30–40 seconds. Rinse thoroughly with lukewarm water. Pat dry with clean gauze or towel.
+
+### 3.4 High-Altitude Mineral Shield SPF 50+ PA++++
+- Canonical URL: https://cderma.com.np/products/high-altitude-mineral-shield-spf50
+- Formula Code: high-altitude-mineral-shield-spf50
+- Category: Photoprotection | Volume: 60 ml / 2.0 fl. oz.
+- Pricing: NPR 3500 (Protected MAP Retail Pricing)
+- Clinical Badge: Broad Spectrum UVA/UVB/HEV Shield
+- Nepali Title: हाई-अल्टिच्यूड मिनरल शिल्ड एसपीएफ ५०+ PA++++
+- Clinical Indication: Medical-grade mineral sunscreen engineered for extreme high-altitude Himalayan ultraviolet radiation and post-laser skin vulnerability.
+- Full Description: Features micronized, non-nano zinc oxide with zero white cast on Fitzpatick Skin Types III–V. Infused with ectoin and alpine edelweiss extract to neutralize high-elevation blue light and free radicals.
+- Key Clinical Benefits:
+  * Critical UV protection for extreme elevations (>1,400m)
+  * Invisible sheer finish without chalky residue on South Asian skin
+  * Immediate physical barrier against UV and environmental pollution
+- Active Compounds & Pharmacological Action:
+  * Non-Nano Zinc Oxide USP: Active dermal component
+  * Ectoin Cellular Protectant: Active dermal component
+  * Himalayan Edelweiss Extract: Active dermal component
+- Application Ritual & Directions: Apply generously 15 minutes before sun exposure as the final morning step. Reapply every 2 hours during prolonged outdoor activity or after sweating.
+
+### 3.5 Multi-Depth Hyaluronic Hydrating Mist
+- Canonical URL: https://cderma.com.np/products/multi-depth-hyaluronic-hydrating-mist
+- Formula Code: multi-depth-hyaluronic-hydrating-mist
+- Category: Hydration | Volume: 100 ml / 3.4 fl. oz.
+- Pricing: NPR 2400 (Protected MAP Retail Pricing)
+- Clinical Badge: Immediate Epidermal Plumping
+- Nepali Title: मल्टि-डेप्थ हायलुरोनिक हाइड्रेटिङ मिस्ट
+- Clinical Indication: Micro-fine aerosolized clinical tonic that delivers instant multi-depth hydration and restores osmotic balance.
+- Full Description: Penetrates from the stratum corneum down to deep dermal layers through five distinct molecular weights of hyaluronic acid, amplified by mineral electrolytes.
+- Key Clinical Benefits:
+  * Instant osmotic hydration surge in dry altitude atmospheres
+  * Enhances penetration of subsequent active serums
+  * Calms redness after dermatological procedures
+- Active Compounds & Pharmacological Action:
+  * Multi-Molecular Hyaluronic Acid: Active dermal component
+  * Glacial Mineral Electrolytes: Active dermal component
+  * Centella Asiatica Leaf Water: Active dermal component
+- Application Ritual & Directions: Mist generously over face and neck after cleansing or throughout the day whenever skin feels tight or dehydrated.
+
+### 3.6 Overnight Cellular Resurfacing Elixir
+- Canonical URL: https://cderma.com.np/products/overnight-cellular-resurfacing-elixir
+- Formula Code: overnight-cellular-resurfacing-elixir
+- Category: Corrective Treatments | Volume: 30 ml / 1.0 fl. oz.
+- Pricing: NPR 4200 (Protected MAP Retail Pricing)
+- Clinical Badge: Next-Gen Vitamin A • Zero Downtime
+- Nepali Title: ओभरनाइट सेल्युलर रिसर्फेसिङ एलिक्जिर
+- Clinical Indication: A dermatological night treatment that accelerates epidermal cell turnover without the typical retinization peeling or irritation.
+- Full Description: Encapsulated retinaldehyde converts 11x faster to active retinoic acid than standard retinol, paired with soothing bisabolol and ceramides.
+- Key Clinical Benefits:
+  * Smooths irregular texture and fades stubborn post-acne erythema
+  * Stimulates dermal collagen synthesis and structural firmness
+  * Liposomal encapsulation minimizes transepidermal peeling
+- Active Compounds & Pharmacological Action:
+  * Encapsulated Retinaldehyde: Active dermal component
+  * Niacinamide USP: Active dermal component
+  * Bisabolol: Active dermal component
+- Application Ritual & Directions: Apply 2–3 pumps in the evening to dry skin 2–3 times per week, gradually increasing frequency as tolerated. Always follow with sunscreen the next morning.
+
+## 4. Published Clinical Monographs & Prescribing Protocols
+### 4.1 [CD-MONO-01] Multi-Lamellar Stratum Corneum Biomimicry Using Koshi Centella Asiatica & Bio-Identical Ceramides in High-Altitude Cold Urticaria
+- URL: https://cderma.com.np/monographs.html#CD-MONO-01
+- Category: Barrier Repair Protocol | Author: Dr. S. Karki | Read Time: 5 min
+- Target Clinical Indication: Severe winter xerosis, windburn, post-retinoid peeling, atopic barrier defects.
+- Summary: 
+- Prescribing Protocol: Apply BID directly following gentle cleansing. In cold urticaria cases, layer beneath an occlusive ceramide balm within 90 seconds of warm water contact.
+- Monitored Active Compounds: 5% Multi-Ceramides (NP/AP/EOP), 15% Koshi Centella Titrated Extract, 4% Niacinamide USP.
+- नेपाली शीर्षक: उच्च हिमाली चिसोमा कोशी सेन्टेला र बायो-आइडेन्टिकल सिरामाइडको बायोमिमिक्री अनुसन्धान
+- नेपाली सारांश: उच्च उचाइको सुख्खा र चिसो हावापानीमा छालाको लिपिड पत्रको सुरक्षा र पुनरुत्पादनसम्बन्धी प्राविधिक अध्ययन प्रतिवेदन।
+
+### 4.2 [CD-ADV-01] The Best Time to Apply Your Moisturiser (Most People Get This Wrong)
+- URL: https://cderma.com.np/monographs.html#CD-ADV-01
+- Category: Hydration | Author: Dr. S. Karki | Read Time: 4 min read
+- Target Clinical Indication: Dehydrated epidermal barrier, post-wash dryness, transepidermal water loss.
+- Summary: Timing matters more than you think. Applying moisturiser on damp skin — right after washing your face — locks in up to 3x more water than applying it on dry skin.
+- Prescribing Protocol: Apply directly within 60 seconds of gentle face wash while stratum corneum is pliable.
+- Monitored Active Compounds: Multi-Depth Hyaluronic Acid, Phytoceramides, Glycerin USP.
+- नेपाली शीर्षक: मोइस्चराइजर लगाउने उत्तम समय (धेरैजसो मानिसले यहाँ गल्ती गर्छन्)
+- नेपाली सारांश: समय निकै महत्वपूर्ण हुन्छ। मुख धोएपछि हल्का ओसिलो छँदै मोइस्चराइजर लगाउँदा सुख्खा छालामा लगाउनुभन्दा ३ गुणा बढी पानीको मात्रा लक हुन्छ।
+
+### 4.3 [CD-MONO-02] Post-Fractional CO2 Laser & Deep Chemical Peeling Recovery Protocol
+- URL: https://cderma.com.np/monographs.html#CD-MONO-02
+- Category: Procedural Recovery | Author: Dr. S. Karki | Read Time: 5 min
+- Target Clinical Indication: Ablative / Non-ablative laser recovery, trichloroacetic acid (TCA) peels, micro-needling erythema.
+- Summary: 
+- Prescribing Protocol: Begin 24 hours post-procedure once re-epithelialization starts. Avoid active AHAs, BHAs, and direct sunlight until complete barrier integrity is verified.
+- Monitored Active Compounds: Centella Asiatica Triterpenes (Madecassoside 40%), Micronized Zinc, Panthenol 5%.
+- नेपाली शीर्षक: पोस्ट-फ्र्याक्सनल CO2 लेजर तथा केमिकल पिलपछिको रिकभरी प्रोटोकल
+- नेपाली सारांश: एब्लेटिभ लेजर र पिलिङ प्रक्रियापछि छालालाई छिटो निको पार्न र हाइपरपिग्मेन्टेसन रोक्न डाक्टरहरूद्वारा सिफारिस गरिएको प्रोटोकल।
+
+### 4.4 [CD-ADV-02] What Actually Causes Pimples — And What You Can Do About It
+- URL: https://cderma.com.np/monographs.html#CD-ADV-02
+- Category: Acne & Pimples | Author: Dr. R. Shrestha | Read Time: 6 min read
+- Target Clinical Indication: Acne vulgaris, comedogenic congestion, dysregulated sebum.
+- Summary: Pimples happen when your pores get blocked by oil and dead skin cells. The key to preventing them is keeping your skin clean but not over-washing — and choosing products that won't clog pores.
+- Prescribing Protocol: Use non-comedogenic physiological wash twice daily.
+- Monitored Active Compounds: Zinc PCA, Apple Amino Acids, Niacinamide 5%.
+- नेपाली शीर्षक: डण्डीफोर नियन्त्रण गर्दा छालाको सुरक्षात्मक पर्खाल (ब्यारियर) जोगाउने तरिका
+- नेपाली सारांश: अत्यधिक कडा औषधि र फेसवासले छालाको पर्खाल नष्ट गर्छ जसले झन् बढी डण्डीफोर निम्त्याउँछ। सक्रिय औषधिसँगै सिरामाइडको सन्तुलन आवश्यक हुन्छ।
+
+### 4.5 [CD-MONO-03] High-Altitude Ultraviolet Protection & Blue Light Radical Attenuation in Sensitive Skin
+- URL: https://cderma.com.np/monographs.html#CD-MONO-03
+- Category: Photobiology Protocol | Author: Dr. S. Karki | Read Time: 5 min
+- Target Clinical Indication: Melasma prevention, post-inflammatory hyperpigmentation (PIH), alpine actinic damage.
+- Summary: 
+- Prescribing Protocol: Apply 2 mg/cm² to all sun-exposed areas 15 minutes prior to UV exposure. Essential co-therapy during hydroquinone or tranexamic acid regimens.
+- Monitored Active Compounds: Non-Nano Zinc Oxide 18.5%, Ectoin 1.5%, Edelweiss Leontopodic Acid.
+- नेपाली शीर्षक: उच्च हिमाली यूभी विकिरण र ब्लु लाइटबाट संवेदनशील छालाको सुरक्षा
+- नेपाली सारांश: नेपालको हिमाली तथा पहाडी भूभागमा तीव्र सौर्य विकिरण र प्रदूषणबाट दक्षिण एसियाली छालालाई जोगाउने वैज्ञानिक उपायहरू।
+
+### 4.6 [CD-ADV-03] Niacinamide: The Simple Ingredient That Brightens Skin Without Irritation
+- URL: https://cderma.com.np/monographs.html#CD-ADV-03
+- Category: Brightening | Author: Dr. P. Bhattarai | Read Time: 5 min read
+- Target Clinical Indication: Post-inflammatory hyperpigmentation (PIH), dullness, uneven skin tone.
+- Summary: Niacinamide (Vitamin B3) is one of the safest and most effective skin-brightening ingredients available. It reduces dark spots, evens skin tone, and strengthens your skin barrier all at once.
+- Prescribing Protocol: Apply 3-4 drops evenly across cleansed face prior to heavier moisturizers.
+- Monitored Active Compounds: Niacinamide (Vitamin B3) USP 5%, Centella Triterpenes.
+- नेपाली शीर्षक: घाम नलाग्दा वा घरभित्र बस्दा पनि सनस्क्रिन किन आवश्यक छ?
+- नेपाली सारांश: यूभीए किरणहरू बादल र झ्यालको सिसा पार गरेर छालाको भित्री तहसम्म पुग्छन्। यसले समयभन्दा पहिले चाउरीपना र कालो पोतो निम्त्याउँछ।
+
+### 4.7 [CD-ADV-04] 5 Signs Your Skin Is Sensitive — And How to Calm It Down Fast
+- URL: https://cderma.com.np/monographs.html#CD-ADV-04
+- Category: Sensitive Skin | Author: Dr. S. Karki | Read Time: 4 min read
+- Target Clinical Indication: Hypersensitive skin, rosacea, wind-burn, compromised lipid mantle.
+- Summary: Redness, stinging after washing, or a tight uncomfortable feeling? These are signs of sensitive skin. The good news: it's very manageable with the right gentle products and a simple routine.
+- Prescribing Protocol: Strip routine back to physiological cleanser and barrier restore concentrate.
+- Monitored Active Compounds: Alpine Centella Asiatica, Bio-Identical Ceramides NP/AP/EOP, Panthenol.
+- नेपाली शीर्षक: कम उमेरमा चाउरीपना देखिनुका मुख्य कारणहरू र समाधान
+- नेपाली सारांश: उमेरभन्दा पनि घामको किरण, प्रदूषण र छालामा पानीको कमी (Dehydration) ले चाउरीपना चाँडो आउँछ। पेप्टाइड र सनस्क्रिनको प्रयोगले यसलाई रोक्न सकिन्छ।
+
+### 4.8 [CD-ADV-05] Your Perfect Morning Skincare Routine — 3 Steps, 5 Minutes, Done
+- URL: https://cderma.com.np/monographs.html#CD-ADV-05
+- Category: Daily Routine | Author: Dr. R. Shrestha | Read Time: 7 min read
+- Target Clinical Indication: Daily maintenance, photoprotection, barrier resilience.
+- Summary: You don't need a complicated 12-step routine. A gentle cleanser, a ceramide serum, and a moisturiser with SPF — that's all your skin needs every morning to look and feel great.
+- Prescribing Protocol: Step 1: Cleanse with lukewarm water. Step 2: 3 drops serum. Step 3: Mineral SPF 50+.
+- Monitored Active Compounds: Amino acid cleanser, Niacinamide + Centella, Mineral Zinc Oxide SPF 50+.
+- नेपाली शीर्षक: कालो पोतो र दागधब्बा (Hyperpigmentation) को प्रभावकारी उपचार
+- नेपाली सारांश: दक्षिण एसियाली छालामा मेलानिन उत्पादन छिटो हुन्छ। म्यान्डेलिक एसिड र नियासिनामाइडले जलनबिना दागधब्बा हल्का बनाउँछ।
+
+### 4.9 [CD-ADV-06] Why Nepal's Winter Air Damages Your Skin — And the Easy Fix
+- URL: https://cderma.com.np/monographs.html#CD-ADV-06
+- Category: Hydration | Author: Dr. P. Bhattarai | Read Time: 5 min read
+- Target Clinical Indication: Winter xerosis, high-altitude flaking, cold urticaria.
+- Summary: Cold, dry air pulls moisture right out of your skin. In Kathmandu, Pokhara, and high-altitude areas, this is a real problem from October to February. Here is how to protect your skin during those months.
+- Prescribing Protocol: Layer lipid-replenishing ceramide barrier cream over hydrating serums morning and night.
+- Monitored Active Compounds: Ceramides NP/AP/EOP, Phytosphingosine, Squalane, Ectoin.
+- नेपाली शीर्षक: जाडो मौसम र सुख्खा हावापानीमा छालाको हेरचाह
+- नेपाली सारांश: चिसो मौसम र तातो पानीको प्रयोगले छालाको तेल नष्ट गर्छ। बाक्लो सिरामाइड क्रिमले छालालाई फुट्न र चिलाउनबाट जोगाउँछ।
+
+## 5. Authorized Medical Dispensaries & Clinic Network
+### 5.1 Kathmandu Aesthetic & Skin Care Hospital
+- Facility Type: Dermatology & Aesthetic Hospital
+- Location: Marg 4, Naxal (Opposite Bhagwati Temple), Kathmandu, Kathmandu, Bagmati Province
+- Lead Physician / Specialist: Dr. A. Karki, MD Dermatology (NMC #9482 • Senior Consultant)
+- Stock Verification: Centella Barrier Restore, Ceramide Deep Cream, Mandelic Peel
+- Operating Hours: 09:00 - 19:30 (Sun-Fri)
+- Contact Phone: +977 9820753751
+- नेपाली विवरण: काठमाडौं एस्थेटिक तथा स्किन केयर हस्पिटल (मार्ग ४, नक्साल (भगवती मन्दिर अगाडि), काठमाडौं)
+
+### 5.2 Lalitpur Dermal Aesthetics Center
+- Facility Type: Laser & Cosmetic Clinic
+- Location: Jawalakhel Chowk, Lalitpur, Lalitpur, Bagmati Province
+- Lead Physician / Specialist: Dr. Rashmi Lama, MD, NMC-9124 (NMC Registered)
+- Stock Verification: Full Clinical Formulary In Stock
+- Operating Hours: 10:00 - 19:00 (Sun-Fri)
+- Contact Phone: +977 1 5534211
+- नेपाली विवरण: ललितपुर डर्मल एस्थेटिक्स सेन्टर (जावलाखेल चोक, ललितपुर)
+
+### 5.3 Koshi Regional Medical Skin Outpost
+- Facility Type: Hospital Pharmacy Wing
+- Location: Hospital Road, Ward 4, Biratnagar, Koshi Province, Biratnagar, Koshi Province
+- Lead Physician / Specialist: Dr. R. Shrestha, MBBS, DDVL (NMC #6521 • Regional Dermal Lead)
+- Stock Verification: Complete Himalayan Bio-Active Batch Stock (Lot #2409)
+- Operating Hours: 08:30 - 20:00 (Sun-Sat)
+- Contact Phone: +977 21 472190
+- नेपाली विवरण: कोशी क्षेत्रीय मेडिकल स्किन आउटपोस्ट (हस्पिटल रोड, वडा ४, विराटनगर, कोशी प्रदेश)
+
+### 5.4 Western Skin Clinic & Laser Center
+- Facility Type: Aesthetic Institute & Laser Clinic
+- Location: New Road, Pokhara-8 (Near Annapurna Complex), Pokhara, Gandaki Province
+- Lead Physician / Specialist: Dr. A. Bastola, MD (NMC #7812 • Laser Dermatology)
+- Stock Verification: Barrier Care Complex & Mineral Photoprotection In Stock
+- Operating Hours: 09:30 - 18:30 (Sun-Fri)
+- Contact Phone: +977 61 528741
+- नेपाली विवरण: वेस्टर्न स्किन क्लिनिक तथा लेजर सेन्टर (न्यू रोड, पोखरा-८ (अन्नपूर्ण कम्प्लेक्स नजिक), गण्डकी प्रदेश)
+
+### 5.5 Lalitpur Dermal Aesthetics & Beauty Counter
+- Facility Type: Cosmetic Store & Beauty Retailer
+- Location: Pulchowk Heights, Lalitpur (Near Labim Mall), Lalitpur, Bagmati Province
+- Lead Physician / Specialist: Dr. P. Thapa, Consultant Cosmetologist (NMC #9124 • Cosmetic Specialist)
+- Stock Verification: Specialized Post-Laser Recovery Formulations & Retail Serums
+- Operating Hours: 10:00 - 19:00 (Sun-Fri)
+- Contact Phone: +977 1 5534211
+- नेपाली विवरण: ललितपुर डर्मल एस्थेटिक्स तथा ब्युटी काउन्टर (पुलचोक हाइट्स, ललितपुर (लबिम मल नजिक))
+
+### 5.6 Chitwan Healthcare Dermatology Unit
+- Facility Type: Hospital Pharmacy Wing
+- Location: Chaubiskothi, Bharatpur-10, Chitwan, Bharatpur, Bagmati Province
+- Lead Physician / Specialist: Dr. B. K. Adhikari, MD Dermatology (NMC #8340 • Hospital Consultant)
+- Stock Verification: Official Compounding & Monograph Dispensing Center
+- Operating Hours: 08:00 - 20:00 (Daily)
+- Contact Phone: +977 56 523198
+- नेपाली विवरण: चितवन हेल्थकेयर डर्माटोलोजी युनिट (भरतपुर-१० (चौबिसकोठी), चितवन, बागमती प्रदेश)
+
+### 5.7 Itahari Cleanroom Beauty & Cosmetic Dispensary
+- Facility Type: Cosmetic Store & Beauty Retailer
+- Location: Main Chowk, Dharan Road, Itahari, Sunsari (Direct Cleanroom Hub), Itahari, Koshi Province
+- Lead Physician / Specialist: Kavita Rai, Clinical Aesthetician (Certified Skin Practitioner)
+- Stock Verification: Fresh Production Batches, Full Face Care & Sun Protection
+- Operating Hours: 08:30 - 20:30 (Daily)
+- Contact Phone: +977 9820753751
+- नेपाली विवरण: इटहरी क्लिनरुम ब्युटी तथा कस्मेटिक डिस्पेन्सरी (मुख्य चोक, धरान रोड, इटहरी, सुनसरी (प्रत्यक्ष उत्पादन केन्द्र))
+
+### 5.8 Dharan Medical Specialty & Derma Lounge
+- Facility Type: Aesthetic Institute & Laser Clinic
+- Location: Bhanuchowk, Ward 2, Dharan, Koshi Province, Dharan, Koshi Province
+- Lead Physician / Specialist: Dr. M. Tamang, MBBS, DVD (NMC #9055 • Clinical Advisor)
+- Stock Verification: Barrier Repair Formulations, Pure Hydration & INCI Testing Lot
+- Operating Hours: 09:00 - 19:30 (Daily)
+- Contact Phone: +977 25 520410
+- नेपाली विवरण: धरान मेडिकल स्पेसियाल्टी तथा डर्मा लाउन्ज (भानुचोक, वडा २, धरान, कोशी प्रदेश)
+
+## 6. Manufacturing Standards & Laboratory Verification
+- Facility Environment: Certified ISO Class 7 (Class 10,000) cleanroom in Sunsari, Koshi Province.
+- Air Purity & HEPA Filtration: 0.3 micron positive-pressure HEPA filtration with zero airborne cross-contamination.
+- Sub-Critical Botanical Extraction: Closed-loop low-temperature sub-critical extraction yielding 88.4% active Asiaticoside and Madecassoside fractions, preserving thermolabile terpenes.
+- Analytical Quality Assurance: Every commercial batch undergoes third-party microbial bioburden screening (USP 61/62), centrifugal phase stability (4,000 RPM / 30 mins), and heavy metal spectroscopy (Pb/Hg/As < 1.0 ppm).
+- Cold-Chain Distribution: Direct dispatch in climate-monitored courier boxes maintaining -5°C to 25°C transit safety.
+
+## 7. B2B Wholesale Distribution Terms
+- Eligibility: Licensed cosmetic store retailers, aesthetic clinics, dermatology centers, and hospital pharmacies.
+- Retail Profit Margin: 35% to 48% structured gross margin with strict MAP (Minimum Advertised Price) protection to prevent online discounting.
+- Ordering Tiers:
+  * Trial Starter Pack: 25 - 50 units (ideal for testing regional retail demand)
+  * Standard Store Supply: 50 - 150 units (includes acrylic counter displays and tester units)
+  * Institutional / Bulk: 150 - 500 units (preferential pricing for hospital chains and large dermatology practices)
+  * Regional Wholesaler: 500+ units (exclusive territory rights and direct lab dispatch)
+- Logistics Speed: Same-day delivery in Kathmandu Valley; 24 to 48 hour guaranteed priority dispatch across all 7 provinces.
+
+## 8. Clinical FAQ & Answers
+### Q1: Why do doctors in Nepal recommend CDerma barrier serums over imported alternatives?
+A1: Imported skincare frequently endures extreme heat during overseas shipping and border customs warehousing, degrading delicate bioactive ingredients. CDerma is cold-chain formulated and manufactured domestically in Itahari, guaranteeing fresh batch delivery with maximum pharmacological potency and zero artificial fragrances.
+
+### Q2: Are CDerma products safe for sensitive, reactive, and acne-prone skin?
+A2: Yes. All CDerma products are formulated at physiological pH (5.4–5.8), free from synthetic perfumes, essential oils, and pore-clogging mineral oils. They are designed for reactive skin and safe for post-laser/peel healing.
+
+### Q3: How do patients verify batch authenticity?
+A3: Each CDerma bottle features a unique 8-digit manufacturing lot ID and QR code linking directly to the cleanroom Certificate of Analysis (COA) confirming microbiological and purity screening.
+
+## 9. नेपाली भाषा सारांश (Nepali Language Reference)
+### सिडर्मा नेपाल — परिचय र क्लिनिकल मापदण्ड
+सिडर्मा नेपाल (के एन्ड के ट्रेडिङ कन्सर्नद्वारा प्रवर्द्धित) नेपालकै पहिलो डाक्टर-फर्मुलेटेड क्लिनिकल छाला हेरचाह उत्पादक तथा थोक वितरक हो। सुनसरीको इटहरीमा रहेको ISO क्लास ७ क्लिनरुममा निर्मित हाम्रा उत्पादनहरू नेपालको उच्च उचाइको घाम, जाडोको सुक्खापन र सहरी प्रदूषणलाई ध्यानमा राखी तयार पारिएका हुन्।
+
+### मुख्य उत्पादनहरू (नेपाली विवरण):
+- **सेन्टेला ब्यारियर रिस्टोर कन्सन्ट्रेट**: प्रमुख फेस केयर • ५% मल्टि-सिरामाइड्स + सब-अल्पाइन सेन्टेला (मूल्य: रु 3200) — छालाको सुरक्षात्मक पर्खाल (स्ट्र्याटम कोर्नियम) को द्रुत पुनःस्थापना र कस्मेटिक प्रक्रियापछिको जलन शान्त पार्न डिजाइन गरिएको उच्च-सघन लिपिड इमल्सन।
+- **सिरामाइड डिप ब्यारियर क्रिम**: गहन ३:१:१ फिजियोलोजिकल लिपिड पोषण क्रिम (मूल्य: रु 3800) — अत्यधिक सुख्खापन, जाडोयामको छाला फुटेको र लेजरपछिको संवेदनशील छालाको लागि गहन बायोमिमेटिक लिपिड क्रिम।
+- **फिजियोलोजिकल ब्यालेन्सिङ जेल क्लिन्जर**: अल्ट्रा-सफ्ट दैनिक क्लिन्जर • पीएच ५.५ एसिड मेन्टल ब्यालेन्स (मूल्य: रु 2100) — छालाको प्राकृतिक आद्रता र अम्लीय आवरणलाई सुरक्षित राख्दै धुलो र अतिरिक्त तेल हटाउने कोमल दैनिक फेस क्लिन्जर।
+- **हाई-अल्टिच्यूड मिनरल शिल्ड एसपीएफ ५०+ PA++++**: १००% नन-नानो जिंक अक्साइड • फोटोस्टेबल यूभी सुरक्षा (मूल्य: रु 3500) — तीव्र हिमाली घाम, उच्च स्थानको विकिरण र लेजरपछिको संवेदनशील छालाका लागि १००% मिनरल जिंक अक्साइड सनस्क्रिन।
+- **मल्टि-डेप्थ हायलुरोनिक हाइड्रेटिङ मिस्ट**: ५-मोलिक्युलर हायलुरोनिक एसिड + हिमनदी मिनरल वाटर (मूल्य: रु 2400) — सुख्खा हावापानीमा तत्काल बहु-स्तरीय आद्रता प्रदान गर्ने र छालाको कोषीय सन्तुलन फर्काउने सूक्ष्म क्लिनिकल टोनिक स्प्रे।
+- **ओभरनाइट सेल्युलर रिसर्फेसिङ एलिक्जिर**: ०.१% क्याप्सुलेटेड रेटिनालडिहाइड + ५% नियासिनामाइड (मूल्य: रु 4200) — छाला नखुम्चिने र कुनै जलनबिना रातभर नयाँ छालाको कोषीय विकासलाई तीव्र बनाउने उन्नत डर्माटोलोजिकल नाइट ट्रिटमेन्ट।
+
+### क्लिनिक तथा स्टोर सञ्जाल:
+काठमाडौं, पोखरा, विराटनगर, धरान, चितवन र बुटवलसहित सातै प्रदेशका प्रमुख अस्पताल फार्मेसी तथा छाला क्लिनिकहरूमा सिडर्माका उत्पादनहरू सिफारिस गरिन्छन्।
+
+## 10. Corporate Inquiries & Contacts
+- Company: K&K Trading Concern / CDerma Nepal
+- Official Address: Itahari, Sunsari District, Koshi Province, Nepal
+- Phone: +977 1 4421098
+- WhatsApp: +977 9801234567
+- Email: clinical@cderma.com.np
+- DDA / PAN: 609874123 | EXIM: 3049904360114NP

@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs');
 const db = require('../config/db');
 const { requireAdmin } = require('../middleware/auth');
 const upload = require('../middleware/upload');
+const { generateAll, regenerateIfEnabled, LLMS_TXT_PATH, LLMS_FULL_TXT_PATH } = require('../services/llmsGenerator');
+const { validateAll } = require('../services/llmsValidator');
 
 // ==================== AUTH ROUTES ====================
 
@@ -149,6 +151,7 @@ router.post('/api/settings', requireAdmin, (req, res) => {
     });
 
     updateTx(settings);
+    regenerateIfEnabled().catch(() => {});
     res.json({ success: true, message: 'Site copy and settings updated successfully.' });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -260,6 +263,7 @@ router.post('/api/products', requireAdmin, upload.single('image'), (req, res) =>
     );
 
     res.status(201).json({ success: true, message: 'Product created successfully.', productId: result.lastInsertRowid });
+    regenerateIfEnabled().catch(() => {});
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -334,6 +338,7 @@ router.put('/api/products/:id', requireAdmin, upload.single('image'), (req, res)
     );
 
     res.json({ success: true, message: 'Product updated successfully.' });
+    regenerateIfEnabled().catch(() => {});
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -343,6 +348,7 @@ router.put('/api/products/:id', requireAdmin, upload.single('image'), (req, res)
 router.delete('/api/products/:id', requireAdmin, (req, res) => {
   try {
     db.prepare('DELETE FROM products WHERE id = ?').run(req.params.id);
+    regenerateIfEnabled().catch(() => {});
     res.json({ success: true, message: 'Product deleted.' });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -403,6 +409,7 @@ router.post('/api/clinics', requireAdmin, (req, res) => {
         status || 'active', parseInt(sort_order) || 0,
         name_ne || null, category_ne || null, address_ne || null, stock_summary_ne || null, lead_doctor_ne || null
       );
+      regenerateIfEnabled().catch(() => {});
       res.status(201).json({ success: true, message: 'Clinic added successfully.', clinicId: result.lastInsertRowid });
     } catch (e) {
       res.status(500).json({ success: false, error: e.message });
@@ -468,6 +475,7 @@ router.put('/api/clinics/:id', requireAdmin, (req, res) => {
         lead_doctor_ne !== undefined ? lead_doctor_ne : (existing ? existing.lead_doctor_ne : null),
         req.params.id
       );
+      regenerateIfEnabled().catch(() => {});
       res.json({ success: true, message: 'Clinic updated successfully.' });
     } catch (e) {
       res.status(500).json({ success: false, error: e.message });
@@ -479,6 +487,7 @@ router.put('/api/clinics/:id', requireAdmin, (req, res) => {
 router.delete('/api/clinics/:id', requireAdmin, (req, res) => {
   try {
     db.prepare('DELETE FROM clinics WHERE id = ?').run(req.params.id);
+    regenerateIfEnabled().catch(() => {});
     res.json({ success: true, message: 'Clinic removed.' });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -535,6 +544,7 @@ router.post('/api/monographs', requireAdmin, upload.single('image'), (req, res) 
       title_ne || null, category_ne || null, indication_ne || null, summary_ne || null, content_ne || null, clinical_protocol_ne || null
     );
 
+    regenerateIfEnabled().catch(() => {});
     res.status(201).json({ success: true, message: 'Article/Monograph published successfully.', monographId: result.lastInsertRowid });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -600,6 +610,7 @@ router.put('/api/monographs/:id', requireAdmin, upload.single('image'), (req, re
       req.params.id
     );
 
+    regenerateIfEnabled().catch(() => {});
     res.json({ success: true, message: 'Article/Monograph updated successfully.' });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -610,6 +621,7 @@ router.put('/api/monographs/:id', requireAdmin, upload.single('image'), (req, re
 router.delete('/api/monographs/:id', requireAdmin, (req, res) => {
   try {
     db.prepare('DELETE FROM monographs WHERE id = ?').run(req.params.id);
+    regenerateIfEnabled().catch(() => {});
     res.json({ success: true, message: 'Article/Monograph deleted.' });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -1203,6 +1215,100 @@ router.post('/api/social/meta', requireAdmin, (req, res) => {
 
     updateTx(meta);
     res.json({ success: true, message: 'Social sharing & Open Graph settings saved.' });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// ==================== 11. AI / LLM DISCOVERABILITY CMS ====================
+
+// GET /admin/api/llms/status - Fetch discoverability telemetry, generation status, and validation
+router.get('/api/llms/status', requireAdmin, (req, res) => {
+  try {
+    const fs = require('fs');
+    const txtExists = fs.existsSync(LLMS_TXT_PATH);
+    const fullExists = fs.existsSync(LLMS_FULL_TXT_PATH);
+
+    const settingAuto = db.prepare("SELECT value FROM site_settings WHERE key = 'llms_auto_generate'").get();
+    const settingLast = db.prepare("SELECT value FROM site_settings WHERE key = 'llms_last_generated'").get();
+    const settingStats = db.prepare("SELECT value FROM site_settings WHERE key = 'llms_stats'").get();
+
+    let stats = null;
+    if (settingStats && settingStats.value) {
+      try { stats = JSON.parse(settingStats.value); } catch(e) {}
+    }
+
+    const validation = validateAll();
+
+    res.json({
+      success: true,
+      exists: { txt: txtExists, full: fullExists },
+      autoGenerate: !settingAuto || settingAuto.value !== '0',
+      lastGenerated: settingLast ? settingLast.value : null,
+      stats,
+      validation
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// GET /admin/api/llms/preview/:type - Live content preview (summary or full)
+router.get('/api/llms/preview/:type', requireAdmin, (req, res) => {
+  try {
+    const fs = require('fs');
+    const type = req.params.type;
+    const targetPath = (type === 'full' || type === 'llms-full.txt') ? LLMS_FULL_TXT_PATH : LLMS_TXT_PATH;
+
+    if (!fs.existsSync(targetPath)) {
+      return res.status(404).json({ success: false, message: `File ${type} has not been generated yet.` });
+    }
+
+    const content = fs.readFileSync(targetPath, 'utf8');
+    res.json({
+      success: true,
+      type,
+      filename: (type === 'full' || type === 'llms-full.txt') ? 'llms-full.txt' : 'llms.txt',
+      bytes: Buffer.byteLength(content, 'utf8'),
+      content
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// POST /admin/api/llms/regenerate - Manually trigger regeneration
+router.post('/api/llms/regenerate', requireAdmin, async (req, res) => {
+  try {
+    const genResult = await generateAll();
+    const validation = validateAll();
+    res.json({
+      success: true,
+      message: 'Successfully regenerated /llms.txt and /llms-full.txt files.',
+      stats: genResult.stats,
+      validation
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// POST /admin/api/llms/toggle-auto - Toggle auto-regeneration on content modifications
+router.post('/api/llms/toggle-auto', requireAdmin, (req, res) => {
+  try {
+    const { enabled } = req.body;
+    const val = (enabled === true || enabled === '1' || enabled === 'true') ? '1' : '0';
+    db.prepare(`
+      INSERT INTO site_settings (key, value, category, label)
+      VALUES ('llms_auto_generate', ?, 'seo', 'Auto-regenerate LLMs.txt on Content Edits')
+      ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = CURRENT_TIMESTAMP
+    `).run(val);
+
+    res.json({
+      success: true,
+      enabled: val === '1',
+      message: `Automatic LLM generation ${val === '1' ? 'enabled' : 'disabled'}.`
+    });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }

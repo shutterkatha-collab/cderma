@@ -1,0 +1,67 @@
+# CDerma Nepal — Doctor-Formulated Skincare & Cleanroom Dermocosmetics
+
+> CDerma Nepal (by K&K Trading Concern) is Nepal's premier doctor-formulated clinical skincare manufacturer and wholesale supplier based in Itahari, Sunsari, Koshi Province. Formulated under ISO Class 7 cleanroom precision specifically for high-altitude UV, dry winter climates, and urban pollution in South Asia.
+
+## Canonical Information
+- Base URL: https://cderma.com.np
+- Primary Language: English (en) / Nepali (ne)
+- Facility: ISO Class 7 Cleanroom, Sunsari District, Koshi Province, Nepal
+- Regulatory: DDA / PAN: 609874123 • EXIM: 3049904360114NP • GMP Compliant
+- Full Detailed Index: [llms-full.txt](https://cderma.com.np/llms-full.txt)
+- XML Sitemap: [sitemap.xml](https://cderma.com.np/sitemap.xml)
+- Last Updated: 2026-09-08
+
+## Core Website Pages
+- [CDerma Home](https://cderma.com.np/): Official portal detailing doctor formulations, clinical certifications, and Himalayan bio-actives.
+- [Clinical Formulations Directory](https://cderma.com.np/products.html): Medical dermocosmetics catalog for barrier restoration, cleansers, serums, and mineral sunscreens.
+- [Cleanroom Botanical Science](https://cderma.com.np/science.html): ISO Class 7 cleanroom engineering, sub-critical alpine Centella extraction, and soil-to-vial batch tracing.
+- [B2B Wholesale & Clinic Supply](https://cderma.com.np/b2b.html): Wholesale partnership tiers, protected retailer margins (35%–48%), and cleanroom batch dispatch.
+- [Authorized Clinics & Dispensaries Locator](https://cderma.com.np/clinics.html): Directory of certified hospital pharmacies, aesthetic clinics, and cosmetic retailers across all 7 provinces of Nepal.
+- [Clinical Monographs & Doctor Advice](https://cderma.com.np/monographs.html): Evidence-based prescribing protocols, post-procedure barrier recovery guides, and patient education.
+
+## Medical-Grade Products (Formulary)
+- [Centella Barrier Restore Concentrate](https://cderma.com.np/products/centella-barrier-restore-concentrate): Flagship Face Care • 5% Multi-Ceramides + Sub-Alpine Centella (30 ml / 1.0 fl. oz.) — NPR 3200 · Flagship Formulation • Clinical Trial Verified. Target: An ultra-concentrated multi-lamellar lipid emulsion designed for rapid stratum corneum recovery and intense post-procedure epidermal soothing..
+- [Ceramide Deep Barrier Cream](https://cderma.com.np/products/ceramide-deep-barrier-cream): Intensive 3:1:1 Physiological Lipid Replenishment Cream (50 ml / 1.7 fl. oz.) — NPR 3800 · Medical Barrier Emulsion. Target: Rich velvety biomimetic lipid cream for severe xerosis, winter barrier collapse, and post-ablative laser recovery..
+- [Physiological Balancing Gel Cleanser](https://cderma.com.np/products/physiological-balancing-gel-cleanser): Ultra-Gentle Syndet Cleanser • Target pH 5.5 (150 ml / 5.1 fl. oz.) — NPR 2100 · Sulfate-Free • Non-Stripping. Target: A soap-free, amino-acid based daily foaming gel that purifies impurities while keeping the epidermal microbiome completely undisturbed..
+- [High-Altitude Mineral Shield SPF 50+ PA++++](https://cderma.com.np/products/high-altitude-mineral-shield-spf50): 100% Non-Nano Micronized Zinc Oxide • Photostable UV Protection (60 ml / 2.0 fl. oz.) — NPR 3500 · Broad Spectrum UVA/UVB/HEV Shield. Target: Medical-grade mineral sunscreen engineered for extreme high-altitude Himalayan ultraviolet radiation and post-laser skin vulnerability..
+- [Multi-Depth Hyaluronic Hydrating Mist](https://cderma.com.np/products/multi-depth-hyaluronic-hydrating-mist): 5-Molecular Weight HA + Himalayan Glacier Mineral Water (100 ml / 3.4 fl. oz.) — NPR 2400 · Immediate Epidermal Plumping. Target: Micro-fine aerosolized clinical tonic that delivers instant multi-depth hydration and restores osmotic balance..
+- [Overnight Cellular Resurfacing Elixir](https://cderma.com.np/products/overnight-cellular-resurfacing-elixir): 0.1% Micro-Encapsulated Retinaldehyde + 5% Niacinamide (30 ml / 1.0 fl. oz.) — NPR 4200 · Next-Gen Vitamin A • Zero Downtime. Target: A dermatological night treatment that accelerates epidermal cell turnover without the typical retinization peeling or irritation..
+
+## Clinical Monographs & Prescribing Protocols
+- [CD-MONO-01: Multi-Lamellar Stratum Corneum Biomimicry Using Koshi Centella Asiatica & Bio-Identical Ceramides in High-Altitude Cold Urticaria](https://cderma.com.np/monographs.html#CD-MONO-01): Barrier Repair Protocol monograph by Dr. S. Karki. Indication: Severe winter xerosis, windburn, post-retinoid peeling, atopic barrier defects.. Protocol: Clinical guidance.
+- [CD-ADV-01: The Best Time to Apply Your Moisturiser (Most People Get This Wrong)](https://cderma.com.np/monographs.html#CD-ADV-01): Hydration monograph by Dr. S. Karki. Indication: Dehydrated epidermal barrier, post-wash dryness, transepidermal water loss.. Protocol: Timing matters more than you think. Applying moisturiser on damp skin — right after washing your face — locks in up to 3x more water than applying it on dry skin..
+- [CD-MONO-02: Post-Fractional CO2 Laser & Deep Chemical Peeling Recovery Protocol](https://cderma.com.np/monographs.html#CD-MONO-02): Procedural Recovery monograph by Dr. S. Karki. Indication: Ablative / Non-ablative laser recovery, trichloroacetic acid (TCA) peels, micro-needling erythema.. Protocol: Clinical guidance.
+- [CD-ADV-02: What Actually Causes Pimples — And What You Can Do About It](https://cderma.com.np/monographs.html#CD-ADV-02): Acne & Pimples monograph by Dr. R. Shrestha. Indication: Acne vulgaris, comedogenic congestion, dysregulated sebum.. Protocol: Pimples happen when your pores get blocked by oil and dead skin cells. The key to preventing them is keeping your skin clean but not over-washing — and choosing products that won't clog pores..
+- [CD-MONO-03: High-Altitude Ultraviolet Protection & Blue Light Radical Attenuation in Sensitive Skin](https://cderma.com.np/monographs.html#CD-MONO-03): Photobiology Protocol monograph by Dr. S. Karki. Indication: Melasma prevention, post-inflammatory hyperpigmentation (PIH), alpine actinic damage.. Protocol: Clinical guidance.
+- [CD-ADV-03: Niacinamide: The Simple Ingredient That Brightens Skin Without Irritation](https://cderma.com.np/monographs.html#CD-ADV-03): Brightening monograph by Dr. P. Bhattarai. Indication: Post-inflammatory hyperpigmentation (PIH), dullness, uneven skin tone.. Protocol: Niacinamide (Vitamin B3) is one of the safest and most effective skin-brightening ingredients available. It reduces dark spots, evens skin tone, and strengthens your skin barrier all at once..
+- [CD-ADV-04: 5 Signs Your Skin Is Sensitive — And How to Calm It Down Fast](https://cderma.com.np/monographs.html#CD-ADV-04): Sensitive Skin monograph by Dr. S. Karki. Indication: Hypersensitive skin, rosacea, wind-burn, compromised lipid mantle.. Protocol: Redness, stinging after washing, or a tight uncomfortable feeling? These are signs of sensitive skin. The good news: it's very manageable with the right gentle products and a simple routine..
+- [CD-ADV-05: Your Perfect Morning Skincare Routine — 3 Steps, 5 Minutes, Done](https://cderma.com.np/monographs.html#CD-ADV-05): Daily Routine monograph by Dr. R. Shrestha. Indication: Daily maintenance, photoprotection, barrier resilience.. Protocol: You don't need a complicated 12-step routine. A gentle cleanser, a ceramide serum, and a moisturiser with SPF — that's all your skin needs every morning to look and feel great..
+- [CD-ADV-06: Why Nepal's Winter Air Damages Your Skin — And the Easy Fix](https://cderma.com.np/monographs.html#CD-ADV-06): Hydration monograph by Dr. P. Bhattarai. Indication: Winter xerosis, high-altitude flaking, cold urticaria.. Protocol: Cold, dry air pulls moisture right out of your skin. In Kathmandu, Pokhara, and high-altitude areas, this is a real problem from October to February. Here is how to protect your skin during those months..
+
+## Authorized Dispensing Network
+- [Kathmandu Aesthetic & Skin Care Hospital](https://cderma.com.np/clinics.html): Dermatology & Aesthetic Hospital in Kathmandu, Bagmati. Lead: Dr. A. Karki, MD Dermatology.
+- [Lalitpur Dermal Aesthetics Center](https://cderma.com.np/clinics.html): Laser & Cosmetic Clinic in Lalitpur, Bagmati. Lead: Dr. Rashmi Lama, MD, NMC-9124.
+- [Koshi Regional Medical Skin Outpost](https://cderma.com.np/clinics.html): Hospital Pharmacy Wing in Biratnagar, Koshi. Lead: Dr. R. Shrestha, MBBS, DDVL.
+- [Western Skin Clinic & Laser Center](https://cderma.com.np/clinics.html): Aesthetic Institute & Laser Clinic in Pokhara, Gandaki. Lead: Dr. A. Bastola, MD.
+- [Lalitpur Dermal Aesthetics & Beauty Counter](https://cderma.com.np/clinics.html): Cosmetic Store & Beauty Retailer in Lalitpur, Bagmati. Lead: Dr. P. Thapa, Consultant Cosmetologist.
+- [View All 8 Verified Outlets](https://cderma.com.np/clinics.html): Complete provincial distribution grid with stock verification and contact numbers.
+
+## Key Scientific Specifications
+- Cleanroom Environment: ISO Class 7 (Class 10,000) with positive-pressure HEPA filtration.
+- Physiological Formulation: pH balanced between 5.4 and 5.8 to match native human acid mantle.
+- Purity Standard: 100% artificial perfume-free, paraben-free, zero questionable fillers, heavy-metal assayed.
+- Cold-Chain Guarantee: Sealed batch tracking with calibrated temperature data-loggers on provincial shipments.
+
+## Frequently Asked Questions (FAQ)
+- What makes CDerma unique in Nepal?: Formulated specifically for Nepal's extreme UV and dry winter climates using sub-alpine Centella and bio-identical ceramides (NP, AP, EOP) produced locally in Itahari.
+- Where can patients buy CDerma?: Exclusively available through verified dermatology clinics, aesthetic institutes, authorized cosmetic stores, and hospital pharmacies nationwide.
+- What is the Wholesale MOQ for clinics and retailers?: Accessible introductory tiers starting from 24 units across mixed SKUs with counter testers and retail merchandising displays.
+- Can practitioners inspect the facility?: Yes, CDerma hosts scheduled technical walkthroughs of the Itahari cleanroom suites for licensed doctors and procurement committees.
+
+## Contact & Corporate Verification
+- Corporate Entity: K&K Trading Concern / CDerma Nepal
+- Manufacturing & Hub: Sunsari District, Koshi Province, Nepal
+- Telephone: +977 1 4421098
+- WhatsApp Desk: +977 9801234567
+- Official Email: clinical@cderma.com.np
+- Registration: DDA / PAN: 609874123 • EXIM: 3049904360114NP
