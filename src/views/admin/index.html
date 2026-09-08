@@ -43,7 +43,116 @@
     ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
   </style>
 </head>
-<body class="bg-surface text-primary font-sans min-h-screen flex">
+<body class="bg-surface text-primary font-sans min-h-screen flex flex-col md:flex-row">
+
+  
+  <!-- Slide Modal -->
+  <div id="slideModal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-2xl max-w-xl w-full p-6 shadow-2xl border border-outline-border my-8">
+      <div class="flex items-center justify-between pb-3 border-b border-outline-border mb-4">
+        <h4 id="slideModalTitle" class="font-serif text-lg font-semibold text-primary">Add New Hero Slide</h4>
+        <button onclick="closeSlideModal()" class="text-gray-400 hover:text-gray-700 p-1">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <form id="slideForm" onsubmit="saveSlide(event)" class="space-y-4 text-xs">
+        <input type="hidden" id="slideId">
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-medium text-gray-700 mb-1">Slide Title *</label>
+            <input type="text" id="slideTitle" required placeholder="e.g. Centella Barrier Restore Concentrate" class="w-full px-3 py-2 border border-outline-border rounded-lg focus:outline-none focus:border-secondary">
+          </div>
+          <div>
+            <label class="block font-medium text-gray-700 mb-1">Formula Number</label>
+            <input type="text" id="slideFormula" placeholder="e.g. Formula No. 04" class="w-full px-3 py-2 border border-outline-border rounded-lg focus:outline-none focus:border-secondary">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-medium text-gray-700 mb-1">Badge Text</label>
+            <input type="text" id="slideBadge" placeholder="e.g. Flagship Restorative Formula" class="w-full px-3 py-2 border border-outline-border rounded-lg focus:outline-none focus:border-secondary">
+          </div>
+          <div>
+            <label class="block font-medium text-gray-700 mb-1">Origin Lab Text</label>
+            <input type="text" id="slideOrigin" placeholder="e.g. Origin: Koshi Cleanroom Labs" class="w-full px-3 py-2 border border-outline-border rounded-lg focus:outline-none focus:border-secondary">
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-medium text-gray-700 mb-1">Subtitle / Sizing Declaration</label>
+          <input type="text" id="slideSubtitle" placeholder="e.g. 30ml ℮ 1.0 fl. oz. · Dermatologically Evaluated" class="w-full px-3 py-2 border border-outline-border rounded-lg focus:outline-none focus:border-secondary">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-medium text-gray-700 mb-1">Specs Text</label>
+            <input type="text" id="slideSpecs" placeholder="e.g. pH 5.4 · Pure Hydration" class="w-full px-3 py-2 border border-outline-border rounded-lg focus:outline-none focus:border-secondary">
+          </div>
+          <div>
+            <label class="block font-medium text-gray-700 mb-1">Sort Order</label>
+            <input type="number" id="slideSortOrder" value="0" class="w-full px-3 py-2 border border-outline-border rounded-lg focus:outline-none focus:border-secondary">
+          </div>
+        </div>
+
+        <div class="space-y-2 p-3 bg-surface rounded-xl border border-outline-border/80">
+          <div class="flex items-center justify-between">
+            <label class="block font-semibold text-gray-800 text-xs">Hero Slide Image *</label>
+            <span id="slideImageStatusBadge" class="hidden text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">Uploaded</span>
+          </div>
+
+          <!-- Live Preview Box -->
+          <div id="slideImagePreviewWrapper" class="relative w-full h-44 rounded-lg border border-outline-border bg-gray-900 overflow-hidden flex items-center justify-center shadow-xs">
+            <img id="slideImagePreview" src="" alt="Slide Preview" class="w-full h-full object-cover">
+            <div id="slideImageEmptyPlaceholder" class="hidden flex flex-col items-center justify-center text-gray-400 gap-1.5 p-4 text-center">
+              <span class="material-symbols-outlined text-3xl text-gray-500">image</span>
+              <span class="text-[11px] font-medium text-gray-400">No image selected</span>
+            </div>
+            <!-- Uploading spinner overlay -->
+            <div id="slideUploadProgress" class="hidden absolute inset-0 bg-black/70 backdrop-blur-xs flex flex-col items-center justify-center text-white gap-2 z-10">
+              <span class="material-symbols-outlined animate-spin text-2xl">progress_activity</span>
+              <span class="text-[11px] font-bold tracking-wider uppercase">Uploading Image...</span>
+            </div>
+          </div>
+
+          <!-- Direct Upload & URL Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+            <div>
+              <label class="block font-medium text-gray-700 mb-1">Upload New Image File</label>
+              <input type="file" id="slideImageFile" accept="image/png,image/jpeg,image/webp,image/avif,image/gif" class="w-full text-[11px] text-gray-600 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-primary file:text-white hover:file:bg-secondary file:cursor-pointer cursor-pointer border border-outline-border rounded-lg p-1 bg-white focus:outline-none">
+            </div>
+            <div>
+              <label class="block font-medium text-gray-700 mb-1">Image URL / Relative Path *</label>
+              <input type="text" id="slideImageUrl" required placeholder="assets/images/... or /uploads/..." class="w-full px-3 py-1.5 border border-outline-border rounded-lg focus:outline-none focus:border-secondary font-mono text-[11px] bg-white">
+            </div>
+          </div>
+          <p class="text-[10px] text-gray-400">Choose an image from your device to upload instantly, or type/paste an existing image path.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block font-medium text-gray-700 mb-1">CTA URL</label>
+            <input type="text" id="slideCtaUrl" value="product-detail.html" class="w-full px-3 py-2 border border-outline-border rounded-lg focus:outline-none focus:border-secondary">
+          </div>
+          <div>
+            <label class="block font-medium text-gray-700 mb-1">CTA Text</label>
+            <input type="text" id="slideCtaText" value="Details" class="w-full px-3 py-2 border border-outline-border rounded-lg focus:outline-none focus:border-secondary">
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 pt-2">
+          <input type="checkbox" id="slideIsActive" checked class="rounded text-secondary focus:ring-secondary">
+          <label for="slideIsActive" class="text-xs font-medium text-gray-700">Display this slide on Home Page (Active)</label>
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-4 border-t border-outline-border">
+          <button type="button" onclick="closeSlideModal()" class="px-4 py-2 rounded-lg border border-outline-border text-gray-600 hover:bg-surface transition-colors">Cancel</button>
+          <button type="submit" id="saveSlideBtn" class="px-5 py-2 rounded-lg bg-primary hover:bg-secondary text-white font-semibold transition-colors">Save Slide</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
   <!-- Toast Notification -->
   <div id="toast" class="fixed bottom-6 right-6 z-50 transform transition-all duration-300 translate-y-20 opacity-0 pointer-events-none flex items-center gap-3 px-5 py-3 rounded-lg shadow-xl text-xs font-semibold uppercase tracking-wider text-white bg-primary border border-secondary">
@@ -51,8 +160,24 @@
     <span id="toastMessage">Success</span>
   </div>
 
-  <!-- Sidebar -->
-  <aside class="w-64 bg-surface-dark text-white flex flex-col shrink-0 border-r border-white/10 select-none">
+  <!-- Mobile Header for Admin on Phones & Tablets -->
+  <header class="md:hidden flex items-center justify-between p-4 bg-surface-dark text-white border-b border-white/10 shrink-0 sticky top-0 z-30">
+    <div class="flex items-center gap-3">
+      <button onclick="toggleAdminSidebar()" class="w-10 h-10 rounded-lg hover:bg-white/10 flex items-center justify-center text-white" aria-label="Toggle Admin Sidebar" type="button">
+        <span class="material-symbols-outlined text-2xl">menu</span>
+      </button>
+      <img src="/assets/images/cderma-logo-white.png" alt="CDerma" class="h-6 w-auto object-contain">
+    </div>
+    <a href="/" target="_blank" title="View Public Website" class="p-2 rounded-lg hover:bg-white/10 text-white/70 hover:text-white transition-colors">
+      <span class="material-symbols-outlined text-xl">open_in_new</span>
+    </a>
+  </header>
+
+  <!-- Mobile Backdrop -->
+  <div id="admin-mobile-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-40 hidden md:hidden transition-opacity" onclick="toggleAdminSidebar()"></div>
+
+  <!-- Sidebar (Collapsible Drawer on Mobile, Fixed Sidebar on Desktop) -->
+  <aside id="admin-sidebar" class="fixed inset-y-0 left-0 z-50 md:static w-64 bg-surface-dark text-white flex flex-col shrink-0 border-r border-white/10 select-none transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
     <div class="p-6 border-b border-white/10 flex items-center justify-between">
       <div>
         <a href="/admin" class="flex items-center gap-2">
@@ -75,6 +200,10 @@
         <span class="material-symbols-outlined text-lg">edit_document</span>
         <span>Site Copy & Headlines</span>
       </button>
+      <button onclick="switchTab('slides')" class="tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="slides">
+        <span class="material-symbols-outlined text-lg">view_carousel</span>
+        <span>Hero Image Slider</span>
+      </button>
       <button onclick="switchTab('media')" class="tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="media">
         <span class="material-symbols-outlined text-lg">image</span>
         <span>Media & Images</span>
@@ -89,7 +218,14 @@
       </button>
       <button onclick="switchTab('monographs')" class="tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="monographs">
         <span class="material-symbols-outlined text-lg">menu_book</span>
-        <span>Clinical Monographs</span>
+        <span>Doctor's Advice &amp; Articles</span>
+      </button>
+      <button onclick="switchTab('social')" class="tab-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="social">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-lg">share</span>
+          <span>Social Media &amp; Channels</span>
+        </div>
+        <span id="badgeSocial" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">7</span>
       </button>
       <button onclick="switchTab('b2b')" class="tab-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="b2b">
         <div class="flex items-center gap-3">
@@ -318,6 +454,42 @@
         </div>
       </section>
 
+
+      <!-- 2b. HERO SLIDES CMS TAB -->
+      <section id="tab-slides" class="hidden space-y-6">
+        <div class="bg-white rounded-xl border border-outline-border shadow-sm p-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-outline-border mb-6">
+            <div>
+              <h3 class="font-serif text-lg font-semibold text-primary">Hero Showcase Image Slider</h3>
+              <p class="text-xs text-gray-500">Manage the full-view images, badges, formulas, and specs displayed on the home page hero slider.</p>
+            </div>
+            <button onclick="openSlideModal()" class="px-4 py-2.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold uppercase tracking-wider transition-colors shadow flex items-center gap-2 shrink-0">
+              <span class="material-symbols-outlined text-sm">add</span>
+              <span>Add New Slide</span>
+            </button>
+          </div>
+
+          <!-- Slides Table -->
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-surface border-y border-outline-border uppercase text-[10px] tracking-wider text-gray-500">
+                <tr>
+                  <th class="py-3 px-3">Slide Image</th>
+                  <th class="py-3 px-3">Formula & Title</th>
+                  <th class="py-3 px-3">Badge & Specs</th>
+                  <th class="py-3 px-3">Sort</th>
+                  <th class="py-3 px-3">Status</th>
+                  <th class="py-3 px-3 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="slidesTable" class="divide-y divide-outline-border">
+                <tr><td colspan="6" class="py-4 text-center text-gray-400">Loading slides...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       <!-- 3. PRODUCTS FORMULARY TAB -->
       <section id="tab-products" class="hidden space-y-6">
         <div class="bg-white rounded-xl border border-outline-border shadow-sm p-6">
@@ -371,11 +543,11 @@
             <table class="w-full text-left text-xs">
               <thead class="bg-surface border-y border-outline-border uppercase text-[10px] tracking-wider text-gray-500">
                 <tr>
-                  <th class="py-3 px-3">Facility Name</th>
-                  <th class="py-3 px-3">City & Province</th>
-                  <th class="py-3 px-3">Lead Physician</th>
-                  <th class="py-3 px-3">Phone</th>
-                  <th class="py-3 px-3">Verified</th>
+                  <th class="py-3 px-3">Facility & Practitioner</th>
+                  <th class="py-3 px-3">Category</th>
+                  <th class="py-3 px-3">Location</th>
+                  <th class="py-3 px-3">Stock & Hours</th>
+                  <th class="py-3 px-3">Status</th>
                   <th class="py-3 px-3 text-right">Actions</th>
                 </tr>
               </thead>
@@ -392,12 +564,12 @@
         <div class="bg-white rounded-xl border border-outline-border shadow-sm p-6">
           <div class="flex items-center justify-between pb-4 border-b border-outline-border mb-6">
             <div>
-              <h3 class="font-serif text-lg font-semibold text-primary">Clinical Monographs & Prescribing Protocols</h3>
-              <p class="text-xs text-gray-500">Publish protocols for laser recovery, barrier maintenance, and cold urticaria.</p>
+              <h3 class="font-serif text-lg font-semibold text-primary">Doctor's Advice Articles &amp; Clinical Monographs</h3>
+              <p class="text-xs text-gray-500">Publish and edit medical guidance, patient care articles, and prescribing protocols displayed on monographs.html.</p>
             </div>
             <button onclick="openMonographModal()" class="px-4 py-2.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold uppercase tracking-wider transition-colors shadow flex items-center gap-2">
               <span class="material-symbols-outlined text-sm">note_add</span>
-              <span>Add Monograph</span>
+              <span>Add New Article</span>
             </button>
           </div>
 
@@ -462,6 +634,401 @@
         </div>
       </section>
 
+      <!-- 8. SOCIAL MEDIA INTEGRATION TAB -->
+      <section id="tab-social" class="hidden space-y-6">
+        <!-- Social Overview & Metrics Banner -->
+        <div class="bg-surface-dark text-white rounded-2xl p-6 border border-white/10 shadow-lg relative overflow-hidden">
+          <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div class="space-y-1.5 max-w-xl">
+              <div class="flex items-center gap-2">
+                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  Omnichannel Sync Active
+                </span>
+                <span class="text-xs text-white/50">• Open Graph &amp; Direct Broadcast Hub</span>
+              </div>
+              <h2 class="font-serif text-2xl font-bold text-white tracking-tight">Social Media &amp; Channels Engine</h2>
+              <p class="text-xs text-white/70 leading-relaxed">
+                Centrally manage CDerma's official social links, live Open Graph share previews, curated reels/UGC showcases, and 1-click UTM campaign links.
+              </p>
+            </div>
+            
+            <!-- Quick metric pills -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+                <span class="block text-[10px] uppercase font-bold text-white/50 tracking-wider">Channels</span>
+                <span id="statSocialChannelsCount" class="text-lg font-bold text-white">7</span>
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+                <span class="block text-[10px] uppercase font-bold text-white/50 tracking-wider">Broadcast</span>
+                <span id="statSocialActiveCount" class="text-lg font-bold text-emerald-400">7 Active</span>
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+                <span class="block text-[10px] uppercase font-bold text-white/50 tracking-wider">WhatsApp</span>
+                <span id="statSocialWhatsapp" class="text-lg font-bold text-emerald-400">Online</span>
+              </div>
+              <div class="bg-white/5 border border-white/10 rounded-xl p-3 text-center">
+                <span class="block text-[10px] uppercase font-bold text-white/50 tracking-wider">Showcase</span>
+                <span id="statSocialPostsCount" class="text-lg font-bold text-white">3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sub-Navigation Switcher -->
+        <div class="flex items-center justify-between border-b border-outline-border pb-1 overflow-x-auto gap-2">
+          <div class="flex items-center gap-2">
+            <button onclick="switchSocialSubtab('channels')" id="socialSubtabBtn-channels" class="social-subtab-btn active px-4 py-2 rounded-lg text-xs font-semibold tracking-wider flex items-center gap-2 bg-primary text-white transition-all shadow-xs">
+              <span class="material-symbols-outlined text-base">hub</span>
+              <span>Official Channels</span>
+            </button>
+            <button onclick="switchSocialSubtab('og')" id="socialSubtabBtn-og" class="social-subtab-btn px-4 py-2 rounded-lg text-xs font-semibold tracking-wider flex items-center gap-2 text-gray-600 hover:bg-gray-100 transition-all">
+              <span class="material-symbols-outlined text-base">preview</span>
+              <span>Open Graph &amp; Share Preview</span>
+            </button>
+            <button onclick="switchSocialSubtab('showcase')" id="socialSubtabBtn-showcase" class="social-subtab-btn px-4 py-2 rounded-lg text-xs font-semibold tracking-wider flex items-center gap-2 text-gray-600 hover:bg-gray-100 transition-all">
+              <span class="material-symbols-outlined text-base">video_library</span>
+              <span>Showcase Reels &amp; UGC</span>
+            </button>
+            <button onclick="switchSocialSubtab('campaigns')" id="socialSubtabBtn-campaigns" class="social-subtab-btn px-4 py-2 rounded-lg text-xs font-semibold tracking-wider flex items-center gap-2 text-gray-600 hover:bg-gray-100 transition-all">
+              <span class="material-symbols-outlined text-base">campaign</span>
+              <span>UTM Campaign &amp; Quick Share</span>
+            </button>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="openCustomChannelModal()" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-surface border border-outline-border hover:border-secondary text-primary flex items-center gap-1.5 transition-colors">
+              <span class="material-symbols-outlined text-sm">add_link</span>
+              <span>Add Custom Channel</span>
+            </button>
+            <button onclick="openSocialPostModal()" class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-primary text-white hover:bg-secondary flex items-center gap-1.5 transition-colors">
+              <span class="material-symbols-outlined text-sm">add_photo_alternate</span>
+              <span>New Showcase Reel</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 1. SUBTAB: OFFICIAL CHANNELS -->
+        <div id="socialSubtab-channels" class="space-y-4">
+          <div class="flex items-center justify-between text-xs text-gray-500">
+            <p>Toggle and configure official social handles displayed across website footers, mobile drawer, and top bars.</p>
+            <span class="text-[11px] font-medium text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">Auto-synced to public API</span>
+          </div>
+
+          <div id="socialChannelsList" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="p-8 text-center text-gray-400 col-span-full">Loading social channels...</div>
+          </div>
+        </div>
+
+        <!-- 2. SUBTAB: OPEN GRAPH & SOCIAL PREVIEW SIMULATOR -->
+        <div id="socialSubtab-og" class="hidden space-y-6">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- Left Form Controls -->
+            <div class="lg:col-span-6 space-y-6">
+              <form id="socialMetaForm" onsubmit="saveSocialMeta(event)" class="space-y-5">
+                <div class="bg-white rounded-xl border border-outline-border p-5 shadow-xs space-y-4">
+                  <div class="flex items-center justify-between border-b border-outline-border pb-3">
+                    <div>
+                      <h4 class="font-serif text-base font-semibold text-primary">Open Graph (OG) Meta Data</h4>
+                      <p class="text-[11px] text-gray-500">Controls how links appear when shared on WhatsApp, Facebook, LinkedIn, etc.</p>
+                    </div>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-surface border border-outline-border text-secondary">&lt;meta og:...&gt;</span>
+                  </div>
+
+                  <div>
+                    <label class="block font-semibold text-gray-700 text-xs mb-1">Share Card Title *</label>
+                    <input type="text" id="ogTitleInput" required class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs focus:outline-none focus:border-secondary font-medium" placeholder="e.g. CDerma — Choice by Professional | Medical Dermocosmetics">
+                  </div>
+
+                  <div>
+                    <label class="block font-semibold text-gray-700 text-xs mb-1">Share Card Description *</label>
+                    <textarea id="ogDescInput" rows="3" required class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs focus:outline-none focus:border-secondary resize-none" placeholder="e.g. Doctor-formulated physiological barrier repair and pure Himalayan bio-actives crafted in Itahari, Nepal."></textarea>
+                    <div class="flex justify-between items-center text-[10px] text-gray-400 mt-1">
+                      <span>Optimal: 60–160 characters</span>
+                      <span id="ogDescCharCount">0 chars</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label class="block font-semibold text-gray-700 text-xs mb-1">Twitter / X Site Account</label>
+                    <input type="text" id="twitterHandleInput" class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs font-mono focus:outline-none focus:border-secondary" placeholder="@cdermanepal">
+                  </div>
+                </div>
+
+                <!-- Default Share Image Card with Live Preview & File Picker -->
+                <div class="bg-white rounded-xl border border-outline-border p-5 shadow-xs space-y-3">
+                  <div class="flex items-center justify-between border-b border-outline-border pb-3">
+                    <div>
+                      <h4 class="font-serif text-base font-semibold text-primary">Default Social Share Image</h4>
+                      <p class="text-[11px] text-gray-500">Recommended aspect ratio: 1.91:1 (e.g. 1200 x 630 px)</p>
+                    </div>
+                    <span id="ogImageBadge" class="hidden text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">Uploaded</span>
+                  </div>
+
+                  <!-- Image Preview Box -->
+                  <div class="relative w-full h-44 rounded-lg border border-outline-border bg-gray-900 overflow-hidden flex items-center justify-center shadow-inner">
+                    <img id="ogImagePreview" src="" alt="Social Share Preview" class="w-full h-full object-cover">
+                    <div id="ogImagePlaceholder" class="hidden flex flex-col items-center justify-center text-gray-400 gap-1.5 p-4 text-center">
+                      <span class="material-symbols-outlined text-3xl">image</span>
+                      <span class="text-xs font-medium">No share image selected</span>
+                    </div>
+                    <div id="ogUploadSpinner" class="hidden absolute inset-0 bg-black/75 backdrop-blur-xs flex flex-col items-center justify-center text-white gap-2 z-10">
+                      <span class="material-symbols-outlined animate-spin text-2xl">progress_activity</span>
+                      <span class="text-[11px] font-bold tracking-wider uppercase">Uploading Share Banner...</span>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                    <div>
+                      <label class="block font-medium text-gray-700 text-xs mb-1">Upload New Image</label>
+                      <input type="file" id="ogImageFileInput" accept="image/*" class="w-full text-[11px] text-gray-600 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-primary file:text-white hover:file:bg-secondary file:cursor-pointer cursor-pointer border border-outline-border rounded-lg p-1 bg-surface focus:outline-none">
+                    </div>
+                    <div>
+                      <label class="block font-medium text-gray-700 text-xs mb-1">Or Existing Image URL</label>
+                      <input type="text" id="ogImageUrlInput" class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs font-mono focus:outline-none focus:border-secondary bg-surface" placeholder="assets/images/... or /uploads/...">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Floating WhatsApp Widget Settings -->
+                <div class="bg-white rounded-xl border border-outline-border p-5 shadow-xs space-y-4">
+                  <div class="flex items-center justify-between border-b border-outline-border pb-3">
+                    <div class="flex items-center gap-2">
+                      <div class="w-6 h-6 rounded-full bg-[#25D366] flex items-center justify-center text-white">
+                        <span class="material-symbols-outlined text-sm">chat</span>
+                      </div>
+                      <div>
+                        <h4 class="font-serif text-base font-semibold text-primary">Floating WhatsApp Widget</h4>
+                        <p class="text-[11px] text-gray-500">Quick-consult button anchored at bottom-right of customer pages.</p>
+                      </div>
+                    </div>
+                    <label class="flex items-center gap-2 cursor-pointer select-none">
+                      <input type="checkbox" id="whatsappFloatingToggle" checked class="rounded accent-[#25D366] w-4 h-4">
+                      <span class="text-xs font-semibold text-gray-700">Enabled</span>
+                    </label>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label class="block font-medium text-gray-700 text-xs mb-1">Liaison Phone Number</label>
+                      <input type="text" id="whatsappNumberInput" class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs font-mono focus:outline-none focus:border-secondary" placeholder="+977 9820753751">
+                    </div>
+                    <div>
+                      <label class="block font-medium text-gray-700 text-xs mb-1">Pre-filled Consultation Prompt</label>
+                      <input type="text" id="whatsappMsgInput" class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs focus:outline-none focus:border-secondary" placeholder="Namaste CDerma! I would like to inquire about...">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex justify-end gap-3 pt-2">
+                  <button type="submit" class="px-6 py-2.5 rounded-lg bg-primary hover:bg-secondary text-white font-semibold text-xs transition-colors shadow-sm flex items-center gap-2">
+                    <span class="material-symbols-outlined text-base">save</span>
+                    <span>Save Social &amp; Meta Settings</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Right Interactive Preview Simulator -->
+            <div class="lg:col-span-6 space-y-4">
+              <div class="bg-surface rounded-xl border border-outline-border p-4 sticky top-6">
+                <div class="flex items-center justify-between mb-3 border-b border-outline-border pb-3">
+                  <span class="font-serif text-sm font-bold text-primary flex items-center gap-2">
+                    <span class="material-symbols-outlined text-base text-secondary">visibility</span>
+                    <span>Live Social Share Simulator</span>
+                  </span>
+                  <div class="flex items-center gap-1 bg-white p-1 rounded-lg border border-outline-border text-[11px] font-medium">
+                    <button type="button" onclick="setSimulatorPlatform('whatsapp')" id="simTab-whatsapp" class="sim-tab active px-2.5 py-1 rounded bg-surface-dark text-white">WhatsApp</button>
+                    <button type="button" onclick="setSimulatorPlatform('facebook')" id="simTab-facebook" class="sim-tab px-2.5 py-1 rounded text-gray-600 hover:text-gray-900">Facebook</button>
+                    <button type="button" onclick="setSimulatorPlatform('twitter')" id="simTab-twitter" class="sim-tab px-2.5 py-1 rounded text-gray-600 hover:text-gray-900">Twitter / X</button>
+                    <button type="button" onclick="setSimulatorPlatform('linkedin')" id="simTab-linkedin" class="sim-tab px-2.5 py-1 rounded text-gray-600 hover:text-gray-900">LinkedIn</button>
+                  </div>
+                </div>
+
+                <!-- Simulation Preview Window -->
+                <div class="p-4 bg-gray-100 rounded-xl flex items-center justify-center min-h-[380px]">
+                  
+                  <!-- WhatsApp Preview Bubble -->
+                  <div id="simCard-whatsapp" class="max-w-md w-full bg-[#E7FFDB] rounded-2xl rounded-tr-none p-2.5 shadow-sm border border-[#D0F0C0] space-y-2">
+                    <div class="bg-white rounded-xl overflow-hidden border border-black/5 shadow-xs">
+                      <div class="w-full h-44 bg-gray-900 overflow-hidden">
+                        <img id="simImg-whatsapp" src="" class="w-full h-full object-cover">
+                      </div>
+                      <div class="p-3 space-y-1">
+                        <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">cderma.com.np</p>
+                        <p id="simTitle-whatsapp" class="font-serif font-bold text-gray-900 text-xs leading-snug line-clamp-2">CDerma Choice by Professional</p>
+                        <p id="simDesc-whatsapp" class="text-[11px] text-gray-600 leading-tight line-clamp-2">Doctor-formulated physiological barrier repair crafted in Itahari, Nepal.</p>
+                      </div>
+                    </div>
+                    <div class="flex items-center justify-end gap-1 text-[10px] text-gray-500 font-sans pr-1">
+                      <span>16:42</span>
+                      <span class="text-[#34B7F1] font-bold">✓✓</span>
+                    </div>
+                  </div>
+
+                  <!-- Facebook Preview Card -->
+                  <div id="simCard-facebook" class="hidden max-w-md w-full bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden space-y-2">
+                    <div class="p-3 flex items-center gap-2.5 border-b border-gray-100">
+                      <div class="w-9 h-9 rounded-full bg-surface-dark flex items-center justify-center text-white font-bold text-xs">CD</div>
+                      <div>
+                        <p class="text-xs font-bold text-gray-900">CDerma Nepal</p>
+                        <p class="text-[10px] text-gray-400">Sponsored • <span class="material-symbols-outlined text-[10px] align-middle">public</span></p>
+                      </div>
+                    </div>
+                    <div class="w-full h-48 bg-gray-900 overflow-hidden">
+                      <img id="simImg-facebook" src="" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3 bg-gray-50 border-t border-gray-100">
+                      <p class="text-[10px] uppercase font-semibold text-gray-500">CDERMA.COM.NP</p>
+                      <p id="simTitle-facebook" class="font-bold text-xs text-gray-900 leading-snug line-clamp-2 mt-0.5">CDerma Choice by Professional</p>
+                      <p id="simDesc-facebook" class="text-[11px] text-gray-500 line-clamp-1 mt-0.5">Doctor-formulated physiological barrier repair.</p>
+                    </div>
+                  </div>
+
+                  <!-- Twitter / X Preview Card -->
+                  <div id="simCard-twitter" class="hidden max-w-md w-full bg-black text-white rounded-2xl p-4 shadow-lg space-y-2 border border-gray-800">
+                    <div class="flex items-center gap-2">
+                      <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white text-xs font-bold">CD</div>
+                      <div>
+                        <p class="text-xs font-bold text-white flex items-center gap-1">CDerma Nepal <span class="text-emerald-400 text-[10px]">✓</span></p>
+                        <p class="text-[10px] text-gray-400" id="simTwitterHandle">@cdermanepal</p>
+                      </div>
+                    </div>
+                    <div class="rounded-xl overflow-hidden border border-gray-800 mt-2">
+                      <div class="w-full h-44 bg-gray-900 overflow-hidden">
+                        <img id="simImg-twitter" src="" class="w-full h-full object-cover">
+                      </div>
+                      <div class="p-3 bg-[#16181c]">
+                        <p class="text-[10px] text-gray-400">cderma.com.np</p>
+                        <p id="simTitle-twitter" class="font-bold text-xs text-white line-clamp-1 mt-0.5">CDerma Choice by Professional</p>
+                        <p id="simDesc-twitter" class="text-[11px] text-gray-400 line-clamp-2 mt-0.5">Doctor-formulated physiological barrier repair.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- LinkedIn Preview Card -->
+                  <div id="simCard-linkedin" class="hidden max-w-md w-full bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden space-y-2">
+                    <div class="p-3 flex items-center gap-2.5">
+                      <div class="w-9 h-9 rounded bg-[#0A66C2] flex items-center justify-center text-white font-bold text-xs">in</div>
+                      <div>
+                        <p class="text-xs font-bold text-gray-900">CDerma Nepal</p>
+                        <p class="text-[10px] text-gray-400">Dermocosmetics &amp; Pharmaceutical Manufacturing</p>
+                      </div>
+                    </div>
+                    <div class="w-full h-48 bg-gray-900 overflow-hidden">
+                      <img id="simImg-linkedin" src="" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-3 bg-gray-50 border-t border-gray-200">
+                      <p id="simTitle-linkedin" class="font-bold text-xs text-gray-900 leading-snug line-clamp-2">CDerma Choice by Professional</p>
+                      <p class="text-[10px] text-gray-500 mt-1">cderma.com.np • 2 min read</p>
+                    </div>
+                  </div>
+
+                </div>
+                <p class="text-[11px] text-center text-gray-400 mt-2">Live simulation based on current Open Graph settings above.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. SUBTAB: SHOWCASE REELS & UGC -->
+        <div id="socialSubtab-showcase" class="hidden space-y-4">
+          <div class="flex items-center justify-between text-xs text-gray-500">
+            <p>Curate real clinician reviews, cleanroom lab reels, and patient results to showcase social proof across the website.</p>
+            <button onclick="openSocialPostModal()" class="px-3.5 py-1.5 rounded-lg bg-primary text-white hover:bg-secondary font-semibold text-xs flex items-center gap-1.5 transition-colors">
+              <span class="material-symbols-outlined text-sm">add</span>
+              <span>Add New Reel / Post</span>
+            </button>
+          </div>
+
+          <div id="socialPostsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="p-8 text-center text-gray-400 col-span-full">Loading showcase items...</div>
+          </div>
+        </div>
+
+        <!-- 4. SUBTAB: UTM CAMPAIGN & QUICK SHARE GENERATOR -->
+        <div id="socialSubtab-campaigns" class="hidden space-y-6">
+          <div class="bg-white rounded-2xl border border-outline-border p-6 shadow-xs space-y-6">
+            <div>
+              <h4 class="font-serif text-lg font-bold text-primary">Social Campaign Link &amp; UTM Studio</h4>
+              <p class="text-xs text-gray-500 mt-1">Generate trackable links and launch 1-click shares across your brand channels with built-in analytics attribution.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block font-semibold text-gray-700 text-xs mb-1">Target Landing Page *</label>
+                <select id="utmPageSelect" onchange="generateUtmLink()" class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs bg-white focus:outline-none focus:border-secondary">
+                  <option value="index.html">Home Page (index.html)</option>
+                  <option value="product-detail.html">Flagship Face Care (product-detail.html)</option>
+                  <option value="products.html">Product Formulary (products.html)</option>
+                  <option value="science.html">Quality &amp; Science (science.html)</option>
+                  <option value="b2b.html">B2B &amp; Distribution Portal (b2b.html)</option>
+                  <option value="monographs.html">Clinical Guidance &amp; Monographs (monographs.html)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block font-semibold text-gray-700 text-xs mb-1">Social Channel / Source *</label>
+                <select id="utmSourceSelect" onchange="generateUtmLink()" class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs bg-white focus:outline-none focus:border-secondary">
+                  <option value="instagram_bio">Instagram Bio Link</option>
+                  <option value="instagram_story">Instagram Story / Swipe Up</option>
+                  <option value="facebook_post">Facebook Feed Post</option>
+                  <option value="tiktok_bio">TikTok Profile Bio</option>
+                  <option value="whatsapp_broadcast">WhatsApp Clinic Broadcast</option>
+                  <option value="linkedin_article">LinkedIn Post</option>
+                  <option value="x_twitter">X (Twitter) Update</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block font-semibold text-gray-700 text-xs mb-1">Campaign Tag Name *</label>
+                <input type="text" id="utmCampaignInput" oninput="generateUtmLink()" value="barrier_repair_2026" class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs font-mono focus:outline-none focus:border-secondary" placeholder="e.g. spring_monsoon_launch">
+              </div>
+            </div>
+
+            <!-- Generated URL Box -->
+            <div class="bg-surface rounded-xl border border-outline-border p-4 space-y-3">
+              <label class="block text-[11px] font-bold uppercase tracking-wider text-gray-500">Tracked Campaign URL</label>
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
+                <input type="text" id="utmGeneratedUrl" readonly class="flex-1 px-3 py-2.5 bg-white border border-outline-border rounded-lg text-xs font-mono select-all focus:outline-none text-primary font-semibold">
+                <button type="button" onclick="copyUtmUrl()" class="px-4 py-2.5 rounded-lg bg-surface-dark text-white hover:bg-black font-semibold text-xs flex items-center justify-center gap-1.5 transition-colors shrink-0">
+                  <span class="material-symbols-outlined text-sm">content_copy</span>
+                  <span id="copyUtmBtnText">Copy Link</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 1-Click Launchers -->
+            <div class="space-y-2 pt-2 border-t border-outline-border">
+              <label class="block text-xs font-bold text-gray-700">1-Click Social Sharing Triggers</label>
+              <div class="flex flex-wrap gap-2.5">
+                <button type="button" onclick="shareDirectly('whatsapp')" class="px-3.5 py-2 rounded-lg bg-[#25D366] text-white hover:bg-[#1EBE5D] font-semibold text-xs flex items-center gap-2 transition-transform active:scale-95 shadow-xs">
+                  <span class="material-symbols-outlined text-sm">chat</span>
+                  <span>Share via WhatsApp</span>
+                </button>
+                <button type="button" onclick="shareDirectly('facebook')" class="px-3.5 py-2 rounded-lg bg-[#1877F2] text-white hover:bg-[#166FE5] font-semibold text-xs flex items-center gap-2 transition-transform active:scale-95 shadow-xs">
+                  <span class="material-symbols-outlined text-sm">thumb_up</span>
+                  <span>Post to Facebook</span>
+                </button>
+                <button type="button" onclick="shareDirectly('linkedin')" class="px-3.5 py-2 rounded-lg bg-[#0A66C2] text-white hover:bg-[#095196] font-semibold text-xs flex items-center gap-2 transition-transform active:scale-95 shadow-xs">
+                  <span class="material-symbols-outlined text-sm">business_center</span>
+                  <span>Post on LinkedIn</span>
+                </button>
+                <button type="button" onclick="shareDirectly('twitter')" class="px-3.5 py-2 rounded-lg bg-black text-white hover:bg-gray-800 font-semibold text-xs flex items-center gap-2 transition-transform active:scale-95 shadow-xs">
+                  <span class="material-symbols-outlined text-sm">tag</span>
+                  <span>Post on X</span>
+                </button>
+                <button type="button" onclick="testUtmUrl()" class="px-3.5 py-2 rounded-lg bg-surface border border-outline-border text-gray-700 hover:bg-white font-semibold text-xs flex items-center gap-2 transition-colors">
+                  <span class="material-symbols-outlined text-sm">open_in_new</span>
+                  <span>Open URL</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
     </div>
   </main>
 
@@ -520,14 +1087,32 @@
           <label class="block font-semibold text-gray-600 mb-1">Usage Protocol Instructions</label>
           <textarea id="prodUsage" rows="2" class="w-full p-2.5 rounded border border-outline-border"></textarea>
         </div>
-        <div class="grid grid-cols-2 gap-4">
-          <div>
-            <label class="block font-semibold text-gray-600 mb-1">Image URL / Path</label>
-            <input type="text" id="prodImage" class="w-full p-2.5 rounded border border-outline-border">
+        <div class="space-y-2 p-3 bg-surface rounded-xl border border-outline-border/80">
+          <div class="flex items-center justify-between">
+            <label class="block font-semibold text-gray-800 text-xs">Product Formulation Image</label>
+            <span id="prodImageStatusBadge" class="hidden text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">Uploaded</span>
           </div>
-          <div>
-            <label class="block font-semibold text-gray-600 mb-1">Upload New Image</label>
-            <input type="file" id="prodImageFile" accept="image/*" class="w-full p-2 rounded border border-outline-border text-[11px]">
+          <!-- Live Preview Box -->
+          <div id="prodImagePreviewWrapper" class="relative w-full h-36 rounded-lg border border-outline-border bg-gray-100 overflow-hidden flex items-center justify-center shadow-xs">
+            <img id="prodImagePreview" src="" alt="Product Preview" class="w-full h-full object-contain p-2">
+            <div id="prodImageEmptyPlaceholder" class="hidden flex flex-col items-center justify-center text-gray-400 gap-1 p-3 text-center">
+              <span class="material-symbols-outlined text-2xl text-gray-400">inventory_2</span>
+              <span class="text-[10px] font-medium text-gray-400">No product image</span>
+            </div>
+            <div id="prodUploadProgress" class="hidden absolute inset-0 bg-black/70 backdrop-blur-xs flex flex-col items-center justify-center text-white gap-2 z-10">
+              <span class="material-symbols-outlined animate-spin text-2xl">progress_activity</span>
+              <span class="text-[11px] font-bold tracking-wider uppercase">Uploading Image...</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+            <div>
+              <label class="block font-medium text-gray-700 mb-1">Upload New Image File</label>
+              <input type="file" id="prodImageFile" accept="image/png,image/jpeg,image/webp,image/avif,image/gif" class="w-full text-[11px] text-gray-600 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-primary file:text-white hover:file:bg-secondary file:cursor-pointer cursor-pointer border border-outline-border rounded-lg p-1 bg-white focus:outline-none">
+            </div>
+            <div>
+              <label class="block font-medium text-gray-700 mb-1">Image URL / Path</label>
+              <input type="text" id="prodImage" placeholder="assets/images/... or /uploads/..." class="w-full px-3 py-1.5 border border-outline-border rounded-lg focus:outline-none focus:border-secondary font-mono text-[11px] bg-white">
+            </div>
           </div>
         </div>
         <div class="flex items-center gap-6 pt-2">
@@ -554,21 +1139,35 @@
 
   <!-- ==================== CLINIC MODAL ==================== -->
   <div id="clinicModal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-xl shadow-2xl max-w-lg w-full max-h-[90vh] flex flex-col border border-outline-border">
+    <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[92vh] flex flex-col border border-outline-border">
       <div class="p-6 border-b border-outline-border flex items-center justify-between">
-        <h3 id="clinicModalTitle" class="font-serif text-lg font-semibold text-primary">Clinic Location</h3>
+        <h3 id="clinicModalTitle" class="font-serif text-lg font-semibold text-primary">Clinic / Store Location</h3>
         <button onclick="closeClinicModal()" class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">close</span></button>
       </div>
       <form id="clinicForm" class="p-6 overflow-y-auto space-y-4 text-xs">
         <input type="hidden" id="clinicId">
-        <div>
-          <label class="block font-semibold text-gray-600 mb-1">Facility Name *</label>
-          <input type="text" id="clinicName" required class="w-full p-2.5 rounded border border-outline-border">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Facility Name *</label>
+            <input type="text" id="clinicName" required class="w-full p-2.5 rounded border border-outline-border">
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Facility Category / Type *</label>
+            <select id="clinicCategory" required class="w-full p-2.5 rounded border border-outline-border">
+              <option value="Cosmetic Store & Beauty Retailer">Cosmetic Store &amp; Beauty Retailer</option>
+              <option value="Dermatology & Aesthetic Hospital">Dermatology &amp; Aesthetic Hospital</option>
+              <option value="Hospital Pharmacy Wing">Hospital Pharmacy Wing</option>
+              <option value="Aesthetic Institute & Laser Clinic">Aesthetic Institute &amp; Laser Clinic</option>
+              <option value="Compounding & Formulation Outpost">Compounding &amp; Formulation Outpost</option>
+            </select>
+          </div>
         </div>
-        <div class="grid grid-cols-2 gap-4">
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label class="block font-semibold text-gray-600 mb-1">City *</label>
-            <input type="text" id="clinicCity" required class="w-full p-2.5 rounded border border-outline-border">
+            <input type="text" id="clinicCity" required class="w-full p-2.5 rounded border border-outline-border" placeholder="e.g. Kathmandu">
           </div>
           <div>
             <label class="block font-semibold text-gray-600 mb-1">Province *</label>
@@ -582,30 +1181,198 @@
               <option value="Sudurpashchim">Sudurpashchim</option>
             </select>
           </div>
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Distance / Area Badge</label>
+            <input type="text" id="clinicDistanceBadge" class="w-full p-2.5 rounded border border-outline-border" placeholder="e.g. 1.2 km, Koshi Dist.">
+          </div>
         </div>
+
         <div>
-          <label class="block font-semibold text-gray-600 mb-1">Street Address</label>
-          <input type="text" id="clinicAddress" required class="w-full p-2.5 rounded border border-outline-border">
+          <label class="block font-semibold text-gray-600 mb-1">Street Address *</label>
+          <input type="text" id="clinicAddress" required class="w-full p-2.5 rounded border border-outline-border" placeholder="e.g. Marg 4, Naxal (Opposite Bhagwati Temple)">
         </div>
-        <div class="grid grid-cols-2 gap-4">
+
+        <!-- Practitioner / Doctor Details -->
+        <div class="p-3 bg-surface rounded-lg border border-outline-border space-y-3">
+          <span class="font-semibold text-primary block text-[11px] uppercase tracking-wider">Supervising Physician / Store Consultant</span>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div>
+              <label class="block font-semibold text-gray-600 mb-1">Physician / Consultant Name</label>
+              <input type="text" id="clinicDoctor" class="w-full p-2 rounded border border-outline-border" placeholder="e.g. Dr. A. Karki, MD Dermatology">
+            </div>
+            <div>
+              <label class="block font-semibold text-gray-600 mb-1">NMC / Professional Registration</label>
+              <input type="text" id="clinicDoctorNmc" class="w-full p-2 rounded border border-outline-border" placeholder="e.g. NMC #9482 • Senior Consultant">
+            </div>
+          </div>
+
+          <!-- Doctor / Facility Photo Upload -->
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Doctor Avatar or Facility Photo</label>
+            <div class="flex items-center gap-3">
+              <div id="clinicDoctorImgPreview" class="w-12 h-12 rounded-full overflow-hidden bg-gray-100 border border-outline-border shrink-0 flex items-center justify-center">
+                <span class="material-symbols-outlined text-gray-400">person</span>
+              </div>
+              <div class="flex-1 space-y-1">
+                <input type="file" id="clinicDoctorImageFile" accept="image/*" class="w-full text-xs text-gray-500 file:mr-2 file:py-1 file:px-3 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-primary file:text-white hover:file:bg-secondary cursor-pointer">
+                <input type="text" id="clinicDoctorImage" class="w-full p-1.5 rounded border border-outline-border text-[11px]" placeholder="or image path/URL">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <label class="block font-semibold text-gray-600 mb-1">Contact Phone</label>
-            <input type="text" id="clinicPhone" class="w-full p-2.5 rounded border border-outline-border">
+            <input type="text" id="clinicPhone" class="w-full p-2.5 rounded border border-outline-border" placeholder="+977 9820753751">
           </div>
           <div>
-            <label class="block font-semibold text-gray-600 mb-1">Lead Physician</label>
-            <input type="text" id="clinicDoctor" class="w-full p-2.5 rounded border border-outline-border">
+            <label class="block font-semibold text-gray-600 mb-1">Email (Optional)</label>
+            <input type="email" id="clinicEmail" class="w-full p-2.5 rounded border border-outline-border" placeholder="clinic@cderma.com.np">
           </div>
         </div>
-        <div class="flex items-center gap-4">
-          <label class="flex items-center gap-2">
-            <input type="checkbox" id="clinicVerified" checked class="rounded accent-primary">
-            <span>Verified Dispensary</span>
-          </label>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Operating Hours</label>
+            <input type="text" id="clinicOperatingHours" class="w-full p-2.5 rounded border border-outline-border" placeholder="e.g. 09:00 - 19:30 (Sun-Fri)">
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Batch Inventory</label>
+            <input type="text" id="clinicBatchUnits" class="w-full p-2.5 rounded border border-outline-border" placeholder="e.g. 148 Units Verified">
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Cold-Chain Temp</label>
+            <input type="text" id="clinicTempControl" class="w-full p-2.5 rounded border border-outline-border" placeholder="e.g. 18.4°C Controlled">
+          </div>
         </div>
+
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Formulary Stock Summary</label>
+          <input type="text" id="clinicStockSummary" class="w-full p-2.5 rounded border border-outline-border" placeholder="e.g. Centella Barrier Restore, Ceramide Deep Cream, Mandelic Peel">
+        </div>
+
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Directions / Google Maps URL</label>
+          <input type="text" id="clinicDirectionsUrl" class="w-full p-2.5 rounded border border-outline-border" placeholder="https://maps.google.com/?q=...">
+        </div>
+
+        <div class="flex flex-wrap items-center gap-6 pt-2 border-t border-outline-border">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="clinicVerified" checked class="rounded accent-primary">
+            <span class="font-semibold text-gray-700">Verified Dispensary</span>
+          </label>
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="clinicInStock" checked class="rounded accent-primary">
+            <span class="font-semibold text-gray-700">Verified In-Stock</span>
+          </label>
+          <div class="flex items-center gap-2 ml-auto">
+            <label class="font-semibold text-gray-600">Sort Order:</label>
+            <input type="number" id="clinicSortOrder" value="0" class="w-16 p-1.5 rounded border border-outline-border text-center">
+          </div>
+        </div>
+
         <div class="pt-4 border-t border-outline-border flex justify-end gap-3">
           <button type="button" onclick="closeClinicModal()" class="px-4 py-2 rounded border border-outline-border text-gray-600 hover:bg-gray-50">Cancel</button>
-          <button type="submit" class="px-5 py-2 rounded bg-primary text-white hover:bg-secondary font-semibold">Save Clinic</button>
+          <button type="submit" class="px-5 py-2 rounded bg-primary text-white hover:bg-secondary font-semibold shadow">Save Clinic</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== MONOGRAPH / DOCTOR ADVICE MODAL ==================== -->
+  <div id="monographModal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[92vh] flex flex-col border border-outline-border">
+      <div class="p-6 border-b border-outline-border flex items-center justify-between">
+        <h3 id="monographModalTitle" class="font-serif text-lg font-semibold text-primary">Doctor's Advice &amp; Clinical Monograph</h3>
+        <button onclick="closeMonographModal()" class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">close</span></button>
+      </div>
+      <form id="monographForm" class="p-6 overflow-y-auto space-y-4 text-xs">
+        <input type="hidden" id="monographId">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Article / Code *</label>
+            <input type="text" id="monographCode" placeholder="e.g. CD-ADV-01" required class="w-full p-2.5 rounded border border-outline-border font-mono">
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Category *</label>
+            <input type="text" id="monographCategory" placeholder="e.g. Hydration, Acne, Routine" required class="w-full p-2.5 rounded border border-outline-border">
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Sort Order</label>
+            <input type="number" id="monographSortOrder" value="0" class="w-full p-2.5 rounded border border-outline-border">
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Headline / Title *</label>
+          <input type="text" id="monographTitle" placeholder="e.g. The Best Time to Apply Your Moisturiser" required class="w-full p-2.5 rounded border border-outline-border text-sm font-semibold">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Author / Clinician</label>
+            <input type="text" id="monographAuthor" placeholder="e.g. Dr. S. Karki, MD" class="w-full p-2.5 rounded border border-outline-border">
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Read Time</label>
+            <input type="text" id="monographReadTime" placeholder="e.g. 4 min read" class="w-full p-2.5 rounded border border-outline-border">
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-600 mb-1">Publication Date</label>
+            <input type="text" id="monographDateText" placeholder="e.g. March 2025" class="w-full p-2.5 rounded border border-outline-border">
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Article Card Summary / Excerpt *</label>
+          <textarea id="monographSummary" rows="2" placeholder="Brief 2-3 sentence overview shown on blog cards..." required class="w-full p-2.5 rounded border border-outline-border"></textarea>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Full Article / Clinical Content</label>
+          <textarea id="monographContent" rows="5" placeholder="Full medical advice or clinical prescribing protocol text..." class="w-full p-2.5 rounded border border-outline-border font-body"></textarea>
+        </div>
+
+        <div class="space-y-2 p-3 bg-surface rounded-xl border border-outline-border/80">
+          <div class="flex items-center justify-between">
+            <label class="block font-semibold text-gray-800 text-xs">Article Cover Image</label>
+            <span id="monographImageStatusBadge" class="hidden text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">Uploaded</span>
+          </div>
+          <!-- Live Preview Box -->
+          <div id="monographImagePreviewWrapper" class="relative w-full h-36 rounded-lg border border-outline-border bg-gray-900 overflow-hidden flex items-center justify-center shadow-xs">
+            <img id="monographImagePreview" src="" alt="Article Preview" class="w-full h-full object-cover">
+            <div id="monographImageEmptyPlaceholder" class="hidden flex flex-col items-center justify-center text-gray-400 gap-1 p-3 text-center">
+              <span class="material-symbols-outlined text-2xl text-gray-400">article</span>
+              <span class="text-[10px] font-medium text-gray-400">No cover image</span>
+            </div>
+            <div id="monographUploadProgress" class="hidden absolute inset-0 bg-black/70 backdrop-blur-xs flex flex-col items-center justify-center text-white gap-2 z-10">
+              <span class="material-symbols-outlined animate-spin text-2xl">progress_activity</span>
+              <span class="text-[11px] font-bold tracking-wider uppercase">Uploading Image...</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+            <div>
+              <label class="block font-medium text-gray-700 mb-1">Upload Image File</label>
+              <input type="file" id="monographImageFile" accept="image/png,image/jpeg,image/webp,image/avif,image/gif" class="w-full text-[11px] text-gray-600 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-primary file:text-white hover:file:bg-secondary file:cursor-pointer cursor-pointer border border-outline-border rounded-lg p-1 bg-white focus:outline-none">
+            </div>
+            <div>
+              <label class="block font-medium text-gray-700 mb-1">Cover Image URL</label>
+              <input type="text" id="monographImageUrl" placeholder="assets/images/... or /uploads/..." class="w-full px-3 py-1.5 border border-outline-border rounded-lg focus:outline-none focus:border-secondary font-mono text-[11px] bg-white">
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 pt-1">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" id="monographPublished" checked class="rounded accent-primary">
+            <span class="font-semibold text-gray-700">Published &amp; Visible on monographs.html</span>
+          </label>
+        </div>
+
+        <div class="pt-4 border-t border-outline-border flex justify-end gap-3">
+          <button type="button" onclick="closeMonographModal()" class="px-4 py-2 rounded border border-outline-border text-gray-600 hover:bg-gray-50">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded bg-primary text-white hover:bg-secondary font-semibold">Save Article / Monograph</button>
         </div>
       </form>
     </div>
@@ -702,6 +1469,162 @@
         </div>
       </form>
     </div>
+  <!-- ==================== SOCIAL POST / REEL MODAL ==================== -->
+  <div id="socialPostModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-xl w-full flex flex-col border border-outline-border my-8">
+      <div class="p-6 border-b border-outline-border flex items-center justify-between">
+        <h3 id="socialPostModalTitle" class="font-serif text-lg font-semibold text-primary">Add New Showcase Reel / Post</h3>
+        <button onclick="closeSocialPostModal()" class="text-gray-400 hover:text-gray-600">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <form id="socialPostForm" onsubmit="saveSocialPost(event)" class="p-6 space-y-4 text-xs">
+        <input type="hidden" id="socialPostId">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-semibold text-gray-700 mb-1">Social Platform *</label>
+            <select id="socialPostPlatform" required class="w-full px-3 py-2 border border-outline-border rounded-lg bg-white">
+              <option value="instagram">Instagram</option>
+              <option value="tiktok">TikTok</option>
+              <option value="youtube">YouTube</option>
+              <option value="facebook">Facebook</option>
+              <option value="linkedin">LinkedIn</option>
+            </select>
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-700 mb-1">Author / Creator Handle</label>
+            <input type="text" id="socialPostAuthor" placeholder="@cdermanepal" class="w-full px-3 py-2 border border-outline-border rounded-lg">
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-gray-700 mb-1">Post / Video Title *</label>
+          <input type="text" id="socialPostTitle" required placeholder="e.g. Cleanroom Formulation of Formula No. 04" class="w-full px-3 py-2 border border-outline-border rounded-lg">
+        </div>
+
+        <div>
+          <label class="block font-semibold text-gray-700 mb-1">Direct Post / Reel URL *</label>
+          <input type="url" id="socialPostUrl" required placeholder="https://instagram.com/p/..." class="w-full px-3 py-2 border border-outline-border rounded-lg font-mono">
+        </div>
+
+        <!-- Thumbnail Image Card with File Upload & Live Preview -->
+        <div class="p-3 bg-surface rounded-xl border border-outline-border/80 space-y-2">
+          <div class="flex items-center justify-between">
+            <label class="block font-semibold text-gray-800 text-xs">Thumbnail / Cover Image *</label>
+            <span id="socialPostUploadBadge" class="hidden text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">Uploaded</span>
+          </div>
+          <div class="relative w-full h-36 rounded-lg border border-outline-border bg-gray-900 overflow-hidden flex items-center justify-center">
+            <img id="socialPostPreview" src="" class="w-full h-full object-cover">
+            <div id="socialPostPlaceholder" class="hidden flex flex-col items-center justify-center text-gray-400 gap-1 text-center">
+              <span class="material-symbols-outlined text-2xl">movie</span>
+              <span class="text-[10px]">No thumbnail selected</span>
+            </div>
+            <div id="socialPostSpinner" class="hidden absolute inset-0 bg-black/70 flex flex-col items-center justify-center text-white gap-2 z-10">
+              <span class="material-symbols-outlined animate-spin text-2xl">progress_activity</span>
+              <span class="text-[11px] font-bold tracking-wider uppercase">Uploading...</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+            <div>
+              <label class="block font-medium text-gray-700 mb-1">Upload Local Image</label>
+              <input type="file" id="socialPostFileInput" accept="image/*" class="w-full text-[11px] text-gray-600 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-primary file:text-white hover:file:bg-secondary file:cursor-pointer cursor-pointer border border-outline-border rounded-lg p-1 bg-white focus:outline-none">
+            </div>
+            <div>
+              <label class="block font-medium text-gray-700 mb-1">Image URL / Path</label>
+              <input type="text" id="socialPostMediaUrl" placeholder="assets/images/... or /uploads/..." class="w-full px-3 py-1.5 border border-outline-border rounded-lg font-mono text-[11px] bg-white">
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-semibold text-gray-700 mb-1">Metrics Text</label>
+            <input type="text" id="socialPostMetrics" placeholder="e.g. 18.4K Views • 1,240 Likes" class="w-full px-3 py-2 border border-outline-border rounded-lg">
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-700 mb-1">Sort Order</label>
+            <input type="number" id="socialPostSort" value="1" class="w-full px-3 py-2 border border-outline-border rounded-lg">
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-gray-700 mb-1">Caption / Clinician Quote</label>
+          <textarea id="socialPostCaption" rows="2" placeholder="Brief quote or highlight from the reel/post" class="w-full px-3 py-2 border border-outline-border rounded-lg resize-none"></textarea>
+        </div>
+
+        <div class="flex items-center gap-2 pt-1">
+          <input type="checkbox" id="socialPostFeatured" checked class="rounded accent-primary">
+          <label for="socialPostFeatured" class="font-semibold text-gray-700 cursor-pointer">Featured on public site</label>
+        </div>
+
+        <div class="pt-4 border-t border-outline-border flex justify-end gap-3">
+          <button type="button" onclick="closeSocialPostModal()" class="px-4 py-2 rounded-lg border border-outline-border text-gray-600 hover:bg-gray-50">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-lg bg-primary text-white hover:bg-secondary font-semibold">Save Showcase Reel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== CUSTOM SOCIAL CHANNEL MODAL ==================== -->
+  <div id="customChannelModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-lg w-full flex flex-col border border-outline-border">
+      <div class="p-6 border-b border-outline-border flex items-center justify-between">
+        <h3 class="font-serif text-lg font-semibold text-primary">Add Custom Social Channel</h3>
+        <button onclick="closeCustomChannelModal()" class="text-gray-400 hover:text-gray-600">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <form id="customChannelForm" onsubmit="saveCustomChannel(event)" class="p-6 space-y-4 text-xs">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-semibold text-gray-700 mb-1">Platform Identifier Key *</label>
+            <input type="text" id="newChannelPlatform" required placeholder="e.g. threads, pinterest" class="w-full px-3 py-2 border border-outline-border rounded-lg font-mono">
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-700 mb-1">Platform Display Name *</label>
+            <input type="text" id="newChannelName" required placeholder="e.g. Threads, Pinterest" class="w-full px-3 py-2 border border-outline-border rounded-lg">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block font-semibold text-gray-700 mb-1">Handle / Username</label>
+            <input type="text" id="newChannelHandle" placeholder="@cdermanepal" class="w-full px-3 py-2 border border-outline-border rounded-lg">
+          </div>
+          <div>
+            <label class="block font-semibold text-gray-700 mb-1">Theme Color (Hex)</label>
+            <input type="color" id="newChannelColor" value="#887635" class="w-full h-9 p-1 border border-outline-border rounded-lg cursor-pointer bg-white">
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-semibold text-gray-700 mb-1">Target Profile URL *</label>
+          <input type="url" id="newChannelUrl" required placeholder="https://threads.net/@cdermanepal" class="w-full px-3 py-2 border border-outline-border rounded-lg font-mono">
+        </div>
+
+        <div>
+          <label class="block font-semibold text-gray-700 mb-1">Badge Description</label>
+          <input type="text" id="newChannelBadge" placeholder="e.g. Official Discussions" class="w-full px-3 py-2 border border-outline-border rounded-lg">
+        </div>
+
+        <div class="flex items-center gap-4 pt-1">
+          <label class="flex items-center gap-1.5 cursor-pointer">
+            <input type="checkbox" id="newChannelFooter" checked class="rounded accent-primary">
+            <span>Show in Footer</span>
+          </label>
+          <label class="flex items-center gap-1.5 cursor-pointer">
+            <input type="checkbox" id="newChannelHeader" class="rounded accent-primary">
+            <span>Show in Header</span>
+          </label>
+        </div>
+
+        <div class="pt-4 border-t border-outline-border flex justify-end gap-3">
+          <button type="button" onclick="closeCustomChannelModal()" class="px-4 py-2 rounded-lg border border-outline-border text-gray-600 hover:bg-gray-50">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-lg bg-primary text-white hover:bg-secondary font-semibold">Add Channel</button>
+        </div>
+      </form>
+    </div>
   </div>
 
   <!-- Client-side CMS Script -->
@@ -715,6 +1638,10 @@
     let currentProducts = [];
     let currentClinics = [];
     let currentMonographs = [];
+    let currentSocialChannels = [];
+    let currentSocialPosts = [];
+    let currentSocialMeta = {};
+    let currentSimulatorPlatform = 'whatsapp';
     let currentB2B = [];
     let currentInquiries = [];
 
@@ -746,10 +1673,12 @@
       const titles = {
         overview: 'Overview Dashboard',
         settings: 'Site Copy & Headlines Editor',
+        slides: 'Hero Image Slider Management',
         media: 'Media & Visual Assets Control Center',
         products: 'Product Formulary Catalog',
         clinics: 'Authorized Clinic Directory',
-        monographs: 'Clinical Guidance & Monographs',
+        monographs: "Doctor's Advice & Articles",
+        social: 'Social Media & Omnichannel Engine',
         b2b: 'B2B Wholesale Account Inquiries',
         inquiries: 'Patient & Practitioner Messages'
       };
@@ -757,10 +1686,12 @@
 
       // Load tab-specific data
       if (tabId === 'settings') loadSettings();
+      if (tabId === 'slides') loadSlides();
       if (tabId === 'media') loadMedia();
       if (tabId === 'products') loadProducts();
       if (tabId === 'clinics') loadClinics();
       if (tabId === 'monographs') loadMonographs();
+      if (tabId === 'social') loadSocial();
       if (tabId === 'b2b') loadB2B();
       if (tabId === 'inquiries') loadInquiries();
     }
@@ -788,6 +1719,10 @@
             const b = document.getElementById('badgeInquiries');
             b.textContent = data.stats.unreadInquiries;
             b.classList.remove('hidden');
+          }
+
+          if (document.getElementById('badgeSocial')) {
+            document.getElementById('badgeSocial').textContent = data.stats.activeSocialChannels ?? 7;
           }
 
           if (data.currentUser) {
@@ -1231,6 +2166,261 @@
       }
     }
 
+    // ==================== HERO SLIDES ====================
+    let currentHeroSlides = [];
+
+    async function loadSlides() {
+      try {
+        const tbody = document.getElementById('slidesTable');
+        if (!tbody) return;
+        tbody.innerHTML = '<tr><td colspan="6" class="py-4 text-center text-gray-400">Loading slides...</td></tr>';
+
+        const res = await fetch('/admin/api/hero-slides');
+        const data = await res.json();
+        if (data.success) {
+          currentHeroSlides = data.slides || [];
+          if (!currentHeroSlides.length) {
+            tbody.innerHTML = '<tr><td colspan="6" class="py-4 text-center text-gray-400">No slides configured. Click "+ Add New Slide" to create one.</td></tr>';
+            return;
+          }
+          tbody.innerHTML = currentHeroSlides.map(s => `
+            <tr class="hover:bg-surface/50 border-b border-outline-border">
+              <td class="py-3 px-3">
+                <img src="${escapeHtml(s.image_url)}" alt="${escapeHtml(s.title)}" class="w-14 h-10 object-cover rounded border border-outline-border shadow-xs bg-surface" onerror="this.src='assets/images/img_282f9d7b4a1e.jpg'">
+              </td>
+              <td class="py-3 px-3">
+                <div class="font-semibold text-primary">${escapeHtml(s.title)}</div>
+                <div class="text-[11px] text-gray-500">${escapeHtml(s.formula_number || '')} · ${escapeHtml(s.subtitle || '')}</div>
+              </td>
+              <td class="py-3 px-3">
+                <span class="inline-block px-2 py-0.5 rounded text-[10px] font-semibold bg-surface-container text-primary border border-outline-variant/40 mb-1">${escapeHtml(s.badge_text || 'Featured')}</span>
+                <div class="text-[11px] text-gray-400">${escapeHtml(s.specs_text || '')}</div>
+              </td>
+              <td class="py-3 px-3 font-mono font-medium text-gray-700">${s.sort_order}</td>
+              <td class="py-3 px-3">
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold ${s.is_active ? 'bg-emerald-100 text-emerald-800' : 'bg-gray-100 text-gray-600'}">
+                  ${s.is_active ? 'ACTIVE' : 'DRAFT'}
+                </span>
+              </td>
+              <td class="py-3 px-3 text-right space-x-2">
+                <button onclick="editSlide(${s.id})" class="p-1 text-secondary hover:text-primary transition-colors" title="Edit Slide">
+                  <span class="material-symbols-outlined text-base">edit</span>
+                </button>
+                <button onclick="deleteSlide(${s.id})" class="p-1 text-gray-400 hover:text-rose-600 transition-colors" title="Delete Slide">
+                  <span class="material-symbols-outlined text-base">delete</span>
+                </button>
+              </td>
+            </tr>
+          `).join('');
+        }
+      } catch (err) {
+        showToast('Error loading slides', true);
+      }
+    }
+
+    function updateSlidePreview(url) {
+      const img = document.getElementById('slideImagePreview');
+      const placeholder = document.getElementById('slideImageEmptyPlaceholder');
+      if (!img || !placeholder) return;
+      if (url && url.trim()) {
+        const cleanUrl = url.trim();
+        img.src = cleanUrl.startsWith('http') || cleanUrl.startsWith('blob:') || cleanUrl.startsWith('/') ? cleanUrl : '/' + cleanUrl;
+        img.classList.remove('hidden');
+        placeholder.classList.add('hidden');
+      } else {
+        img.src = '';
+        img.classList.add('hidden');
+        placeholder.classList.remove('hidden');
+      }
+    }
+
+    function openSlideModal(slide = null) {
+      const modal = document.getElementById('slideModal');
+      const titleEl = document.getElementById('slideModalTitle');
+      const form = document.getElementById('slideForm');
+      if (form) form.reset();
+
+      const fileInput = document.getElementById('slideImageFile');
+      if (fileInput) fileInput.value = '';
+
+      const badgeEl = document.getElementById('slideImageStatusBadge');
+      if (badgeEl) badgeEl.classList.add('hidden');
+
+      if (slide) {
+        titleEl.textContent = 'Edit Hero Slide';
+        document.getElementById('slideId').value = slide.id || '';
+        document.getElementById('slideTitle').value = slide.title || '';
+        document.getElementById('slideFormula').value = slide.formula_number || '';
+        document.getElementById('slideBadge').value = slide.badge_text || '';
+        document.getElementById('slideOrigin').value = slide.origin_text || '';
+        document.getElementById('slideSubtitle').value = slide.subtitle || '';
+        document.getElementById('slideSpecs').value = slide.specs_text || '';
+        document.getElementById('slideSortOrder').value = slide.sort_order || 0;
+        document.getElementById('slideImageUrl').value = slide.image_url || '';
+        document.getElementById('slideCtaUrl').value = slide.cta_url || '';
+        document.getElementById('slideCtaText').value = slide.cta_text || '';
+        document.getElementById('slideIsActive').checked = Boolean(slide.is_active);
+        updateSlidePreview(slide.image_url || '');
+      } else {
+        titleEl.textContent = 'Add New Hero Slide';
+        document.getElementById('slideId').value = '';
+        document.getElementById('slideIsActive').checked = true;
+        document.getElementById('slideSortOrder').value = (currentHeroSlides.length || 0) + 1;
+        document.getElementById('slideCtaUrl').value = 'product-detail.html';
+        document.getElementById('slideCtaText').value = 'View Details';
+        document.getElementById('slideImageUrl').value = '';
+        updateSlidePreview('');
+      }
+
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeSlideModal() {
+      const modal = document.getElementById('slideModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function editSlide(id) {
+      const s = currentHeroSlides.find(x => x.id === id);
+      if (s) openSlideModal(s);
+    }
+
+    // Instant Image Upload on File Select for Hero Slides
+    const slideFileInput = document.getElementById('slideImageFile');
+    if (slideFileInput) {
+      slideFileInput.addEventListener('change', async function() {
+        if (!this.files || !this.files.length) return;
+        const file = this.files[0];
+        
+        // Immediate local preview
+        const localBlob = URL.createObjectURL(file);
+        updateSlidePreview(localBlob);
+
+        const spinner = document.getElementById('slideUploadProgress');
+        if (spinner) spinner.classList.remove('hidden');
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+          const res = await fetch('/admin/api/upload', { method: 'POST', body: formData });
+          const data = await res.json();
+          if (data.success && data.url) {
+            document.getElementById('slideImageUrl').value = data.url;
+            updateSlidePreview(data.url);
+            const badgeEl = document.getElementById('slideImageStatusBadge');
+            if (badgeEl) {
+              badgeEl.textContent = 'Uploaded';
+              badgeEl.classList.remove('hidden');
+            }
+            showToast(`Image "${data.filename || file.name}" uploaded successfully!`);
+          } else {
+            showToast(data.message || 'Error uploading image', true);
+          }
+        } catch (err) {
+          showToast('Image upload failed: ' + err.message, true);
+        } finally {
+          if (spinner) spinner.classList.add('hidden');
+        }
+      });
+    }
+
+    const slideUrlInput = document.getElementById('slideImageUrl');
+    if (slideUrlInput) {
+      slideUrlInput.addEventListener('input', function() {
+        updateSlidePreview(this.value.trim());
+      });
+    }
+
+    async function saveSlide(e) {
+      e.preventDefault();
+      const id = document.getElementById('slideId').value;
+      const fileInput = document.getElementById('slideImageFile');
+      let imageUrl = document.getElementById('slideImageUrl').value.trim();
+
+      // If user selected file but hasn't uploaded yet (fallback)
+      if (fileInput && fileInput.files && fileInput.files.length > 0 && (!imageUrl || imageUrl.startsWith('blob:'))) {
+        const formData = new FormData();
+        formData.append('file', fileInput.files[0]);
+        try {
+          const uploadRes = await fetch('/admin/api/upload', { method: 'POST', body: formData });
+          const uploadData = await uploadRes.json();
+          if (uploadData.success && uploadData.url) {
+            imageUrl = uploadData.url;
+            document.getElementById('slideImageUrl').value = imageUrl;
+          }
+        } catch (err) {
+          console.error('File upload error during saveSlide:', err);
+        }
+      }
+
+      const payload = {
+        title: document.getElementById('slideTitle').value.trim(),
+        formula_number: document.getElementById('slideFormula').value.trim(),
+        badge_text: document.getElementById('slideBadge').value.trim(),
+        origin_text: document.getElementById('slideOrigin').value.trim(),
+        subtitle: document.getElementById('slideSubtitle').value.trim(),
+        specs_text: document.getElementById('slideSpecs').value.trim(),
+        sort_order: parseInt(document.getElementById('slideSortOrder').value, 10) || 0,
+        image_url: imageUrl,
+        cta_url: document.getElementById('slideCtaUrl').value.trim(),
+        cta_text: document.getElementById('slideCtaText').value.trim(),
+        is_active: document.getElementById('slideIsActive').checked ? 1 : 0
+      };
+
+      if (!payload.title || !payload.image_url) {
+        showToast('Title and Image are required', true);
+        return;
+      }
+
+      const saveBtn = document.getElementById('saveSlideBtn');
+      if (saveBtn) {
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Saving...';
+      }
+
+      try {
+        const url = id ? `/admin/api/hero-slides/${id}` : '/admin/api/hero-slides';
+        const method = id ? 'PUT' : 'POST';
+        const res = await fetch(url, {
+          method,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(data.message || 'Slide saved successfully');
+          closeSlideModal();
+          await loadSlides();
+        } else {
+          showToast(data.message || 'Failed to save slide', true);
+        }
+      } catch (err) {
+        showToast('Network error saving slide', true);
+      } finally {
+        if (saveBtn) {
+          saveBtn.disabled = false;
+          saveBtn.textContent = 'Save Slide';
+        }
+      }
+    }
+
+    async function deleteSlide(id) {
+      if (!confirm('Are you sure you want to delete this hero slide?')) return;
+      try {
+        const res = await fetch(`/admin/api/hero-slides/${id}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (data.success) {
+          showToast(data.message || 'Slide deleted successfully');
+          await loadSlides();
+        } else {
+          showToast(data.message || 'Failed to delete slide', true);
+        }
+      } catch (err) {
+        showToast('Error deleting slide', true);
+      }
+    }
+
     // ==================== PRODUCTS ====================
     async function loadProducts() {
       try {
@@ -1271,11 +2461,32 @@
       }
     }
 
+    function updateProdPreview(url) {
+      const img = document.getElementById('prodImagePreview');
+      const placeholder = document.getElementById('prodImageEmptyPlaceholder');
+      if (!img || !placeholder) return;
+      if (url && url.trim()) {
+        const cleanUrl = url.trim();
+        img.src = cleanUrl.startsWith('http') || cleanUrl.startsWith('blob:') || cleanUrl.startsWith('/') ? cleanUrl : '/' + cleanUrl;
+        img.classList.remove('hidden');
+        placeholder.classList.add('hidden');
+      } else {
+        img.src = '';
+        img.classList.add('hidden');
+        placeholder.classList.remove('hidden');
+      }
+    }
+
     function openProductModal(prod = null) {
       document.getElementById('productForm').reset();
       document.getElementById('prodId').value = prod ? prod.id : '';
       document.getElementById('productModalTitle').textContent = prod ? 'Edit Formulation' : 'Add New Formulation';
       
+      const fileInput = document.getElementById('prodImageFile');
+      if (fileInput) fileInput.value = '';
+      const badgeEl = document.getElementById('prodImageStatusBadge');
+      if (badgeEl) badgeEl.classList.add('hidden');
+
       if (prod) {
         document.getElementById('prodTitle').value = prod.title || '';
         document.getElementById('prodSlug').value = prod.slug || '';
@@ -1290,8 +2501,58 @@
         document.getElementById('prodImage').value = prod.image_url || '';
         document.getElementById('prodFeatured').checked = Boolean(prod.is_featured);
         document.getElementById('prodStatus').value = prod.status || 'active';
+        updateProdPreview(prod.image_url || '');
+      } else {
+        document.getElementById('prodImage').value = '';
+        updateProdPreview('');
       }
       document.getElementById('productModal').classList.remove('hidden');
+    }
+
+    // Instant Image Upload on File Select for Products
+    const prodFileInput = document.getElementById('prodImageFile');
+    if (prodFileInput) {
+      prodFileInput.addEventListener('change', async function() {
+        if (!this.files || !this.files.length) return;
+        const file = this.files[0];
+        
+        const localBlob = URL.createObjectURL(file);
+        updateProdPreview(localBlob);
+
+        const spinner = document.getElementById('prodUploadProgress');
+        if (spinner) spinner.classList.remove('hidden');
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+          const res = await fetch('/admin/api/upload', { method: 'POST', body: formData });
+          const data = await res.json();
+          if (data.success && data.url) {
+            document.getElementById('prodImage').value = data.url;
+            updateProdPreview(data.url);
+            const badgeEl = document.getElementById('prodImageStatusBadge');
+            if (badgeEl) {
+              badgeEl.textContent = 'Uploaded';
+              badgeEl.classList.remove('hidden');
+            }
+            showToast(`Image "${data.filename || file.name}" uploaded successfully!`);
+          } else {
+            showToast(data.message || 'Error uploading image', true);
+          }
+        } catch (err) {
+          showToast('Image upload failed: ' + err.message, true);
+        } finally {
+          if (spinner) spinner.classList.add('hidden');
+        }
+      });
+    }
+
+    const prodUrlInput = document.getElementById('prodImage');
+    if (prodUrlInput) {
+      prodUrlInput.addEventListener('input', function() {
+        updateProdPreview(this.value.trim());
+      });
     }
 
     function closeProductModal() {
@@ -1391,14 +2652,42 @@
           }
           tbody.innerHTML = data.clinics.map(c => `
             <tr class="hover:bg-surface/50">
-              <td class="py-3 px-3 font-semibold text-primary">${escapeHtml(c.name)}<br><span class="text-[11px] text-gray-400 font-normal">${escapeHtml(c.address)}</span></td>
-              <td class="py-3 px-3">${escapeHtml(c.city)}, ${escapeHtml(c.province)}</td>
-              <td class="py-3 px-3 text-gray-600">${escapeHtml(c.lead_doctor || '—')}</td>
-              <td class="py-3 px-3">${escapeHtml(c.phone || '—')}</td>
-              <td class="py-3 px-3">${c.is_verified ? '<span class="text-emerald-700 font-bold">✓ Verified</span>' : '<span class="text-gray-400">Standard</span>'}</td>
-              <td class="py-3 px-3 text-right space-x-2">
-                <button onclick="editClinic(${c.id})" class="p-1 text-secondary hover:text-primary"><span class="material-symbols-outlined text-base">edit</span></button>
-                <button onclick="deleteClinic(${c.id})" class="p-1 text-gray-400 hover:text-rose-600"><span class="material-symbols-outlined text-base">delete</span></button>
+              <td class="py-3 px-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-100 border border-outline-border shrink-0">
+                    <img src="${c.doctor_image || 'assets/images/dr-karki-portrait.png'}" class="w-full h-full object-cover" onerror="this.src='assets/images/dr-karki-portrait.png'">
+                  </div>
+                  <div>
+                    <span class="font-semibold text-primary block">${escapeHtml(c.name)}</span>
+                    <span class="text-[11px] text-gray-500 font-medium">${escapeHtml(c.lead_doctor || 'Direct Outlet')}</span>
+                    ${c.doctor_nmc ? `<span class="text-[10px] text-secondary font-mono block">${escapeHtml(c.doctor_nmc)}</span>` : ''}
+                  </div>
+                </div>
+              </td>
+              <td class="py-3 px-3">
+                <span class="px-2 py-0.5 rounded bg-surface border border-outline-border text-[11px] font-medium text-secondary inline-block max-w-[160px] truncate">
+                  ${escapeHtml(c.category || 'Dermatology Clinic')}
+                </span>
+                ${c.distance_badge ? `<span class="block text-[10px] text-primary font-mono mt-0.5">${escapeHtml(c.distance_badge)}</span>` : ''}
+              </td>
+              <td class="py-3 px-3">
+                <span class="font-medium text-gray-800">${escapeHtml(c.city)}, ${escapeHtml(c.province)}</span>
+                <span class="text-[11px] text-gray-400 block truncate max-w-[180px]">${escapeHtml(c.address)}</span>
+              </td>
+              <td class="py-3 px-3">
+                <span class="text-[11px] text-emerald-700 font-semibold block">${escapeHtml(c.batch_units || 'Verified In-Stock')}</span>
+                <span class="text-[10px] text-gray-400 font-mono block">${escapeHtml(c.operating_hours || '09:00 - 19:00')}</span>
+                ${c.phone ? `<a href="tel:${escapeHtml(c.phone)}" class="text-[11px] text-primary font-mono hover:underline">${escapeHtml(c.phone)}</a>` : ''}
+              </td>
+              <td class="py-3 px-3">
+                <div class="space-y-0.5">
+                  ${c.is_verified ? '<span class="inline-block px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-bold">✓ Verified</span>' : '<span class="text-gray-400 text-[10px]">Standard</span>'}
+                  ${c.is_in_stock ? '<span class="inline-block px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 text-[10px] font-bold">In-Stock</span>' : ''}
+                </div>
+              </td>
+              <td class="py-3 px-3 text-right space-x-1">
+                <button onclick="editClinic(${c.id})" class="p-1.5 rounded hover:bg-surface text-secondary hover:text-primary" title="Edit"><span class="material-symbols-outlined text-base">edit</span></button>
+                <button onclick="deleteClinic(${c.id})" class="p-1.5 rounded hover:bg-rose-50 text-gray-400 hover:text-rose-600" title="Delete"><span class="material-symbols-outlined text-base">delete</span></button>
               </td>
             </tr>
           `).join('');
@@ -1411,17 +2700,70 @@
     function openClinicModal(c = null) {
       document.getElementById('clinicForm').reset();
       document.getElementById('clinicId').value = c ? c.id : '';
-      document.getElementById('clinicModalTitle').textContent = c ? 'Edit Clinic Location' : 'Add New Clinic';
+      document.getElementById('clinicModalTitle').textContent = c ? 'Edit Clinic / Store Location' : 'Add New Clinic / Store';
+      
+      const prevImg = document.getElementById('clinicDoctorImgPreview');
       if (c) {
         document.getElementById('clinicName').value = c.name || '';
+        document.getElementById('clinicCategory').value = c.category || 'Cosmetic Store & Beauty Retailer';
         document.getElementById('clinicCity').value = c.city || '';
         document.getElementById('clinicProvince').value = c.province || 'Bagmati';
+        document.getElementById('clinicDistanceBadge').value = c.distance_badge || '';
         document.getElementById('clinicAddress').value = c.address || '';
-        document.getElementById('clinicPhone').value = c.phone || '';
         document.getElementById('clinicDoctor').value = c.lead_doctor || '';
+        document.getElementById('clinicDoctorNmc').value = c.doctor_nmc || '';
+        document.getElementById('clinicDoctorImage').value = c.doctor_image || '';
+        document.getElementById('clinicPhone').value = c.phone || '';
+        document.getElementById('clinicEmail').value = c.email || '';
+        document.getElementById('clinicOperatingHours').value = c.operating_hours || '';
+        document.getElementById('clinicBatchUnits').value = c.batch_units || '';
+        document.getElementById('clinicTempControl').value = c.temp_control || '';
+        document.getElementById('clinicStockSummary').value = c.stock_summary || '';
+        document.getElementById('clinicDirectionsUrl').value = c.directions_url || '';
         document.getElementById('clinicVerified').checked = Boolean(c.is_verified);
+        document.getElementById('clinicInStock').checked = Boolean(c.is_in_stock !== 0);
+        document.getElementById('clinicSortOrder').value = c.sort_order || 0;
+
+        if (c.doctor_image) {
+          prevImg.innerHTML = `<img src="${c.doctor_image}" class="w-full h-full object-cover">`;
+        } else {
+          prevImg.innerHTML = `<span class="material-symbols-outlined text-gray-400">person</span>`;
+        }
+      } else {
+        document.getElementById('clinicCategory').value = 'Cosmetic Store & Beauty Retailer';
+        document.getElementById('clinicProvince').value = 'Bagmati';
+        document.getElementById('clinicDistanceBadge').value = '';
+        document.getElementById('clinicOperatingHours').value = '09:00 - 19:30 (Sun-Fri)';
+        document.getElementById('clinicBatchUnits').value = 'Verified In-Stock';
+        document.getElementById('clinicTempControl').value = '18.0°C Controlled';
+        document.getElementById('clinicVerified').checked = true;
+        document.getElementById('clinicInStock').checked = true;
+        document.getElementById('clinicSortOrder').value = 0;
+        prevImg.innerHTML = `<span class="material-symbols-outlined text-gray-400">person</span>`;
       }
       document.getElementById('clinicModal').classList.remove('hidden');
+    }
+
+    // Direct doctor image file upload in clinic modal
+    const clinicImgInput = document.getElementById('clinicDoctorImageFile');
+    if (clinicImgInput) {
+      clinicImgInput.addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const formData = new FormData();
+        formData.append('file', file);
+        try {
+          const res = await fetch('/admin/api/upload', { method: 'POST', body: formData });
+          const data = await res.json();
+          if (data.success && data.file && data.file.url) {
+            document.getElementById('clinicDoctorImage').value = data.file.url;
+            document.getElementById('clinicDoctorImgPreview').innerHTML = `<img src="${data.file.url}" class="w-full h-full object-cover">`;
+            showToast('Doctor photo uploaded successfully');
+          }
+        } catch (err) {
+          showToast('Image upload failed', true);
+        }
+      });
     }
 
     function closeClinicModal() {
@@ -1452,12 +2794,24 @@
       const id = document.getElementById('clinicId').value;
       const payload = {
         name: document.getElementById('clinicName').value,
+        category: document.getElementById('clinicCategory').value,
         city: document.getElementById('clinicCity').value,
         province: document.getElementById('clinicProvince').value,
+        distance_badge: document.getElementById('clinicDistanceBadge').value,
         address: document.getElementById('clinicAddress').value,
-        phone: document.getElementById('clinicPhone').value,
         lead_doctor: document.getElementById('clinicDoctor').value,
-        is_verified: document.getElementById('clinicVerified').checked ? 1 : 0
+        doctor_nmc: document.getElementById('clinicDoctorNmc').value,
+        doctor_image: document.getElementById('clinicDoctorImage').value,
+        phone: document.getElementById('clinicPhone').value,
+        email: document.getElementById('clinicEmail').value,
+        operating_hours: document.getElementById('clinicOperatingHours').value,
+        batch_units: document.getElementById('clinicBatchUnits').value,
+        temp_control: document.getElementById('clinicTempControl').value,
+        stock_summary: document.getElementById('clinicStockSummary').value,
+        directions_url: document.getElementById('clinicDirectionsUrl').value,
+        is_verified: document.getElementById('clinicVerified').checked ? 1 : 0,
+        is_in_stock: document.getElementById('clinicInStock').checked ? 1 : 0,
+        sort_order: parseInt(document.getElementById('clinicSortOrder').value) || 0
       };
 
       const method = id ? 'PUT' : 'POST';
@@ -1474,13 +2828,15 @@
           showToast(id ? 'Clinic updated' : 'Clinic added');
           closeClinicModal();
           loadClinics();
+        } else {
+          showToast(data.error || 'Failed to save clinic', true);
         }
       } catch (err) {
         showToast('Connection error', true);
       }
     });
 
-    // ==================== MONOGRAPHS ====================
+    // ==================== MONOGRAPHS & DOCTOR ADVICE ARTICLES ====================
     async function loadMonographs() {
       try {
         const res = await fetch('/admin/api/monographs');
@@ -1488,19 +2844,48 @@
         if (data.success) {
           currentMonographs = data.monographs;
           const container = document.getElementById('monographsList');
-          if (!data.monographs.length) {
-            container.innerHTML = '<p class="text-xs text-gray-400">No clinical monographs available.</p>';
+          if (!data.monographs || !data.monographs.length) {
+            container.innerHTML = `
+              <div class="text-center py-10 border border-dashed border-outline-border rounded-xl">
+                <span class="material-symbols-outlined text-3xl text-gray-300 mb-2">article</span>
+                <p class="text-xs text-gray-400">No clinical monographs or doctor articles configured yet.</p>
+                <button onclick="openMonographModal()" class="mt-3 px-3 py-1.5 rounded bg-primary text-white text-xs font-semibold">Publish First Article</button>
+              </div>
+            `;
             return;
           }
           container.innerHTML = data.monographs.map(m => `
-            <div class="border border-outline-border rounded-lg p-4 bg-white hover:border-secondary transition-colors">
-              <div class="flex items-center justify-between mb-2">
-                <span class="px-2 py-0.5 rounded bg-surface border border-outline-border font-mono text-[10px] text-secondary font-bold">${escapeHtml(m.code)}</span>
-                <span class="text-[11px] text-gray-500">${escapeHtml(m.category || '')}</span>
+            <div class="border border-outline-border rounded-xl p-5 bg-white hover:border-secondary transition-all shadow-sm flex flex-col md:flex-row gap-5">
+              <div class="w-full md:w-44 h-32 rounded-lg bg-surface border border-outline-border overflow-hidden shrink-0 relative">
+                <img src="${escapeHtml(m.image_url || 'assets/images/img_7df877252467.jpg')}" class="w-full h-full object-cover" onerror="this.src='assets/images/img_7df877252467.jpg'">
+                <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-white/90 backdrop-blur-sm text-[10px] font-mono font-bold text-primary border border-outline-border">${escapeHtml(m.code)}</span>
               </div>
-              <h4 class="font-serif text-sm font-semibold text-primary mb-1">${escapeHtml(m.title)}</h4>
-              <p class="text-xs text-gray-600 mb-2"><strong>Indication:</strong> ${escapeHtml(m.indication || '—')}</p>
-              <p class="text-[11px] text-gray-500"><strong>Active Compounds:</strong> ${escapeHtml(m.active_compounds || '—')}</p>
+              <div class="flex-1 flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+                    <span class="px-2.5 py-0.5 rounded-full bg-surface border border-outline-border text-primary font-bold text-[10px] uppercase tracking-wider">${escapeHtml(m.category || 'General')}</span>
+                    <span class="text-[11px] text-gray-400">•</span>
+                    <span class="text-[11px] text-gray-500 font-medium">${escapeHtml(m.read_time || '5 min read')}</span>
+                    <span class="text-[11px] text-gray-400">•</span>
+                    <span class="text-[11px] text-gray-500">${escapeHtml(m.date_text || '')}</span>
+                    ${m.is_published ? '<span class="ml-auto px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-semibold text-[10px]">Published</span>' : '<span class="ml-auto px-2 py-0.5 rounded bg-gray-100 text-gray-500 font-semibold text-[10px]">Draft</span>'}
+                  </div>
+                  <h4 class="font-serif text-base font-semibold text-primary mb-1">${escapeHtml(m.title)}</h4>
+                  <p class="text-xs text-gray-600 line-clamp-2 mb-2 leading-relaxed">${escapeHtml(m.summary || m.content || '')}</p>
+                  <div class="text-[11px] text-gray-500 font-medium flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[14px] text-secondary">medical_services</span>
+                    <span>By ${escapeHtml(m.author || 'CDerma Medical Advisory')}</span>
+                  </div>
+                </div>
+                <div class="flex items-center justify-end gap-2 pt-3 border-t border-outline-border/60 mt-3">
+                  <button onclick="editMonograph(${m.id})" class="px-3 py-1.5 rounded border border-outline-border text-xs font-semibold text-primary hover:bg-surface flex items-center gap-1">
+                    <span class="material-symbols-outlined text-sm">edit</span> Edit
+                  </button>
+                  <button onclick="deleteMonograph(${m.id})" class="px-3 py-1.5 rounded border border-rose-200 text-xs font-semibold text-rose-600 hover:bg-rose-50 flex items-center gap-1">
+                    <span class="material-symbols-outlined text-sm">delete</span> Delete
+                  </button>
+                </div>
+              </div>
             </div>
           `).join('');
         }
@@ -1508,6 +2893,186 @@
         showToast('Error loading monographs', true);
       }
     }
+
+    function updateMonographPreview(url) {
+      const img = document.getElementById('monographImagePreview');
+      const placeholder = document.getElementById('monographImageEmptyPlaceholder');
+      if (!img || !placeholder) return;
+      if (url && url.trim()) {
+        const cleanUrl = url.trim();
+        img.src = cleanUrl.startsWith('http') || cleanUrl.startsWith('blob:') || cleanUrl.startsWith('/') ? cleanUrl : '/' + cleanUrl;
+        img.classList.remove('hidden');
+        placeholder.classList.add('hidden');
+      } else {
+        img.src = '';
+        img.classList.add('hidden');
+        placeholder.classList.remove('hidden');
+      }
+    }
+
+    function openMonographModal(m = null) {
+      document.getElementById('monographForm').reset();
+      document.getElementById('monographId').value = m ? m.id : '';
+      document.getElementById('monographModalTitle').textContent = m ? 'Edit Doctor Advice / Clinical Monograph' : 'Add New Doctor Advice / Clinical Monograph';
+
+      const fileInput = document.getElementById('monographImageFile');
+      if (fileInput) fileInput.value = '';
+      const badgeEl = document.getElementById('monographImageStatusBadge');
+      if (badgeEl) badgeEl.classList.add('hidden');
+
+      if (m) {
+        document.getElementById('monographCode').value = m.code || '';
+        document.getElementById('monographCategory').value = m.category || '';
+        document.getElementById('monographSortOrder').value = m.sort_order ?? 0;
+        document.getElementById('monographTitle').value = m.title || '';
+        document.getElementById('monographAuthor').value = m.author || '';
+        document.getElementById('monographReadTime').value = m.read_time || '';
+        document.getElementById('monographDateText').value = m.date_text || '';
+        document.getElementById('monographSummary').value = m.summary || '';
+        document.getElementById('monographContent').value = m.content || '';
+        document.getElementById('monographImageUrl').value = m.image_url || '';
+        document.getElementById('monographPublished').checked = m.is_published == 1;
+        updateMonographPreview(m.image_url || '');
+      } else {
+        document.getElementById('monographCode').value = 'CD-ADV-0' + (currentMonographs.length + 1);
+        document.getElementById('monographCategory').value = 'Skincare Routine';
+        document.getElementById('monographSortOrder').value = currentMonographs.length + 1;
+        document.getElementById('monographAuthor').value = 'Dr. S. Karki, MD';
+        document.getElementById('monographReadTime').value = '4 min read';
+        document.getElementById('monographDateText').value = new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+        document.getElementById('monographImageUrl').value = 'assets/images/img_7df877252467.jpg';
+        document.getElementById('monographPublished').checked = true;
+        updateMonographPreview('assets/images/img_7df877252467.jpg');
+      }
+      document.getElementById('monographModal').classList.remove('hidden');
+    }
+
+    // Instant Image Upload on File Select for Monographs
+    const monographFileInput = document.getElementById('monographImageFile');
+    if (monographFileInput) {
+      monographFileInput.addEventListener('change', async function() {
+        if (!this.files || !this.files.length) return;
+        const file = this.files[0];
+
+        const localBlob = URL.createObjectURL(file);
+        updateMonographPreview(localBlob);
+
+        const spinner = document.getElementById('monographUploadProgress');
+        if (spinner) spinner.classList.remove('hidden');
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+          const res = await fetch('/admin/api/upload', { method: 'POST', body: formData });
+          const data = await res.json();
+          if (data.success && data.url) {
+            document.getElementById('monographImageUrl').value = data.url;
+            updateMonographPreview(data.url);
+            const badgeEl = document.getElementById('monographImageStatusBadge');
+            if (badgeEl) {
+              badgeEl.textContent = 'Uploaded';
+              badgeEl.classList.remove('hidden');
+            }
+            showToast(`Image "${data.filename || file.name}" uploaded successfully!`);
+          } else {
+            showToast(data.message || 'Error uploading image', true);
+          }
+        } catch (err) {
+          showToast('Image upload failed: ' + err.message, true);
+        } finally {
+          if (spinner) spinner.classList.add('hidden');
+        }
+      });
+    }
+
+    const monographUrlInput = document.getElementById('monographImageUrl');
+    if (monographUrlInput) {
+      monographUrlInput.addEventListener('input', function() {
+        updateMonographPreview(this.value.trim());
+      });
+    }
+
+    function closeMonographModal() {
+      document.getElementById('monographModal').classList.add('hidden');
+    }
+
+    function editMonograph(id) {
+      const m = currentMonographs.find(x => x.id === id);
+      if (m) openMonographModal(m);
+    }
+
+    async function deleteMonograph(id) {
+      if (!confirm('Are you sure you want to delete this article / monograph?')) return;
+      try {
+        const res = await fetch(`/admin/api/monographs/${id}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Article deleted successfully');
+          loadMonographs();
+        } else {
+          showToast(data.message || 'Error deleting article', true);
+        }
+      } catch (err) {
+        showToast('Connection error', true);
+      }
+    }
+
+    document.getElementById('monographForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const id = document.getElementById('monographId').value;
+      const fileInput = document.getElementById('monographImageFile');
+      let imageUrl = document.getElementById('monographImageUrl').value.trim();
+
+      if (fileInput && fileInput.files.length > 0) {
+        const uploadForm = new FormData();
+        uploadForm.append('file', fileInput.files[0]);
+        try {
+          const uploadRes = await fetch('/admin/api/upload', { method: 'POST', body: uploadForm });
+          const uploadData = await uploadRes.json();
+          if (uploadData.success) {
+            imageUrl = uploadData.url;
+          }
+        } catch (err) {
+          console.error('File upload error:', err);
+        }
+      }
+
+      const payload = {
+        code: document.getElementById('monographCode').value.trim(),
+        category: document.getElementById('monographCategory').value.trim(),
+        sort_order: parseInt(document.getElementById('monographSortOrder').value, 10) || 0,
+        title: document.getElementById('monographTitle').value.trim(),
+        author: document.getElementById('monographAuthor').value.trim(),
+        read_time: document.getElementById('monographReadTime').value.trim(),
+        date_text: document.getElementById('monographDateText').value.trim(),
+        summary: document.getElementById('monographSummary').value.trim(),
+        content: document.getElementById('monographContent').value.trim() || document.getElementById('monographSummary').value.trim(),
+        image_url: imageUrl || 'assets/images/img_7df877252467.jpg',
+        is_published: document.getElementById('monographPublished').checked ? 1 : 0
+      };
+
+      const method = id ? 'PUT' : 'POST';
+      const url = id ? `/admin/api/monographs/${id}` : '/admin/api/monographs';
+
+      try {
+        const res = await fetch(url, {
+          method,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(id ? 'Article updated' : 'Article created');
+          closeMonographModal();
+          loadMonographs();
+        } else {
+          showToast(data.message || data.error || 'Error saving article', true);
+        }
+      } catch (err) {
+        showToast('Connection error', true);
+      }
+    });
 
     // ==================== B2B APPLICATIONS ====================
     async function loadB2B() {
@@ -1608,6 +3173,739 @@
       }
     }
 
+    // ==================== SOCIAL MEDIA INTEGRATION CMS ====================
+    function switchSocialSubtab(subtabId) {
+      document.querySelectorAll('.social-subtab-btn').forEach(btn => {
+        const isMatch = btn.id === `socialSubtabBtn-${subtabId}`;
+        btn.classList.toggle('active', isMatch);
+        btn.classList.toggle('bg-primary', isMatch);
+        btn.classList.toggle('text-white', isMatch);
+        btn.classList.toggle('text-gray-600', !isMatch);
+      });
+      ['channels', 'og', 'showcase', 'campaigns'].forEach(s => {
+        const el = document.getElementById(`socialSubtab-${s}`);
+        if (el) el.classList.toggle('hidden', s !== subtabId);
+      });
+    }
+
+    async function loadSocial() {
+      try {
+        const res = await fetch('/admin/api/social');
+        const data = await res.json();
+        if (data.success) {
+          currentSocialChannels = data.channels || [];
+          currentSocialPosts = data.posts || [];
+          currentSocialMeta = data.meta || {};
+
+          renderSocialChannels();
+          renderSocialPosts();
+          populateSocialMeta();
+
+          // Update metrics
+          const countEl = document.getElementById('statSocialChannelsCount');
+          if (countEl) countEl.textContent = currentSocialChannels.length;
+          const activeCount = currentSocialChannels.filter(c => c.is_active == 1).length;
+          const activeEl = document.getElementById('statSocialActiveCount');
+          if (activeEl) activeEl.textContent = `${activeCount} Active`;
+          const badgeEl = document.getElementById('badgeSocial');
+          if (badgeEl) badgeEl.textContent = activeCount;
+
+          const whatsappActive = currentSocialMeta.social_whatsapp_floating === '1' || currentSocialMeta.social_whatsapp_floating === 1;
+          const waEl = document.getElementById('statSocialWhatsapp');
+          if (waEl) {
+            waEl.textContent = whatsappActive ? 'Online' : 'Disabled';
+            waEl.className = `text-lg font-bold ${whatsappActive ? 'text-emerald-400' : 'text-gray-400'}`;
+          }
+          const postsCountEl = document.getElementById('statSocialPostsCount');
+          if (postsCountEl) postsCountEl.textContent = currentSocialPosts.length;
+
+          updateSimulatorPreview();
+          generateUtmLink();
+        }
+      } catch (err) {
+        showToast('Error loading social channels', true);
+      }
+    }
+
+    function renderSocialChannels() {
+      const container = document.getElementById('socialChannelsList');
+      if (!container) return;
+
+      if (!currentSocialChannels.length) {
+        container.innerHTML = '<div class="p-8 text-center text-gray-400 col-span-full">No social channels configured yet. Click "Add Custom Channel" above.</div>';
+        return;
+      }
+
+      container.innerHTML = currentSocialChannels.map(ch => {
+        const isActive = ch.is_active == 1;
+        const inFooter = ch.show_in_footer == 1;
+        const inHeader = ch.show_in_header == 1;
+
+        return `
+          <div class="bg-white rounded-2xl border ${isActive ? 'border-outline-border' : 'border-gray-200 opacity-80'} p-5 shadow-xs flex flex-col justify-between gap-4 transition-all">
+            <div>
+              <div class="flex items-center justify-between gap-3 border-b border-outline-border pb-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-xl flex items-center justify-center text-white shadow-xs" style="background-color: ${ch.color_hex || '#887635'}">
+                    <span class="material-symbols-outlined text-lg">${ch.icon_name || 'share'}</span>
+                  </div>
+                  <div>
+                    <h4 class="font-bold text-sm text-gray-900 leading-tight">${escapeHtml(ch.name)}</h4>
+                    <p class="text-[11px] text-gray-500">${escapeHtml(ch.badge_text || ch.platform)}</p>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-2">
+                  <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" id="chActive_${ch.id}" ${isActive ? 'checked' : ''} onchange="toggleChannelActive(${ch.id})" class="sr-only peer">
+                    <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500"></div>
+                  </label>
+                  <span class="text-[10px] font-bold uppercase tracking-wider ${isActive ? 'text-emerald-700' : 'text-gray-400'}">
+                    ${isActive ? 'Active' : 'Paused'}
+                  </span>
+                </div>
+              </div>
+
+              <div class="space-y-3 pt-3">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="block font-semibold text-gray-700 text-[11px] mb-1">Handle / Username</label>
+                    <input type="text" id="chHandle_${ch.id}" value="${escapeHtml(ch.handle || '')}" placeholder="@handle" class="w-full px-3 py-1.5 border border-outline-border rounded-lg text-xs font-mono bg-surface">
+                  </div>
+                  <div>
+                    <label class="block font-semibold text-gray-700 text-[11px] mb-1">Sort Order</label>
+                    <input type="number" id="chSort_${ch.id}" value="${ch.sort_order ?? 0}" class="w-full px-3 py-1.5 border border-outline-border rounded-lg text-xs bg-surface">
+                  </div>
+                </div>
+
+                <div>
+                  <label class="block font-semibold text-gray-700 text-[11px] mb-1">Profile / Target URL</label>
+                  <div class="flex items-center gap-1.5">
+                    <input type="url" id="chUrl_${ch.id}" value="${escapeHtml(ch.url || '')}" placeholder="https://..." class="flex-1 px-3 py-1.5 border border-outline-border rounded-lg text-xs font-mono bg-surface">
+                    <button type="button" onclick="testChannelUrl(${ch.id})" title="Open Link" class="p-1.5 rounded-lg border border-outline-border hover:bg-gray-100 text-gray-600 transition-colors">
+                      <span class="material-symbols-outlined text-base">open_in_new</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="flex items-center gap-4 text-xs text-gray-600 pt-1">
+                  <label class="flex items-center gap-1.5 cursor-pointer">
+                    <input type="checkbox" id="chFooter_${ch.id}" ${inFooter ? 'checked' : ''} class="rounded accent-primary">
+                    <span>Footer Icon</span>
+                  </label>
+                  <label class="flex items-center gap-1.5 cursor-pointer">
+                    <input type="checkbox" id="chHeader_${ch.id}" ${inHeader ? 'checked' : ''} class="rounded accent-primary">
+                    <span>Header / Topbar</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between border-t border-outline-border pt-3">
+              ${!['instagram', 'facebook', 'tiktok', 'whatsapp', 'youtube', 'linkedin', 'twitter_x'].includes(ch.platform) ? `
+                <button type="button" onclick="deleteChannel(${ch.id})" class="text-[11px] text-rose-600 hover:text-rose-800 flex items-center gap-1">
+                  <span class="material-symbols-outlined text-sm">delete</span>
+                  <span>Remove Channel</span>
+                </button>
+              ` : `<span class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Standard Platform</span>`}
+
+              <button type="button" onclick="saveChannel(${ch.id})" class="px-4 py-1.5 rounded-lg bg-primary hover:bg-secondary text-white font-semibold text-xs flex items-center gap-1 transition-colors shadow-xs">
+                <span class="material-symbols-outlined text-sm">save</span>
+                <span>Save</span>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function saveChannel(id) {
+      const channel = currentSocialChannels.find(c => c.id === id);
+      if (!channel) return;
+
+      const payload = {
+        name: channel.name,
+        handle: document.getElementById(`chHandle_${id}`).value.trim(),
+        url: document.getElementById(`chUrl_${id}`).value.trim(),
+        sort_order: parseInt(document.getElementById(`chSort_${id}`).value, 10) || 0,
+        show_in_footer: document.getElementById(`chFooter_${id}`).checked ? 1 : 0,
+        show_in_header: document.getElementById(`chHeader_${id}`).checked ? 1 : 0,
+        is_active: document.getElementById(`chActive_${id}`).checked ? 1 : 0,
+        color_hex: channel.color_hex,
+        icon_name: channel.icon_name,
+        badge_text: channel.badge_text
+      };
+
+      try {
+        const res = await fetch(`/admin/api/social/channels/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(`Saved ${channel.name} channel!`);
+          loadSocial();
+        } else {
+          showToast(data.message || 'Error saving channel', true);
+        }
+      } catch (err) {
+        showToast('Connection error', true);
+      }
+    }
+
+    async function toggleChannelActive(id) {
+      saveChannel(id);
+    }
+
+    function testChannelUrl(id) {
+      const urlInput = document.getElementById(`chUrl_${id}`);
+      if (urlInput && urlInput.value) {
+        window.open(urlInput.value.trim(), '_blank');
+      }
+    }
+
+    // Custom Channel Modal
+    function openCustomChannelModal() {
+      document.getElementById('customChannelForm').reset();
+      document.getElementById('customChannelModal').classList.remove('hidden');
+    }
+
+    function closeCustomChannelModal() {
+      document.getElementById('customChannelModal').classList.add('hidden');
+    }
+
+    async function saveCustomChannel(e) {
+      e.preventDefault();
+      const payload = {
+        platform: document.getElementById('newChannelPlatform').value.trim(),
+        name: document.getElementById('newChannelName').value.trim(),
+        handle: document.getElementById('newChannelHandle').value.trim(),
+        url: document.getElementById('newChannelUrl').value.trim(),
+        badge_text: document.getElementById('newChannelBadge').value.trim(),
+        color_hex: document.getElementById('newChannelColor').value,
+        icon_name: 'share',
+        show_in_footer: document.getElementById('newChannelFooter').checked ? 1 : 0,
+        show_in_header: document.getElementById('newChannelHeader').checked ? 1 : 0,
+        is_active: 1,
+        sort_order: currentSocialChannels.length + 1
+      };
+
+      try {
+        const res = await fetch('/admin/api/social/channels', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Custom channel added!');
+          closeCustomChannelModal();
+          loadSocial();
+        } else {
+          showToast(data.message || 'Error adding channel', true);
+        }
+      } catch (err) {
+        showToast('Connection error', true);
+      }
+    }
+
+    async function deleteChannel(id) {
+      if (!confirm('Are you sure you want to remove this channel?')) return;
+      try {
+        const res = await fetch(`/admin/api/social/channels/${id}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Channel removed');
+          loadSocial();
+        }
+      } catch (err) {
+        showToast('Connection error', true);
+      }
+    }
+
+    // ==================== OPEN GRAPH & PREVIEW SIMULATOR ====================
+    function populateSocialMeta() {
+      const ogTitle = currentSocialMeta.social_og_title || 'CDerma Choice by Professional | Medical Dermocosmetics Nepal';
+      const ogDesc = currentSocialMeta.social_og_description || 'Doctor-formulated physiological barrier repair and pure Himalayan bio-actives crafted in Itahari, Nepal.';
+      const ogImg = currentSocialMeta.social_og_image || 'assets/images/img_282f9d7b4a1e.jpg';
+      const twitter = currentSocialMeta.social_twitter_site || '@cdermanepal';
+      const waFloating = currentSocialMeta.social_whatsapp_floating === '1' || currentSocialMeta.social_whatsapp_floating === 1;
+      const waNum = currentSocialMeta.social_whatsapp_number || '+977 9820753751';
+      const waMsg = currentSocialMeta.social_whatsapp_msg || 'Namaste CDerma! I would like to inquire about formulations & clinical supplies.';
+
+      const titleEl = document.getElementById('ogTitleInput');
+      if (titleEl) titleEl.value = ogTitle;
+      const descEl = document.getElementById('ogDescInput');
+      if (descEl) descEl.value = ogDesc;
+      const twEl = document.getElementById('twitterHandleInput');
+      if (twEl) twEl.value = twitter;
+      const imgEl = document.getElementById('ogImageUrlInput');
+      if (imgEl) imgEl.value = ogImg;
+      const waToggle = document.getElementById('whatsappFloatingToggle');
+      if (waToggle) waToggle.checked = waFloating;
+      const waNumEl = document.getElementById('whatsappNumberInput');
+      if (waNumEl) waNumEl.value = waNum;
+      const waMsgEl = document.getElementById('whatsappMsgInput');
+      if (waMsgEl) waMsgEl.value = waMsg;
+
+      updateOgPreview(ogImg);
+    }
+
+    function updateOgPreview(url) {
+      const img = document.getElementById('ogImagePreview');
+      const placeholder = document.getElementById('ogImagePlaceholder');
+      if (!img || !placeholder) return;
+
+      if (url && url.trim()) {
+        const cleanUrl = url.trim();
+        img.src = cleanUrl.startsWith('http') || cleanUrl.startsWith('blob:') || cleanUrl.startsWith('/') ? cleanUrl : '/' + cleanUrl;
+        img.classList.remove('hidden');
+        placeholder.classList.add('hidden');
+      } else {
+        img.src = '';
+        img.classList.add('hidden');
+        placeholder.classList.remove('hidden');
+      }
+      updateSimulatorPreview();
+    }
+
+    // Wire instant image upload for OG share banner
+    const ogFileInput = document.getElementById('ogImageFileInput');
+    if (ogFileInput) {
+      ogFileInput.addEventListener('change', async function() {
+        if (!this.files || !this.files.length) return;
+        const file = this.files[0];
+
+        const localBlob = URL.createObjectURL(file);
+        updateOgPreview(localBlob);
+
+        const spinner = document.getElementById('ogUploadSpinner');
+        if (spinner) spinner.classList.remove('hidden');
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+          const res = await fetch('/admin/api/upload', { method: 'POST', body: formData });
+          const data = await res.json();
+          if (data.success && data.url) {
+            document.getElementById('ogImageUrlInput').value = data.url;
+            updateOgPreview(data.url);
+            const badge = document.getElementById('ogImageBadge');
+            if (badge) badge.classList.remove('hidden');
+            showToast('Share image uploaded successfully!');
+          } else {
+            showToast(data.message || 'Error uploading share image', true);
+          }
+        } catch (err) {
+          showToast('Image upload failed: ' + err.message, true);
+        } finally {
+          if (spinner) spinner.classList.add('hidden');
+        }
+      });
+    }
+
+    const ogUrlInput = document.getElementById('ogImageUrlInput');
+    if (ogUrlInput) {
+      ogUrlInput.addEventListener('input', function() {
+        updateOgPreview(this.value.trim());
+      });
+    }
+
+    const ogTitleInput = document.getElementById('ogTitleInput');
+    if (ogTitleInput) {
+      ogTitleInput.addEventListener('input', updateSimulatorPreview);
+    }
+
+    const ogDescInput = document.getElementById('ogDescInput');
+    if (ogDescInput) {
+      ogDescInput.addEventListener('input', function() {
+        const charCount = document.getElementById('ogDescCharCount');
+        if (charCount) charCount.textContent = `${this.value.length} chars`;
+        updateSimulatorPreview();
+      });
+    }
+
+    const twitterSiteInput = document.getElementById('twitterHandleInput');
+    if (twitterSiteInput) {
+      twitterSiteInput.addEventListener('input', updateSimulatorPreview);
+    }
+
+    function setSimulatorPlatform(platform) {
+      currentSimulatorPlatform = platform;
+      document.querySelectorAll('.sim-tab').forEach(btn => {
+        const isActive = btn.id === `simTab-${platform}`;
+        btn.classList.toggle('active', isActive);
+        btn.classList.toggle('bg-surface-dark', isActive);
+        btn.classList.toggle('text-white', isActive);
+        btn.classList.toggle('text-gray-600', !isActive);
+      });
+
+      ['whatsapp', 'facebook', 'twitter', 'linkedin'].forEach(p => {
+        const card = document.getElementById(`simCard-${p}`);
+        if (card) card.classList.toggle('hidden', p !== platform);
+      });
+    }
+
+    function updateSimulatorPreview() {
+      const title = (document.getElementById('ogTitleInput')?.value || 'CDerma Choice by Professional').trim();
+      const desc = (document.getElementById('ogDescInput')?.value || 'Doctor-formulated physiological barrier repair.').trim();
+      const rawImg = (document.getElementById('ogImageUrlInput')?.value || 'assets/images/img_282f9d7b4a1e.jpg').trim();
+      const cleanImg = rawImg.startsWith('http') || rawImg.startsWith('blob:') || rawImg.startsWith('/') ? rawImg : '/' + rawImg;
+      const twitter = (document.getElementById('twitterHandleInput')?.value || '@cdermanepal').trim();
+
+      // WhatsApp
+      const simImgWa = document.getElementById('simImg-whatsapp');
+      if (simImgWa) simImgWa.src = cleanImg;
+      const simTitleWa = document.getElementById('simTitle-whatsapp');
+      if (simTitleWa) simTitleWa.textContent = title;
+      const simDescWa = document.getElementById('simDesc-whatsapp');
+      if (simDescWa) simDescWa.textContent = desc;
+
+      // Facebook
+      const simImgFb = document.getElementById('simImg-facebook');
+      if (simImgFb) simImgFb.src = cleanImg;
+      const simTitleFb = document.getElementById('simTitle-facebook');
+      if (simTitleFb) simTitleFb.textContent = title;
+      const simDescFb = document.getElementById('simDesc-facebook');
+      if (simDescFb) simDescFb.textContent = desc;
+
+      // Twitter / X
+      const simImgTw = document.getElementById('simImg-twitter');
+      if (simImgTw) simImgTw.src = cleanImg;
+      const simTitleTw = document.getElementById('simTitle-twitter');
+      if (simTitleTw) simTitleTw.textContent = title;
+      const simDescTw = document.getElementById('simDesc-twitter');
+      if (simDescTw) simDescTw.textContent = desc;
+      const simHandleTw = document.getElementById('simTwitterHandle');
+      if (simHandleTw) simHandleTw.textContent = twitter.startsWith('@') ? twitter : '@' + twitter;
+
+      // LinkedIn
+      const simImgLi = document.getElementById('simImg-linkedin');
+      if (simImgLi) simImgLi.src = cleanImg;
+      const simTitleLi = document.getElementById('simTitle-linkedin');
+      if (simTitleLi) simTitleLi.textContent = title;
+    }
+
+    async function saveSocialMeta(e) {
+      e.preventDefault();
+      const payload = {
+        meta: {
+          social_og_title: document.getElementById('ogTitleInput').value.trim(),
+          social_og_description: document.getElementById('ogDescInput').value.trim(),
+          social_og_image: document.getElementById('ogImageUrlInput').value.trim(),
+          social_twitter_site: document.getElementById('twitterHandleInput').value.trim(),
+          social_whatsapp_floating: document.getElementById('whatsappFloatingToggle').checked ? '1' : '0',
+          social_whatsapp_number: document.getElementById('whatsappNumberInput').value.trim(),
+          social_whatsapp_msg: document.getElementById('whatsappMsgInput').value.trim()
+        }
+      };
+
+      try {
+        const res = await fetch('/admin/api/social/meta', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Social sharing & Open Graph settings saved!');
+          loadSocial();
+        } else {
+          showToast(data.message || 'Error saving settings', true);
+        }
+      } catch (err) {
+        showToast('Connection error', true);
+      }
+    }
+
+    // ==================== SHOWCASE REELS & UGC ====================
+    function renderSocialPosts() {
+      const grid = document.getElementById('socialPostsGrid');
+      if (!grid) return;
+
+      if (!currentSocialPosts.length) {
+        grid.innerHTML = '<div class="p-8 text-center text-gray-400 col-span-full">No showcase posts yet. Click "+ Add New Reel / Post" to feature your first social review.</div>';
+        return;
+      }
+
+      grid.innerHTML = currentSocialPosts.map(p => {
+        const cleanMedia = p.media_url ? (p.media_url.startsWith('http') || p.media_url.startsWith('/') ? p.media_url : '/' + p.media_url) : '/assets/images/img_282f9d7b4a1e.jpg';
+        return `
+          <div class="bg-white rounded-2xl border border-outline-border overflow-hidden shadow-xs hover:shadow-md transition-shadow flex flex-col justify-between">
+            <div>
+              <div class="relative w-full h-44 bg-gray-900 overflow-hidden group">
+                <img src="${cleanMedia}" alt="${escapeHtml(p.title)}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                <div class="absolute top-2.5 left-2.5">
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-black/70 text-white backdrop-blur-xs border border-white/20">
+                    ${escapeHtml(p.platform)}
+                  </span>
+                </div>
+                ${p.metrics_text ? `
+                  <div class="absolute bottom-2.5 left-2.5">
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-primary/90 text-white backdrop-blur-xs shadow-xs">
+                      ${escapeHtml(p.metrics_text)}
+                    </span>
+                  </div>
+                ` : ''}
+              </div>
+
+              <div class="p-4 space-y-2">
+                <div class="flex items-center justify-between gap-2">
+                  <span class="text-[11px] font-mono text-secondary font-semibold">${escapeHtml(p.author_handle || '@cdermanepal')}</span>
+                  ${p.is_featured ? '<span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">Featured</span>' : ''}
+                </div>
+                <h4 class="font-serif font-bold text-sm text-gray-900 leading-snug line-clamp-2">${escapeHtml(p.title)}</h4>
+                ${p.caption ? `<p class="text-xs text-gray-500 line-clamp-2 italic">“${escapeHtml(p.caption)}”</p>` : ''}
+              </div>
+            </div>
+
+            <div class="p-4 pt-0 border-t border-outline-border flex items-center justify-between text-xs mt-2">
+              <a href="${escapeHtml(p.post_url)}" target="_blank" class="text-primary hover:underline font-semibold flex items-center gap-1">
+                <span>View Post</span>
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+              </a>
+              <div class="space-x-1">
+                <button type="button" onclick="editSocialPost(${p.id})" class="p-1.5 rounded text-gray-600 hover:text-primary transition-colors">
+                  <span class="material-symbols-outlined text-base">edit</span>
+                </button>
+                <button type="button" onclick="deleteSocialPost(${p.id})" class="p-1.5 rounded text-gray-400 hover:text-rose-600 transition-colors">
+                  <span class="material-symbols-outlined text-base">delete</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function openSocialPostModal(post = null) {
+      document.getElementById('socialPostForm').reset();
+      document.getElementById('socialPostId').value = post ? post.id : '';
+      document.getElementById('socialPostModalTitle').textContent = post ? 'Edit Showcase Reel / Post' : 'Add New Showcase Reel / Post';
+
+      const fileInput = document.getElementById('socialPostFileInput');
+      if (fileInput) fileInput.value = '';
+      const badge = document.getElementById('socialPostUploadBadge');
+      if (badge) badge.classList.add('hidden');
+
+      if (post) {
+        document.getElementById('socialPostPlatform').value = post.platform || 'instagram';
+        document.getElementById('socialPostAuthor').value = post.author_handle || '';
+        document.getElementById('socialPostTitle').value = post.title || '';
+        document.getElementById('socialPostUrl').value = post.post_url || '';
+        document.getElementById('socialPostMediaUrl').value = post.media_url || '';
+        document.getElementById('socialPostMetrics').value = post.metrics_text || '';
+        document.getElementById('socialPostSort').value = post.sort_order ?? 1;
+        document.getElementById('socialPostCaption').value = post.caption || '';
+        document.getElementById('socialPostFeatured').checked = post.is_featured == 1;
+        updateSocialPostPreview(post.media_url || '');
+      } else {
+        document.getElementById('socialPostMediaUrl').value = 'assets/images/img_282f9d7b4a1e.jpg';
+        document.getElementById('socialPostSort').value = currentSocialPosts.length + 1;
+        document.getElementById('socialPostFeatured').checked = true;
+        updateSocialPostPreview('assets/images/img_282f9d7b4a1e.jpg');
+      }
+      document.getElementById('socialPostModal').classList.remove('hidden');
+    }
+
+    function closeSocialPostModal() {
+      document.getElementById('socialPostModal').classList.add('hidden');
+    }
+
+    function editSocialPost(id) {
+      const p = currentSocialPosts.find(x => x.id === id);
+      if (p) openSocialPostModal(p);
+    }
+
+    function updateSocialPostPreview(url) {
+      const img = document.getElementById('socialPostPreview');
+      const placeholder = document.getElementById('socialPostPlaceholder');
+      if (!img || !placeholder) return;
+
+      if (url && url.trim()) {
+        const cleanUrl = url.trim();
+        img.src = cleanUrl.startsWith('http') || cleanUrl.startsWith('blob:') || cleanUrl.startsWith('/') ? cleanUrl : '/' + cleanUrl;
+        img.classList.remove('hidden');
+        placeholder.classList.add('hidden');
+      } else {
+        img.src = '';
+        img.classList.add('hidden');
+        placeholder.classList.remove('hidden');
+      }
+    }
+
+    // Instant upload for social post modal
+    const postFileInput = document.getElementById('socialPostFileInput');
+    if (postFileInput) {
+      postFileInput.addEventListener('change', async function() {
+        if (!this.files || !this.files.length) return;
+        const file = this.files[0];
+
+        const localBlob = URL.createObjectURL(file);
+        updateSocialPostPreview(localBlob);
+
+        const spinner = document.getElementById('socialPostSpinner');
+        if (spinner) spinner.classList.remove('hidden');
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+          const res = await fetch('/admin/api/upload', { method: 'POST', body: formData });
+          const data = await res.json();
+          if (data.success && data.url) {
+            document.getElementById('socialPostMediaUrl').value = data.url;
+            updateSocialPostPreview(data.url);
+            const badge = document.getElementById('socialPostUploadBadge');
+            if (badge) badge.classList.remove('hidden');
+            showToast('Thumbnail uploaded successfully!');
+          } else {
+            showToast(data.message || 'Error uploading thumbnail', true);
+          }
+        } catch (err) {
+          showToast('Image upload failed: ' + err.message, true);
+        } finally {
+          if (spinner) spinner.classList.add('hidden');
+        }
+      });
+    }
+
+    const postMediaUrlInput = document.getElementById('socialPostMediaUrl');
+    if (postMediaUrlInput) {
+      postMediaUrlInput.addEventListener('input', function() {
+        updateSocialPostPreview(this.value.trim());
+      });
+    }
+
+    async function saveSocialPost(e) {
+      e.preventDefault();
+      const id = document.getElementById('socialPostId').value;
+      const fileInput = document.getElementById('socialPostFileInput');
+      let mediaUrl = document.getElementById('socialPostMediaUrl').value.trim();
+
+      if (fileInput && fileInput.files.length > 0) {
+        const uploadForm = new FormData();
+        uploadForm.append('file', fileInput.files[0]);
+        try {
+          const uploadRes = await fetch('/admin/api/upload', { method: 'POST', body: uploadForm });
+          const uploadData = await uploadRes.json();
+          if (uploadData.success) {
+            mediaUrl = uploadData.url;
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      }
+
+      const payload = {
+        platform: document.getElementById('socialPostPlatform').value,
+        author_handle: document.getElementById('socialPostAuthor').value.trim(),
+        title: document.getElementById('socialPostTitle').value.trim(),
+        post_url: document.getElementById('socialPostUrl').value.trim(),
+        media_url: mediaUrl || 'assets/images/img_282f9d7b4a1e.jpg',
+        metrics_text: document.getElementById('socialPostMetrics').value.trim(),
+        sort_order: parseInt(document.getElementById('socialPostSort').value, 10) || 0,
+        caption: document.getElementById('socialPostCaption').value.trim(),
+        is_featured: document.getElementById('socialPostFeatured').checked ? 1 : 0
+      };
+
+      const method = id ? 'PUT' : 'POST';
+      const url = id ? `/admin/api/social/posts/${id}` : '/admin/api/social/posts';
+
+      try {
+        const res = await fetch(url, {
+          method,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(id ? 'Showcase reel updated!' : 'Showcase reel added!');
+          closeSocialPostModal();
+          loadSocial();
+        } else {
+          showToast(data.message || 'Error saving post', true);
+        }
+      } catch (err) {
+        showToast('Connection error', true);
+      }
+    }
+
+    async function deleteSocialPost(id) {
+      if (!confirm('Are you sure you want to remove this showcase reel?')) return;
+      try {
+        const res = await fetch(`/admin/api/social/posts/${id}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (data.success) {
+          showToast('Showcase reel removed');
+          loadSocial();
+        }
+      } catch (err) {
+        showToast('Connection error', true);
+      }
+    }
+
+    // ==================== UTM CAMPAIGN & QUICK SHARE ====================
+    function generateUtmLink() {
+      const page = document.getElementById('utmPageSelect')?.value || 'index.html';
+      const source = document.getElementById('utmSourceSelect')?.value || 'instagram_bio';
+      const rawCampaign = document.getElementById('utmCampaignInput')?.value || 'barrier_repair_2026';
+      const cleanCampaign = rawCampaign.trim().toLowerCase().replace(/[^a-z0-9_]/g, '_') || 'cderma_campaign';
+
+      const origin = window.location.origin || 'https://cderma.com.np';
+      const fullUrl = `${origin}/${page}?utm_source=${encodeURIComponent(source)}&utm_medium=social&utm_campaign=${encodeURIComponent(cleanCampaign)}`;
+
+      const urlInput = document.getElementById('utmGeneratedUrl');
+      if (urlInput) urlInput.value = fullUrl;
+    }
+
+    function copyUtmUrl() {
+      const urlInput = document.getElementById('utmGeneratedUrl');
+      if (!urlInput) return;
+      navigator.clipboard.writeText(urlInput.value).then(() => {
+        const btnText = document.getElementById('copyUtmBtnText');
+        if (btnText) {
+          const original = btnText.textContent;
+          btnText.textContent = 'Copied!';
+          setTimeout(() => { btnText.textContent = original; }, 2000);
+        }
+        showToast('Campaign URL copied to clipboard!');
+      }).catch(() => {
+        urlInput.select();
+        document.execCommand('copy');
+        showToast('Campaign URL copied!');
+      });
+    }
+
+    function testUtmUrl() {
+      const urlInput = document.getElementById('utmGeneratedUrl');
+      if (urlInput && urlInput.value) {
+        window.open(urlInput.value, '_blank');
+      }
+    }
+
+    function shareDirectly(platform) {
+      const url = document.getElementById('utmGeneratedUrl')?.value || window.location.origin;
+      const title = document.getElementById('ogTitleInput')?.value || 'CDerma Choice by Professional — Medical Dermocosmetics';
+      let shareUrl = '';
+
+      if (platform === 'whatsapp') {
+        shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(title + ' ' + url)}`;
+      } else if (platform === 'facebook') {
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+      } else if (platform === 'linkedin') {
+        shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+      } else if (platform === 'twitter') {
+        shareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+      }
+
+      if (shareUrl) {
+        window.open(shareUrl, '_blank', 'width=600,height=500,scrollbars=yes,resizable=yes');
+      }
+    }
+
     // Helper utilities
     function escapeHtml(str) {
       if (!str) return '';
@@ -1632,6 +3930,39 @@
 
     // Init
     initDashboard();
+  </script>
+
+  <script>
+    function toggleAdminSidebar() {
+      const sidebar = document.getElementById('admin-sidebar');
+      const backdrop = document.getElementById('admin-mobile-backdrop');
+      if (sidebar.classList.contains('-translate-x-full')) {
+        sidebar.classList.remove('-translate-x-full');
+        backdrop.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      } else {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Auto close sidebar on tab switch when on mobile
+    const originalSwitchTab = window.switchTab;
+    window.switchTab = function(tabId) {
+      if (typeof originalSwitchTab === 'function') {
+        originalSwitchTab(tabId);
+      }
+      if (window.innerWidth < 768) {
+        const sidebar = document.getElementById('admin-sidebar');
+        const backdrop = document.getElementById('admin-mobile-backdrop');
+        if (sidebar && !sidebar.classList.contains('-translate-x-full')) {
+          sidebar.classList.add('-translate-x-full');
+          backdrop.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+      }
+    };
   </script>
 </body>
 </html>
