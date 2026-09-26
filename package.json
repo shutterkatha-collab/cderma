@@ -25,5 +25,8 @@
     "express-session": "^1.19.0",
     "multer": "^2.3.0",
     "sql.js": "^1.14.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
