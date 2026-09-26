@@ -154,8 +154,8 @@ app.get('/products/:slug', (req, res) => {
     let html = fs.readFileSync(detailFile, 'utf8');
     const baseUrl = (process.env.SITE_URL || 'https://cdermanepal.com').replace(/\/+$/, '');
     const canonicalUrl = `${baseUrl}/products/${encodeURIComponent(product.slug)}`;
-    const pageTitle = `${product.title} | Science-Led Skincare | cDerma Nepal`;
-    const cleanDesc = (product.summary || product.description || 'Science-led skincare formulation by cDerma Nepal.').replace(/"/g, '&quot;').replace(/\n+/g, ' ').slice(0, 220);
+    const pageTitle = `${product.title} | Doctor-Recommended Face Care Nepal | CDerma Wholesale`;
+    const cleanDesc = (product.summary || product.description || 'Doctor-prescribed clinical skincare formulation by CDerma Nepal.').replace(/"/g, '&quot;').replace(/\n+/g, ' ').slice(0, 220);
     const prodImg = product.image_url
       ? (product.image_url.startsWith('http') ? product.image_url : `${baseUrl}/${product.image_url.replace(/^\//, '')}`)
       : `${baseUrl}/assets/images/cderma-logo.png`;
@@ -195,21 +195,17 @@ app.get('/products/:slug', (req, res) => {
 
 app.get('/science', (req, res) => res.sendFile(path.join(__dirname, 'science.html')));
 app.get('/science.html', (req, res) => res.sendFile(path.join(__dirname, 'science.html')));
-app.get('/about', (req, res) => res.sendFile(path.join(__dirname, 'science.html')));
-app.get('/about.html', (req, res) => res.sendFile(path.join(__dirname, 'science.html')));
 
 app.get('/b2b', (req, res) => res.sendFile(path.join(__dirname, 'b2b.html')));
 app.get('/b2b.html', (req, res) => res.sendFile(path.join(__dirname, 'b2b.html')));
-app.get('/for-professionals', (req, res) => res.sendFile(path.join(__dirname, 'b2b.html')));
-app.get('/for-professionals.html', (req, res) => res.sendFile(path.join(__dirname, 'b2b.html')));
 
 app.get('/clinics', (req, res) => res.sendFile(path.join(__dirname, 'clinics.html')));
 app.get('/clinics.html', (req, res) => res.sendFile(path.join(__dirname, 'clinics.html')));
 
 app.get('/monographs', (req, res) => res.sendFile(path.join(__dirname, 'monographs.html')));
 app.get('/monographs.html', (req, res) => res.sendFile(path.join(__dirname, 'monographs.html')));
-app.get('/skin-concerns', (req, res) => res.redirect('/#skin-concerns'));
-app.get('/contact', (req, res) => res.redirect('/#contact'));
+app.get('/doctors-advice', (req, res) => res.sendFile(path.join(__dirname, 'monographs.html')));
+app.get('/blog', (req, res) => res.sendFile(path.join(__dirname, 'monographs.html')));
 
 // AI & LLM Discovery Endpoints (llms.txt standard)
 app.get('/llms.txt', (req, res) => {

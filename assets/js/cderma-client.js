@@ -2319,13 +2319,13 @@ function renderProductGrid(container, products) {
           <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="${escapeHtml(p.title)}" src="${escapeHtml(p.image_url || 'assets/images/product-packaging-dropper.png')}" loading="lazy" decoding="async">
           <div class="absolute top-space-xs left-space-xs">
             <span class="px-space-xs py-[2px] rounded bg-surface/90 text-primary text-[10px] uppercase tracking-wider font-semibold shadow-sm">
-              ${escapeHtml(p.clinical_badge || (isNe ? 'क्लिनिकल फर्मुला' : 'Clinical Formulation'))}
+              ${escapeHtml(p.clinical_badge || (isNe ? 'चिकित्सकद्वारा प्रमाणित' : 'Doctor Formulated'))}
             </span>
           </div>
           ${p.is_featured ? `
             <div class="absolute top-space-xs right-space-xs">
-              <span class="px-2 py-[2px] rounded bg-primary text-white text-[10px] uppercase tracking-wider font-bold shadow-sm">
-                ${isNe ? 'प्रमुख' : 'Featured'}
+              <span class="px-2 py-[2px] rounded bg-[#887635] text-white text-[10px] uppercase tracking-wider font-bold shadow-sm">
+                ${isNe ? 'प्रमुख' : 'Flagship'}
               </span>
             </div>
           ` : ''}
@@ -2333,8 +2333,8 @@ function renderProductGrid(container, products) {
         <div class="flex flex-col flex-1 justify-between">
           <div>
             <div class="flex items-center justify-between text-[11px] text-outline uppercase tracking-wider mb-1">
-              <span>${escapeHtml(p.category || (isNe ? 'छाला हेरचाह' : 'Skincare'))}${volumeText ? ` • ${escapeHtml(volumeText)}` : ''}</span>
-              <span class="text-secondary font-semibold">${displayPrice || (isNe ? 'व्यावसायिक ग्रेड' : 'Professional Grade')}</span>
+              <span>${escapeHtml(p.category || (isNe ? 'क्लिनिकल रेजिमेन' : 'Clinical Regimen'))}${volumeText ? ` • ${escapeHtml(volumeText)}` : ''}</span>
+              <span class="text-secondary font-semibold">${displayPrice || (isNe ? 'चिकित्सकीय ग्रेड' : 'Doctor Grade')}</span>
             </div>
             <h4 class="font-display-lg text-[17px] font-semibold text-on-surface leading-snug group-hover:text-primary transition-colors min-h-[48px] flex items-center">
               <a href="${detailUrl}">${escapeHtml(p.title)}</a>
@@ -2380,7 +2380,7 @@ async function initProductDetail() {
 
   // Default flagship if none requested
   if (!slug || slug === 'flagship') {
-    slug = 'alpha-c-serum';
+    slug = 'centella-barrier-restore-concentrate';
   }
 
   try {
@@ -2393,19 +2393,19 @@ async function initProductDetail() {
     const p = data.product;
 
     // 1. Update Title & Breadcrumbs
-    document.title = `${p.title} | cDerma Skin Science Nepal`;
+    document.title = `${p.title} | CDerma Clinical Formulations Nepal`;
     const canonicalLink = document.querySelector('link[rel="canonical"]');
     if (canonicalLink) {
-      canonicalLink.href = `${window.location.origin}/product-detail.html?slug=${encodeURIComponent(p.slug)}`;
+      canonicalLink.href = `${window.location.origin}/products/${encodeURIComponent(p.slug)}`;
     }
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) {
       metaDesc.content = p.summary || p.description || '';
     }
     const ogTitle = document.querySelector('meta[property="og:title"]');
-    if (ogTitle) ogTitle.content = `${p.title} | cDerma Skin Science Nepal`;
+    if (ogTitle) ogTitle.content = `${p.title} | CDerma Clinical Formulations Nepal`;
     const ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogUrl) ogUrl.content = `${window.location.origin}/product-detail.html?slug=${encodeURIComponent(p.slug)}`;
+    if (ogUrl) ogUrl.content = `${window.location.origin}/products/${encodeURIComponent(p.slug)}`;
 
     const bcEl = document.getElementById('p-breadcrumb') || document.querySelector('[data-product-breadcrumb]');
     if (bcEl) bcEl.textContent = p.title;
@@ -2418,7 +2418,7 @@ async function initProductDetail() {
     if (subtitleEl) subtitleEl.textContent = p.subtitle || p.category;
 
     const badgeEl = document.getElementById('p-badge') || document.querySelector('[data-product-badge]');
-    if (badgeEl) badgeEl.textContent = p.clinical_badge || (isNe ? 'क्लिनिकल सिरिज' : 'Clinical Active Series');
+    if (badgeEl) badgeEl.textContent = p.clinical_badge || (isNe ? 'चिकित्सकद्वारा प्रमाणित' : 'Medical Grade Formulation');
 
     const categoryEl = document.getElementById('p-category') || document.querySelector('[data-product-category]');
     if (categoryEl) categoryEl.textContent = p.category;
@@ -2442,31 +2442,24 @@ async function initProductDetail() {
       mainImg.alt = p.title;
     }
 
-    // 5. Active Ingredients Cards (Section 3)
-    const ingredientsCards = document.getElementById('p-ingredients-cards');
-    if (ingredientsCards && Array.isArray(p.active_ingredients) && p.active_ingredients.length > 0) {
-      ingredientsCards.innerHTML = p.active_ingredients.map((ing, i) => {
-        const name = typeof ing === 'string' ? ing : (ing.name || ing.role || '');
-        const role = typeof ing === 'object' && (ing.role || ing.concentration) ? (ing.role || ing.concentration) : 'Targeted dermatological active.';
-        return `
-          <div class="p-6 rounded-xl border border-slate-200 bg-white shadow-xs">
-            <span class="text-xs font-bold uppercase tracking-wider text-brand-blue">Active 0${i + 1}</span>
-            <h3 class="text-base font-bold text-slate-900 mt-1">${escapeHtml(name)}</h3>
-            <p class="text-xs text-slate-600 mt-2 leading-relaxed">${escapeHtml(role)}</p>
-          </div>
-        `;
-      }).join('');
+    // 5. Active Ingredients Pills
+    const ingredientsContainer = document.getElementById('p-ingredients') || document.querySelector('[data-product-ingredients]');
+    if (ingredientsContainer && Array.isArray(p.active_ingredients) && p.active_ingredients.length > 0) {
+      ingredientsContainer.innerHTML = p.active_ingredients.map(ing => `
+        <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-surface-container border border-outline-variant/40 text-primary font-label text-[11px] font-semibold tracking-wide">
+          <span class="w-1.5 h-1.5 rounded-full bg-primary mr-1.5"></span>
+          ${escapeHtml(ing)}
+        </span>
+      `).join('');
     }
 
-    // 6. Key Benefits Checkmark List (Section 2 - max 3 benefits)
+    // 6. Key Benefits Checkmark List
     const benefitsContainer = document.getElementById('p-benefits') || document.querySelector('[data-product-benefits]');
     if (benefitsContainer && Array.isArray(p.key_benefits) && p.key_benefits.length > 0) {
-      benefitsContainer.innerHTML = p.key_benefits.slice(0, 3).map(b => `
-        <li class="flex items-start gap-3">
-          <span class="material-symbols-outlined text-brand-blue text-xl shrink-0 mt-0.5">check_circle</span>
-          <div>
-            <h4 class="text-sm font-bold text-slate-900">${escapeHtml(b)}</h4>
-          </div>
+      benefitsContainer.innerHTML = p.key_benefits.map(b => `
+        <li class="flex items-start gap-2 text-on-surface-variant text-[13px] leading-relaxed">
+          <span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">check_circle</span>
+          <span>${escapeHtml(b)}</span>
         </li>
       `).join('');
     }
@@ -2477,12 +2470,12 @@ async function initProductDetail() {
       inciEl.textContent = p.inci_full;
     }
 
-    // 8. Usage Instructions (Section 5)
+    // 8. Usage Instructions
     const usageEl = document.getElementById('p-usage') || document.querySelector('[data-product-usage]');
     if (usageEl && p.usage_instructions) {
       usageEl.textContent = p.usage_instructions;
     }
-    if (isNe) applyBodyTranslations('ne');
+    if (isNe) applyBodyTranslations('ne'); // Product detail translated
 
   } catch (err) {
     console.debug('Product detail dynamic sync fallback');
