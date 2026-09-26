@@ -181,6 +181,8 @@ const apiRateLimiter = new MemoryRateLimiter({
 // ==========================================
 
 const TRUSTED_HOSTS = new Set([
+  'cdermanepal.com',
+  'www.cdermanepal.com',
   'cderma.com.np',
   'www.cderma.com.np',
   'antiquewhite-porcupine-932870.hostingersite.com',

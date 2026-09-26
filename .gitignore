@@ -26,4 +26,5 @@ public/uploads/*
 
 # IDE Agent customizations
 .agents/
+.claude/
 scratch/

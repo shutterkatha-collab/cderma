@@ -13,7 +13,7 @@ const LLMS_TXT_PATH = path.join(ROOT_DIR, 'llms.txt');
 const LLMS_FULL_TXT_PATH = path.join(ROOT_DIR, 'llms-full.txt');
 
 function getBaseUrl() {
-  return (process.env.SITE_URL || 'https://cderma.com.np').replace(/\/+$/, '');
+  return (process.env.SITE_URL || 'https://cdermanepal.com').replace(/\/+$/, '');
 }
 
 /**

@@ -91,7 +91,7 @@ app.use((req, res, next) => {
     "script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com data:",
-    "img-src 'self' data: blob: https://cderma.com.np https://antiquewhite-porcupine-932870.hostingersite.com https://*.hostingersite.com",
+    "img-src 'self' data: blob: https://cdermanepal.com https://www.cdermanepal.com https://cderma.com.np https://antiquewhite-porcupine-932870.hostingersite.com https://*.hostingersite.com",
     "connect-src 'self'",
     "frame-ancestors 'self'",
     "object-src 'none'",
@@ -104,7 +104,7 @@ app.use((req, res, next) => {
 
 // 7. Static Asset Directories with Content-Type and Nosniff enforcement
 app.use('/assets', express.static(path.join(__dirname, 'assets'), {
-  maxAge: '1d',
+  maxAge: '30d',
   setHeaders: (res) => {
     res.setHeader('X-Content-Type-Options', 'nosniff');
   }
@@ -126,6 +126,10 @@ app.use('/api', apiRoutes);
 // Admin CMS
 app.use('/admin', adminRoutes);
 
+// Favicon Handlers
+app.get('/favicon.ico', (req, res) => res.sendFile(path.join(__dirname, 'assets/images/favicon.svg')));
+app.get('/favicon.svg', (req, res) => res.sendFile(path.join(__dirname, 'assets/images/favicon.svg')));
+
 // Clean Route Handlers for Public Web Pages
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 app.get('/home', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
@@ -136,7 +140,58 @@ app.get('/products.html', (req, res) => res.sendFile(path.join(__dirname, 'produ
 
 app.get('/product-detail', (req, res) => res.sendFile(path.join(__dirname, 'product-detail.html')));
 app.get('/product-detail.html', (req, res) => res.sendFile(path.join(__dirname, 'product-detail.html')));
-app.get('/products/:slug', (req, res) => res.sendFile(path.join(__dirname, 'product-detail.html')));
+
+// SSR Dynamic SEO Metadata for Individual Product Pages
+app.get('/products/:slug', (req, res) => {
+  const slug = req.params.slug;
+  const detailFile = path.join(__dirname, 'product-detail.html');
+  try {
+    const product = db.prepare("SELECT * FROM products WHERE slug = ? AND status != 'archived'").get(slug);
+    if (!product) {
+      return res.sendFile(detailFile);
+    }
+
+    let html = fs.readFileSync(detailFile, 'utf8');
+    const baseUrl = (process.env.SITE_URL || 'https://cdermanepal.com').replace(/\/+$/, '');
+    const canonicalUrl = `${baseUrl}/products/${encodeURIComponent(product.slug)}`;
+    const pageTitle = `${product.title} | Doctor-Recommended Face Care Nepal | CDerma Wholesale`;
+    const cleanDesc = (product.summary || product.description || 'Doctor-prescribed clinical skincare formulation by CDerma Nepal.').replace(/"/g, '&quot;').replace(/\n+/g, ' ').slice(0, 220);
+    const prodImg = product.image_url
+      ? (product.image_url.startsWith('http') ? product.image_url : `${baseUrl}/${product.image_url.replace(/^\//, '')}`)
+      : `${baseUrl}/assets/images/cderma-logo.png`;
+
+    // 1. Replace Title & Meta Description
+    html = html.replace(/<title>.*?<\/title>/i, `<title>${pageTitle}</title>`);
+    html = html.replace(/<meta name="description" content=".*?"/i, `<meta name="description" content="${cleanDesc}"`);
+
+    // 2. Canonical & Hreflang
+    html = html.replace(/<link rel="canonical" href=".*?"/i, `<link rel="canonical" href="${canonicalUrl}"`);
+    html = html.replace(/<link rel="alternate" hreflang="en-NP" href=".*?"/i, `<link rel="alternate" hreflang="en-NP" href="${canonicalUrl}"`);
+    html = html.replace(/<link rel="alternate" hreflang="x-default" href=".*?"/i, `<link rel="alternate" hreflang="x-default" href="${canonicalUrl}"`);
+
+    // 3. Open Graph Tags
+    html = html.replace(/<meta property="og:title" content=".*?"/i, `<meta property="og:title" content="${pageTitle.replace(/"/g, '&quot;')}"`);
+    html = html.replace(/<meta property="og:description" content=".*?"/i, `<meta property="og:description" content="${cleanDesc}"`);
+    html = html.replace(/<meta property="og:url" content=".*?"/i, `<meta property="og:url" content="${canonicalUrl}"`);
+    html = html.replace(/<meta property="og:image" content=".*?"/i, `<meta property="og:image" content="${prodImg}"`);
+
+    // 4. Twitter Tags
+    html = html.replace(/<meta name="twitter:title" content=".*?"/i, `<meta name="twitter:title" content="${pageTitle.replace(/"/g, '&quot;')}"`);
+    html = html.replace(/<meta name="twitter:description" content=".*?"/i, `<meta name="twitter:description" content="${cleanDesc}"`);
+    html = html.replace(/<meta name="twitter:image" content=".*?"/i, `<meta name="twitter:image" content="${prodImg}"`);
+
+    // 5. Breadcrumb JSON-LD update
+    html = html.replace(
+      /"position":\s*3,\s*"name":\s*".*?",\s*"item":\s*".*?"/,
+      `"position": 3, "name": "${product.title.replace(/"/g, '\\"')}", "item": "${canonicalUrl}"`
+    );
+
+    res.send(html);
+  } catch (err) {
+    console.error('Error generating dynamic product SEO page:', err);
+    res.sendFile(detailFile);
+  }
+});
 
 app.get('/science', (req, res) => res.sendFile(path.join(__dirname, 'science.html')));
 app.get('/science.html', (req, res) => res.sendFile(path.join(__dirname, 'science.html')));
@@ -206,19 +261,19 @@ app.get('/sitemap.xml', (req, res) => {
     const db = require('./src/config/db');
     const products = db.prepare("SELECT slug, title, image_url, updated_at FROM products WHERE status = 'active' ORDER BY id ASC").all();
     const today = new Date().toISOString().split('T')[0];
+    const baseUrl = (process.env.SITE_URL || 'https://cdermanepal.com').replace(/\/+$/, '');
 
     let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
     xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n`;
 
     // Static pages
     const staticPages = [
-      { loc: 'https://cderma.com.np/', priority: '1.0', changefreq: 'weekly', title: 'CDerma Nepal Doctor Recommended Skincare Logo', img: 'https://cderma.com.np/assets/images/cderma-logo.png' },
-      { loc: 'https://cderma.com.np/products.html', priority: '0.9', changefreq: 'weekly' },
-      { loc: 'https://cderma.com.np/product-detail.html', priority: '0.9', changefreq: 'weekly' },
-      { loc: 'https://cderma.com.np/science.html', priority: '0.8', changefreq: 'monthly' },
-      { loc: 'https://cderma.com.np/b2b.html', priority: '0.85', changefreq: 'weekly' },
-      { loc: 'https://cderma.com.np/clinics.html', priority: '0.8', changefreq: 'weekly' },
-      { loc: 'https://cderma.com.np/monographs.html', priority: '0.8', changefreq: 'weekly' }
+      { loc: `${baseUrl}/`, priority: '1.0', changefreq: 'weekly', title: 'CDerma Nepal Doctor Recommended Skincare Logo', img: `${baseUrl}/assets/images/cderma-logo.png` },
+      { loc: `${baseUrl}/products.html`, priority: '0.9', changefreq: 'weekly' },
+      { loc: `${baseUrl}/science.html`, priority: '0.8', changefreq: 'monthly' },
+      { loc: `${baseUrl}/b2b.html`, priority: '0.85', changefreq: 'weekly' },
+      { loc: `${baseUrl}/clinics.html`, priority: '0.8', changefreq: 'weekly' },
+      { loc: `${baseUrl}/monographs.html`, priority: '0.8', changefreq: 'weekly' }
     ];
 
     staticPages.forEach(p => {
@@ -231,8 +286,8 @@ app.get('/sitemap.xml', (req, res) => {
 
     // Dynamic active products
     products.forEach(prod => {
-      const prodImg = prod.image_url ? (prod.image_url.startsWith('http') ? prod.image_url : `https://cderma.com.np/${prod.image_url.replace(/^\//, '')}`) : 'https://cderma.com.np/assets/images/cderma-logo.png';
-      xml += `  <url>\n    <loc>https://cderma.com.np/products/${encodeURIComponent(prod.slug)}</loc>\n    <lastmod>${prod.updated_at ? prod.updated_at.split(' ')[0] : today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.85</priority>\n`;
+      const prodImg = prod.image_url ? (prod.image_url.startsWith('http') ? prod.image_url : `${baseUrl}/${prod.image_url.replace(/^\//, '')}`) : `${baseUrl}/assets/images/cderma-logo.png`;
+      xml += `  <url>\n    <loc>${baseUrl}/products/${encodeURIComponent(prod.slug)}</loc>\n    <lastmod>${prod.updated_at ? prod.updated_at.split(' ')[0] : today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.85</priority>\n`;
       xml += `    <image:image>\n      <image:loc>${prodImg}</image:loc>\n      <image:title>${prod.title.replace(/[<>&'"]/g, '')}</image:title>\n    </image:image>\n`;
       xml += `  </url>\n`;
     });

@@ -444,4 +444,52 @@ router.get('/social', (req, res) => {
   }
 });
 
+// ==================== BATCH & ASSAY (COA) VERIFICATION ====================
+
+// GET /api/batches - List active batches for quick search / chips
+router.get('/batches', (req, res) => {
+  try {
+    const batches = db.prepare(`
+      SELECT id, lot_id, product_title, product_title_ne, mfd_date, expiry_date, status, coa_pdf_url
+      FROM product_batches
+      WHERE is_active = 1
+      ORDER BY id DESC
+      LIMIT 20
+    `).all();
+    res.json({ success: true, count: batches.length, batches });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// GET /api/batches/:lotId - Lookup verified batch assay results by Lot ID
+router.get('/batches/:lotId', (req, res) => {
+  try {
+    const { lotId } = req.params;
+    if (!lotId || !lotId.trim()) {
+      return res.status(400).json({ success: false, message: 'Batch Lot ID is required.' });
+    }
+
+    const cleanLot = lotId.trim().toUpperCase();
+    const batch = db.prepare(`
+      SELECT * FROM product_batches
+      WHERE UPPER(lot_id) = ? AND is_active = 1
+    `).get(cleanLot);
+
+    if (!batch) {
+      return res.status(404).json({
+        success: false,
+        message: `Batch ID "${cleanLot}" was not found in the verified assay ledger.`
+      });
+    }
+
+    res.json({
+      success: true,
+      batch
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 module.exports = router;

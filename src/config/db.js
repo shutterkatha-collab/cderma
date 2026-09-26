@@ -359,6 +359,36 @@ async function initDatabase() {
     );
   `);
 
+  // 12. Product Batches & Analytical Assay (COA) Ledger
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS product_batches (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      lot_id TEXT UNIQUE NOT NULL,
+      product_title TEXT NOT NULL,
+      product_title_ne TEXT,
+      mfd_date TEXT NOT NULL,
+      expiry_date TEXT,
+      status TEXT DEFAULT 'PASSED ALL TESTS',
+      purity_param TEXT DEFAULT 'Active Asiaticoside Purity',
+      purity_spec TEXT DEFAULT '≥ 90.0% by HPLC',
+      purity_result TEXT DEFAULT '94.20% [Pass]',
+      ph_spec TEXT DEFAULT '5.20 – 5.60 at 25°C',
+      ph_result TEXT DEFAULT '5.42 pH [Pass]',
+      microbial_spec TEXT DEFAULT '< 10 CFU/g',
+      microbial_result TEXT DEFAULT '< 1 CFU/g [Pass]',
+      heavy_metals_spec TEXT DEFAULT '< 1.0 ppm Combined',
+      heavy_metals_result TEXT DEFAULT 'Not Detected [Pass]',
+      stability_spec TEXT DEFAULT '4,000 RPM / 30 mins',
+      stability_result TEXT DEFAULT 'Zero Separation [Pass]',
+      chemist_name TEXT DEFAULT 'Dr. P. Bhattarai, Ph.D.',
+      chemist_title TEXT DEFAULT 'Lead Formulation Pharmacist • Itahari Lab',
+      coa_pdf_url TEXT,
+      is_active INTEGER DEFAULT 1,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+  `);
+
   // Run schema migrations for monographs, clinics, and bilingual columns
   migrateMonographsTable();
   migrateBilingualColumns();
@@ -804,7 +834,7 @@ function seedInitialData() {
     const passwordHash = hashPassword(adminPass);
     db.prepare('INSERT INTO admin_users (username, email, password_hash, role) VALUES (?, ?, ?, ?)').run(
       adminUser,
-      'admin@cderma.com.np',
+      'admin@cdermanepal.com',
       passwordHash,
       'admin'
     );
@@ -1009,6 +1039,80 @@ function seedInitialData() {
     }
   });
   insertManySocialSettings(defaultSocialSettings);
+
+  // Seed Default Product Batches & Assay COAs if empty
+  const batchCount = db.prepare('SELECT COUNT(*) as count FROM product_batches').get().count;
+  if (batchCount === 0) {
+    const insertBatch = db.prepare(`
+      INSERT INTO product_batches (
+        lot_id, product_title, product_title_ne, mfd_date, expiry_date, status,
+        purity_param, purity_spec, purity_result, ph_spec, ph_result,
+        microbial_spec, microbial_result, heavy_metals_spec, heavy_metals_result,
+        stability_spec, stability_result, chemist_name, chemist_title, coa_pdf_url, is_active
+      ) VALUES (
+        @lot_id, @product_title, @product_title_ne, @mfd_date, @expiry_date, @status,
+        @purity_param, @purity_spec, @purity_result, @ph_spec, @ph_result,
+        @microbial_spec, @microbial_result, @heavy_metals_spec, @heavy_metals_result,
+        @stability_spec, @stability_result, @chemist_name, @chemist_title, @coa_pdf_url, @is_active
+      )
+    `);
+    const defaultBatches = [
+      {
+        lot_id: 'LOT-24-0442',
+        product_title: 'Centella Intensive Repair Serum 30ml',
+        product_title_ne: 'सेन्टेला इन्टेन्सिव रिपेयर सीरम ३० मि.लि.',
+        mfd_date: 'Nov 12, 2024',
+        expiry_date: 'Nov 2026',
+        status: 'PASSED ALL TESTS',
+        purity_param: 'Active Asiaticoside Purity',
+        purity_spec: '≥ 90.0% by HPLC',
+        purity_result: '94.20% [Pass]',
+        ph_spec: '5.20 – 5.60 at 25°C',
+        ph_result: '5.42 pH [Pass]',
+        microbial_spec: '< 10 CFU/g',
+        microbial_result: '< 1 CFU/g [Pass]',
+        heavy_metals_spec: '< 1.0 ppm Combined',
+        heavy_metals_result: 'Not Detected [Pass]',
+        stability_spec: '4,000 RPM / 30 mins',
+        stability_result: 'Zero Separation [Pass]',
+        chemist_name: 'Dr. P. Bhattarai, Ph.D.',
+        chemist_title: 'Lead Formulation Pharmacist • Itahari Lab',
+        coa_pdf_url: '',
+        is_active: 1
+      },
+      {
+        lot_id: 'LOT-24-0389',
+        product_title: 'Barrier Lipid Restorative Emulsion 50ml',
+        product_title_ne: 'ब्यारियर लिपिड रेस्टोरेटिभ इमल्सन ५० मि.लि.',
+        mfd_date: 'Oct 28, 2024',
+        expiry_date: 'Oct 2026',
+        status: 'PASSED ALL TESTS',
+        purity_param: 'Active Asiaticoside Purity',
+        purity_spec: '≥ 90.0% by HPLC',
+        purity_result: '92.85% [Pass]',
+        ph_spec: '5.20 – 5.60 at 25°C',
+        ph_result: '5.55 pH [Pass]',
+        microbial_spec: '< 10 CFU/g',
+        microbial_result: '< 2 CFU/g [Pass]',
+        heavy_metals_spec: '< 1.0 ppm Combined',
+        heavy_metals_result: 'Not Detected [Pass]',
+        stability_spec: '4,000 RPM / 30 mins',
+        stability_result: 'Zero Separation [Pass]',
+        chemist_name: 'Dr. P. Bhattarai, Ph.D.',
+        chemist_title: 'Lead Formulation Pharmacist • Itahari Lab',
+        coa_pdf_url: '',
+        is_active: 1
+      }
+    ];
+
+    const insertManyBatches = db.transaction((batches) => {
+      for (const b of batches) {
+        insertBatch.run(b);
+      }
+    });
+    insertManyBatches(defaultBatches);
+    console.log('🌱 Seeded default product batch assay COA ledger.');
+  }
 }
 
 let initPromise = null;

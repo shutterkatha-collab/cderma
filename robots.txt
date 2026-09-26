@@ -30,7 +30,7 @@ User-agent: Applebot
 Allow: /
 
 # LLM Context Directives (Machine-readable navigation index)
-# Standard Index: https://cderma.com.np/llms.txt
-# Full Documentation: https://cderma.com.np/llms-full.txt
+# Standard Index: https://cdermanepal.com/llms.txt
+# Full Documentation: https://cdermanepal.com/llms-full.txt
 
-Sitemap: https://cderma.com.np/sitemap.xml
+Sitemap: https://cdermanepal.com/sitemap.xml

@@ -3,47 +3,47 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <!-- Core Web Pages -->
   <url>
-    <loc>https://cderma.com.np/</loc>
+    <loc>https://cdermanepal.com/</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://cderma.com.np/assets/images/cderma-logo.png</image:loc>
+      <image:loc>https://cdermanepal.com/assets/images/cderma-logo.png</image:loc>
       <image:title>CDerma Nepal Doctor Recommended Skincare Logo</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://cderma.com.np/products.html</loc>
+    <loc>https://cdermanepal.com/products.html</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://cderma.com.np/product-detail.html</loc>
+    <loc>https://cdermanepal.com/product-detail.html</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://cderma.com.np/science.html</loc>
+    <loc>https://cdermanepal.com/science.html</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cderma.com.np/b2b.html</loc>
+    <loc>https://cdermanepal.com/b2b.html</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://cderma.com.np/clinics.html</loc>
+    <loc>https://cdermanepal.com/clinics.html</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cderma.com.np/monographs.html</loc>
+    <loc>https://cdermanepal.com/monographs.html</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -51,37 +51,37 @@
 
   <!-- Individual Doctor-Formulated Products in Nepal -->
   <url>
-    <loc>https://cderma.com.np/products/centella-barrier-restore-concentrate</loc>
+    <loc>https://cdermanepal.com/products/centella-barrier-restore-concentrate</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://cderma.com.np/products/ceramide-deep-barrier-cream</loc>
+    <loc>https://cdermanepal.com/products/ceramide-deep-barrier-cream</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://cderma.com.np/products/physiological-balancing-gel-cleanser</loc>
+    <loc>https://cdermanepal.com/products/physiological-balancing-gel-cleanser</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://cderma.com.np/products/high-altitude-mineral-shield-spf50</loc>
+    <loc>https://cdermanepal.com/products/high-altitude-mineral-shield-spf50</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://cderma.com.np/products/multi-depth-hyaluronic-hydrating-mist</loc>
+    <loc>https://cdermanepal.com/products/multi-depth-hyaluronic-hydrating-mist</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://cderma.com.np/products/overnight-cellular-resurfacing-elixir</loc>
+    <loc>https://cdermanepal.com/products/overnight-cellular-resurfacing-elixir</loc>
     <lastmod>2026-09-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>

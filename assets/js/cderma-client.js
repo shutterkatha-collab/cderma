@@ -2394,6 +2394,19 @@ async function initProductDetail() {
 
     // 1. Update Title & Breadcrumbs
     document.title = `${p.title} | CDerma Clinical Formulations Nepal`;
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+      canonicalLink.href = `${window.location.origin}/products/${encodeURIComponent(p.slug)}`;
+    }
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.content = p.summary || p.description || '';
+    }
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.content = `${p.title} | CDerma Clinical Formulations Nepal`;
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.content = `${window.location.origin}/products/${encodeURIComponent(p.slug)}`;
+
     const bcEl = document.getElementById('p-breadcrumb') || document.querySelector('[data-product-breadcrumb]');
     if (bcEl) bcEl.textContent = p.title;
 
@@ -3006,10 +3019,10 @@ function initMobileNavigation() {
 
   const drawerHtml = `
     <!-- Backdrop -->
-    <div id="cderma-mobile-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9998] transition-opacity duration-300 opacity-0 pointer-events-none" aria-hidden="true"></div>
+    <div id="cderma-mobile-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[9998] transition-opacity duration-300 opacity-0 pointer-events-none hidden" aria-hidden="true"></div>
     
     <!-- Drawer Panel -->
-    <div id="cderma-mobile-drawer" class="fixed top-0 right-0 bottom-0 w-[86vw] max-w-sm bg-[#FAF9F6] text-[#1d1c16] z-[9999] shadow-2xl transform translate-x-full pointer-events-none transition-transform duration-300 ease-in-out flex flex-col justify-between border-l border-[#e7e2d8]" role="dialog" aria-modal="true" aria-label="Site Navigation">
+    <div id="cderma-mobile-drawer" class="fixed top-0 right-0 bottom-0 w-[86vw] max-w-sm bg-[#FAF9F6] text-[#1d1c16] z-[9999] shadow-2xl transform translate-x-full pointer-events-none transition-transform duration-300 ease-in-out flex flex-col justify-between border-l border-[#e7e2d8] hidden" role="dialog" aria-modal="true" aria-label="Site Navigation">
       <!-- Drawer Top -->
       <div class="p-5 border-b border-[#e7e2d8] flex items-center justify-between bg-[#f8f3e9]">
         <a href="index.html" class="flex items-center">
@@ -3106,10 +3119,14 @@ function initMobileNavigation() {
   const closeBtn = document.getElementById('cderma-mobile-close');
 
   function openDrawer() {
-    backdrop.classList.remove('opacity-0', 'pointer-events-none');
-    backdrop.classList.add('opacity-100', 'pointer-events-auto');
-    drawer.classList.remove('translate-x-full', 'pointer-events-none');
-    drawer.classList.add('translate-x-0', 'pointer-events-auto');
+    backdrop.classList.remove('hidden');
+    drawer.classList.remove('hidden');
+    requestAnimationFrame(() => {
+      backdrop.classList.remove('opacity-0', 'pointer-events-none');
+      backdrop.classList.add('opacity-100', 'pointer-events-auto');
+      drawer.classList.remove('translate-x-full', 'pointer-events-none');
+      drawer.classList.add('translate-x-0', 'pointer-events-auto');
+    });
     document.body.style.overflow = 'hidden';
     if (closeBtn) closeBtn.focus();
   }
@@ -3120,6 +3137,12 @@ function initMobileNavigation() {
     drawer.classList.remove('translate-x-0', 'pointer-events-auto');
     drawer.classList.add('translate-x-full', 'pointer-events-none');
     document.body.style.overflow = '';
+    setTimeout(() => {
+      if (drawer.classList.contains('translate-x-full')) {
+        drawer.classList.add('hidden');
+        backdrop.classList.add('hidden');
+      }
+    }, 320);
   }
 
   // Hook all mobile navigation triggers across all pages

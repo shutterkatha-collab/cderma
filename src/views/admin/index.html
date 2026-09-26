@@ -220,6 +220,13 @@
         <span class="material-symbols-outlined text-lg">menu_book</span>
         <span>Doctor's Advice &amp; Articles</span>
       </button>
+      <button onclick="switchTab('batches')" class="tab-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="batches">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-lg">verified</span>
+          <span>Batches &amp; Quality (COA)</span>
+        </div>
+        <span id="badgeBatches" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-secondary/20 text-secondary border border-secondary/30">2</span>
+      </button>
       <button onclick="switchTab('social')" class="tab-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="social">
         <div class="flex items-center gap-3">
           <span class="material-symbols-outlined text-lg">share</span>
@@ -593,6 +600,76 @@
         </div>
       </section>
 
+      <!-- 5.5 BATCHES & ASSAY (COA) TAB -->
+      <section id="tab-batches" class="hidden space-y-6">
+        <div class="bg-white rounded-xl border border-outline-border shadow-sm p-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-outline-border mb-6 gap-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="font-serif text-lg font-semibold text-primary">Manufactured Batches &amp; Analytical Assay (COA) Ledger</h3>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-primary/10 text-primary border border-primary/20">Public Verification</span>
+              </div>
+              <p class="text-xs text-gray-500 mt-1">Enter bottle Lot numbers, HPLC purity, pH balance, microbial and heavy metal lab assay results shown on the public verification portal on science.html.</p>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+              <a href="/science.html" target="_blank" class="px-3.5 py-2 rounded-lg bg-surface border border-outline-border hover:bg-surface-container text-primary text-xs font-semibold transition-colors shadow-sm flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-sm">open_in_new</span>
+                <span>Open Public Portal</span>
+              </a>
+              <button onclick="openBatchModal()" class="px-4 py-2 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold uppercase tracking-wider transition-colors shadow flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">add_circle</span>
+                <span>Add New Batch</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Batches Stats Bar -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+            <div class="bg-surface p-4 rounded-lg border border-outline-border flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center">
+                <span class="material-symbols-outlined">inventory_2</span>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase font-semibold">Total Batches</p>
+                <p id="statBatchCount" class="text-xl font-bold text-primary">0</p>
+              </div>
+            </div>
+            <div class="bg-surface p-4 rounded-lg border border-outline-border flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-600 flex items-center justify-center">
+                <span class="material-symbols-outlined">check_circle</span>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase font-semibold">Verified Passed</p>
+                <p id="statBatchPassed" class="text-xl font-bold text-emerald-600">0</p>
+              </div>
+            </div>
+            <div class="bg-surface p-4 rounded-lg border border-outline-border flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-secondary/10 text-secondary flex items-center justify-center">
+                <span class="material-symbols-outlined">biotech</span>
+              </div>
+              <div>
+                <p class="text-xs text-gray-500 uppercase font-semibold">Testing Standard</p>
+                <p class="text-sm font-semibold text-primary">ISO Class 7 Cleanroom</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Search & Filter Bar -->
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-4">
+            <div class="relative w-full sm:w-72">
+              <span class="material-symbols-outlined absolute left-3 top-2.5 text-gray-400 text-sm">search</span>
+              <input type="text" id="batchSearchInput" oninput="filterBatches()" placeholder="Search lot ID or product..." class="w-full pl-9 pr-3 py-2 border border-outline-border rounded-lg text-xs focus:ring-1 focus:ring-primary">
+            </div>
+            <p class="text-xs text-gray-500"><span id="batchCountFiltered">0</span> records shown</p>
+          </div>
+
+          <!-- Batches List Container -->
+          <div id="batchesList" class="overflow-x-auto">
+            <p class="text-xs text-gray-400 p-4 text-center">Loading batch ledger...</p>
+          </div>
+        </div>
+      </section>
+
       <!-- 6. B2B APPLICATIONS TAB -->
       <section id="tab-b2b" class="hidden space-y-6">
         <div class="bg-white rounded-xl border border-outline-border shadow-sm p-6">
@@ -869,7 +946,7 @@
                         <img id="simImg-whatsapp" src="" class="w-full h-full object-cover">
                       </div>
                       <div class="p-3 space-y-1">
-                        <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">cderma.com.np</p>
+                        <p class="text-[10px] uppercase font-bold text-gray-400 tracking-wider">cdermanepal.com</p>
                         <p id="simTitle-whatsapp" class="font-serif font-bold text-gray-900 text-xs leading-snug line-clamp-2">CDerma Choice by Professional</p>
                         <p id="simDesc-whatsapp" class="text-[11px] text-gray-600 leading-tight line-clamp-2">Doctor-formulated physiological barrier repair crafted in Itahari, Nepal.</p>
                       </div>
@@ -913,7 +990,7 @@
                         <img id="simImg-twitter" src="" class="w-full h-full object-cover">
                       </div>
                       <div class="p-3 bg-[#16181c]">
-                        <p class="text-[10px] text-gray-400">cderma.com.np</p>
+                        <p class="text-[10px] text-gray-400">cdermanepal.com</p>
                         <p id="simTitle-twitter" class="font-bold text-xs text-white line-clamp-1 mt-0.5">CDerma Choice by Professional</p>
                         <p id="simDesc-twitter" class="text-[11px] text-gray-400 line-clamp-2 mt-0.5">Doctor-formulated physiological barrier repair.</p>
                       </div>
@@ -934,7 +1011,7 @@
                     </div>
                     <div class="p-3 bg-gray-50 border-t border-gray-200">
                       <p id="simTitle-linkedin" class="font-bold text-xs text-gray-900 leading-snug line-clamp-2">CDerma Choice by Professional</p>
-                      <p class="text-[10px] text-gray-500 mt-1">cderma.com.np • 2 min read</p>
+                      <p class="text-[10px] text-gray-500 mt-1">cdermanepal.com • 2 min read</p>
                     </div>
                   </div>
 
@@ -1318,7 +1395,7 @@ Disallow: /admin<br>
 Disallow: /admin/<br>
 Disallow: /api/<br>
 <br>
-Sitemap: https://cderma.com.np/sitemap.xml
+Sitemap: https://cdermanepal.com/sitemap.xml
               </code>
             </div>
           </div>
@@ -1631,7 +1708,7 @@ Sitemap: https://cderma.com.np/sitemap.xml
           </div>
           <div>
             <label class="block font-semibold text-gray-600 mb-1">Email (Optional)</label>
-            <input type="email" id="clinicEmail" class="w-full p-2.5 rounded border border-outline-border" placeholder="clinic@cderma.com.np">
+            <input type="email" id="clinicEmail" class="w-full p-2.5 rounded border border-outline-border" placeholder="clinic@cdermanepal.com">
           </div>
         </div>
 
@@ -2030,6 +2107,187 @@ Sitemap: https://cderma.com.np/sitemap.xml
     </div>
   </div>
 
+  <!-- ==================== BATCH & ASSAY (COA) MODAL ==================== -->
+  <div id="batchModal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-white rounded-xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl my-auto">
+      <div class="p-5 border-b border-outline-border flex items-center justify-between bg-surface rounded-t-xl">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-secondary">biotech</span>
+          <h3 id="batchModalTitle" class="font-serif text-lg font-semibold text-primary">Add Batch Assay &amp; Certificate (COA)</h3>
+        </div>
+        <button onclick="closeBatchModal()" class="text-gray-400 hover:text-gray-600">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <form id="batchForm" onsubmit="saveBatch(event)" class="p-6 space-y-6 overflow-y-auto flex-1">
+        <input type="hidden" id="batchId">
+
+        <!-- Core Identification -->
+        <div class="bg-surface-container/40 p-4 rounded-lg border border-outline-border space-y-4">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-primary">1. Batch Identification &amp; Product Info</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Lot / Batch ID (e.g. LOT-24-0442) *</label>
+              <input type="text" id="batchLotId" required class="w-full px-3 py-2 border border-outline-border rounded-lg text-sm font-mono uppercase focus:ring-1 focus:ring-primary" placeholder="LOT-24-0442">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Status Badge *</label>
+              <select id="batchStatus" class="w-full px-3 py-2 border border-outline-border rounded-lg text-sm font-medium focus:ring-1 focus:ring-primary">
+                <option value="PASSED ALL TESTS">PASSED ALL TESTS</option>
+                <option value="INSPECTION VERIFIED">INSPECTION VERIFIED</option>
+                <option value="UNDER QUARANTINE">UNDER QUARANTINE</option>
+                <option value="ARCHIVED BATCH">ARCHIVED BATCH</option>
+              </select>
+            </div>
+            <div class="md:col-span-2">
+              <label class="block text-xs font-medium text-gray-700 mb-1">Product Title (English) *</label>
+              <input type="text" id="batchProductTitle" required class="w-full px-3 py-2 border border-outline-border rounded-lg text-sm focus:ring-1 focus:ring-primary" placeholder="Centella Intensive Repair Serum 30ml">
+            </div>
+            <div class="md:col-span-2">
+              <label class="block text-xs font-medium text-gray-700 mb-1">Product Title (Nepali)</label>
+              <input type="text" id="batchProductTitleNe" class="w-full px-3 py-2 border border-outline-border rounded-lg text-sm focus:ring-1 focus:ring-primary" placeholder="सेन्टेला इन्टेन्सिव रिपेयर सीरम ३० मि.लि.">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Manufacturing Date (Mfd) *</label>
+              <input type="text" id="batchMfdDate" required class="w-full px-3 py-2 border border-outline-border rounded-lg text-sm focus:ring-1 focus:ring-primary" placeholder="Nov 12, 2024">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Expiry Date</label>
+              <input type="text" id="batchExpiryDate" class="w-full px-3 py-2 border border-outline-border rounded-lg text-sm focus:ring-1 focus:ring-primary" placeholder="Nov 2026">
+            </div>
+          </div>
+        </div>
+
+        <!-- Analytical Assay Test Parameters -->
+        <div class="bg-surface-container/40 p-4 rounded-lg border border-outline-border space-y-4">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-primary">2. Analytical Laboratory Test Parameters</h4>
+          
+          <!-- Test 1: Purity -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Param 1: Active Compound</label>
+              <input type="text" id="batchPurityParam" class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs" value="Active Asiaticoside Purity">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Specification Limit</label>
+              <input type="text" id="batchPuritySpec" class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs" value="≥ 90.0% by HPLC">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Batch Result *</label>
+              <input type="text" id="batchPurityResult" required class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs font-semibold text-primary" value="94.20% [Pass]">
+            </div>
+          </div>
+
+          <!-- Test 2: pH -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Param 2: pH Balance</label>
+              <input type="text" class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs bg-gray-50 text-gray-600" value="Physiological pH Balance" readonly>
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Specification Limit</label>
+              <input type="text" id="batchPhSpec" class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs" value="5.20 – 5.60 at 25°C">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Batch Result *</label>
+              <input type="text" id="batchPhResult" required class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs font-semibold text-primary" value="5.42 pH [Pass]">
+            </div>
+          </div>
+
+          <!-- Test 3: Microbial -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Param 3: Microbial Bioburden</label>
+              <input type="text" class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs bg-gray-50 text-gray-600" value="Microbial Bioburden (TAMC)" readonly>
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Specification Limit</label>
+              <input type="text" id="batchMicrobialSpec" class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs" value="< 10 CFU/g">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Batch Result *</label>
+              <input type="text" id="batchMicrobialResult" required class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs font-semibold text-primary" value="< 1 CFU/g [Pass]">
+            </div>
+          </div>
+
+          <!-- Test 4: Heavy Metals -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Param 4: Heavy Metals</label>
+              <input type="text" class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs bg-gray-50 text-gray-600" value="Heavy Metal Screen (Pb/Hg/As)" readonly>
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Specification Limit</label>
+              <input type="text" id="batchHeavyMetalsSpec" class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs" value="< 1.0 ppm Combined">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Batch Result *</label>
+              <input type="text" id="batchHeavyMetalsResult" required class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs font-semibold text-primary" value="Not Detected [Pass]">
+            </div>
+          </div>
+
+          <!-- Test 5: Stability -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Param 5: Phase Stability</label>
+              <input type="text" class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs bg-gray-50 text-gray-600" value="Centrifugal Phase Stability" readonly>
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Specification Limit</label>
+              <input type="text" id="batchStabilitySpec" class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs" value="4,000 RPM / 30 mins">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Batch Result *</label>
+              <input type="text" id="batchStabilityResult" required class="w-full px-3 py-2 border border-outline-border rounded-lg text-xs font-semibold text-primary" value="Zero Separation [Pass]">
+            </div>
+          </div>
+        </div>
+
+        <!-- Chemist Sign-Off & PDF COA -->
+        <div class="bg-surface-container/40 p-4 rounded-lg border border-outline-border space-y-4">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-primary">3. Chemist Sign-Off &amp; Certificate Document</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Assayed By (Chemist Name) *</label>
+              <input type="text" id="batchChemistName" required class="w-full px-3 py-2 border border-outline-border rounded-lg text-sm focus:ring-1 focus:ring-primary" value="Dr. P. Bhattarai, Ph.D.">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-700 mb-1">Chemist Title / Lab Location</label>
+              <input type="text" id="batchChemistTitle" class="w-full px-3 py-2 border border-outline-border rounded-lg text-sm focus:ring-1 focus:ring-primary" value="Lead Formulation Pharmacist • Itahari Lab">
+            </div>
+            <div class="md:col-span-2">
+              <label class="block text-xs font-medium text-gray-700 mb-1">PDF Certificate of Analysis (COA) URL or Upload</label>
+              <div class="flex gap-2">
+                <input type="text" id="batchCoaPdfUrl" class="flex-1 px-3 py-2 border border-outline-border rounded-lg text-sm focus:ring-1 focus:ring-primary" placeholder="uploads/coa-lot-24-0442.pdf (optional)">
+                <label class="px-3.5 py-2 rounded-lg bg-surface border border-outline-border hover:bg-surface-container cursor-pointer text-xs font-semibold text-primary flex items-center gap-1.5 shrink-0">
+                  <span class="material-symbols-outlined text-sm">upload_file</span>
+                  <span>Upload PDF</span>
+                  <input type="file" id="batchPdfFileInput" accept=".pdf,application/pdf" class="hidden" onchange="handleBatchPdfUpload(this)">
+                </label>
+              </div>
+              <p class="text-[11px] text-gray-500 mt-1">If empty, visitors clicking 'Download PDF COA' will trigger a formatted browser printout of this digital assay certificate.</p>
+            </div>
+            <div class="md:col-span-2">
+              <label class="flex items-center gap-2 cursor-pointer text-xs font-medium text-gray-700">
+                <input type="checkbox" id="batchIsActive" checked class="rounded accent-primary">
+                <span>Active and published on Public Batch Verification Portal</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-outline-border flex justify-end gap-3">
+          <button type="button" onclick="closeBatchModal()" class="px-4 py-2 rounded-lg border border-outline-border text-gray-600 hover:bg-gray-50 text-sm font-medium">Cancel</button>
+          <button type="submit" id="saveBatchBtn" class="px-5 py-2 rounded-lg bg-primary hover:bg-secondary text-white font-semibold text-sm shadow flex items-center gap-2">
+            <span class="material-symbols-outlined text-sm">check</span>
+            <span>Save Batch Assay</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- Client-side CMS Script -->
   <script>
     // State
@@ -2081,6 +2339,7 @@ Sitemap: https://cderma.com.np/sitemap.xml
         products: 'Product Formulary Catalog',
         clinics: 'Authorized Clinic Directory',
         monographs: "Doctor's Advice & Articles",
+        batches: 'Batch Verification & Assay (COA) Ledger',
         social: 'Social Media & Omnichannel Engine',
         b2b: 'B2B Wholesale Account Inquiries',
         inquiries: 'Patient & Practitioner Messages',
@@ -2096,6 +2355,7 @@ Sitemap: https://cderma.com.np/sitemap.xml
       if (tabId === 'products') loadProducts();
       if (tabId === 'clinics') loadClinics();
       if (tabId === 'monographs') loadMonographs();
+      if (tabId === 'batches') loadBatches();
       if (tabId === 'social') loadSocial();
       if (tabId === 'b2b') loadB2B();
       if (tabId === 'inquiries') loadInquiries();
@@ -2130,6 +2390,10 @@ Sitemap: https://cderma.com.np/sitemap.xml
 
           if (document.getElementById('badgeSocial')) {
             document.getElementById('badgeSocial').textContent = data.stats.activeSocialChannels ?? 7;
+          }
+
+          if (document.getElementById('badgeBatches')) {
+            document.getElementById('badgeBatches').textContent = data.stats.totalBatches ?? 0;
           }
 
           checkLlmsBadge();
@@ -4263,7 +4527,7 @@ Sitemap: https://cderma.com.np/sitemap.xml
       const rawCampaign = document.getElementById('utmCampaignInput')?.value || 'barrier_repair_2026';
       const cleanCampaign = rawCampaign.trim().toLowerCase().replace(/[^a-z0-9_]/g, '_') || 'cderma_campaign';
 
-      const origin = window.location.origin || 'https://cderma.com.np';
+      const origin = window.location.origin || 'https://cdermanepal.com';
       const fullUrl = `${origin}/${page}?utm_source=${encodeURIComponent(source)}&utm_medium=social&utm_campaign=${encodeURIComponent(cleanCampaign)}`;
 
       const urlInput = document.getElementById('utmGeneratedUrl');
@@ -4461,19 +4725,19 @@ Sitemap: https://cderma.com.np/sitemap.xml
       if (!tbody) return;
 
       const publicPages = [
-        { url: 'https://cderma.com.np/', cat: 'Core / Home' },
-        { url: 'https://cderma.com.np/products', cat: 'Products Formulary' },
-        { url: 'https://cderma.com.np/clinics', cat: 'Clinics & Dispensaries' },
-        { url: 'https://cderma.com.np/cleanroom', cat: 'WHO-GMP Cleanroom Standards' },
-        { url: 'https://cderma.com.np/about', cat: 'Corporate Governance & History' },
-        { url: 'https://cderma.com.np/contact', cat: 'Medical Advisory & Contact' },
-        { url: 'https://cderma.com.np/b2b', cat: 'Institutional Supply & Wholesale' },
-        { url: 'https://cderma.com.np/doctors-advice', cat: 'Clinical Knowledge & Monographs' },
-        { url: 'https://cderma.com.np/faq', cat: 'Frequently Asked Questions' },
-        { url: 'https://cderma.com.np/privacy', cat: 'Legal & Data Governance' },
-        { url: 'https://cderma.com.np/terms', cat: 'Commercial Terms' },
-        { url: 'https://cderma.com.np/sitemap.xml', cat: 'Search Engine Sitemap' },
-        { url: 'https://cderma.com.np/robots.txt', cat: 'Crawler Directives' }
+        { url: 'https://cdermanepal.com/', cat: 'Core / Home' },
+        { url: 'https://cdermanepal.com/products', cat: 'Products Formulary' },
+        { url: 'https://cdermanepal.com/clinics', cat: 'Clinics & Dispensaries' },
+        { url: 'https://cdermanepal.com/cleanroom', cat: 'WHO-GMP Cleanroom Standards' },
+        { url: 'https://cdermanepal.com/about', cat: 'Corporate Governance & History' },
+        { url: 'https://cdermanepal.com/contact', cat: 'Medical Advisory & Contact' },
+        { url: 'https://cdermanepal.com/b2b', cat: 'Institutional Supply & Wholesale' },
+        { url: 'https://cdermanepal.com/doctors-advice', cat: 'Clinical Knowledge & Monographs' },
+        { url: 'https://cdermanepal.com/faq', cat: 'Frequently Asked Questions' },
+        { url: 'https://cdermanepal.com/privacy', cat: 'Legal & Data Governance' },
+        { url: 'https://cdermanepal.com/terms', cat: 'Commercial Terms' },
+        { url: 'https://cdermanepal.com/sitemap.xml', cat: 'Search Engine Sitemap' },
+        { url: 'https://cdermanepal.com/robots.txt', cat: 'Crawler Directives' }
       ];
 
       tbody.innerHTML = publicPages.map(p => `
@@ -4717,6 +4981,310 @@ Sitemap: https://cderma.com.np/sitemap.xml
           btn.disabled = false;
           btn.innerHTML = '<span class="material-symbols-outlined text-base">backup</span><span>Create Database Snapshot</span>';
         }
+      }
+    }
+
+    // ==================== BATCH & ASSAY (COA) FUNCTIONS ====================
+    let currentBatches = [];
+
+    async function loadBatches() {
+      const container = document.getElementById('batchesList');
+      if (!container) return;
+      container.innerHTML = '<p class="text-xs text-gray-400 p-4 text-center">Loading batch ledger...</p>';
+      try {
+        const res = await fetch('/admin/api/batches');
+        const data = await res.json();
+        if (data.success) {
+          currentBatches = data.batches || [];
+          const countEl = document.getElementById('statBatchCount');
+          if (countEl) countEl.textContent = currentBatches.length;
+          const passedEl = document.getElementById('statBatchPassed');
+          if (passedEl) passedEl.textContent = currentBatches.filter(b => b.status === 'PASSED ALL TESTS').length;
+          const badge = document.getElementById('badgeBatches');
+          if (badge) badge.textContent = currentBatches.length;
+          renderBatches(currentBatches);
+        } else {
+          container.innerHTML = `<p class="text-xs text-rose-500 p-4 text-center">${data.error || 'Failed to load batches'}</p>`;
+        }
+      } catch (err) {
+        container.innerHTML = `<p class="text-xs text-rose-500 p-4 text-center">Network error loading batches: ${err.message}</p>`;
+      }
+    }
+
+    function renderBatches(batches) {
+      const container = document.getElementById('batchesList');
+      if (!container) return;
+      const countEl = document.getElementById('batchCountFiltered');
+      if (countEl) countEl.textContent = batches.length;
+
+      if (!batches || batches.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-12 border border-dashed border-outline-border rounded-lg bg-surface">
+            <span class="material-symbols-outlined text-4xl text-gray-400 mb-2">biotech</span>
+            <p class="text-sm font-semibold text-gray-600">No batch records found</p>
+            <p class="text-xs text-gray-400 mt-1">Click "+ Add New Batch" above to record your first manufactured lot and assay results.</p>
+          </div>
+        `;
+        return;
+      }
+
+      let html = `
+        <table class="w-full text-left text-xs">
+          <thead class="bg-surface border-y border-outline-border uppercase text-[10px] tracking-wider text-gray-500">
+            <tr>
+              <th class="py-3 px-4">Lot ID</th>
+              <th class="py-3 px-4">Product Formulation</th>
+              <th class="py-3 px-4">Mfg / Exp Date</th>
+              <th class="py-3 px-4">Key Assay Parameters</th>
+              <th class="py-3 px-4">Status</th>
+              <th class="py-3 px-4">Chemist Sign-off</th>
+              <th class="py-3 px-4 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-outline-border">
+      `;
+
+      batches.forEach(b => {
+        const statusClass = b.status === 'PASSED ALL TESTS'
+          ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+          : (b.status === 'UNDER QUARANTINE' ? 'bg-amber-50 text-amber-700 border-amber-200' : 'bg-blue-50 text-blue-700 border-blue-200');
+
+        html += `
+          <tr class="hover:bg-surface/50 transition-colors">
+            <td class="py-3.5 px-4">
+              <div class="flex items-center gap-1.5">
+                <span class="font-mono font-bold text-xs text-primary px-2 py-1 rounded bg-primary/5 border border-primary/20">${b.lot_id}</span>
+                ${b.is_active ? '' : '<span class="text-[9px] font-bold text-gray-400 uppercase bg-gray-100 px-1.5 py-0.5 rounded">Draft</span>'}
+              </div>
+            </td>
+            <td class="py-3.5 px-4 max-w-xs">
+              <p class="font-semibold text-gray-900">${b.product_title}</p>
+              ${b.product_title_ne ? `<p class="text-[11px] text-gray-500 font-serif">${b.product_title_ne}</p>` : ''}
+            </td>
+            <td class="py-3.5 px-4">
+              <p class="font-medium text-gray-700">${b.mfd_date}</p>
+              ${b.expiry_date ? `<p class="text-[10px] text-gray-400">Exp: ${b.expiry_date}</p>` : ''}
+            </td>
+            <td class="py-3.5 px-4">
+              <div class="space-y-0.5 text-[11px] font-mono">
+                <p><span class="text-gray-500">Purity:</span> <strong class="text-primary">${b.purity_result || '—'}</strong></p>
+                <p><span class="text-gray-500">pH:</span> <strong class="text-primary">${b.ph_result || '—'}</strong></p>
+                <p><span class="text-gray-500">Metals:</span> <strong class="text-gray-700">${b.heavy_metals_result || '—'}</strong></p>
+              </div>
+            </td>
+            <td class="py-3.5 px-4">
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-bold border ${statusClass}">
+                <span class="material-symbols-outlined text-xs">check_circle</span>
+                ${b.status}
+              </span>
+            </td>
+            <td class="py-3.5 px-4">
+              <p class="font-medium text-gray-800">${b.chemist_name || '—'}</p>
+              <p class="text-[10px] text-gray-400">${b.chemist_title || ''}</p>
+            </td>
+            <td class="py-3.5 px-4 text-right">
+              <div class="flex items-center justify-end gap-1.5">
+                <a href="/science.html" target="_blank" class="p-1.5 rounded hover:bg-surface text-gray-500 hover:text-primary transition-colors" title="View in Portal">
+                  <span class="material-symbols-outlined text-base">visibility</span>
+                </a>
+                <button onclick="openBatchModal(${b.id})" class="p-1.5 rounded hover:bg-surface text-gray-600 hover:text-primary transition-colors" title="Edit Batch">
+                  <span class="material-symbols-outlined text-base">edit</span>
+                </button>
+                <button onclick="deleteBatch(${b.id}, '${b.lot_id}')" class="p-1.5 rounded hover:bg-rose-50 text-gray-400 hover:text-rose-600 transition-colors" title="Delete Batch">
+                  <span class="material-symbols-outlined text-base">delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      });
+
+      html += `
+          </tbody>
+        </table>
+      `;
+
+      container.innerHTML = html;
+    }
+
+    function filterBatches() {
+      const q = (document.getElementById('batchSearchInput').value || '').trim().toLowerCase();
+      if (!q) {
+        renderBatches(currentBatches);
+        return;
+      }
+      const filtered = currentBatches.filter(b => 
+        (b.lot_id && b.lot_id.toLowerCase().includes(q)) ||
+        (b.product_title && b.product_title.toLowerCase().includes(q)) ||
+        (b.product_title_ne && b.product_title_ne.toLowerCase().includes(q)) ||
+        (b.chemist_name && b.chemist_name.toLowerCase().includes(q))
+      );
+      renderBatches(filtered);
+    }
+
+    function openBatchModal(batchId = null) {
+      const form = document.getElementById('batchForm');
+      form.reset();
+      document.getElementById('batchId').value = '';
+      document.getElementById('batchIsActive').checked = true;
+
+      if (batchId) {
+        const batch = currentBatches.find(b => b.id == batchId);
+        if (batch) {
+          document.getElementById('batchModalTitle').textContent = `Edit Batch Assay (${batch.lot_id})`;
+          document.getElementById('batchId').value = batch.id;
+          document.getElementById('batchLotId').value = batch.lot_id || '';
+          document.getElementById('batchStatus').value = batch.status || 'PASSED ALL TESTS';
+          document.getElementById('batchProductTitle').value = batch.product_title || '';
+          document.getElementById('batchProductTitleNe').value = batch.product_title_ne || '';
+          document.getElementById('batchMfdDate').value = batch.mfd_date || '';
+          document.getElementById('batchExpiryDate').value = batch.expiry_date || '';
+
+          document.getElementById('batchPurityParam').value = batch.purity_param || 'Active Asiaticoside Purity';
+          document.getElementById('batchPuritySpec').value = batch.purity_spec || '≥ 90.0% by HPLC';
+          document.getElementById('batchPurityResult').value = batch.purity_result || '94.20% [Pass]';
+
+          document.getElementById('batchPhSpec').value = batch.ph_spec || '5.20 – 5.60 at 25°C';
+          document.getElementById('batchPhResult').value = batch.ph_result || '5.42 pH [Pass]';
+
+          document.getElementById('batchMicrobialSpec').value = batch.microbial_spec || '< 10 CFU/g';
+          document.getElementById('batchMicrobialResult').value = batch.microbial_result || '< 1 CFU/g [Pass]';
+
+          document.getElementById('batchHeavyMetalsSpec').value = batch.heavy_metals_spec || '< 1.0 ppm Combined';
+          document.getElementById('batchHeavyMetalsResult').value = batch.heavy_metals_result || 'Not Detected [Pass]';
+
+          document.getElementById('batchStabilitySpec').value = batch.stability_spec || '4,000 RPM / 30 mins';
+          document.getElementById('batchStabilityResult').value = batch.stability_result || 'Zero Separation [Pass]';
+
+          document.getElementById('batchChemistName').value = batch.chemist_name || 'Dr. P. Bhattarai, Ph.D.';
+          document.getElementById('batchChemistTitle').value = batch.chemist_title || 'Lead Formulation Pharmacist • Itahari Lab';
+          document.getElementById('batchCoaPdfUrl').value = batch.coa_pdf_url || '';
+          document.getElementById('batchIsActive').checked = batch.is_active == 1;
+        }
+      } else {
+        document.getElementById('batchModalTitle').textContent = 'Add Batch Assay & Certificate (COA)';
+        document.getElementById('batchMfdDate').value = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        document.getElementById('batchPurityParam').value = 'Active Asiaticoside Purity';
+        document.getElementById('batchPuritySpec').value = '≥ 90.0% by HPLC';
+        document.getElementById('batchPurityResult').value = '94.20% [Pass]';
+        document.getElementById('batchPhSpec').value = '5.20 – 5.60 at 25°C';
+        document.getElementById('batchPhResult').value = '5.42 pH [Pass]';
+        document.getElementById('batchMicrobialSpec').value = '< 10 CFU/g';
+        document.getElementById('batchMicrobialResult').value = '< 1 CFU/g [Pass]';
+        document.getElementById('batchHeavyMetalsSpec').value = '< 1.0 ppm Combined';
+        document.getElementById('batchHeavyMetalsResult').value = 'Not Detected [Pass]';
+        document.getElementById('batchStabilitySpec').value = '4,000 RPM / 30 mins';
+        document.getElementById('batchStabilityResult').value = 'Zero Separation [Pass]';
+        document.getElementById('batchChemistName').value = 'Dr. P. Bhattarai, Ph.D.';
+        document.getElementById('batchChemistTitle').value = 'Lead Formulation Pharmacist • Itahari Lab';
+      }
+
+      document.getElementById('batchModal').classList.remove('hidden');
+    }
+
+    function closeBatchModal() {
+      document.getElementById('batchModal').classList.add('hidden');
+    }
+
+    async function handleBatchPdfUpload(input) {
+      if (!input.files || input.files.length === 0) return;
+      const file = input.files[0];
+      const formData = new FormData();
+      formData.append('media', file);
+
+      try {
+        showToast('Uploading PDF certificate...');
+        const res = await fetch('/admin/api/upload', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
+        if (data.success && data.url) {
+          document.getElementById('batchCoaPdfUrl').value = data.url;
+          showToast('COA PDF uploaded successfully!');
+        } else {
+          showToast(data.error || 'Failed to upload PDF', true);
+        }
+      } catch (err) {
+        showToast('Upload error: ' + err.message, true);
+      }
+    }
+
+    async function saveBatch(e) {
+      e.preventDefault();
+      const saveBtn = document.getElementById('saveBatchBtn');
+      const batchId = document.getElementById('batchId').value;
+      const isEdit = !!batchId;
+
+      const payload = {
+        lot_id: document.getElementById('batchLotId').value.trim(),
+        status: document.getElementById('batchStatus').value,
+        product_title: document.getElementById('batchProductTitle').value.trim(),
+        product_title_ne: document.getElementById('batchProductTitleNe').value.trim(),
+        mfd_date: document.getElementById('batchMfdDate').value.trim(),
+        expiry_date: document.getElementById('batchExpiryDate').value.trim(),
+        purity_param: document.getElementById('batchPurityParam').value.trim(),
+        purity_spec: document.getElementById('batchPuritySpec').value.trim(),
+        purity_result: document.getElementById('batchPurityResult').value.trim(),
+        ph_spec: document.getElementById('batchPhSpec').value.trim(),
+        ph_result: document.getElementById('batchPhResult').value.trim(),
+        microbial_spec: document.getElementById('batchMicrobialSpec').value.trim(),
+        microbial_result: document.getElementById('batchMicrobialResult').value.trim(),
+        heavy_metals_spec: document.getElementById('batchHeavyMetalsSpec').value.trim(),
+        heavy_metals_result: document.getElementById('batchHeavyMetalsResult').value.trim(),
+        stability_spec: document.getElementById('batchStabilitySpec').value.trim(),
+        stability_result: document.getElementById('batchStabilityResult').value.trim(),
+        chemist_name: document.getElementById('batchChemistName').value.trim(),
+        chemist_title: document.getElementById('batchChemistTitle').value.trim(),
+        coa_pdf_url: document.getElementById('batchCoaPdfUrl').value.trim(),
+        is_active: document.getElementById('batchIsActive').checked ? 1 : 0
+      };
+
+      try {
+        saveBtn.disabled = true;
+        saveBtn.innerHTML = '<span class="material-symbols-outlined text-sm animate-spin">refresh</span><span>Saving...</span>';
+
+        const url = isEdit ? `/admin/api/batches/${batchId}` : '/admin/api/batches';
+        const method = isEdit ? 'PUT' : 'POST';
+
+        const res = await fetch(url, {
+          method,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+
+        if (data.success) {
+          showToast(data.message || 'Batch saved successfully!');
+          closeBatchModal();
+          loadBatches();
+        } else {
+          showToast(data.error || 'Failed to save batch.', true);
+        }
+      } catch (err) {
+        showToast('Error saving batch: ' + err.message, true);
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.innerHTML = '<span class="material-symbols-outlined text-sm">check</span><span>Save Batch Assay</span>';
+      }
+    }
+
+    async function deleteBatch(id, lotId) {
+      if (!confirm(`Are you sure you want to permanently delete batch assay "${lotId}"?`)) {
+        return;
+      }
+
+      try {
+        const res = await fetch(`/admin/api/batches/${id}`, { method: 'DELETE' });
+        const data = await res.json();
+        if (data.success) {
+          showToast(data.message || `Batch ${lotId} deleted successfully.`);
+          loadBatches();
+        } else {
+          showToast(data.error || 'Failed to delete batch.', true);
+        }
+      } catch (err) {
+        showToast('Error deleting batch: ' + err.message, true);
       }
     }
 
