@@ -23,122 +23,97 @@
 | Monographs & Blog | https://cdermanepal.com/monographs.html | Clinical research monographs, doctor prescribing protocols, and evidence-based patient advice |
 
 ## 3. Complete Product Formulary Monographs
-### 3.1 Centella Barrier Restore Concentrate
-- Canonical URL: https://cdermanepal.com/products/centella-barrier-restore-concentrate
-- Formula Code: centella-barrier-restore-concentrate
-- Category: Barrier Repair | Volume: 30 ml / 1.0 fl. oz.
-- Pricing: NPR 3200 (Protected MAP Retail Pricing)
-- Clinical Badge: Flagship Formulation • Clinical Trial Verified
-- Nepali Title: सेन्टेला ब्यारियर रिस्टोर कन्सन्ट्रेट
-- Clinical Indication: An ultra-concentrated multi-lamellar lipid emulsion designed for rapid stratum corneum recovery and intense post-procedure epidermal soothing.
-- Full Description: Developed specifically for compromised, post-laser, or retinoid-sensitized skin exposed to harsh sub-Himalayan dry climates. Combines bio-identical ceramides (EOP, NP, AP) in a 3:1:1 physiological ratio with wild-harvested Centella Asiatica titrated triterpenes.
+### 3.1 Coco C Oil
+- Canonical URL: https://cdermanepal.com/products/coco-c-oil
+- Formula Code: coco-c-oil
+- Category: Daily Skin Care | Volume: 100 ml
+- Pricing: NPR 1250 (Protected MAP Retail Pricing)
+- Clinical Badge: 100% Pure Virgin Cold-Pressed
+- Nepali Title: कोको सी तेल
+- Clinical Indication: For healthy skin & hair. Pure cold-pressed virgin coconut oil formulated for rich daily hydration and scalp nourishment.
+- Full Description: cDerma Coco C Oil is a pure, cold-pressed extra virgin coconut oil crafted for everyday skin and hair care. Rich in natural fatty acids and nourishing antioxidants, it locks in moisture, softens dry areas, and keeps skin healthy and supple without artificial additives.
 - Key Clinical Benefits:
-  * 94% barrier restoration within 72 hours in clinical patch trials
-  * Instant reduction of erythema and transepidermal water loss (TEWL)
-  * Sub-alpine Centella triterpenes (Madecassoside 40%, Asiaticoside 30%)
-  * Alcohol-free, fragrance-free, non-comedogenic bio-lipid base
+  * Deeply hydrates and nourishes dry skin and hair
+  * Rich in fatty acids and antioxidants for daily moisture
+  * 100% pure cold-pressed formula without artificial fragrance or additives
 - Active Compounds & Pharmacological Action:
-  * Multi-Ceramide Complex (NP, AP, EOP): Active dermal component
-  * Wild Koshi Centella Asiatica Extract: Active dermal component
-  * Niacinamide USP Grade: Active dermal component
-  * Phytosphingosine & Cholesterol: Active dermal component
-- Application Ritual & Directions: Dispense 3–4 drops onto clean, damp skin morning and evening. Gently press into the face and neck until fully absorbed before sealing with moisturizer.
+  * 100% Cold-Pressed Extra Virgin Coconut Oil: Deeply nourishes lipid barrier and softens skin
+- Application Ritual & Directions: Take a small amount onto palms and massage gently over clean skin or hair until fully absorbed. Suitable for daily morning and evening use.
 
-### 3.2 Ceramide Deep Barrier Cream
-- Canonical URL: https://cdermanepal.com/products/ceramide-deep-barrier-cream
-- Formula Code: ceramide-deep-barrier-cream
-- Category: Barrier Repair | Volume: 50 ml / 1.7 fl. oz.
-- Pricing: NPR 3800 (Protected MAP Retail Pricing)
-- Clinical Badge: Medical Barrier Emulsion
-- Nepali Title: सिरामाइड डिप ब्यारियर क्रिम
-- Clinical Indication: Rich velvety biomimetic lipid cream for severe xerosis, winter barrier collapse, and post-ablative laser recovery.
-- Full Description: Formulated with ultra-pure pharmaceutical ceramides and squalane to seal microscopic stratum corneum fractures and provide 48-hour continuous moisture retention without pore congestion.
+### 3.2 Alpha C Serum
+- Canonical URL: https://cdermanepal.com/products/alpha-c-serum
+- Formula Code: alpha-c-serum
+- Category: Pigmentation & Uneven Tone | Volume: 30 ml
+- Pricing: NPR 2200 (Protected MAP Retail Pricing)
+- Clinical Badge: Targeted Tone & Clarity
+- Nepali Title: अल्फा सी सिरम
+- Clinical Indication: Brightens uneven skin. Targets dark spots, post-acne marks, and uneven tone with proven brightening actives and skin-supporting peptides.
+- Full Description: Alpha C Serum is a lightweight, purposeful daily serum formulated with 2% Alpha Arbutin, 1% Kojic Acid, and restorative Multi-Peptides. It helps visibly diminish the appearance of persistent dark spots and uneven pigmentation while strengthening skin resilience for a balanced, radiant look.
 - Key Clinical Benefits:
-  * Reinforces damaged lipid bilayer within 24 hours
-  * Non-greasy velvety finish suitable for South Asian skin tones
-  * Soothes active eczema, dermatitis, and retinol irritation
-  * Safe for immediate post-chemical peel maintenance
+  * Visibly targets dark spots, blemishes, and uneven pigmentation
+  * Promotes a brighter, more balanced, and radiant complexion
+  * Multi-peptides support skin firmness and moisture retention
 - Active Compounds & Pharmacological Action:
-  * Bio-Identical Ceramide Lipids: Active dermal component
-  * Plant-Derived Squalane: Active dermal component
-  * Colloidal Oat Beta-Glucan: Active dermal component
-- Application Ritual & Directions: Warm a dime-sized amount between fingertips and smooth evenly over face and neck. Ideal as the final barrier step at night.
+  * Alpha Arbutin: Targeted brightening active that fades dark spots
+  * Kojic Acid: Promotes an even, luminous complexion
+  * Multi-Peptide Complex: Supports barrier elasticity and repair
+- Application Ritual & Directions: Apply 3–4 drops onto clean, dry skin morning and evening before heavier creams. Always follow with daily sun protection in the morning.
 
-### 3.3 Physiological Balancing Gel Cleanser
-- Canonical URL: https://cdermanepal.com/products/physiological-balancing-gel-cleanser
-- Formula Code: physiological-balancing-gel-cleanser
-- Category: Cleansers | Volume: 150 ml / 5.1 fl. oz.
+### 3.3 Niacin C Serum
+- Canonical URL: https://cdermanepal.com/products/niacin-c-serum
+- Formula Code: niacin-c-serum
+- Category: Acne & Oil Control | Volume: 30 ml
 - Pricing: NPR 2100 (Protected MAP Retail Pricing)
-- Clinical Badge: Sulfate-Free • Non-Stripping
-- Nepali Title: फिजियोलोजिकल ब्यालेन्सिङ जेल क्लिन्जर
-- Clinical Indication: A soap-free, amino-acid based daily foaming gel that purifies impurities while keeping the epidermal microbiome completely undisturbed.
-- Full Description: Formulated at physiological pH 5.5 using mild coconut-derived surfactants and soothing panthenol to leave sensitized skin calm, soft, and balanced.
+- Clinical Badge: Oil Balancing & Pore Refining
+- Nepali Title: नायसिन सी सिरम
+- Clinical Indication: Clarifies and refines pores. High-purity 10% Niacinamide and Zinc PCA balance excess surface oil, reduce redness, and smooth texture.
+- Full Description: Formulated specifically for oily, combination, and blemish-prone skin, cDerma Niacin C Serum pairs 10% high-purity Niacinamide with Zinc PCA. It helps regulate sebum production, tightens the appearance of enlarged pores, and soothes daily redness without stripping vital moisture.
 - Key Clinical Benefits:
-  * Zero tightness, zero stinging on inflamed or compromised skin
-  * Maintains natural skin acid mantle and microbiome balance
-  * Free from SLS, SLES, parabens, and essential oils
+  * Regulates excess surface oil and controls daily shine
+  * Visibly refines enlarged pores and smooths skin texture
+  * Soothes skin redness and fortifies the natural moisture barrier
 - Active Compounds & Pharmacological Action:
-  * Sodium Cocoyl Apple Amino Acids: Active dermal component
-  * Pro-Vitamin B5 (Panthenol): Active dermal component
-  * Allantoin: Active dermal component
-- Application Ritual & Directions: Massage 1–2 pumps onto damp face for 30–40 seconds. Rinse thoroughly with lukewarm water. Pat dry with clean gauze or towel.
+  * Niacinamide (Vitamin B3): Regulates sebum, improves texture, strengthens barrier
+  * Zinc PCA: Controls excess surface oil and calms active blemishes
+- Application Ritual & Directions: Apply 2–3 drops across face morning and night before moisturiser. Gently pat until fully absorbed.
 
-### 3.4 High-Altitude Mineral Shield SPF 50+ PA++++
-- Canonical URL: https://cdermanepal.com/products/high-altitude-mineral-shield-spf50
-- Formula Code: high-altitude-mineral-shield-spf50
-- Category: Photoprotection | Volume: 60 ml / 2.0 fl. oz.
-- Pricing: NPR 3500 (Protected MAP Retail Pricing)
-- Clinical Badge: Broad Spectrum UVA/UVB/HEV Shield
-- Nepali Title: हाई-अल्टिच्यूड मिनरल शिल्ड एसपीएफ ५०+ PA++++
-- Clinical Indication: Medical-grade mineral sunscreen engineered for extreme high-altitude Himalayan ultraviolet radiation and post-laser skin vulnerability.
-- Full Description: Features micronized, non-nano zinc oxide with zero white cast on Fitzpatick Skin Types III–V. Infused with ectoin and alpine edelweiss extract to neutralize high-elevation blue light and free radicals.
-- Key Clinical Benefits:
-  * Critical UV protection for extreme elevations (>1,400m)
-  * Invisible sheer finish without chalky residue on South Asian skin
-  * Immediate physical barrier against UV and environmental pollution
-- Active Compounds & Pharmacological Action:
-  * Non-Nano Zinc Oxide USP: Active dermal component
-  * Ectoin Cellular Protectant: Active dermal component
-  * Himalayan Edelweiss Extract: Active dermal component
-- Application Ritual & Directions: Apply generously 15 minutes before sun exposure as the final morning step. Reapply every 2 hours during prolonged outdoor activity or after sweating.
-
-### 3.5 Multi-Depth Hyaluronic Hydrating Mist
-- Canonical URL: https://cdermanepal.com/products/multi-depth-hyaluronic-hydrating-mist
-- Formula Code: multi-depth-hyaluronic-hydrating-mist
-- Category: Hydration | Volume: 100 ml / 3.4 fl. oz.
+### 3.4 Retin C Serum
+- Canonical URL: https://cdermanepal.com/products/retin-c-serum
+- Formula Code: retin-c-serum
+- Category: Daily Skin Care | Volume: 30 ml
 - Pricing: NPR 2400 (Protected MAP Retail Pricing)
-- Clinical Badge: Immediate Epidermal Plumping
-- Nepali Title: मल्टि-डेप्थ हायलुरोनिक हाइड्रेटिङ मिस्ट
-- Clinical Indication: Micro-fine aerosolized clinical tonic that delivers instant multi-depth hydration and restores osmotic balance.
-- Full Description: Penetrates from the stratum corneum down to deep dermal layers through five distinct molecular weights of hyaluronic acid, amplified by mineral electrolytes.
+- Clinical Badge: Gentle Cellular Renewal
+- Nepali Title: रेटिन सी सिरम
+- Clinical Indication: For smoother, younger-looking skin. Encapsulated retinol 0.2% accelerates renewal while peptides maintain skin comfort and suppleness.
+- Full Description: cDerma Retin C Serum brings a gentle, thoughtfully calibrated 0.2% retinol concentration paired with nourishing peptides and squalane. It gently encourages natural cell turnover to soften early fine lines, refine uneven texture, and reveal smooth, refreshed skin with minimal irritation.
 - Key Clinical Benefits:
-  * Instant osmotic hydration surge in dry altitude atmospheres
-  * Enhances penetration of subsequent active serums
-  * Calms redness after dermatological procedures
+  * Accelerates natural cellular turnover for smoother texture
+  * Softens the appearance of fine lines and uneven surface marks
+  * Nourishing peptide base keeps skin comfortable and resilient
 - Active Compounds & Pharmacological Action:
-  * Multi-Molecular Hyaluronic Acid: Active dermal component
-  * Glacial Mineral Electrolytes: Active dermal component
-  * Centella Asiatica Leaf Water: Active dermal component
-- Application Ritual & Directions: Mist generously over face and neck after cleansing or throughout the day whenever skin feels tight or dehydrated.
+  * Encapsulated Retinol: Stimulates cellular renewal and smooths fine texture
+  * Multi-Peptide Blend: Supports elasticity, firmness, and barrier comfort
+  * Plant-Derived Squalane: Prevents dryness and locks in smooth hydration
+- Application Ritual & Directions: Apply 2–3 drops at night only onto clean, dry skin. Begin by using 2–3 nights per week and gradually increase frequency as tolerated. Always apply sunscreen during the day.
 
-### 3.6 Overnight Cellular Resurfacing Elixir
-- Canonical URL: https://cdermanepal.com/products/overnight-cellular-resurfacing-elixir
-- Formula Code: overnight-cellular-resurfacing-elixir
-- Category: Corrective Treatments | Volume: 30 ml / 1.0 fl. oz.
-- Pricing: NPR 4200 (Protected MAP Retail Pricing)
-- Clinical Badge: Next-Gen Vitamin A • Zero Downtime
-- Nepali Title: ओभरनाइट सेल्युलर रिसर्फेसिङ एलिक्जिर
-- Clinical Indication: A dermatological night treatment that accelerates epidermal cell turnover without the typical retinization peeling or irritation.
-- Full Description: Encapsulated retinaldehyde converts 11x faster to active retinoic acid than standard retinol, paired with soothing bisabolol and ceramides.
+### 3.5 Moistin C Moisturiser
+- Canonical URL: https://cdermanepal.com/products/moistin-c-moisturiser
+- Formula Code: moistin-c-moisturiser
+- Category: Hydration & Barrier Care | Volume: 50 g
+- Pricing: NPR 1950 (Protected MAP Retail Pricing)
+- Clinical Badge: Deep Barrier Hydration
+- Nepali Title: मोइस्टिन सी मोइस्चराइजर
+- Clinical Indication: For soft, healthy, radiant skin. Rich, non-greasy daily barrier cream that locks in moisture and guards against everyday dryness.
+- Full Description: cDerma Moistin C Moisturiser is a daily hydrating cream developed to fortify the skin barrier and protect against dry climate conditions. Combining multi-weight Hyaluronic Acid with bio-identical Ceramide NP and soothing glycerin, it provides long-lasting, non-sticky hydration that leaves skin soft, calm, and radiant.
 - Key Clinical Benefits:
-  * Smooths irregular texture and fades stubborn post-acne erythema
-  * Stimulates dermal collagen synthesis and structural firmness
-  * Liposomal encapsulation minimizes transepidermal peeling
+  * Provides all-day deep hydration without heaviness or greasy residue
+  * Fortifies the skin barrier with essential ceramides to prevent moisture loss
+  * Leaves skin feeling soft, soothed, calm, and supple in all seasons
 - Active Compounds & Pharmacological Action:
-  * Encapsulated Retinaldehyde: Active dermal component
-  * Niacinamide USP: Active dermal component
-  * Bisabolol: Active dermal component
-- Application Ritual & Directions: Apply 2–3 pumps in the evening to dry skin 2–3 times per week, gradually increasing frequency as tolerated. Always follow with sunscreen the next morning.
+  * Multi-Weight Hyaluronic Acid: Draws moisture deep into epidermal layers
+  * Ceramide NP: Restores and strengthens lipid barrier matrix
+  * Glycerin & Panthenol: Prevents transepidermal dryness and soothes skin
+- Application Ritual & Directions: Smooth a nickel-sized amount evenly over face and neck morning and evening as the final hydration step.
 
 ## 4. Published Clinical Monographs & Prescribing Protocols
 ### 4.1 [CD-MONO-01] Multi-Lamellar Stratum Corneum Biomimicry Using Koshi Centella Asiatica & Bio-Identical Ceramides in High-Altitude Cold Urticaria
@@ -336,12 +311,11 @@ A3: Each CDerma bottle features a unique 8-digit manufacturing lot ID and QR cod
 सिडर्मा नेपाल (के एन्ड के ट्रेडिङ कन्सर्नद्वारा प्रवर्द्धित) नेपालकै पहिलो डाक्टर-फर्मुलेटेड क्लिनिकल छाला हेरचाह उत्पादक तथा थोक वितरक हो। सुनसरीको इटहरीमा रहेको ISO क्लास ७ क्लिनरुममा निर्मित हाम्रा उत्पादनहरू नेपालको उच्च उचाइको घाम, जाडोको सुक्खापन र सहरी प्रदूषणलाई ध्यानमा राखी तयार पारिएका हुन्।
 
 ### मुख्य उत्पादनहरू (नेपाली विवरण):
-- **सेन्टेला ब्यारियर रिस्टोर कन्सन्ट्रेट**: प्रमुख फेस केयर • ५% मल्टि-सिरामाइड्स + सब-अल्पाइन सेन्टेला (मूल्य: रु 3200) — छालाको सुरक्षात्मक पर्खाल (स्ट्र्याटम कोर्नियम) को द्रुत पुनःस्थापना र कस्मेटिक प्रक्रियापछिको जलन शान्त पार्न डिजाइन गरिएको उच्च-सघन लिपिड इमल्सन।
-- **सिरामाइड डिप ब्यारियर क्रिम**: गहन ३:१:१ फिजियोलोजिकल लिपिड पोषण क्रिम (मूल्य: रु 3800) — अत्यधिक सुख्खापन, जाडोयामको छाला फुटेको र लेजरपछिको संवेदनशील छालाको लागि गहन बायोमिमेटिक लिपिड क्रिम।
-- **फिजियोलोजिकल ब्यालेन्सिङ जेल क्लिन्जर**: अल्ट्रा-सफ्ट दैनिक क्लिन्जर • पीएच ५.५ एसिड मेन्टल ब्यालेन्स (मूल्य: रु 2100) — छालाको प्राकृतिक आद्रता र अम्लीय आवरणलाई सुरक्षित राख्दै धुलो र अतिरिक्त तेल हटाउने कोमल दैनिक फेस क्लिन्जर।
-- **हाई-अल्टिच्यूड मिनरल शिल्ड एसपीएफ ५०+ PA++++**: १००% नन-नानो जिंक अक्साइड • फोटोस्टेबल यूभी सुरक्षा (मूल्य: रु 3500) — तीव्र हिमाली घाम, उच्च स्थानको विकिरण र लेजरपछिको संवेदनशील छालाका लागि १००% मिनरल जिंक अक्साइड सनस्क्रिन।
-- **मल्टि-डेप्थ हायलुरोनिक हाइड्रेटिङ मिस्ट**: ५-मोलिक्युलर हायलुरोनिक एसिड + हिमनदी मिनरल वाटर (मूल्य: रु 2400) — सुख्खा हावापानीमा तत्काल बहु-स्तरीय आद्रता प्रदान गर्ने र छालाको कोषीय सन्तुलन फर्काउने सूक्ष्म क्लिनिकल टोनिक स्प्रे।
-- **ओभरनाइट सेल्युलर रिसर्फेसिङ एलिक्जिर**: ०.१% क्याप्सुलेटेड रेटिनालडिहाइड + ५% नियासिनामाइड (मूल्य: रु 4200) — छाला नखुम्चिने र कुनै जलनबिना रातभर नयाँ छालाको कोषीय विकासलाई तीव्र बनाउने उन्नत डर्माटोलोजिकल नाइट ट्रिटमेन्ट।
+- **कोको सी तेल**: एक्स्ट्रा भर्जिन नरिवल तेल (मूल्य: रु 1250) — स्वस्थ छाला र कपालको लागि। दैनिक पोषण र मोइस्चराइजिङका लागि १००% शुद्ध कोल्ड-प्रेस्ड एक्स्ट्रा भर्जिन नरिवल तेल।
+- **अल्फा सी सिरम**: २% अल्फा आर्बुटिन + १% कोजिक एसिड र मल्टि-पेप्टाइड्स (मूल्य: रु 2200) — असमान छालालाई उज्यालो बनाउँछ। कालो दाग, घामको असर र पिग्मेन्टेसन कम गरी छालालाई सफा र चम्किलो बनाउँछ।
+- **नायसिन सी सिरम**: १०% नायसिनामाइड र जिंक पीसीए (मूल्य: रु 2100) — छिद्र सफा गर्छ र तेल नियन्त्रण गर्दछ। १०% नायसिनामाइड र १% जिंकले छालाको चिल्लोपन घटाई दाना आउनबाट रोक्दछ।
+- **रेटिन सी सिरम**: रेटिनोल ०.२% र पेप्टाइड्स (मूल्य: रु 2400) — नरम र जवान देखिने छालाको लागि। ०.२% रेटिनोल र पेप्टाइड्सले छालाको सतहलाई नयाँ, चम्किलो र स्वस्थ बनाउँछ।
+- **मोइस्टिन सी मोइस्चराइजर**: हाइलुरोनिक एसिड र सेरामाइड्सयुक्त अल्ट्रा-हाइड्रेटिंग क्रिम (मूल्य: रु 1950) — नरम, स्वस्थ र चम्किलो छालाको लागि। सुख्खापनबाट बचाउने र छालालाई दिनभर मोइस्चराइज्ड राख्ने नन-ग्रेसी दैनिक क्रिम।
 
 ### क्लिनिक तथा स्टोर सञ्जाल:
 काठमाडौं, पोखरा, विराटनगर, धरान, चितवन र बुटवलसहित सातै प्रदेशका प्रमुख अस्पताल फार्मेसी तथा छाला क्लिनिकहरूमा सिडर्माका उत्पादनहरू सिफारिस गरिन्छन्।
