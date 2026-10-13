@@ -29,10 +29,17 @@ router.get('/login', (req, res) => {
   res.sendFile(require('path').resolve(__dirname, '../views/admin/login.html'));
 });
 
-// POST /admin/login - Handle Login with rate limiting, scrypt/timing attack protection, and session regeneration
-router.post('/login', authRateLimiter.middleware(), (req, res) => {
-  const { username, password } = req.body;
+// POST /admin/login - Handle Login with failure-specific rate limiting, scrypt/timing attack protection, and session regeneration
+router.post('/login', (req, res) => {
   const ip = getClientIp(req);
+  const key = authRateLimiter.getClientKey(req);
+
+  // Enforce lockout if maximum consecutive failed attempts reached
+  if (authRateLimiter.isBlocked(key)) {
+    return authRateLimiter.sendBlockedResponse(key, res);
+  }
+
+  const { username, password } = req.body;
 
   if (!username || !password) {
     return res.status(400).json({ success: false, message: 'Username and password are required.' });
@@ -42,6 +49,9 @@ router.post('/login', authRateLimiter.middleware(), (req, res) => {
   const { valid, needsRehash } = verifyPassword(String(password), user ? user.password_hash : null);
 
   if (!user || !valid) {
+    // Only record strike on failed credentials
+    authRateLimiter.recordFailure(key);
+
     logSecurityEvent(db, {
       event_type: 'LOGIN_FAILURE',
       severity: 'WARN',
@@ -52,6 +62,9 @@ router.post('/login', authRateLimiter.middleware(), (req, res) => {
     });
     return res.status(401).json({ success: false, message: 'Invalid credentials. Please verify username and password.' });
   }
+
+  // Clear any failed attempts upon successful authentication
+  authRateLimiter.reset(key);
 
   // Auto-upgrade password hash to memory-hard scrypt if legacy bcrypt detected
   if (needsRehash) {

@@ -68,7 +68,7 @@ app.use(session({
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days max lifetime
     httpOnly: true,                  // Mitigate XSS session theft
     sameSite: 'lax',                 // Strict CSRF defense on top-level navigations
-    secure: isProduction             // Enforce HTTPS transmission in production
+    secure: 'auto'                   // Automatically enforce secure on HTTPS via trust proxy, allow HTTP on localhost
   }
 }));
 

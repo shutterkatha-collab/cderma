@@ -118,8 +118,53 @@ class MemoryRateLimiter {
 
   getClientKey(req) {
     const forwarded = req.headers['x-forwarded-for'];
-    const ip = forwarded ? forwarded.split(',')[0].trim() : (req.socket.remoteAddress || '127.0.0.1');
+    const ip = forwarded ? forwarded.split(',')[0].trim() : (req.headers['x-real-ip'] || req.ip || (req.socket ? req.socket.remoteAddress : '127.0.0.1'));
     return `${ip}:${req.baseUrl || ''}${req.path || ''}`;
+  }
+
+  isBlocked(key) {
+    const now = Date.now();
+    const record = this.hits.get(key);
+    if (!record) return false;
+    if (now > record.resetTime) {
+      this.hits.delete(key);
+      return false;
+    }
+    return record.count >= this.maxRequests;
+  }
+
+  recordFailure(key) {
+    const now = Date.now();
+    let record = this.hits.get(key);
+    if (!record || now > record.resetTime) {
+      record = { count: 1, resetTime: now + this.windowMs };
+      this.hits.set(key, record);
+    } else {
+      record.count++;
+    }
+    return record;
+  }
+
+  reset(key) {
+    this.hits.delete(key);
+  }
+
+  sendBlockedResponse(key, res) {
+    const now = Date.now();
+    const record = this.hits.get(key);
+    const resetSeconds = record ? Math.ceil(Math.max(0, record.resetTime - now) / 1000) : 60;
+
+    res.setHeader('RateLimit-Limit', this.maxRequests);
+    res.setHeader('RateLimit-Remaining', 0);
+    res.setHeader('RateLimit-Reset', resetSeconds);
+    res.setHeader('Retry-After', resetSeconds);
+
+    return res.status(429).json({
+      success: false,
+      error: 'TOO_MANY_REQUESTS',
+      message: this.message,
+      retryAfter: resetSeconds
+    });
   }
 
   middleware() {
@@ -160,8 +205,8 @@ class MemoryRateLimiter {
 // Pre-configured rate limiters
 const authRateLimiter = new MemoryRateLimiter({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  maxRequests: 5,            // 5 failed login attempts per IP
-  message: 'Too many login attempts from this IP address. Please wait 15 minutes before retrying.'
+  maxRequests: 25,           // 25 failed login attempts before lockout
+  message: 'Too many failed login attempts from this IP address. Please wait 15 minutes before retrying.'
 });
 
 const formRateLimiter = new MemoryRateLimiter({

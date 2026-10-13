@@ -825,12 +825,13 @@ function seedInitialData() {
     });
   }
 
-  // Seed Admin User
-  const adminCount = db.prepare('SELECT COUNT(*) as count FROM admin_users').get().count;
-  if (adminCount === 0) {
-    const adminUser = process.env.ADMIN_USER || 'admin';
-    const adminPass = process.env.ADMIN_PASS || 'cderma2026!';
-    const { hashPassword } = require('../services/securityService');
+  // Seed / Sync Admin User
+  const adminUser = process.env.ADMIN_USER || 'admin';
+  const adminPass = process.env.ADMIN_PASS || 'cderma2026!';
+  const { hashPassword, verifyPassword } = require('../services/securityService');
+
+  const existingAdmin = db.prepare('SELECT id, password_hash FROM admin_users WHERE username = ?').get(adminUser);
+  if (!existingAdmin) {
     const passwordHash = hashPassword(adminPass);
     db.prepare('INSERT INTO admin_users (username, email, password_hash, role) VALUES (?, ?, ?, ?)').run(
       adminUser,
@@ -839,6 +840,13 @@ function seedInitialData() {
       'admin'
     );
     console.log(`🔐 Created default admin account with modern scrypt hashing (user: ${adminUser})`);
+  } else {
+    const { valid } = verifyPassword(adminPass, existingAdmin.password_hash);
+    if (!valid) {
+      const newHash = hashPassword(adminPass);
+      db.prepare('UPDATE admin_users SET password_hash = ? WHERE id = ?').run(newHash, existingAdmin.id);
+      console.log(`🔐 Synchronized admin password hash for user: ${adminUser}`);
+    }
   }
 
   // Seed Default Social Channels

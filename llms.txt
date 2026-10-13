@@ -9,7 +9,7 @@
 - Regulatory: DDA / PAN: 609874123 • EXIM: 3049904360114NP • GMP Compliant
 - Full Detailed Index: [llms-full.txt](https://cdermanepal.com/llms-full.txt)
 - XML Sitemap: [sitemap.xml](https://cdermanepal.com/sitemap.xml)
-- Last Updated: 2026-09-26
+- Last Updated: 2026-10-13
 
 ## Core Website Pages
 - [CDerma Home](https://cdermanepal.com/): Official portal detailing doctor formulations, clinical certifications, and Himalayan bio-actives.
