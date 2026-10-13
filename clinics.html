@@ -159,7 +159,7 @@
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-sm items-center">
 <!-- Text Query -->
 <div class="lg:col-span-6 relative">
-<label class="block text-[11px] uppercase tracking-widest text-outline font-semibold mb-1">Cosmetic Store, Clinic, Doctor, or City</label>
+<label for="search-input" class="block text-[11px] uppercase tracking-widest text-outline font-semibold mb-1">Cosmetic Store, Clinic, Doctor, or City</label>
 <div class="relative flex items-center">
 <span class="material-symbols-outlined absolute left-3 text-outline text-[20px]">search</span>
 <input class="w-full pl-10 pr-4 py-2.5 bg-surface-container-low text-on-surface text-[14px] rounded-lg focus:outline-none focus:bg-surface transition-all placeholder:text-outline/70" id="search-input" data-search-clinic placeholder="e.g. Kathmandu, Biratnagar, Beauty Store, Naxal..." type="text"/>
@@ -188,8 +188,8 @@
 <span class="text-[13px] font-medium text-on-surface flex items-center gap-1.5">
 <span class="w-2 h-2 rounded-full bg-emerald-600"></span> Verified In-Stock
               </span>
-<label class="relative inline-flex items-center cursor-pointer">
-<input id="clinic-instock-toggle" checked="" class="sr-only peer" type="checkbox"/>
+<label for="clinic-instock-toggle" class="relative inline-flex items-center cursor-pointer">
+<input id="clinic-instock-toggle" aria-label="Filter verified in-stock items" checked="" class="sr-only peer" type="checkbox"/>
 <div class="w-9 h-5 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
 </label>
 </div>

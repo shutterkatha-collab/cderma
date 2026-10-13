@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "test": "node tests/run_all.js",
+    "test:live": "node tests/run_all.js --target=https://antiquewhite-porcupine-932870.hostingersite.com"
   },
   "keywords": [
     "cderma",
