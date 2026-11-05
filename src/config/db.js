@@ -558,15 +558,7 @@ function seedInitialData() {
   });
   insertManyMedia(defaultMedia);
 
-  // Seed/Sync Products with Bilingual Data
-  const validSlugs = defaultProducts.map(p => p.slug);
-  // Remove deprecated products not in defaultProducts
-  const existingProducts = db.prepare('SELECT id, slug FROM products').all();
-  for (const ep of existingProducts) {
-    if (!validSlugs.includes(ep.slug)) {
-      db.prepare('DELETE FROM products WHERE id = ?').run(ep.id);
-    }
-  }
+  // Seed/Sync Products with Bilingual Data (Preserve all existing data without deletions)
 
   const insertOrUpdateProduct = db.prepare(`
     INSERT INTO products (
