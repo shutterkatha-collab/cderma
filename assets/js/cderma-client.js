@@ -2316,8 +2316,8 @@ function renderProductGrid(container, products) {
   if (isNe) applyBodyTranslations('ne'); // Products grid translated
     return `
       <div class="product-card group flex flex-col justify-between h-full bg-surface-container-lowest rounded-xl overflow-hidden p-space-lg hover:shadow-[0_14px_34px_rgba(107,91,28,0.06)] border border-outline-variant/20 transition-all" data-category="${escapeHtml(categoryNorm)}">
-        <div class="relative w-full h-56 bg-surface-container-high rounded-lg overflow-hidden flex items-center justify-center mb-space-md">
-          <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="${escapeHtml(p.title)}" src="${escapeHtml(p.image_url || 'assets/images/product-packaging-dropper.png')}" loading="lazy" decoding="async">
+        <div class="relative w-full aspect-[4/5] bg-white rounded-lg overflow-hidden flex items-center justify-center p-3 mb-space-md border border-outline-variant/30">
+          <img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" data-alt="${escapeHtml(p.title)}" src="${escapeHtml(p.image_url || 'assets/images/product-packaging-dropper.png')}" loading="lazy" decoding="async">
           <div class="absolute top-space-xs left-space-xs">
             <span class="px-space-xs py-[2px] rounded bg-surface/90 text-primary text-[10px] uppercase tracking-wider font-semibold shadow-sm">
               ${escapeHtml(p.clinical_badge || (isNe ? 'चिकित्सकद्वारा प्रमाणित' : 'Doctor Formulated'))}
@@ -2436,11 +2436,27 @@ async function initProductDetail() {
     const descEl = document.getElementById('p-desc') || document.querySelector('[data-product-desc]');
     if (descEl) descEl.textContent = p.description || p.summary || '';
 
-    // 4. Main Image
+    // 4. Main Image & Gallery Thumbnails
     const mainImg = document.getElementById('main-product-img');
     if (mainImg && p.image_url) {
       mainImg.src = p.image_url;
       mainImg.alt = p.title;
+    }
+    const thumbBtns = document.querySelectorAll('.thumbnail-btn');
+    if (thumbBtns.length >= 2 && p.image_url) {
+      const bannerUrl = p.image_url.replace('.jpg', '-banner.jpg');
+      thumbBtns[0].setAttribute('onclick', `switchGallery('${p.image_url}', this)`);
+      const img1 = thumbBtns[0].querySelector('img');
+      if (img1) {
+        img1.src = p.image_url;
+        img1.alt = `${p.title} pack shot`;
+      }
+      thumbBtns[1].setAttribute('onclick', `switchGallery('${bannerUrl}', this)`);
+      const img2 = thumbBtns[1].querySelector('img');
+      if (img2) {
+        img2.src = bannerUrl;
+        img2.alt = `${p.title} clinical flyer`;
+      }
     }
 
     // 5. Active Ingredients Pills
