@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <!-- Core Web Pages -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://cdermanepal.com/</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -14,76 +12,82 @@
   </url>
   <url>
     <loc>https://cdermanepal.com/products.html</loc>
-    <lastmod>2026-09-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://cdermanepal.com/product-detail.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://cdermanepal.com/science.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cdermanepal.com/b2b.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
     <loc>https://cdermanepal.com/clinics.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://cdermanepal.com/monographs.html</loc>
-    <lastmod>2026-09-07</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Individual Doctor-Formulated Products in Nepal -->
   <url>
-    <loc>https://cdermanepal.com/products/centella-barrier-restore-concentrate</loc>
-    <lastmod>2026-09-07</lastmod>
+    <loc>https://cdermanepal.com/products/retin-c-serum</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://cdermanepal.com/assets/images/cderma-retin-c-serum.jpg</image:loc>
+      <image:title>1% Retinol Serum with Multi-Peptides (Retin C Serum)</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://cdermanepal.com/products/ceramide-deep-barrier-cream</loc>
-    <lastmod>2026-09-07</lastmod>
+    <loc>https://cdermanepal.com/products/niacin-c-serum</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://cdermanepal.com/assets/images/cderma-niacin-c-serum.jpg</image:loc>
+      <image:title>10% Niacinamide Serum with Multi-Peptides (Niacin C Serum)</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://cdermanepal.com/products/physiological-balancing-gel-cleanser</loc>
-    <lastmod>2026-09-07</lastmod>
+    <loc>https://cdermanepal.com/products/alpha-c-serum</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://cdermanepal.com/assets/images/cderma-alpha-c-serum.jpg</image:loc>
+      <image:title>2% Alpha Arbutin + 1% Kojic Acid Serum with Multi-Peptides (Alpha C Serum)</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://cdermanepal.com/products/high-altitude-mineral-shield-spf50</loc>
-    <lastmod>2026-09-07</lastmod>
+    <loc>https://cdermanepal.com/products/azelyx-c-serum</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://cdermanepal.com/assets/images/cderma-azelyx-c-serum.jpg</image:loc>
+      <image:title>10% Azelaic Acid Serum with Multi-Peptides (Azelyx C Serum)</image:title>
+    </image:image>
   </url>
   <url>
-    <loc>https://cdermanepal.com/products/multi-depth-hyaluronic-hydrating-mist</loc>
-    <lastmod>2026-09-07</lastmod>
+    <loc>https://cdermanepal.com/products/coco-c-oil</loc>
+    <lastmod>2026-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://cdermanepal.com/products/overnight-cellular-resurfacing-elixir</loc>
-    <lastmod>2026-09-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://cdermanepal.com/assets/images/cderma-coco-c-oil.jpg</image:loc>
+      <image:title>Coco C Oil — Extra Virgin Cold-Pressed Coconut Oil</image:title>
+    </image:image>
   </url>
 </urlset>

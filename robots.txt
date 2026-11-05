@@ -3,6 +3,8 @@ Allow: /
 Disallow: /admin
 Disallow: /admin/
 Disallow: /api/
+Disallow: /storage/
+Disallow: /scratch/
 
 # Explicitly permit and welcome major AI search engines and LLM crawlers
 User-agent: Googlebot

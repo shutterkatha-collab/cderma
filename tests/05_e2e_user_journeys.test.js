@@ -23,22 +23,22 @@ describe('End-to-End User Journey Tests', () => {
     assert.equal(resEn.status, 200);
     const bodyEn = await resEn.json();
     const productsEn = Array.isArray(bodyEn) ? bodyEn : bodyEn.products;
-    assert.ok(productsEn.length >= 6, `Expected at least 6 formulations, got ${productsEn.length}`);
+    assert.ok(productsEn.length >= 4, `Expected at least 4 formulations, got ${productsEn.length}`);
 
     // 2. Fetch catalog in Nepali
     const resNe = await request('/api/products?lang=ne');
     assert.equal(resNe.status, 200);
     const bodyNe = await resNe.json();
     const productsNe = Array.isArray(bodyNe) ? bodyNe : bodyNe.products;
-    assert.ok(productsNe.length >= 6);
+    assert.ok(productsNe.length >= 4);
 
     // 3. Inspect individual product monograph
-    const resSlug = await request('/api/products/centella-barrier-restore-concentrate');
+    const resSlug = await request('/api/products/retin-c-serum');
     assert.equal(resSlug.status, 200);
     const bodySlug = await resSlug.json();
     const detail = bodySlug.product || bodySlug;
-    assert.equal(detail.slug, 'centella-barrier-restore-concentrate');
-    assert.ok(detail.inci_full && detail.inci_full.includes('Centella Asiatica'));
+    assert.equal(detail.slug, 'retin-c-serum');
+    assert.ok(detail.inci_full && detail.inci_full.includes('Retinol'));
   });
 
   test('User Journey 2: Customer submits clinical consultation inquiry', async () => {
@@ -46,8 +46,8 @@ describe('End-to-End User Journey Tests', () => {
       name: `Suman Shrestha ${uniqueTimestamp}`,
       email: testInquiryEmail,
       phone: '9841234567',
-      subject: 'Inquiry regarding Centella Barrier Concentrate',
-      message: 'Seeking advice on Centella Barrier Restore for sensitive post-procedure skin.',
+      subject: 'Inquiry regarding Retin C Serum',
+      message: 'Seeking advice on Retin C Serum for anti-aging skin care.',
       type: 'clinical'
     };
 

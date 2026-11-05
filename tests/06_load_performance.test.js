@@ -67,10 +67,10 @@ describe('Load & Performance Benchmarking (ApacheBench)', () => {
     assert.ok(result.rps > 10, `API throughput should exceed 10 req/s, got ${result.rps}`);
   });
 
-  test('Benchmark Product Monograph (/products/centella-barrier-restore-concentrate)', async () => {
-    const result = runApacheBench('/products/centella-barrier-restore-concentrate', 10, 30);
+  test('Benchmark Product Monograph (/products/retin-c-serum)', async () => {
+    const result = runApacheBench('/products/retin-c-serum', 10, 30);
     if (!result.success) {
-      const promises = Array.from({ length: 15 }, () => request('/products/centella-barrier-restore-concentrate'));
+      const promises = Array.from({ length: 15 }, () => request('/products/retin-c-serum'));
       const responses = await Promise.all(promises);
       assert.ok(responses.every(r => r.status === 200));
       return;

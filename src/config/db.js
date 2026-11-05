@@ -558,59 +558,75 @@ function seedInitialData() {
   });
   insertManyMedia(defaultMedia);
 
-  // Seed Products
-  const productCount = db.prepare('SELECT COUNT(*) as count FROM products').get().count;
-  if (productCount === 0) {
-    const insertProduct = db.prepare(`
-      INSERT OR IGNORE INTO products (
-        slug, title, subtitle, category, volume, price_npr,
-        clinical_badge, summary, description, key_benefits,
-        active_ingredients, inci_full, usage_instructions,
-        image_url, is_featured, sort_order, status,
-        title_ne, subtitle_ne, category_ne, clinical_badge_ne,
-        summary_ne, description_ne, key_benefits_ne, usage_instructions_ne
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `);
-    const insertManyProducts = db.transaction((products) => {
-      for (const p of products) {
-        insertProduct.run(
-          p.slug, p.title, p.subtitle, p.category, p.volume, p.price_npr,
-          p.clinical_badge, p.summary, p.description, p.key_benefits,
-          p.active_ingredients, p.inci_full, p.usage_instructions,
-          p.image_url, p.is_featured, p.sort_order, p.status,
-          p.title_ne || null, p.subtitle_ne || null, p.category_ne || null, p.clinical_badge_ne || null,
-          p.summary_ne || null, p.description_ne || null, p.key_benefits_ne || null, p.usage_instructions_ne || null
-        );
-      }
-    });
-    insertManyProducts(defaultProducts);
-    console.log('🌱 Seeded initial products with bilingual data.');
-  } else {
-    // Populate Nepali fields for existing products if empty
-    const updateProductNe = db.prepare(`
-      UPDATE products SET
-        title_ne = @title_ne, subtitle_ne = @subtitle_ne, category_ne = @category_ne,
-        clinical_badge_ne = @clinical_badge_ne, summary_ne = @summary_ne,
-        description_ne = @description_ne, key_benefits_ne = @key_benefits_ne,
-        usage_instructions_ne = @usage_instructions_ne
-      WHERE slug = @slug AND (title_ne IS NULL OR title_ne = '')
-    `);
-    for (const p of defaultProducts) {
-      if (p.title_ne) {
-        updateProductNe.run({
-          slug: p.slug,
-          title_ne: p.title_ne,
-          subtitle_ne: p.subtitle_ne || '',
-          category_ne: p.category_ne || '',
-          clinical_badge_ne: p.clinical_badge_ne || '',
-          summary_ne: p.summary_ne || '',
-          description_ne: p.description_ne || '',
-          key_benefits_ne: p.key_benefits_ne || '',
-          usage_instructions_ne: p.usage_instructions_ne || ''
-        });
-      }
+  // Seed/Sync Products with Bilingual Data
+  const validSlugs = defaultProducts.map(p => p.slug);
+  // Remove deprecated products not in defaultProducts
+  const existingProducts = db.prepare('SELECT id, slug FROM products').all();
+  for (const ep of existingProducts) {
+    if (!validSlugs.includes(ep.slug)) {
+      db.prepare('DELETE FROM products WHERE id = ?').run(ep.id);
     }
   }
+
+  const insertOrUpdateProduct = db.prepare(`
+    INSERT INTO products (
+      slug, title, subtitle, category, volume, price_npr,
+      clinical_badge, summary, description, key_benefits,
+      active_ingredients, inci_full, usage_instructions,
+      image_url, is_featured, sort_order, status,
+      title_ne, subtitle_ne, category_ne, clinical_badge_ne,
+      summary_ne, description_ne, key_benefits_ne, usage_instructions_ne
+    ) VALUES (
+      @slug, @title, @subtitle, @category, @volume, @price_npr,
+      @clinical_badge, @summary, @description, @key_benefits,
+      @active_ingredients, @inci_full, @usage_instructions,
+      @image_url, @is_featured, @sort_order, @status,
+      @title_ne, @subtitle_ne, @category_ne, @clinical_badge_ne,
+      @summary_ne, @description_ne, @key_benefits_ne, @usage_instructions_ne
+    )
+    ON CONFLICT(slug) DO UPDATE SET
+      title = excluded.title, subtitle = excluded.subtitle, category = excluded.category,
+      volume = excluded.volume, price_npr = excluded.price_npr, clinical_badge = excluded.clinical_badge,
+      summary = excluded.summary, description = excluded.description, key_benefits = excluded.key_benefits,
+      active_ingredients = excluded.active_ingredients, inci_full = excluded.inci_full,
+      usage_instructions = excluded.usage_instructions, image_url = excluded.image_url,
+      is_featured = excluded.is_featured, sort_order = excluded.sort_order, status = excluded.status,
+      title_ne = excluded.title_ne, subtitle_ne = excluded.subtitle_ne, category_ne = excluded.category_ne,
+      clinical_badge_ne = excluded.clinical_badge_ne, summary_ne = excluded.summary_ne,
+      description_ne = excluded.description_ne, key_benefits_ne = excluded.key_benefits_ne,
+      usage_instructions_ne = excluded.usage_instructions_ne
+  `);
+
+  for (const p of defaultProducts) {
+    insertOrUpdateProduct.run({
+      slug: p.slug,
+      title: p.title,
+      subtitle: p.subtitle || '',
+      category: p.category || '',
+      volume: p.volume || '',
+      price_npr: p.price_npr || 0,
+      clinical_badge: p.clinical_badge || '',
+      summary: p.summary || '',
+      description: p.description || '',
+      key_benefits: p.key_benefits || '[]',
+      active_ingredients: p.active_ingredients || '[]',
+      inci_full: p.inci_full || '',
+      usage_instructions: p.usage_instructions || '',
+      image_url: p.image_url || '',
+      is_featured: p.is_featured ? 1 : 0,
+      sort_order: p.sort_order || 1,
+      status: p.status || 'active',
+      title_ne: p.title_ne || null,
+      subtitle_ne: p.subtitle_ne || null,
+      category_ne: p.category_ne || null,
+      clinical_badge_ne: p.clinical_badge_ne || null,
+      summary_ne: p.summary_ne || null,
+      description_ne: p.description_ne || null,
+      key_benefits_ne: p.key_benefits_ne || null,
+      usage_instructions_ne: p.usage_instructions_ne || null
+    });
+  }
+  console.log('🌱 Seeded/updated active products catalog with bilingual data.');
 
   // Seed Clinics & Dispensaries (Insert or update rich clinic details)
   const insertClinic = db.prepare(`
@@ -893,8 +909,8 @@ function seedInitialData() {
     {
       platform: 'whatsapp',
       name: 'WhatsApp Business',
-      handle: '+977 9820753751',
-      url: 'https://wa.me/9779820753751',
+      handle: '+977 9714547121',
+      url: 'https://wa.me/9779714547121',
       icon_name: 'chat',
       badge_text: 'Direct Clinic & Order Support',
       color_hex: '#25D366',
@@ -1030,7 +1046,7 @@ function seedInitialData() {
     { key: 'social_og_image', value: 'assets/images/img_282f9d7b4a1e.jpg', category: 'Social & Meta', label: 'Default Social Share Image Banner' },
     { key: 'social_twitter_site', value: '@cdermanepal', category: 'Social & Meta', label: 'Twitter / X Handle' },
     { key: 'social_whatsapp_floating', value: '1', category: 'Social & Meta', label: 'Show Floating WhatsApp Consult Widget' },
-    { key: 'social_whatsapp_number', value: '+977 9820753751', category: 'Social & Meta', label: 'WhatsApp Liaison Number' },
+    { key: 'social_whatsapp_number', value: '+977 9714547121', category: 'Social & Meta', label: 'WhatsApp Liaison Number' },
     { key: 'social_whatsapp_msg', value: 'Namaste CDerma! I would like to inquire about formulations & clinical supplies.', category: 'Social & Meta', label: 'WhatsApp Pre-filled Message' }
   ];
 
@@ -1066,17 +1082,17 @@ function seedInitialData() {
     `);
     const defaultBatches = [
       {
-        lot_id: 'LOT-24-0442',
-        product_title: 'Centella Intensive Repair Serum 30ml',
-        product_title_ne: 'सेन्टेला इन्टेन्सिव रिपेयर सीरम ३० मि.लि.',
-        mfd_date: 'Nov 12, 2024',
-        expiry_date: 'Nov 2026',
+        lot_id: 'LOT-25-0101',
+        product_title: '1% Retinol Serum with Multi-Peptides (Retin C Serum) 30ml',
+        product_title_ne: '१% रेटिनोल सिरम विथ मल्टि-पेप्टाइड्स (रेटिन सी सिरम) ३० मि.लि.',
+        mfd_date: 'Jan 15, 2025',
+        expiry_date: 'Jan 2027',
         status: 'PASSED ALL TESTS',
-        purity_param: 'Active Asiaticoside Purity',
-        purity_spec: '≥ 90.0% by HPLC',
-        purity_result: '94.20% [Pass]',
+        purity_param: 'Active Encapsulated Retinol Purity',
+        purity_spec: '≥ 98.0% by HPLC',
+        purity_result: '99.40% [Pass]',
         ph_spec: '5.20 – 5.60 at 25°C',
-        ph_result: '5.42 pH [Pass]',
+        ph_result: '5.45 pH [Pass]',
         microbial_spec: '< 10 CFU/g',
         microbial_result: '< 1 CFU/g [Pass]',
         heavy_metals_spec: '< 1.0 ppm Combined',
@@ -1089,19 +1105,19 @@ function seedInitialData() {
         is_active: 1
       },
       {
-        lot_id: 'LOT-24-0389',
-        product_title: 'Barrier Lipid Restorative Emulsion 50ml',
-        product_title_ne: 'ब्यारियर लिपिड रेस्टोरेटिभ इमल्सन ५० मि.लि.',
-        mfd_date: 'Oct 28, 2024',
-        expiry_date: 'Oct 2026',
+        lot_id: 'LOT-25-0102',
+        product_title: '10% Niacinamide Serum with Multi-Peptides (Niacin C Serum) 30ml',
+        product_title_ne: '१०% नियासिनामाइड सिरम विथ मल्टि-पेप्टाइड्स (नियासिन सी सिरम) ३० मि.लि.',
+        mfd_date: 'Feb 10, 2025',
+        expiry_date: 'Feb 2027',
         status: 'PASSED ALL TESTS',
-        purity_param: 'Active Asiaticoside Purity',
-        purity_spec: '≥ 90.0% by HPLC',
-        purity_result: '92.85% [Pass]',
+        purity_param: 'Active Niacinamide & Zinc Assay',
+        purity_spec: '≥ 99.0% by HPLC',
+        purity_result: '99.85% [Pass]',
         ph_spec: '5.20 – 5.60 at 25°C',
-        ph_result: '5.55 pH [Pass]',
+        ph_result: '5.50 pH [Pass]',
         microbial_spec: '< 10 CFU/g',
-        microbial_result: '< 2 CFU/g [Pass]',
+        microbial_result: '< 1 CFU/g [Pass]',
         heavy_metals_spec: '< 1.0 ppm Combined',
         heavy_metals_result: 'Not Detected [Pass]',
         stability_spec: '4,000 RPM / 30 mins',

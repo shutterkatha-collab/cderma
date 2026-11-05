@@ -368,11 +368,11 @@ const CDERMA_NEPALI_DICTIONARY = {
   "Everything you need to know about our products, ingredients, and delivery.": "हाम्रा उत्पादनहरू, सामग्री र डेलिभरीका बारेमा जान्नुपर्ने सबै कुरा।",
   "Clear answers regarding our formulations, safety evaluations, and facility operations.": "हाम्रा फर्मुलेसन, सुरक्षा मूल्याङ्कन र प्रयोगशाला सञ्चालन सम्बन्धी स्पष्ट उत्तरहरू।",
   "Where can I buy CDerma products in Nepal?": "नेपालमा सिडर्माका उत्पादनहरू कहाँ किन्न सकिन्छ?",
-  "CDerma products are available through authorized cosmetic stores, beauty retailers, and partner skin clinics in Kathmandu, Lalitpur, Pokhara, Biratnagar, Itahari, Butwal, and other major cities. You can also order directly via WhatsApp at +977 9820753751.": "सिडर्माका उत्पादनहरू काठमाडौँ, ललितपुर, पोखरा, विराटनगर, इटहरी, बुटवल लगायतका प्रमुख सहरहरूका अधिकृत कस्मेटिक पसल, ब्युटी रिटेलर र छाला क्लिनिकहरूमा उपलब्ध छन्। तपाईंले +९७७ ९८२०७५३७५१ मा ह्वाट्सएप मार्फत प्रत्यक्ष अर्डर पनि गर्न सक्नुहुन्छ।",
+  "CDerma products are available through authorized cosmetic stores, beauty retailers, and partner skin clinics in Kathmandu, Lalitpur, Pokhara, Biratnagar, Itahari, Butwal, and other major cities. You can also order directly via WhatsApp at +977 9714547121.": "सिडर्माका उत्पादनहरू काठमाडौँ, ललितपुर, पोखरा, विराटनगर, इटहरी, बुटवल लगायतका प्रमुख सहरहरूका अधिकृत कस्मेटिक पसल, ब्युटी रिटेलर र छाला क्लिनिकहरूमा उपलब्ध छन्। तपाईंले +९७७ ९७१४५४७१२१ मा ह्वाट्सएप मार्फत प्रत्यक्ष अर्डर पनि गर्न सक्नुहुन्छ।",
   "Are CDerma products suitable for sensitive skin?": "के सिडर्माका उत्पादनहरू संवेदनशील छालाका लागि उपयुक्त छन्?",
   "Yes. Every CDerma formula is dermatologically formulated to be gentle, fragrance-free, paraben-free, and non-comedogenic (won’t clog pores).": "हो। प्रत्येक सिडर्मा फर्मुला कोमल, सुगन्ध-रहित, प्याराबेन-रहित र छिद्र नथुन्ने (नन-कमेडोजेनिक) हुने गरी बनाइएको छ।",
   "How can my cosmetic shop or clinic become an authorized retailer?": "मेरो कस्मेटिक पसल वा क्लिनिक कसरी अधिकृत बिक्रेता बन्न सक्छ?",
-  "Visit our B2B page or contact us on WhatsApp (+977 9820753751). We offer competitive wholesale rates, display stands, and promotional materials for certified stores across Nepal.": "हाम्रो बी२बी पृष्ठमा जानुहोस् वा ह्वाट्सएप (+९७७ ९८२०७५३७५१) मा सम्पर्क गर्नुहोस्। हामी नेपालभरका प्रमाणित पसलहरूका लागि आकर्षक थोक मूल्य, डिस्प्ले स्ट्यान्ड र प्रचार सामग्री प्रदान गर्दछौं।",
+  "Visit our B2B page or contact us on WhatsApp (+977 9714547121). We offer competitive wholesale rates, display stands, and promotional materials for certified stores across Nepal.": "हाम्रो बी२बी पृष्ठमा जानुहोस् वा ह्वाट्सएप (+९७७ ९७१४५४७१२१) मा सम्पर्क गर्नुहोस्। हामी नेपालभरका प्रमाणित पसलहरूका लागि आकर्षक थोक मूल्य, डिस्प्ले स्ट्यान्ड र प्रचार सामग्री प्रदान गर्दछौं।",
   "Where are CDerma products manufactured and tested?": "सिडर्माका उत्पादनहरू कहाँ निर्माण र परीक्षण गरिन्छ?",
   "CDerma products are imported and formulated at our facility in Itahari, Sunsari, Koshi Province, Nepal. Each batch undergoes rigorous testing for pH balance, microbial purity, and heavy metal safety.": "सिडर्माका उत्पादनहरू इटहरी, सुनसरी, कोशी प्रदेशमा रहेको हाम्रो केन्द्रमा तयार गरिन्छ। प्रत्येक ब्याचको pH सन्तुलन, माइक्रोबियल शुद्धता र हेभी मेटल सुरक्षाको कडा परीक्षण गरिन्छ।",
   "Elevate your daily regimen with doctor-recommended care.": "डाक्टरद्वारा सिफारिस गरिएको गुणस्तरीय छाला हेरचाह अपनाउनुहोस्।",
@@ -1862,7 +1862,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           submitBtn.innerHTML = originalBtnText;
         }
       } catch (err) {
-        alert('Server connection error. Please try again or WhatsApp us at +977 9820753751 or email kandktradingconcern@gmail.com.');
+        alert('Server connection error. Please try again or WhatsApp us at +977 9714547121 or email cdermanepal@gmail.com.');
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalBtnText;
       }
@@ -2301,7 +2301,8 @@ function renderProductGrid(container, products) {
   }
 
   container.innerHTML = products.map((p, idx) => {
-    const detailUrl = `product-detail.html?slug=${encodeURIComponent(p.slug)}`;
+    const isFileProtocol = window.location.protocol === 'file:';
+    const detailUrl = isFileProtocol ? `product-detail.html?slug=${encodeURIComponent(p.slug)}` : `/products/${encodeURIComponent(p.slug)}`;
     const categoryNorm = (p.category || 'barrier').toLowerCase().replace(/\s+/g, '-');
     const ingredients = Array.isArray(p.active_ingredients) ? p.active_ingredients : [];
     const displayPrice = p.price_npr ? (isNe ? `रु. ${Number(p.price_npr).toLocaleString()}` : `NPR ${Number(p.price_npr).toLocaleString()}`) : '';
@@ -2380,7 +2381,7 @@ async function initProductDetail() {
 
   // Default flagship if none requested
   if (!slug || slug === 'flagship') {
-    slug = 'centella-barrier-restore-concentrate';
+    slug = 'retin-c-serum';
   }
 
   try {
@@ -2747,7 +2748,7 @@ function renderClinicsList(container, clinics, onSelectClinic, selectedClinicId)
       <div class="text-center py-10 bg-surface-container-lowest rounded-xl border border-outline-variant/30 p-space-md">
         <span class="material-symbols-outlined text-4xl text-outline mb-2">storefront</span>
         <p class="text-sm font-semibold text-on-surface">No clinics or stores found matching your query.</p>
-        <p class="text-xs text-on-surface-variant mt-1">Contact our distribution desk on WhatsApp +977 9820753751 for immediate delivery guidance.</p>
+        <p class="text-xs text-on-surface-variant mt-1">Contact our distribution desk on WhatsApp +977 9714547121 for immediate delivery guidance.</p>
       </div>
     `;
     return;
@@ -3057,7 +3058,7 @@ function initMobileNavigation() {
         <div class="pt-4 border-t border-[#e7e2d8] space-y-2.5">
           <span class="text-[10px] font-bold uppercase tracking-widest text-[#7d7768] px-2 block font-label">${isNe ? 'प्रत्यक्ष सम्पर्क' : 'Direct Connect'}</span>
           
-          <a href="https://wa.me/9779820753751" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-lg bg-[#25D366] text-white font-semibold text-[13px] shadow-sm hover:bg-[#20bd5a] transition-all">
+          <a href="https://wa.me/9779714547121" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-lg bg-[#25D366] text-white font-semibold text-[13px] shadow-sm hover:bg-[#20bd5a] transition-all">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
             <span>${isNe ? 'ह्वाट्सएप परामर्श' : 'WhatsApp Quick Consult'}</span>
           </a>
@@ -3088,8 +3089,8 @@ function initMobileNavigation() {
         <div class="flex flex-col gap-1 text-[11px] text-[#7d7768]">
           <p class="font-semibold text-[#1d1c16]">CDerma Nepal • K&K Trading Concern</p>
           <p>Koshi Cleanroom Research Facility, Itahari</p>
-          <a href="tel:+9779820753751" class="font-bold text-[#887635] hover:underline flex items-center gap-1 mt-0.5">
-            <span class="material-symbols-outlined text-[14px]">phone</span> +977 9820753751
+          <a href="tel:+9779714547121" class="font-bold text-[#887635] hover:underline flex items-center gap-1 mt-0.5">
+            <span class="material-symbols-outlined text-[14px]">phone</span> +977 9714547121
           </a>
         </div>
 
@@ -3468,7 +3469,7 @@ async function initSocialMediaIntegration() {
 
     // 2. Floating WhatsApp Clinical Consult Widget
     if (meta.social_whatsapp_floating === '1') {
-      const phoneDigits = (meta.social_whatsapp_number || '9779820753751').replace(/\D/g, '');
+      const phoneDigits = (meta.social_whatsapp_number || '9779714547121').replace(/\D/g, '');
       const greetingMsg = encodeURIComponent(meta.social_whatsapp_msg || 'Namaste CDerma! I would like to inquire about formulations & clinical supplies.');
       const waUrl = `https://wa.me/${phoneDigits}?text=${greetingMsg}`;
 

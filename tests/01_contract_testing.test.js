@@ -69,7 +69,7 @@ describe('Contract Testing - cDerma REST API Schemas', () => {
     
     const ProductSchema = {
       type: 'array',
-      minItems: 6,
+      minItems: 4,
       items: {
         type: 'object',
         required: ['id', 'slug', 'title', 'category', 'volume'],
@@ -86,8 +86,8 @@ describe('Contract Testing - cDerma REST API Schemas', () => {
     validateSchema(products, ProductSchema, 'ProductList');
     
     const slugs = products.map(p => p.slug);
-    assert.ok(slugs.includes('centella-barrier-restore-concentrate'), 'Centella serum missing');
-    assert.ok(slugs.includes('ceramide-deep-barrier-cream'), 'Ceramide cream missing');
+    assert.ok(slugs.includes('retin-c-serum'), 'Retin C serum missing');
+    assert.ok(slugs.includes('niacin-c-serum'), 'Niacin C serum missing');
   });
 
   test('GET /api/products?lang=ne returns localized Nepali contract', async () => {
@@ -95,17 +95,17 @@ describe('Contract Testing - cDerma REST API Schemas', () => {
     assert.equal(res.status, 200);
     const body = await res.json();
     const products = Array.isArray(body) ? body : body.products;
-    assert.ok(Array.isArray(products) && products.length >= 6);
+    assert.ok(Array.isArray(products) && products.length >= 4);
     
-    const centella = products.find(p => p.slug === 'centella-barrier-restore-concentrate');
-    assert.ok(centella, 'Centella product missing');
-    assert.ok(centella.title, 'Product must have localized title');
+    const retin = products.find(p => p.slug === 'retin-c-serum');
+    assert.ok(retin, 'Retin C product missing');
+    assert.ok(retin.title, 'Product must have localized title');
     // Ensure Nepali script characters exist
-    assert.match(centella.title, /[\u0900-\u097F]/, 'Title should contain Devanagari / Nepali characters');
+    assert.match(retin.title, /[\u0900-\u097F]/, 'Title should contain Devanagari / Nepali characters');
   });
 
   test('GET /api/products/:slug returns Single Product Contract', async () => {
-    const res = await request('/api/products/centella-barrier-restore-concentrate');
+    const res = await request('/api/products/retin-c-serum');
     assert.equal(res.status, 200);
     const body = await res.json();
     const product = body.product || body;

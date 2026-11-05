@@ -7,7 +7,7 @@
     "start": "node server.js",
     "dev": "node server.js",
     "test": "node tests/run_all.js",
-    "test:live": "node tests/run_all.js --target=https://antiquewhite-porcupine-932870.hostingersite.com"
+    "test:live": "node tests/run_all.js --target=https://cdermanepal.com"
   },
   "keywords": [
     "cderma",

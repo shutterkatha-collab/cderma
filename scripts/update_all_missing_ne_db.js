@@ -44,7 +44,7 @@ const settingsNeUpdates = {
   "social_og_image": "assets/images/img_282f9d7b4a1e.jpg",
   "social_twitter_site": "@cdermanepal",
   "social_whatsapp_floating": "1",
-  "social_whatsapp_number": "+९७७ ९८२०७५३७५१",
+  "social_whatsapp_number": "+९७७ ९७१४५४७१२१",
   "social_whatsapp_msg": "नमस्ते सी-डर्मा! म फर्मुलेसन र क्लिनिकल आपूर्तिका बारेमा सोधपुछ गर्न चाहन्छु।"
 };
 

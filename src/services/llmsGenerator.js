@@ -114,9 +114,9 @@ function generateLlmsTxt(products, monographs, clinics, settings, baseUrl) {
   md += `## Contact & Corporate Verification\n`;
   md += `- Corporate Entity: K&K Trading Concern / CDerma Nepal\n`;
   md += `- Manufacturing & Hub: Sunsari District, Koshi Province, Nepal\n`;
-  md += `- Telephone: ${settings.contact_phone || '+977 9820753751'}\n`;
-  md += `- WhatsApp Desk: ${settings.contact_whatsapp || '+977 9801234567'}\n`;
-  md += `- Official Email: ${settings.contact_email || 'kandktradingconcern@gmail.com'}\n`;
+  md += `- Telephone: ${settings.contact_phone || '+977 9714547121'}\n`;
+  md += `- WhatsApp Desk: ${settings.contact_whatsapp || '+977 9714547121'}\n`;
+  md += `- Official Email: ${settings.contact_email || 'cdermanepal@gmail.com'}\n`;
   md += `- Registration: DDA / PAN: 609874123 • EXIM: 3049904360114NP\n`;
 
   return md;
@@ -259,9 +259,9 @@ function generateLlmsFullTxt(products, monographs, clinics, settings, baseUrl) {
   md += `## 10. Corporate Inquiries & Contacts\n`;
   md += `- Company: K&K Trading Concern / CDerma Nepal\n`;
   md += `- Official Address: Itahari, Sunsari District, Koshi Province, Nepal\n`;
-  md += `- Phone: ${settings.contact_phone || '+977 9820753751'}\n`;
-  md += `- WhatsApp: ${settings.contact_whatsapp || '+977 9801234567'}\n`;
-  md += `- Email: ${settings.contact_email || 'kandktradingconcern@gmail.com'}\n`;
+  md += `- Phone: ${settings.contact_phone || '+977 9714547121'}\n`;
+  md += `- WhatsApp: ${settings.contact_whatsapp || '+977 9714547121'}\n`;
+  md += `- Email: ${settings.contact_email || 'cdermanepal@gmail.com'}\n`;
   md += `- DDA / PAN: 609874123 | EXIM: 3049904360114NP\n`;
 
   return md;

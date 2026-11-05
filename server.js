@@ -186,6 +186,72 @@ app.get('/products/:slug', (req, res) => {
       `"position": 3, "name": "${product.title.replace(/"/g, '\\"')}", "item": "${canonicalUrl}"`
     );
 
+    // 6. Product Schema JSON-LD update
+    const productSchema = {
+      "@type": "Product",
+      "@id": `${canonicalUrl}#product`,
+      "name": product.title,
+      "alternateName": product.subtitle || product.title,
+      "image": prodImg,
+      "description": cleanDesc,
+      "sku": `CD-NP-0${product.id}`,
+      "category": `Face Care / ${product.category || 'Clinical'}`,
+      "brand": {
+        "@type": "Brand",
+        "name": "CDerma"
+      },
+      "manufacturer": {
+        "@type": "Organization",
+        "name": "CDerma Nepal",
+        "url": `${baseUrl}/`
+      },
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "B2B wholesale buyers, cosmetic stores, pharmacies, dermatology clinics, beauty salons"
+      },
+      "offers": {
+        "@type": "Offer",
+        "url": canonicalUrl,
+        "priceCurrency": "NPR",
+        "price": product.price_npr || 2500,
+        "availability": "https://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "CDerma Nepal"
+        }
+      },
+      "additionalProperty": [
+        {
+          "@type": "PropertyValue",
+          "name": "Wholesale Supply",
+          "value": "Available for B2B distribution to cosmetic retailers, pharmacies, salons, and dermatology clinics across Nepal"
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Minimum Order Quantity",
+          "value": "Contact CDerma Nepal via B2B portal for wholesale MOQ and margin structure"
+        }
+      ]
+    };
+    html = html.replace(/\{[^{}]*"@type":\s*"Product"[\s\S]*?"additionalProperty":\s*\[[\s\S]*?\]\s*\}/, JSON.stringify(productSchema, null, 2));
+
+    // 7. SSR HTML DOM Pre-filling for search engines and zero-CLS load
+    html = html.replace(/<h1[^>]*id="p-title"[^>]*>[\s\S]*?<\/h1>/i, `<h1 class="font-display-lg text-[32px] sm:text-[38px] leading-tight text-on-surface font-semibold tracking-tight" id="p-title">${product.title}</h1>`);
+    html = html.replace(/<p[^>]*id="p-desc"[^>]*>[\s\S]*?<\/p>/i, `<p class="text-[15px] text-on-surface-variant font-normal leading-relaxed" id="p-desc">${product.description || product.summary || ''}</p>`);
+    html = html.replace(/<span[^>]*id="p-breadcrumb"[^>]*>[\s\S]*?<\/span>/i, `<span class="text-on-surface font-medium" id="p-breadcrumb">${product.title}</span>`);
+    if (product.category) {
+      html = html.replace(/<span[^>]*id="p-category"[^>]*>[\s\S]*?<\/span>/i, `<span class="text-[12px] font-bold uppercase tracking-widest text-secondary" id="p-category">${product.category}</span>`);
+    }
+    if (product.volume) {
+      html = html.replace(/<span[^>]*id="p-volume"[^>]*>[\s\S]*?<\/span>/i, `<span class="text-[12px] text-outline font-medium" id="p-volume">${product.volume}</span>`);
+    }
+    if (product.clinical_badge) {
+      html = html.replace(/<span[^>]*id="p-badge"[^>]*>[\s\S]*?<\/span>/i, `<span id="p-badge">${product.clinical_badge}</span>`);
+    }
+    if (product.image_url) {
+      html = html.replace(/<img[^>]*id="main-product-img"[^>]*>/i, `<img alt="${product.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" id="main-product-img" src="${product.image_url}" decoding="async">`);
+    }
+
     res.send(html);
   } catch (err) {
     console.error('Error generating dynamic product SEO page:', err);

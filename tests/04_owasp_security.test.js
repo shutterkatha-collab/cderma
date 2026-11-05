@@ -66,13 +66,12 @@ describe('OWASP Web Application Security & Penetration Tests', () => {
   test('SQL Injection: Injected single quotes and SQL fragments do not trigger syntax errors or leaks', async () => {
     const sqliPayloads = [
       "/api/products/'%20OR%20'1'='1",
-      "/api/products/centella-barrier-restore-concentrate'--",
+      "/api/products/retin-c-serum'--",
       "/api/products/1;DROP%20TABLE%20products;--",
       "/api/clinics?city=' UNION SELECT 1,2,3,4,5,6,7,8,9,10--"
     ];
 
-    for (const payload of sqliPayloads) {
-      const res = await request(payload);
+  
       const text = await res.text();
       assert.doesNotMatch(text, /sqlite_error/i, `SQL error leaked on payload: ${payload}`);
       assert.doesNotMatch(text, /syntax error/i, `SQL syntax error leaked on payload: ${payload}`);

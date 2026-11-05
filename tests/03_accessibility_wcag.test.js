@@ -20,7 +20,7 @@ const PAGES_TO_AUDIT = [
   '/clinics.html',
   '/b2b.html',
   '/monographs.html',
-  '/products/centella-barrier-restore-concentrate'
+  '/products/retin-c-serum'
 ];
 
 describe('Accessibility & WCAG 2.1/2.2 AA Audit', () => {
