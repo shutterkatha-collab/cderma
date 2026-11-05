@@ -2317,7 +2317,7 @@ function renderProductGrid(container, products) {
     return `
       <div class="product-card group flex flex-col justify-between h-full bg-surface-container-lowest rounded-xl overflow-hidden p-space-lg hover:shadow-[0_14px_34px_rgba(107,91,28,0.06)] border border-outline-variant/20 transition-all" data-category="${escapeHtml(categoryNorm)}">
         <div class="relative w-full aspect-[4/5] bg-white rounded-lg overflow-hidden flex items-center justify-center p-3 mb-space-md border border-outline-variant/30">
-          <img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" data-alt="${escapeHtml(p.title)}" src="${escapeHtml(p.image_url || 'assets/images/product-packaging-dropper.png')}" loading="lazy" decoding="async">
+          <img class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" data-alt="${escapeHtml(p.title)}" src="${escapeHtml(p.image_url ? (p.image_url.startsWith('/') || p.image_url.startsWith('http') ? p.image_url : '/' + p.image_url) : '/assets/images/product-packaging-dropper.png')}" loading="lazy" decoding="async">
           <div class="absolute top-space-xs left-space-xs">
             <span class="px-space-xs py-[2px] rounded bg-surface/90 text-primary text-[10px] uppercase tracking-wider font-semibold shadow-sm">
               ${escapeHtml(p.clinical_badge || (isNe ? 'चिकित्सकद्वारा प्रमाणित' : 'Doctor Formulated'))}
@@ -2438,17 +2438,20 @@ async function initProductDetail() {
 
     // 4. Main Image & Gallery Thumbnails
     const mainImg = document.getElementById('main-product-img');
-    if (mainImg && p.image_url) {
-      mainImg.src = p.image_url;
+    const safeImg = (p.image_url || '').startsWith('/') || (p.image_url || '').startsWith('http')
+      ? p.image_url
+      : (p.image_url ? '/' + p.image_url : '/assets/images/cderma-logo.png');
+    if (mainImg && safeImg) {
+      mainImg.src = safeImg;
       mainImg.alt = p.title;
     }
     const thumbBtns = document.querySelectorAll('.thumbnail-btn');
-    if (thumbBtns.length >= 2 && p.image_url) {
-      const bannerUrl = p.image_url.replace('.jpg', '-banner.jpg');
-      thumbBtns[0].setAttribute('onclick', `switchGallery('${p.image_url}', this)`);
+    if (thumbBtns.length >= 2 && safeImg) {
+      const bannerUrl = safeImg.replace('.jpg', '-banner.jpg');
+      thumbBtns[0].setAttribute('onclick', `switchGallery('${safeImg}', this)`);
       const img1 = thumbBtns[0].querySelector('img');
       if (img1) {
-        img1.src = p.image_url;
+        img1.src = safeImg;
         img1.alt = `${p.title} pack shot`;
       }
       thumbBtns[1].setAttribute('onclick', `switchGallery('${bannerUrl}', this)`);
@@ -2457,6 +2460,17 @@ async function initProductDetail() {
         img2.src = bannerUrl;
         img2.alt = `${p.title} clinical flyer`;
       }
+    }
+
+    // Floating Re-Order Banner synchronization
+    const floatImg = document.getElementById('floating-product-img') || document.querySelector('section.sticky img');
+    if (floatImg && safeImg) {
+      floatImg.src = safeImg;
+      floatImg.alt = p.title;
+    }
+    const floatTitle = document.getElementById('floating-product-title') || document.querySelector('section.sticky p.font-semibold');
+    if (floatTitle) {
+      floatTitle.textContent = p.title;
     }
 
     // 5. Active Ingredients Pills
@@ -2800,7 +2814,7 @@ function renderClinicsList(container, clinics, onSelectClinic, selectedClinicId)
         <!-- Practitioner / Facility Bio Pill -->
         <div class="flex items-center gap-space-xs mt-space-xs bg-surface-container-low p-2 rounded-lg">
           ${c.doctor_image ? `
-            <img class="w-10 h-10 rounded-full object-cover shrink-0 border border-outline-variant/40" src="${escapeHtml(c.doctor_image)}" alt="${escapeHtml(c.lead_doctor || c.name)}" loading="lazy" onerror="this.src='assets/images/img_204637447def.jpg'">
+            <img class="w-10 h-10 rounded-full object-cover shrink-0 border border-outline-variant/40" src="${escapeHtml(c.doctor_image)}" alt="${escapeHtml(c.lead_doctor || c.name)}" loading="lazy" onerror="this.src='/assets/images/img_204637447def.jpg'">
           ` : `
             <div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center shrink-0 text-secondary border border-outline-variant/40">
               <span class="material-symbols-outlined text-[20px]">person</span>
@@ -2949,7 +2963,7 @@ function renderArticlesGrid(container, articles) {
     const readTime = a.read_time || (isNe ? '५ मिनेट पढाइ' : '5 min read');
     const dateText = a.date_text || '2025';
     const author = a.author || 'Dr. S. Karki';
-    const image = a.image_url || 'assets/images/img_7df877252467.jpg';
+    const image = a.image_url ? (a.image_url.startsWith('/') || a.image_url.startsWith('http') ? a.image_url : '/' + a.image_url) : '/assets/images/img_7df877252467.jpg';
 
     return `
       <article class="post-card bg-surface-container-lowest border border-outline-variant/40 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col" data-category="${escapeHtml(categoryNorm)}">
@@ -3043,7 +3057,7 @@ function initMobileNavigation() {
       <!-- Drawer Top -->
       <div class="p-5 border-b border-[#e7e2d8] flex items-center justify-between bg-[#f8f3e9]">
         <a href="index.html" class="flex items-center">
-          <img src="assets/images/cderma-logo.png" alt="CDerma" class="h-8 w-auto object-contain">
+          <img src="/assets/images/cderma-logo.png" alt="CDerma" class="h-8 w-auto object-contain">
         </a>
         <button id="cderma-mobile-close" aria-label="Close navigation" class="w-10 h-10 flex items-center justify-center rounded-full bg-[#f2ede3] text-[#1d1c16] hover:bg-[#e7e2d8] hover:text-[#887635] transition-colors focus:outline-none focus:ring-2 focus:ring-[#887635]" type="button">
           <span class="material-symbols-outlined text-[24px]">close</span>
@@ -3220,7 +3234,7 @@ async function initHeroSlider() {
         formula_number: 'Formula No. 04',
         origin_text: 'Origin: Koshi Cleanroom Labs',
         specs_text: 'pH 5.4 · Pure Hydration',
-        image_url: 'assets/images/img_282f9d7b4a1e.jpg',
+        image_url: '/assets/images/img_282f9d7b4a1e.jpg',
         cta_url: 'product-detail.html',
         cta_text: 'Details'
       },
@@ -3231,7 +3245,7 @@ async function initHeroSlider() {
         formula_number: 'Formula No. 01',
         origin_text: 'Origin: Koshi Cleanroom Labs',
         specs_text: 'pH 5.5 · Non-Stripping',
-        image_url: 'assets/images/img_d04f5fd68ff7.jpg',
+        image_url: '/assets/images/img_d04f5fd68ff7.jpg',
         cta_url: 'products.html',
         cta_text: 'Details'
       },
@@ -3242,7 +3256,7 @@ async function initHeroSlider() {
         formula_number: 'Formula No. 07',
         origin_text: 'Origin: Koshi Cleanroom Labs',
         specs_text: 'pH 5.8 · Bio-Identical',
-        image_url: 'assets/images/texture-swatch.png',
+        image_url: '/assets/images/texture-swatch.png',
         cta_url: 'products.html',
         cta_text: 'Details'
       },
@@ -3253,7 +3267,7 @@ async function initHeroSlider() {
         formula_number: 'Formula No. 09',
         origin_text: 'Origin: Koshi Cleanroom Labs',
         specs_text: 'Zero White Cast · High Altitude',
-        image_url: 'assets/images/img_63acd4dd2bb8.jpg',
+        image_url: '/assets/images/img_63acd4dd2bb8.jpg',
         cta_url: 'products.html',
         cta_text: 'Details'
       },
@@ -3264,7 +3278,7 @@ async function initHeroSlider() {
         formula_number: 'Cleanroom Facility',
         origin_text: 'Exim: 3049904360114NP',
         specs_text: 'Hermetically Sealed',
-        image_url: 'assets/images/cleanroom-lab-wide.png',
+        image_url: '/assets/images/cleanroom-lab-wide.png',
         cta_url: 'science.html',
         cta_text: 'Details'
       }
@@ -3272,11 +3286,14 @@ async function initHeroSlider() {
   }
 
   // Render slides in wrapper
-  wrapper.innerHTML = slides.map((s, idx) => `
+  wrapper.innerHTML = slides.map((s, idx) => {
+    const slideImg = s.image_url ? (s.image_url.startsWith('/') || s.image_url.startsWith('http') ? s.image_url : '/' + s.image_url) : '/assets/images/cleanroom-lab-wide.png';
+    return `
     <div class="hero-slide absolute inset-0 w-full h-full transition-all duration-700 ease-in-out ${idx === 0 ? 'opacity-100 scale-100 z-10' : 'opacity-0 scale-105 pointer-events-none z-0'}" data-slide-index="${idx}">
-      <img class="w-full h-full object-cover object-center filter saturate-[0.92] transition-transform duration-1000 ease-out" alt="${escapeHtml(s.title)}" src="${escapeHtml(s.image_url)}">
+      <img class="w-full h-full object-cover object-center filter saturate-[0.92] transition-transform duration-1000 ease-out" alt="${escapeHtml(s.title)}" src="${escapeHtml(slideImg)}">
     </div>
-  `).join('');
+  `;
+  }).join('');
 
   // Render dots
   const dotsContainer = document.getElementById('slider-dots');

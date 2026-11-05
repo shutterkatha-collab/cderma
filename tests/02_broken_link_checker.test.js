@@ -28,7 +28,7 @@ const ENTRY_POINTS = [
 
 function extractUrls(html) {
   const urls = new Set();
-  
+
   // Extract <a href="...">
   const aRegex = /<a\s+[^>]*href=["']([^"']+)["']/gi;
   let match;

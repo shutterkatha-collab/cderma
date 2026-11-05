@@ -396,6 +396,19 @@ async function initDatabase() {
   // Seed Data if tables are empty
   seedInitialData();
 
+  // Self-healing check: Ensure all image URLs in the database have a leading slash
+  try {
+    db.exec(`
+      UPDATE products SET image_url = '/' || image_url WHERE image_url NOT LIKE '/%' AND image_url NOT LIKE 'http%';
+      UPDATE site_media SET image_url = '/' || image_url WHERE image_url NOT LIKE '/%' AND image_url NOT LIKE 'http%';
+      UPDATE hero_slides SET image_url = '/' || image_url WHERE image_url NOT LIKE '/%' AND image_url NOT LIKE 'http%';
+      UPDATE monographs SET image_url = '/' || image_url WHERE image_url NOT LIKE '/%' AND image_url NOT LIKE 'http%';
+      UPDATE site_settings SET value = '/' || value WHERE value LIKE 'assets/%';
+    `);
+  } catch (err) {
+    console.error('Image normalization notice:', err.message);
+  }
+
   persist();
 
   // Automated disaster recovery snapshot

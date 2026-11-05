@@ -190,91 +190,91 @@ const defaultMedia = [
     slot_label: 'Main Site Logo (Header & Light Surfaces)',
     page: 'Global',
     description: 'The official CDerma Choice by Professional logo in Pure Black (#000000) for navigation headers and light backgrounds.',
-    image_url: 'assets/images/cderma-logo.png'
+    image_url: '/assets/images/cderma-logo.png'
   },
   {
     slot_key: 'site_logo_white',
     slot_label: 'Inverted White Logo (Dark Surfaces & Admin)',
     page: 'Global',
     description: 'High-contrast Warm Alabaster (#FAF9F6) logo used on dark backgrounds like the Admin sidebar.',
-    image_url: 'assets/images/cderma-logo-white.png'
+    image_url: '/assets/images/cderma-logo-white.png'
   },
   {
     slot_key: 'hero_flagship_bottle',
     slot_label: 'Homepage Hero Dropper Bottle',
     page: 'Home Page',
     description: 'Ultra-luxury cosmetic packaging shot of the flagship frosted glass dropper bottle.',
-    image_url: 'assets/images/product-packaging-dropper.png'
+    image_url: '/assets/images/product-packaging-dropper.png'
   },
   {
     slot_key: 'hero_model_portrait',
     slot_label: 'Radiant Skin Model Banner',
     page: 'Home Page',
     description: 'Editorial skincare photography featuring South Asian woman with radiant, healthy dewy bare skin.',
-    image_url: 'assets/images/radiant-skin-model.png'
+    image_url: '/assets/images/radiant-skin-model.png'
   },
   {
     slot_key: 'science_cleanroom',
     slot_label: 'Cleanroom Formulation Facility',
     page: 'Science & About',
     description: 'Architectural cleanroom photograph showing stainless steel bioreactors and cleanroom gowns in Itahari facility.',
-    image_url: 'assets/images/cleanroom-facility.png'
+    image_url: '/assets/images/cleanroom-facility.png'
   },
   {
     slot_key: 'science_botanical',
     slot_label: 'Centella Botanical Extraction Still-Life',
     page: 'Science & About',
     description: 'Alpine Centella Asiatica leaves and pristine water droplets resting on frosted laboratory glass.',
-    image_url: 'assets/images/centella-botanical-extract.png'
+    image_url: '/assets/images/centella-botanical-extract.png'
   },
   {
     slot_key: 'science_texture',
     slot_label: 'Facial Cream & Serum Texture Swatch',
     page: 'Home & Products',
     description: 'Rich creamy velvety facial moisturizer droplet and silky golden serum texture smear on stone slab.',
-    image_url: 'assets/images/texture-swatch.png'
+    image_url: '/assets/images/texture-swatch.png'
   },
   {
     slot_key: 'science_doctor',
     slot_label: 'Consultant Dermatologist Portrait',
     page: 'Home & Science',
     description: 'Authentic portrait of consultant dermatologist doctor in white clinical coat.',
-    image_url: 'assets/images/dr-karki-portrait.png'
+    image_url: '/assets/images/dr-karki-portrait.png'
   },
   {
     slot_key: 'b2b_banner',
     slot_label: 'B2B Wholesale Cleanroom Laboratory',
     page: 'B2B Portal',
     description: 'Wide laboratory cleanroom research and manufacturing overview banner.',
-    image_url: 'assets/images/cleanroom-lab-wide.png'
+    image_url: '/assets/images/cleanroom-lab-wide.png'
   },
   {
     slot_key: 'testimonial_doctor_1',
     slot_label: 'Doctor Testimonial Portrait 1 (Dr. Karki)',
     page: 'Home Page',
     description: 'Physician headshot for first home page clinical endorsement.',
-    image_url: 'assets/images/img_d8dddc0fbb21.jpg'
+    image_url: '/assets/images/img_d8dddc0fbb21.jpg'
   },
   {
     slot_key: 'testimonial_doctor_2',
     slot_label: 'Doctor Testimonial Portrait 2 (Dr. Sharma)',
     page: 'Home Page',
     description: 'Physician headshot for second home page clinical endorsement.',
-    image_url: 'assets/images/img_b7a64c067655.jpg'
+    image_url: '/assets/images/img_b7a64c067655.jpg'
   },
   {
     slot_key: 'product_cream_jar',
     slot_label: 'Flagship Barrier Cream Jar Packaging',
     page: 'Home & Products',
     description: 'Luxury frosted glass cream jar cosmetic packaging.',
-    image_url: 'assets/images/img_623ee7600cd6.png'
+    image_url: '/assets/images/img_623ee7600cd6.png'
   },
   {
     slot_key: 'science_microscope',
     slot_label: 'Laboratory Cellular Research Microscopy',
     page: 'Science & About',
     description: 'Dermatological laboratory microscope and cellular active extraction.',
-    image_url: 'assets/images/img_3037b9a39d03.jpg'
+    image_url: '/assets/images/img_3037b9a39d03.jpg'
   }
 ];
 
@@ -306,7 +306,7 @@ const defaultProducts = [
     ]),
     inci_full: 'Purified Water, Encapsulated Retinol (1%), Bakuchiol, Ceramide NP, Ceramide AP, Ceramide EOP, Niacinamide, Sodium Hyaluronate, Tocopheryl Acetate (Vitamin E), Tetrapeptide-1, Tetrapeptide-7, Glycerin, Butylene Glycol, Caprylic/Capric Triglyceride, Phenoxyethanol, Ethylhexylglycerin.',
     usage_instructions: 'Apply a small pea-sized amount to clean, dry skin in the evening. Begin using 2–3 times per week, gradually increasing frequency as tolerated. Follow with moisturizer. Always use broad-spectrum sunscreen (SPF 50+) during the day when using retinol products.',
-    image_url: 'assets/images/cderma-retin-c-serum.jpg',
+    image_url: '/assets/images/cderma-retin-c-serum.jpg',
     is_featured: 1,
     sort_order: 1,
     status: 'active'
@@ -338,7 +338,7 @@ const defaultProducts = [
     ]),
     inci_full: 'Purified Water, Niacinamide (Vitamin B3 10%), Zinc PCA, Tranexamic Acid, Allantoin, Sodium Hyaluronate, Panthenol (Pro-Vitamin B5), Tocopheryl Acetate (Vitamin E), Tetrapeptide-1, Tetrapeptide-7, Camellia Sinensis (Green Tea) Leaf Extract, Aloe Barbadensis Leaf Extract, Glycerin, Butylene Glycol, Phenoxyethanol, Ethylhexylglycerin.',
     usage_instructions: 'Apply 2–3 drops onto clean, dry face morning and evening. Gently press and pat into skin until fully absorbed. Follow with moisturizer and sunscreen during the day.',
-    image_url: 'assets/images/cderma-niacin-c-serum.jpg',
+    image_url: '/assets/images/cderma-niacin-c-serum.jpg',
     is_featured: 1,
     sort_order: 2,
     status: 'active'
@@ -370,7 +370,7 @@ const defaultProducts = [
     ]),
     inci_full: 'Purified Water, Alpha Arbutin (2%), Kojic Acid (1%), Ceramide NP, Sodium Hyaluronate, Glycolic Acid, Tocopheryl Acetate (Vitamin E), Tetrapeptide-1, Tetrapeptide-7, Camellia Sinensis (Green Tea) Leaf Extract, Aloe Barbadensis Leaf Extract, Allantoin, Panthenol, Glycerin, Butylene Glycol, Phenoxyethanol, Ethylhexylglycerin.',
     usage_instructions: 'Apply 2–3 drops to clean, dry skin once or twice daily, preferably before moisturizing. Gently press into areas of hyperpigmentation and across entire face. Follow with SPF in the morning.',
-    image_url: 'assets/images/cderma-alpha-c-serum.jpg',
+    image_url: '/assets/images/cderma-alpha-c-serum.jpg',
     is_featured: 1,
     sort_order: 3,
     status: 'active'
@@ -402,7 +402,7 @@ const defaultProducts = [
     ]),
     inci_full: 'Purified Water, Azelaic Acid (10%), Niacinamide, Ceramide NP, Allantoin, Plant Squalane, Salicylic Acid, Tocopheryl Acetate (Vitamin E), Tetrapeptide-1, Tetrapeptide-7, Camellia Sinensis (Green Tea) Leaf Extract, Aloe Barbadensis Leaf Extract, Glycerin, Butylene Glycol, Polyacrylate Crosspolymer-6, Phenoxyethanol, Ethylhexylglycerin.',
     usage_instructions: 'Apply a pea-sized amount to clean, dry skin once or twice daily. Smooth over entire face or target areas prone to blemishes and redness. Follow with moisturizer and SPF during the day.',
-    image_url: 'assets/images/cderma-azelyx-c-serum.jpg',
+    image_url: '/assets/images/cderma-azelyx-c-serum.jpg',
     is_featured: 1,
     sort_order: 4,
     status: 'active'
@@ -432,7 +432,7 @@ const defaultProducts = [
     ]),
     inci_full: '100% Pure Cocos Nucifera (Extra Virgin Coconut) Oil. Cold-pressed, unrefined, zero mineral oil, zero parabens, zero synthetic fragrance.',
     usage_instructions: 'For Hair: Warm a small amount between palms and massage gently into scalp and hair strands. Leave on for at least 30 minutes before washing, or use overnight for deep conditioning. For Skin: Apply generously onto damp skin, elbows, knees, or face as a nourishing natural moisturizer after bathing.',
-    image_url: 'assets/images/cderma-coco-c-oil.jpg',
+    image_url: '/assets/images/cderma-coco-c-oil.jpg',
     is_featured: 0,
     sort_order: 5,
     status: 'active'
@@ -459,7 +459,7 @@ const defaultProducts = [
     ]),
     inci_full: 'Aqua, Glycerin, Caprylic/Capric Triglyceride, Cetearyl Alcohol, Ceramide NP, Sodium Hyaluronate, Panthenol, Butyrospermum Parkii Butter, Carbomer, Phenoxyethanol, Ethylhexylglycerin.',
     usage_instructions: 'Smooth a nickel-sized amount evenly over face and neck morning and evening as the final hydration step.',
-    image_url: 'assets/images/product-packaging-dropper.png',
+    image_url: '/assets/images/product-packaging-dropper.png',
     is_featured: 0,
     sort_order: 6,
     status: 'active'
@@ -488,7 +488,7 @@ const defaultProducts = [
     ]),
     inci_full: 'Aqua (Purified Glacial Water), Centella Asiatica Leaf Extract, Glycerin, Caprylic/Capric Triglyceride, Niacinamide, Ceramide NP, Ceramide AP, Ceramide EOP, Phytosphingosine, Cholesterol, Sodium Lauroyl Lactylate, Carbomer, Xanthan Gum, Phenoxyethanol, Ethylhexylglycerin.',
     usage_instructions: 'Dispense 3–4 drops onto clean, damp skin morning and evening. Gently press into the face and neck until fully absorbed before sealing with moisturizer.',
-    image_url: 'assets/images/product-packaging-dropper.png',
+    image_url: '/assets/images/product-packaging-dropper.png',
     is_featured: 0,
     sort_order: 7,
     status: 'active'
@@ -516,7 +516,7 @@ const defaultProducts = [
     ]),
     inci_full: 'Aqua, Caprylic/Capric Triglyceride, Squalane, Butyrospermum Parkii Butter, Ceramide NP, Ceramide AP, Avena Sativa (Oat) Kernel Flour, Sodium Hyaluronate, Tocopherol, Allantoin.',
     usage_instructions: 'Warm a dime-sized amount between fingertips and smooth evenly over face and neck. Ideal as the final barrier step at night.',
-    image_url: 'assets/images/texture-swatch.png',
+    image_url: '/assets/images/texture-swatch.png',
     is_featured: 0,
     sort_order: 8,
     status: 'active'
@@ -543,7 +543,7 @@ const defaultProducts = [
     ]),
     inci_full: 'Aqua, Sodium Cocoyl Apple Amino Acids, Cocamidopropyl Betaine, Glycerin, Panthenol, Allantoin, Citric Acid, Sodium Benzoate, Potassium Sorbate.',
     usage_instructions: 'Lather a nickel-sized amount with lukewarm water in damp hands. Gently massage in circular motions across face for 60 seconds, then rinse thoroughly.',
-    image_url: 'assets/images/cleanroom-lab-wide.png',
+    image_url: '/assets/images/cleanroom-lab-wide.png',
     is_featured: 0,
     sort_order: 9,
     status: 'active'
@@ -570,7 +570,7 @@ const defaultProducts = [
     ]),
     inci_full: 'Zinc Oxide, Aqua, Isododecane, Caprylic/Capric Triglyceride, Butyloctyl Salicylate, Silica, Ectoin, Leontopodium Alpinum Extract, Polyhydroxystearic Acid, Iron Oxides.',
     usage_instructions: 'Apply generously 15 minutes before sun exposure as the final morning step. Reapply every 2 hours during prolonged outdoor activity or after sweating.',
-    image_url: 'assets/images/img_c732d632f5b9.jpg',
+    image_url: '/assets/images/img_c732d632f5b9.jpg',
     is_featured: 0,
     sort_order: 10,
     status: 'active'
@@ -597,7 +597,7 @@ const defaultProducts = [
     ]),
     inci_full: 'Aqua, Centella Asiatica Leaf Water, Sodium Hyaluronate, Hydrolyzed Hyaluronic Acid, Sodium Acetylated Hyaluronate, Potassium Chloride, Zinc Gluconate.',
     usage_instructions: 'Mist generously over face and neck after cleansing or throughout the day whenever skin feels tight or dehydrated.',
-    image_url: 'assets/images/img_0230de97bf1f.jpg',
+    image_url: '/assets/images/img_0230de97bf1f.jpg',
     is_featured: 0,
     sort_order: 11,
     status: 'active'
@@ -624,7 +624,7 @@ const defaultProducts = [
     ]),
     inci_full: 'Aqua, Niacinamide, Glycerin, Phospholipids, Retinaldehyde, Ceramide NP, Bisabolol, Squalane, Allantoin, Caprylyl Glycol.',
     usage_instructions: 'Apply 2–3 pumps in the evening to dry skin 2–3 times per week, gradually increasing frequency as tolerated. Always follow with sunscreen the next morning.',
-    image_url: 'assets/images/img_b3152a53b5c7.jpg',
+    image_url: '/assets/images/img_b3152a53b5c7.jpg',
     is_featured: 0,
     sort_order: 12,
     status: 'active'
@@ -642,7 +642,7 @@ const defaultClinics = [
     email: 'dispensary.ktm@cdermanepal.com',
     lead_doctor: 'Dr. A. Karki, MD Dermatology',
     doctor_nmc: 'NMC #9482 • Senior Consultant',
-    doctor_image: 'assets/images/img_204637447def.jpg',
+    doctor_image: '/assets/images/img_204637447def.jpg',
     distance_badge: '1.2 km',
     is_verified: 1,
     is_in_stock: 1,
@@ -666,7 +666,7 @@ const defaultClinics = [
     email: 'koshi.outpost@cdermanepal.com',
     lead_doctor: 'Dr. R. Shrestha, MBBS, DDVL',
     doctor_nmc: 'NMC #6521 • Regional Dermal Lead',
-    doctor_image: 'assets/images/img_b7a64c067655.jpg',
+    doctor_image: '/assets/images/img_b7a64c067655.jpg',
     distance_badge: 'Koshi Dist.',
     is_verified: 1,
     is_in_stock: 1,
@@ -690,7 +690,7 @@ const defaultClinics = [
     email: 'pokhara.laser@cdermanepal.com',
     lead_doctor: 'Dr. A. Bastola, MD',
     doctor_nmc: 'NMC #7812 • Laser Dermatology',
-    doctor_image: 'assets/images/img_d8dddc0fbb21.jpg',
+    doctor_image: '/assets/images/img_d8dddc0fbb21.jpg',
     distance_badge: 'Gandaki Valley',
     is_verified: 1,
     is_in_stock: 1,
@@ -714,7 +714,7 @@ const defaultClinics = [
     email: 'lalitpur.retail@cdermanepal.com',
     lead_doctor: 'Dr. P. Thapa, Consultant Cosmetologist',
     doctor_nmc: 'NMC #9124 • Cosmetic Specialist',
-    doctor_image: 'assets/images/dr-karki-portrait.png',
+    doctor_image: '/assets/images/dr-karki-portrait.png',
     distance_badge: '3.0 km',
     is_verified: 1,
     is_in_stock: 1,
@@ -738,7 +738,7 @@ const defaultClinics = [
     email: 'chitwan.dispensary@cdermanepal.com',
     lead_doctor: 'Dr. B. K. Adhikari, MD Dermatology',
     doctor_nmc: 'NMC #8340 • Hospital Consultant',
-    doctor_image: 'assets/images/img_2bb12128dd04.jpg',
+    doctor_image: '/assets/images/img_2bb12128dd04.jpg',
     distance_badge: 'Chitwan Central',
     is_verified: 1,
     is_in_stock: 1,
@@ -762,7 +762,7 @@ const defaultClinics = [
     email: 'itahari.store@cdermanepal.com',
     lead_doctor: 'Kavita Rai, Clinical Aesthetician',
     doctor_nmc: 'Certified Skin Practitioner',
-    doctor_image: 'assets/images/radiant-skin-model.png',
+    doctor_image: '/assets/images/radiant-skin-model.png',
     distance_badge: '0.5 km Direct Node',
     is_verified: 1,
     is_in_stock: 1,
@@ -786,7 +786,7 @@ const defaultClinics = [
     email: 'dharan.dispensary@cdermanepal.com',
     lead_doctor: 'Dr. M. Tamang, MBBS, DVD',
     doctor_nmc: 'NMC #9055 • Clinical Advisor',
-    doctor_image: 'assets/images/img_204637447def.jpg',
+    doctor_image: '/assets/images/img_204637447def.jpg',
     distance_badge: 'Koshi Foothills',
     is_verified: 1,
     is_in_stock: 1,
@@ -812,7 +812,7 @@ const defaultMonographs = [
     author: 'Dr. S. Karki',
     summary: 'Timing matters more than you think. Applying moisturiser on damp skin — right after washing your face — locks in up to 3x more water than applying it on dry skin.',
     content: 'Timing matters more than you think. Applying moisturiser on damp skin — right after washing your face — locks in up to 3x more water than applying it on dry skin. Most people wait until their face is completely dry, but applying humectants and barrier creams while the skin is still slightly hydrated seals in maximum moisture.',
-    image_url: 'assets/images/img_7df877252467.jpg',
+    image_url: '/assets/images/img_7df877252467.jpg',
     indication: 'Dehydrated epidermal barrier, post-wash dryness, transepidermal water loss.',
     active_compounds: 'Multi-Depth Hyaluronic Acid, Phytoceramides, Glycerin USP.',
     clinical_protocol: 'Apply directly within 60 seconds of gentle face wash while stratum corneum is pliable.',
@@ -831,7 +831,7 @@ const defaultMonographs = [
     author: 'Dr. R. Shrestha',
     summary: 'Pimples happen when your pores get blocked by oil and dead skin cells. The key to preventing them is keeping your skin clean but not over-washing — and choosing products that won\'t clog pores.',
     content: 'Pimples happen when your pores get blocked by oil and dead skin cells. The key to preventing them is keeping your skin clean but not over-washing — and choosing products that won\'t clog pores. Over-cleansing with harsh sulfates can trigger compensatory sebum rebound.',
-    image_url: 'assets/images/img_c0ee769d1620.jpg',
+    image_url: '/assets/images/img_c0ee769d1620.jpg',
     indication: 'Acne vulgaris, comedogenic congestion, dysregulated sebum.',
     active_compounds: 'Zinc PCA, Apple Amino Acids, Niacinamide 5%.',
     clinical_protocol: 'Use non-comedogenic physiological wash twice daily.',
@@ -850,7 +850,7 @@ const defaultMonographs = [
     author: 'Dr. P. Bhattarai',
     summary: 'Niacinamide (Vitamin B3) is one of the safest and most effective skin-brightening ingredients available. It reduces dark spots, evens skin tone, and strengthens your skin barrier all at once.',
     content: 'Niacinamide (Vitamin B3) is one of the safest and most effective skin-brightening ingredients available. It reduces dark spots, evens skin tone, and strengthens your skin barrier all at once without the peeling or sensitivity associated with hydroquinone.',
-    image_url: 'assets/images/img_50a641f5031c.jpg',
+    image_url: '/assets/images/img_50a641f5031c.jpg',
     indication: 'Post-inflammatory hyperpigmentation (PIH), dullness, uneven skin tone.',
     active_compounds: 'Niacinamide (Vitamin B3) USP 5%, Centella Triterpenes.',
     clinical_protocol: 'Apply 3-4 drops evenly across cleansed face prior to heavier moisturizers.',
@@ -869,7 +869,7 @@ const defaultMonographs = [
     author: 'Dr. S. Karki',
     summary: 'Redness, stinging after washing, or a tight uncomfortable feeling? These are signs of sensitive skin. The good news: it\'s very manageable with the right gentle products and a simple routine.',
     content: 'Redness, stinging after washing, or a tight uncomfortable feeling? These are signs of sensitive skin. The good news: it\'s very manageable with the right gentle products and a simple routine that eliminates synthetic fragrances, denatured alcohols, and harsh foaming agents.',
-    image_url: 'assets/images/img_b7a64c067655.jpg',
+    image_url: '/assets/images/img_b7a64c067655.jpg',
     indication: 'Hypersensitive skin, rosacea, wind-burn, compromised lipid mantle.',
     active_compounds: 'Alpine Centella Asiatica, Bio-Identical Ceramides NP/AP/EOP, Panthenol.',
     clinical_protocol: 'Strip routine back to physiological cleanser and barrier restore concentrate.',
@@ -888,7 +888,7 @@ const defaultMonographs = [
     author: 'Dr. R. Shrestha',
     summary: 'You don\'t need a complicated 12-step routine. A gentle cleanser, a ceramide serum, and a moisturiser with SPF — that\'s all your skin needs every morning to look and feel great.',
     content: 'You don\'t need a complicated 12-step routine. A gentle cleanser, a ceramide serum, and a moisturiser with SPF — that\'s all your skin needs every morning to look and feel great. Consistency beats complexity every single time.',
-    image_url: 'assets/images/img_282f9d7b4a1e.jpg',
+    image_url: '/assets/images/img_282f9d7b4a1e.jpg',
     indication: 'Daily maintenance, photoprotection, barrier resilience.',
     active_compounds: 'Amino acid cleanser, Niacinamide + Centella, Mineral Zinc Oxide SPF 50+.',
     clinical_protocol: 'Step 1: Cleanse with lukewarm water. Step 2: 3 drops serum. Step 3: Mineral SPF 50+.',
@@ -907,7 +907,7 @@ const defaultMonographs = [
     author: 'Dr. P. Bhattarai',
     summary: 'Cold, dry air pulls moisture right out of your skin. In Kathmandu, Pokhara, and high-altitude areas, this is a real problem from October to February. Here is how to protect your skin during those months.',
     content: 'Cold, dry air pulls moisture right out of your skin. In Kathmandu, Pokhara, and high-altitude areas, this is a real problem from October to February. High elevation combined with low ambient humidity rapidly increases transepidermal water loss.',
-    image_url: 'assets/images/img_5db7864f4a5c.jpg',
+    image_url: '/assets/images/img_5db7864f4a5c.jpg',
     indication: 'Winter xerosis, high-altitude flaking, cold urticaria.',
     active_compounds: 'Ceramides NP/AP/EOP, Phytosphingosine, Squalane, Ectoin.',
     clinical_protocol: 'Layer lipid-replenishing ceramide barrier cream over hydrating serums morning and night.',
@@ -929,7 +929,7 @@ const defaultHeroSlides = [
     formula_number: 'Formula No. 04 · Flagship',
     origin_text: 'Origin: Koshi Cleanroom Labs',
     specs_text: 'pH 5.4 · Pure Hydration',
-    image_url: 'assets/images/img_282f9d7b4a1e.jpg',
+    image_url: '/assets/images/img_282f9d7b4a1e.jpg',
     cta_url: 'product-detail.html',
     cta_text: 'Explore Face Care',
     sort_order: 1,
@@ -942,7 +942,7 @@ const defaultHeroSlides = [
     formula_number: 'Formula No. 01 · Balancing Cleanser',
     origin_text: 'Origin: Koshi Cleanroom Labs',
     specs_text: 'pH 5.5 · Non-Stripping',
-    image_url: 'assets/images/img_d04f5fd68ff7.jpg',
+    image_url: '/assets/images/img_d04f5fd68ff7.jpg',
     cta_url: 'products.html',
     cta_text: 'Explore Cleanser',
     sort_order: 2,
@@ -955,7 +955,7 @@ const defaultHeroSlides = [
     formula_number: 'Formula No. 07 · Barrier Cream',
     origin_text: 'Origin: Koshi Cleanroom Labs',
     specs_text: 'pH 5.8 · Bio-Identical Lipids',
-    image_url: 'assets/images/texture-swatch.png',
+    image_url: '/assets/images/texture-swatch.png',
     cta_url: 'products.html',
     cta_text: 'Explore Barrier Cream',
     sort_order: 3,
@@ -968,7 +968,7 @@ const defaultHeroSlides = [
     formula_number: 'Formula No. 09 · Photoprotection',
     origin_text: 'Origin: Koshi Cleanroom Labs',
     specs_text: 'Zero White Cast · 18.5% Zinc Oxide',
-    image_url: 'assets/images/img_63acd4dd2bb8.jpg',
+    image_url: '/assets/images/img_63acd4dd2bb8.jpg',
     cta_url: 'products.html',
     cta_text: 'Explore Sun Care',
     sort_order: 4,
@@ -981,7 +981,7 @@ const defaultHeroSlides = [
     formula_number: 'Cleanroom Facility · Itahari',
     origin_text: 'Exim: 3049904360114NP',
     specs_text: 'Hermetically Sealed · Sterile Cleanroom',
-    image_url: 'assets/images/img_37f37477611e.jpg',
+    image_url: '/assets/images/img_37f37477611e.jpg',
     cta_url: 'science.html',
     cta_text: 'Tour Cleanroom Science',
     sort_order: 5,

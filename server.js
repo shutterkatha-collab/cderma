@@ -110,6 +110,14 @@ app.use('/assets', express.static(path.join(__dirname, 'assets'), {
   }
 }));
 
+// Route fallback: ensure subroutes like /products/* can resolve relative /products/assets/*
+app.use('/products/assets', express.static(path.join(__dirname, 'assets'), {
+  maxAge: '30d',
+  setHeaders: (res) => {
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+  }
+}));
+
 app.use('/uploads', (req, res, next) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('Content-Disposition', 'inline');
@@ -249,7 +257,13 @@ app.get('/products/:slug', (req, res) => {
       html = html.replace(/<span[^>]*id="p-badge"[^>]*>[\s\S]*?<\/span>/i, `<span id="p-badge">${product.clinical_badge}</span>`);
     }
     if (product.image_url) {
-      html = html.replace(/<img[^>]*id="main-product-img"[^>]*>/i, `<img alt="${product.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" id="main-product-img" src="${product.image_url}" decoding="async">`);
+      const rootImg = product.image_url.startsWith('/') ? product.image_url : `/${product.image_url}`;
+      const bannerImg = rootImg.replace('.jpg', '-banner.jpg');
+      html = html.replace(/<img[^>]*id="main-product-img"[^>]*>/i, `<img alt="${product.title}" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" id="main-product-img" src="${rootImg}" decoding="async">`);
+      html = html.replace(/\/assets\/images\/cderma-retin-c-serum\.jpg/g, rootImg);
+      html = html.replace(/\/assets\/images\/cderma-retin-c-serum-banner\.jpg/g, bannerImg);
+      html = html.replace(/id="floating-product-img"[^>]*src="[^"]*"/i, `id="floating-product-img" src="${rootImg}"`);
+      html = html.replace(/id="floating-product-title">[^<]*<\/p>/i, `id="floating-product-title">${product.title}</p>`);
     }
 
     res.send(html);
