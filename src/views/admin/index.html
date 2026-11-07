@@ -2459,7 +2459,10 @@ Sitemap: https://cdermanepal.com/sitemap.xml
       const container = document.getElementById('settingsContainer');
       let filtered = currentSettings;
 
-      if (selectedSettingsCat !== 'all') {
+      if (selectedSettingsCat === 'Custom') {
+        const standardCats = ['navigation', 'general', 'home page', 'science & about', 'b2b wholesale', 'products page', 'clinics', 'monographs', 'contact & footer'];
+        filtered = filtered.filter(s => !s.category || s.category.toLowerCase() === 'custom' || !standardCats.includes(s.category.toLowerCase()));
+      } else if (selectedSettingsCat !== 'all') {
         filtered = filtered.filter(s => (s.category || '').toLowerCase() === selectedSettingsCat.toLowerCase());
       }
 
@@ -2467,12 +2470,76 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         filtered = filtered.filter(s => 
           (s.key || '').toLowerCase().includes(settingsSearchTerm) ||
           (s.label || '').toLowerCase().includes(settingsSearchTerm) ||
-          (s.value || '').toLowerCase().includes(settingsSearchTerm)
+          (s.value || '').toLowerCase().includes(settingsSearchTerm) ||
+          (s.value_ne || '').toLowerCase().includes(settingsSearchTerm)
         );
       }
 
+      let shortcutBanner = '';
+      if (selectedSettingsCat === 'Monographs') {
+        shortcutBanner = `
+          <div class="mb-4 p-4 rounded-xl bg-primary/5 border border-primary/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+            <div>
+              <h5 class="text-xs font-bold text-primary flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px]">menu_book</span>
+                Doctor's Advice Articles &amp; Clinical Monographs
+              </h5>
+              <p class="text-[11px] text-gray-600 mt-0.5">Looking to add, edit, or publish individual articles and clinical prescribing guides?</p>
+            </div>
+            <button type="button" onclick="switchTab('monographs')" class="px-3.5 py-1.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold whitespace-nowrap shadow-xs flex items-center gap-1 transition-colors">
+              <span>Manage Doctor's Articles →</span>
+            </button>
+          </div>
+        `;
+      } else if (selectedSettingsCat === 'Products Page') {
+        shortcutBanner = `
+          <div class="mb-4 p-4 rounded-xl bg-primary/5 border border-primary/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+            <div>
+              <h5 class="text-xs font-bold text-primary flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px]">science</span>
+                Products Formulary Catalog
+              </h5>
+              <p class="text-[11px] text-gray-600 mt-0.5">Looking to edit formulations, prices, ingredients, photos, or add new serums?</p>
+            </div>
+            <button type="button" onclick="switchTab('products')" class="px-3.5 py-1.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold whitespace-nowrap shadow-xs flex items-center gap-1 transition-colors">
+              <span>Manage Products Formulary →</span>
+            </button>
+          </div>
+        `;
+      } else if (selectedSettingsCat === 'Clinics') {
+        shortcutBanner = `
+          <div class="mb-4 p-4 rounded-xl bg-primary/5 border border-primary/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+            <div>
+              <h5 class="text-xs font-bold text-primary flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px]">local_hospital</span>
+                Clinics &amp; Retail Outlets Directory
+              </h5>
+              <p class="text-[11px] text-gray-600 mt-0.5">Looking to add or edit clinics, retail stores, verified doctors, and operating hours?</p>
+            </div>
+            <button type="button" onclick="switchTab('clinics')" class="px-3.5 py-1.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold whitespace-nowrap shadow-xs flex items-center gap-1 transition-colors">
+              <span>Manage Clinics Directory →</span>
+            </button>
+          </div>
+        `;
+      } else if (selectedSettingsCat === 'Home Page') {
+        shortcutBanner = `
+          <div class="mb-4 p-4 rounded-xl bg-primary/5 border border-primary/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+            <div>
+              <h5 class="text-xs font-bold text-primary flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px]">view_carousel</span>
+                Hero Carousel Slides &amp; Media
+              </h5>
+              <p class="text-[11px] text-gray-600 mt-0.5">Looking to upload photos, hero banners, or cleanroom images?</p>
+            </div>
+            <button type="button" onclick="switchTab('slides')" class="px-3.5 py-1.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold whitespace-nowrap shadow-xs flex items-center gap-1 transition-colors">
+              <span>Manage Hero Slider →</span>
+            </button>
+          </div>
+        `;
+      }
+
       if (!filtered.length) {
-        container.innerHTML = '<div class="p-8 text-center text-gray-400 bg-surface/30 rounded-lg">No configuration fields match your search or filter.</div>';
+        container.innerHTML = shortcutBanner + '<div class="p-8 text-center text-gray-400 bg-surface/30 rounded-lg">No configuration fields match your search or filter.</div>';
         return;
       }
 
@@ -2484,31 +2551,64 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         groups[cat].push(s);
       });
 
-      container.innerHTML = Object.entries(groups).map(([cat, items]) => `
-        <div class="border border-outline-border rounded-lg p-5 bg-surface/30">
-          <div class="flex items-center justify-between mb-4 border-b border-outline-border/60 pb-2">
-            <h4 class="font-serif text-sm font-semibold uppercase tracking-wider text-secondary">${escapeHtml(cat)} Section</h4>
-            <span class="text-[11px] text-gray-400">${items.length} fields</span>
+      container.innerHTML = shortcutBanner + Object.entries(groups).map(([cat, items]) => `
+        <div class="border border-outline-border rounded-xl p-5 bg-surface/30 space-y-4">
+          <div class="flex items-center justify-between border-b border-outline-border/60 pb-2">
+            <h4 class="font-serif text-sm font-semibold uppercase tracking-wider text-secondary flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-secondary"></span>
+              <span>${escapeHtml(cat)} Section</span>
+            </h4>
+            <span class="text-[11px] font-mono text-gray-400 bg-white px-2 py-0.5 rounded border border-outline-border/60">${items.length} fields</span>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            ${items.map(item => `
-              <div class="${item.value && item.value.length > 80 ? 'md:col-span-2' : ''} p-3 rounded-lg bg-white border border-outline-border/50 hover:border-secondary/40 transition-colors">
-                <div class="flex items-center justify-between mb-1">
-                  <label class="block text-xs font-semibold text-gray-700">${escapeHtml(item.label || item.key)}</label>
-                  <div class="flex items-center gap-1.5">
+            ${items.map(item => {
+              const isLong = item.value && (item.value.length > 80 || item.key.includes('desc') || item.key.includes('body') || item.key.includes('mission') || item.key.includes('subtitle') || item.key.includes('quote') || item.key.includes('mandate'));
+              return `
+              <div class="${isLong ? 'md:col-span-2' : ''} p-4 rounded-xl bg-white border border-outline-border/60 hover:border-secondary/40 transition-all shadow-xs space-y-3">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <label class="block text-xs font-bold text-primary">${escapeHtml(item.label || item.key)}</label>
                     <span class="font-mono text-[10px] text-gray-400 bg-gray-50 px-1.5 py-0.5 rounded select-all">${escapeHtml(item.key)}</span>
-                    <button type="button" onclick="deleteCustomSetting('${escapeHtml(item.key)}')" title="Delete this field" class="p-0.5 rounded text-gray-300 hover:text-rose-500 hover:bg-rose-50 transition-colors">
+                  </div>
+                  <div class="flex items-center gap-1.5">
+                    <button type="button" onclick="saveSingleSetting('${escapeHtml(item.key)}')" title="Save this field" class="px-2.5 py-1 rounded bg-surface border border-outline-border hover:bg-secondary hover:text-white text-[11px] text-gray-700 font-semibold transition-colors flex items-center gap-1 shadow-2xs">
+                      <span class="material-symbols-outlined text-[13px]">check</span>
+                      <span>Save</span>
+                    </button>
+                    ${!item.is_core ? `
+                    <button type="button" onclick="deleteCustomSetting('${escapeHtml(item.key)}')" title="Delete this custom field" class="p-1 rounded text-gray-300 hover:text-rose-500 hover:bg-rose-50 transition-colors">
                       <span class="material-symbols-outlined text-[14px]">delete</span>
                     </button>
+                    ` : ''}
                   </div>
                 </div>
-                ${item.value && (item.value.length > 80 || item.key.includes('desc') || item.key.includes('body') || item.key.includes('mission')) ? `
-                  <textarea id="setting_${item.key}" class="w-full p-2.5 rounded border border-outline-border bg-surface/40 text-xs text-primary focus:border-secondary focus:bg-white focus:outline-none transition-colors" rows="3">${escapeHtml(item.value || '')}</textarea>
-                ` : `
-                  <input type="text" id="setting_${item.key}" value="${escapeHtml(item.value || '')}" class="w-full p-2.5 rounded border border-outline-border bg-surface/40 text-xs text-primary focus:border-secondary focus:bg-white focus:outline-none transition-colors">
-                `}
+
+                <!-- English Field -->
+                <div class="space-y-1">
+                  <div class="flex items-center justify-between text-[10px] text-gray-500 font-bold uppercase tracking-wider">
+                    <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> English Content</span>
+                  </div>
+                  ${isLong ? `
+                    <textarea id="setting_${item.key}" class="w-full p-2.5 rounded-lg border border-outline-border bg-surface/30 text-xs text-primary focus:border-secondary focus:bg-white focus:outline-none transition-colors leading-relaxed" rows="3">${escapeHtml(item.value || '')}</textarea>
+                  ` : `
+                    <input type="text" id="setting_${item.key}" value="${escapeHtml(item.value || '')}" class="w-full p-2.5 rounded-lg border border-outline-border bg-surface/30 text-xs text-primary focus:border-secondary focus:bg-white focus:outline-none transition-colors">
+                  `}
+                </div>
+
+                <!-- Nepali Field (Bilingual) -->
+                <div class="space-y-1">
+                  <div class="flex items-center justify-between text-[10px] text-gray-500 font-bold uppercase tracking-wider">
+                    <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> नेपाली अनुवाद (Nepali Translation)</span>
+                  </div>
+                  ${isLong ? `
+                    <textarea id="setting_${item.key}_ne" placeholder="नेपाली अनुवाद प्रविष्ट गर्नुहोस्..." class="w-full p-2.5 rounded-lg border border-outline-border bg-surface/30 text-xs text-primary focus:border-secondary focus:bg-white focus:outline-none transition-colors leading-relaxed" rows="2">${escapeHtml(item.value_ne || '')}</textarea>
+                  ` : `
+                    <input type="text" id="setting_${item.key}_ne" value="${escapeHtml(item.value_ne || '')}" placeholder="नेपाली अनुवाद प्रविष्ट गर्नुहोस्..." class="w-full p-2.5 rounded-lg border border-outline-border bg-surface/30 text-xs text-primary focus:border-secondary focus:bg-white focus:outline-none transition-colors">
+                  `}
+                </div>
               </div>
-            `).join('')}
+            `;
+            }).join('')}
           </div>
         </div>
       `).join('');
@@ -2700,27 +2800,104 @@ Sitemap: https://cdermanepal.com/sitemap.xml
       }
     }
 
+    async function saveSingleSetting(key) {
+      const el = document.getElementById(`setting_${key}`);
+      const elNe = document.getElementById(`setting_${key}_ne`);
+      const item = currentSettings.find(s => s.key === key);
+
+      const val = el ? el.value : (item ? (item.value ?? '') : '');
+      const valNe = elNe ? elNe.value : (item ? (item.value_ne ?? '') : '');
+
+      const activeBtn = window.event ? (window.event.currentTarget || window.event.target) : null;
+      const originalHtml = activeBtn ? activeBtn.innerHTML : '';
+      if (activeBtn) {
+        activeBtn.innerHTML = '<span class="material-symbols-outlined text-[13px] animate-spin">sync</span><span>Saving...</span>';
+        activeBtn.disabled = true;
+      }
+
+      try {
+        const res = await fetch('/admin/api/settings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            settings: [{
+              key: key,
+              value: val,
+              value_ne: valNe,
+              category: item ? item.category : undefined,
+              label: item ? item.label : undefined
+            }]
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          if (item) {
+            item.value = val;
+            item.value_ne = valNe;
+          }
+          showToast(`Saved "${item?.label || key}" successfully!`);
+          if (activeBtn) {
+            activeBtn.innerHTML = '<span class="material-symbols-outlined text-[13px] text-emerald-600">check_circle</span><span class="text-emerald-700">Saved</span>';
+            setTimeout(() => {
+              if (activeBtn) {
+                activeBtn.innerHTML = originalHtml;
+                activeBtn.disabled = false;
+              }
+            }, 1800);
+          }
+        } else {
+          showToast(data.message || data.error || 'Error saving setting', true);
+          if (activeBtn) {
+            activeBtn.innerHTML = originalHtml;
+            activeBtn.disabled = false;
+          }
+        }
+      } catch (err) {
+        showToast('Connection error: ' + err.message, true);
+        if (activeBtn) {
+          activeBtn.innerHTML = originalHtml;
+          activeBtn.disabled = false;
+        }
+      }
+    }
+
     async function saveAllSettings() {
-      const updates = {};
-      currentSettings.forEach(s => {
+      // Collect all inputs from DOM into currentSettings
+      const payload = currentSettings.map(s => {
         const el = document.getElementById(`setting_${s.key}`);
-        if (el) updates[s.key] = el.value;
+        const elNe = document.getElementById(`setting_${s.key}_ne`);
+        const value = el ? el.value : (s.value ?? '');
+        const value_ne = elNe ? elNe.value : (s.value_ne ?? '');
+        return {
+          key: s.key,
+          value: value,
+          value_ne: value_ne,
+          category: s.category,
+          label: s.label
+        };
       });
 
       try {
         const res = await fetch('/admin/api/settings', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ settings: updates })
+          body: JSON.stringify({ settings: payload })
         });
         const data = await res.json();
         if (data.success) {
-          showToast('Site settings saved successfully!');
+          payload.forEach(p => {
+            const found = currentSettings.find(s => s.key === p.key);
+            if (found) {
+              found.value = p.value;
+              found.value_ne = p.value_ne;
+            }
+          });
+          showToast('All site copy and settings saved successfully!');
         } else {
-          showToast(data.message || 'Error saving settings', true);
+          showToast(data.message || data.error || 'Error saving settings', true);
         }
       } catch (err) {
-        showToast('Connection error', true);
+        showToast('Connection error: ' + err.message, true);
       }
     }
 

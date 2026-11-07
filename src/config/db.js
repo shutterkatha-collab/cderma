@@ -546,18 +546,33 @@ function migrateBilingualColumns() {
 }
 
 function seedInitialData() {
-  // Seed Site Settings (insert or update value_ne)
-  const insertSetting = db.prepare('INSERT OR IGNORE INTO site_settings (key, value, value_ne, category, label) VALUES (?, ?, ?, ?, ?)');
-  const updateSettingNe = db.prepare("UPDATE site_settings SET value_ne = ? WHERE key = ? AND (value_ne IS NULL OR value_ne = '')");
+  // Seed Site Settings (upsert to ensure proper category and label while preserving user edits)
+  const upsertSetting = db.prepare(`
+    INSERT INTO site_settings (key, value, value_ne, category, label)
+    VALUES (?, ?, ?, ?, ?)
+    ON CONFLICT(key) DO UPDATE SET
+      category = excluded.category,
+      label = excluded.label,
+      value_ne = COALESCE(site_settings.value_ne, excluded.value_ne)
+  `);
   const insertManySettings = db.transaction((settings) => {
     for (const s of settings) {
-      insertSetting.run(s.key, s.value, s.value_ne || null, s.category, s.label);
-      if (s.value_ne) {
-        updateSettingNe.run(s.value_ne, s.key);
-      }
+      upsertSetting.run(s.key, s.value, s.value_ne || null, s.category, s.label);
     }
   });
   insertManySettings(defaultSettings);
+
+  // Fallback explicit category sync for all known keys
+  try {
+    const syncCatStmt = db.prepare('UPDATE site_settings SET category = ?, label = ? WHERE key = ?');
+    for (const s of defaultSettings) {
+      if (s.category && s.label) {
+        syncCatStmt.run(s.category, s.label, s.key);
+      }
+    }
+  } catch (syncErr) {
+    console.error('Category sync notice:', syncErr.message);
+  }
 
   // Seed Site Media Slots (insert or ignore)
   const insertMedia = db.prepare(`
@@ -1055,7 +1070,7 @@ function seedInitialData() {
     { key: 'social_whatsapp_msg', value: 'Namaste CDerma! I would like to inquire about formulations & clinical supplies.', category: 'Social & Meta', label: 'WhatsApp Pre-filled Message' }
   ];
 
-  const upsertSetting = db.prepare(`
+  const upsertSocialSetting = db.prepare(`
     INSERT INTO site_settings (key, value, category, label)
     VALUES (@key, @value, @category, @label)
     ON CONFLICT(key) DO UPDATE SET
@@ -1064,7 +1079,7 @@ function seedInitialData() {
   `);
   const insertManySocialSettings = db.transaction((settings) => {
     for (const s of settings) {
-      upsertSetting.run(s);
+      upsertSocialSetting.run(s);
     }
   });
   insertManySocialSettings(defaultSocialSettings);

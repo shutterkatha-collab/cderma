@@ -15,6 +15,7 @@ const {
 const { createDatabaseBackup, listBackups } = require('../services/backupService');
 const { generateAll, regenerateIfEnabled, LLMS_TXT_PATH, LLMS_FULL_TXT_PATH } = require('../services/llmsGenerator');
 const { validateAll } = require('../services/llmsValidator');
+const { defaultSettings } = require('../config/seedData');
 
 // Apply CSRF origin verification on state-changing admin operations
 router.use(verifyCsrfOrigin);
@@ -174,7 +175,12 @@ router.get('/api/stats', requireAdmin, (req, res) => {
 router.get('/api/settings', requireAdmin, (req, res) => {
   try {
     const settings = db.prepare('SELECT * FROM site_settings ORDER BY category ASC, id ASC').all();
-    res.json({ success: true, settings });
+    const coreKeys = new Set(defaultSettings.map(d => d.key));
+    const enriched = settings.map(s => ({
+      ...s,
+      is_core: coreKeys.has(s.key)
+    }));
+    res.json({ success: true, settings: enriched });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }
@@ -190,7 +196,11 @@ router.post('/api/settings', requireAdmin, (req, res) => {
       ON CONFLICT(key) DO UPDATE SET
         value = CASE WHEN excluded.value IS NOT NULL THEN excluded.value ELSE site_settings.value END,
         value_ne = CASE WHEN excluded.value_ne IS NOT NULL THEN excluded.value_ne ELSE site_settings.value_ne END,
-        category = COALESCE(excluded.category, site_settings.category),
+        category = CASE 
+          WHEN excluded.category IS NOT NULL AND excluded.category != 'Custom' THEN excluded.category 
+          WHEN site_settings.category IS NOT NULL AND site_settings.category != 'Custom' THEN site_settings.category 
+          ELSE COALESCE(excluded.category, site_settings.category, 'General') 
+        END,
         label = COALESCE(excluded.label, site_settings.label),
         updated_at = CURRENT_TIMESTAMP
     `);
@@ -198,12 +208,13 @@ router.post('/api/settings', requireAdmin, (req, res) => {
     const updateTx = db.transaction((data) => {
       if (Array.isArray(data)) {
         for (const s of data) {
+          const defaultMeta = defaultSettings.find(ds => ds.key === s.key);
           upsertStmt.run({
             key: s.key,
-            value: s.value !== undefined ? String(s.value) : '',
+            value: s.value !== undefined && s.value !== null ? String(s.value) : '',
             value_ne: s.value_ne !== undefined ? (s.value_ne !== null ? String(s.value_ne) : null) : null,
-            category: s.category || null,
-            label: s.label || null
+            category: s.category || defaultMeta?.category || null,
+            label: s.label || defaultMeta?.label || null
           });
         }
       } else if (typeof data === 'object' && data !== null) {
@@ -217,12 +228,14 @@ router.post('/api/settings', requireAdmin, (req, res) => {
               continue;
             }
           }
+          const defaultMeta = defaultSettings.find(ds => ds.key === key);
+          const existing = db.prepare('SELECT category, label FROM site_settings WHERE key = ?').get(key);
           upsertStmt.run({
             key,
-            value: value !== undefined ? String(value) : '',
+            value: value !== undefined && value !== null ? String(value) : '',
             value_ne: null,
-            category: null,
-            label: null
+            category: existing?.category && existing.category !== 'Custom' ? existing.category : (defaultMeta?.category || 'Custom'),
+            label: existing?.label || defaultMeta?.label || key
           });
         }
       }
@@ -274,6 +287,10 @@ router.post('/api/settings/custom', requireAdmin, (req, res) => {
 router.delete('/api/settings/:key', requireAdmin, (req, res) => {
   try {
     const { key } = req.params;
+    const isCore = defaultSettings.some(ds => ds.key === key);
+    if (isCore) {
+      return res.status(400).json({ success: false, message: `Cannot delete standard core key "${key}". You can edit its value instead.` });
+    }
     db.prepare('DELETE FROM site_settings WHERE key = ?').run(key);
     res.json({ success: true, message: `Field "${key}" removed.` });
   } catch (err) {
