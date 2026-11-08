@@ -387,6 +387,10 @@
                 <span class="material-symbols-outlined absolute left-3 top-2.5 text-gray-400 text-sm">search</span>
                 <input type="text" id="settingsSearch" oninput="handleSettingsSearch(this.value)" placeholder="Search copy or key..." class="pl-9 pr-3 py-2 rounded-lg border border-outline-border text-xs w-48 sm:w-64 focus:border-secondary focus:outline-none bg-surface">
               </div>
+              <a href="/?edit=true" target="_blank" class="px-4 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold uppercase tracking-wider transition-colors shadow flex items-center gap-1.5 shrink-0" title="Open live public site with in-page visual edit mode enabled">
+                <span class="material-symbols-outlined text-sm">visibility</span>
+                <span>Live Visual Editor ↗</span>
+              </a>
               <button onclick="openCustomFieldModal()" class="px-4 py-2.5 rounded-lg bg-surface border border-outline-border hover:bg-surface-container text-primary text-xs font-semibold transition-colors shadow-sm flex items-center gap-1.5 shrink-0">
                 <span class="material-symbols-outlined text-sm">add_circle</span>
                 <span>+ Custom Text Field</span>
@@ -404,6 +408,7 @@
             <button onclick="filterSettingsCat('Navigation')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Navigation">Navigation &amp; Menu</button>
             <button onclick="filterSettingsCat('General')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="General">General &amp; Brand</button>
             <button onclick="filterSettingsCat('Home Page')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Home Page">Home Page</button>
+            <button onclick="filterSettingsCat('Flagship Face Care')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Flagship Face Care">Flagship Face Care</button>
             <button onclick="filterSettingsCat('Science & About')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Science & About">Science &amp; Cleanroom</button>
             <button onclick="filterSettingsCat('B2B Wholesale')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="B2B Wholesale">B2B Wholesale</button>
             <button onclick="filterSettingsCat('Products Page')" class="settings-cat-btn px-3 py-1 rounded-full text-xs font-semibold bg-surface border border-outline-border text-gray-600 hover:bg-surface-container transition-all" data-cat="Products Page">Products Page</button>
@@ -1567,6 +1572,41 @@ Sitemap: https://cdermanepal.com/sitemap.xml
           <label class="block font-semibold text-gray-600 mb-1">Usage Protocol Instructions</label>
           <textarea id="prodUsage" rows="2" class="w-full p-2.5 rounded border border-outline-border"></textarea>
         </div>
+
+        <!-- Bilingual Nepali Content Section -->
+        <details class="p-3 bg-surface rounded-xl border border-outline-border/80 group">
+          <summary class="font-semibold text-gray-700 cursor-pointer flex items-center justify-between text-xs select-none">
+            <span class="flex items-center gap-1.5 text-primary">
+              <span class="material-symbols-outlined text-sm">translate</span>
+              <span>Nepali Translation (नेपाली अनुवाद विवरण)</span>
+            </span>
+            <span class="material-symbols-outlined text-sm text-gray-400 group-open:rotate-180 transition-transform">expand_more</span>
+          </summary>
+          <div class="mt-3 space-y-3 pt-3 border-t border-outline-border">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block font-medium text-gray-600 mb-1">Product Title (नेपाली शीर्षक)</label>
+                <input type="text" id="prodTitleNe" placeholder="१% रेटिनोल सीरम..." class="w-full p-2.5 rounded border border-outline-border">
+              </div>
+              <div>
+                <label class="block font-medium text-gray-600 mb-1">Clinical Badge (नेपाली ब्याच)</label>
+                <input type="text" id="prodBadgeNe" placeholder="चिकित्सकद्वारा प्रमाणित..." class="w-full p-2.5 rounded border border-outline-border">
+              </div>
+            </div>
+            <div>
+              <label class="block font-medium text-gray-600 mb-1">Subtitle / Highlight (नेपाली उपशीर्षक)</label>
+              <input type="text" id="prodSubtitleNe" placeholder="चम्किलो छालाको लागि..." class="w-full p-2.5 rounded border border-outline-border">
+            </div>
+            <div>
+              <label class="block font-medium text-gray-600 mb-1">Summary (नेपाली सारांश)</label>
+              <textarea id="prodSummaryNe" rows="2" placeholder="उत्पादनको छोटो विवरण..." class="w-full p-2.5 rounded border border-outline-border"></textarea>
+            </div>
+            <div>
+              <label class="block font-medium text-gray-600 mb-1">Usage Protocol (नेपाली प्रयोग विधि)</label>
+              <textarea id="prodUsageNe" rows="2" placeholder="हरेक साँझ सफा अनुहारमा २-३ थोपा..." class="w-full p-2.5 rounded border border-outline-border"></textarea>
+            </div>
+          </div>
+        </details>
         <div class="space-y-2 p-3 bg-surface rounded-xl border border-outline-border/80">
           <div class="flex items-center justify-between">
             <label class="block font-semibold text-gray-800 text-xs">Product Formulation Image</label>
@@ -1671,6 +1711,31 @@ Sitemap: https://cdermanepal.com/sitemap.xml
           <label class="block font-semibold text-gray-600 mb-1">Street Address *</label>
           <input type="text" id="clinicAddress" required class="w-full p-2.5 rounded border border-outline-border" placeholder="e.g. Marg 4, Naxal (Opposite Bhagwati Temple)">
         </div>
+
+        <!-- Bilingual Nepali Clinic Section -->
+        <details class="p-3 bg-surface rounded-xl border border-outline-border/80 group">
+          <summary class="font-semibold text-gray-700 cursor-pointer flex items-center justify-between text-xs select-none">
+            <span class="flex items-center gap-1.5 text-primary">
+              <span class="material-symbols-outlined text-sm">translate</span>
+              <span>Nepali Translation (नेपाली विवरण)</span>
+            </span>
+            <span class="material-symbols-outlined text-sm text-gray-400 group-open:rotate-180 transition-transform">expand_more</span>
+          </summary>
+          <div class="mt-3 space-y-3 pt-3 border-t border-outline-border">
+            <div>
+              <label class="block font-medium text-gray-600 mb-1">Facility Name in Nepali (नेपाली संस्थाको नाम)</label>
+              <input type="text" id="clinicNameNe" placeholder="काठमाडौं एस्थेटिक तथा स्किन सेन्टर..." class="w-full p-2.5 rounded border border-outline-border">
+            </div>
+            <div>
+              <label class="block font-medium text-gray-600 mb-1">Street Address in Nepali (नेपाली ठेगाना)</label>
+              <input type="text" id="clinicAddressNe" placeholder="नक्साल, काठमाडौं..." class="w-full p-2.5 rounded border border-outline-border">
+            </div>
+            <div>
+              <label class="block font-medium text-gray-600 mb-1">Consultant Doctor in Nepali (नेपाली डाक्टरको नाम)</label>
+              <input type="text" id="clinicDoctorNe" placeholder="डा. अर्पणा कार्की..." class="w-full p-2.5 rounded border border-outline-border">
+            </div>
+          </div>
+        </details>
 
         <!-- Practitioner / Doctor Details -->
         <div class="p-3 bg-surface rounded-lg border border-outline-border space-y-3">
@@ -1814,6 +1879,31 @@ Sitemap: https://cdermanepal.com/sitemap.xml
           <textarea id="monographContent" rows="5" placeholder="Full medical advice or clinical prescribing protocol text..." class="w-full p-2.5 rounded border border-outline-border font-body"></textarea>
         </div>
 
+        <!-- Bilingual Nepali Monograph Section -->
+        <details class="p-3 bg-surface rounded-xl border border-outline-border/80 group">
+          <summary class="font-semibold text-gray-700 cursor-pointer flex items-center justify-between text-xs select-none">
+            <span class="flex items-center gap-1.5 text-primary">
+              <span class="material-symbols-outlined text-sm">translate</span>
+              <span>Nepali Translation (नेपाली अनुवाद विवरण)</span>
+            </span>
+            <span class="material-symbols-outlined text-sm text-gray-400 group-open:rotate-180 transition-transform">expand_more</span>
+          </summary>
+          <div class="mt-3 space-y-3 pt-3 border-t border-outline-border">
+            <div>
+              <label class="block font-medium text-gray-600 mb-1">Article Headline in Nepali (नेपाली शीर्षक)</label>
+              <input type="text" id="monographTitleNe" placeholder="नेपाली शीर्षक..." class="w-full p-2.5 rounded border border-outline-border">
+            </div>
+            <div>
+              <label class="block font-medium text-gray-600 mb-1">Article Summary in Nepali (नेपाली सारांश)</label>
+              <textarea id="monographSummaryNe" rows="2" placeholder="कार्डमा देखिने छोटो सारांश..." class="w-full p-2.5 rounded border border-outline-border"></textarea>
+            </div>
+            <div>
+              <label class="block font-medium text-gray-600 mb-1">Full Content in Nepali (नेपाली पूर्ण सामग्री)</label>
+              <textarea id="monographContentNe" rows="4" placeholder="पूर्ण चिकित्सकीय परामर्श सामग्री..." class="w-full p-2.5 rounded border border-outline-border"></textarea>
+            </div>
+          </div>
+        </details>
+
         <div class="space-y-2 p-3 bg-surface rounded-xl border border-outline-border/80">
           <div class="flex items-center justify-between">
             <label class="block font-semibold text-gray-800 text-xs">Article Cover Image</label>
@@ -1879,6 +1969,7 @@ Sitemap: https://cdermanepal.com/sitemap.xml
           <label class="block font-semibold text-gray-600 mb-1">Section / Category *</label>
           <select id="newFieldCategory" required class="w-full p-2.5 rounded border border-outline-border bg-white">
             <option value="Home Page">Home Page</option>
+            <option value="Flagship Face Care">Flagship Face Care</option>
             <option value="Navigation">Navigation & Menu</option>
             <option value="General">General & Brand</option>
             <option value="Science & About">Science & Cleanroom</option>
@@ -2434,11 +2525,39 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         const data = await res.json();
         if (data.success) {
           currentSettings = data.settings;
+          updateCategoryButtonCounts();
           renderSettings();
         }
       } catch (err) {
         showToast('Error loading settings', true);
       }
+    }
+
+    function updateCategoryButtonCounts() {
+      if (!Array.isArray(currentSettings)) return;
+      const counts = { all: currentSettings.length };
+      const standardCats = ['navigation', 'general', 'home page', 'flagship face care', 'science & about', 'b2b wholesale', 'products page', 'clinics', 'monographs', 'contact & footer'];
+      let customCount = 0;
+
+      currentSettings.forEach(s => {
+        const cat = (s.category || '').toLowerCase();
+        if (cat === 'custom' || !standardCats.includes(cat)) {
+          customCount++;
+        }
+        counts[cat] = (counts[cat] || 0) + 1;
+      });
+
+      document.querySelectorAll('.settings-cat-btn').forEach(b => {
+        const cat = b.dataset.cat;
+        let count = 0;
+        if (cat === 'all') count = counts.all;
+        else if (cat === 'Custom') count = customCount;
+        else count = counts[cat.toLowerCase()] || 0;
+
+        const baseLabel = b.dataset.label || b.textContent.replace(/\s*\(\d+\)$/, '').trim();
+        b.dataset.label = baseLabel;
+        b.textContent = `${baseLabel} (${count})`;
+      });
     }
 
     function filterSettingsCat(cat) {
@@ -2460,7 +2579,7 @@ Sitemap: https://cdermanepal.com/sitemap.xml
       let filtered = currentSettings;
 
       if (selectedSettingsCat === 'Custom') {
-        const standardCats = ['navigation', 'general', 'home page', 'science & about', 'b2b wholesale', 'products page', 'clinics', 'monographs', 'contact & footer'];
+        const standardCats = ['navigation', 'general', 'home page', 'flagship face care', 'science & about', 'b2b wholesale', 'products page', 'clinics', 'monographs', 'contact & footer'];
         filtered = filtered.filter(s => !s.category || s.category.toLowerCase() === 'custom' || !standardCats.includes(s.category.toLowerCase()));
       } else if (selectedSettingsCat !== 'all') {
         filtered = filtered.filter(s => (s.category || '').toLowerCase() === selectedSettingsCat.toLowerCase());
@@ -2504,6 +2623,26 @@ Sitemap: https://cdermanepal.com/sitemap.xml
             <button type="button" onclick="switchTab('products')" class="px-3.5 py-1.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold whitespace-nowrap shadow-xs flex items-center gap-1 transition-colors">
               <span>Manage Products Formulary →</span>
             </button>
+          </div>
+        `;
+      } else if (selectedSettingsCat === 'Flagship Face Care') {
+        shortcutBanner = `
+          <div class="mb-4 p-4 rounded-xl bg-primary/5 border border-primary/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+            <div>
+              <h5 class="text-xs font-bold text-primary flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px]">biotech</span>
+                Flagship Face Care &amp; Clinical Formulations
+              </h5>
+              <p class="text-[11px] text-gray-600 mt-0.5">Looking to update formulation specs, prices, ingredients, or pack images?</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <a href="/products/retin-c-serum?edit=true" target="_blank" class="px-3.5 py-1.5 rounded-lg bg-surface border border-primary text-primary hover:bg-primary/10 text-xs font-semibold whitespace-nowrap shadow-xs flex items-center gap-1 transition-colors">
+                <span>Visual Edit on Page ↗</span>
+              </a>
+              <button type="button" onclick="switchTab('products')" class="px-3.5 py-1.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold whitespace-nowrap shadow-xs flex items-center gap-1 transition-colors">
+                <span>Manage Products Formulary →</span>
+              </button>
+            </div>
           </div>
         `;
       } else if (selectedSettingsCat === 'Clinics') {
@@ -3351,9 +3490,32 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         document.getElementById('prodImage').value = prod.image_url || '';
         document.getElementById('prodFeatured').checked = Boolean(prod.is_featured);
         document.getElementById('prodStatus').value = prod.status || 'active';
+
+        // Nepali translations
+        const titleNe = document.getElementById('prodTitleNe');
+        if (titleNe) titleNe.value = prod.title_ne || '';
+        const subNe = document.getElementById('prodSubtitleNe');
+        if (subNe) subNe.value = prod.subtitle_ne || '';
+        const badgeNe = document.getElementById('prodBadgeNe');
+        if (badgeNe) badgeNe.value = prod.clinical_badge_ne || '';
+        const summaryNe = document.getElementById('prodSummaryNe');
+        if (summaryNe) summaryNe.value = prod.summary_ne || '';
+        const usageNe = document.getElementById('prodUsageNe');
+        if (usageNe) usageNe.value = prod.usage_instructions_ne || '';
+
         updateProdPreview(prod.image_url || '');
       } else {
         document.getElementById('prodImage').value = '';
+        const titleNe = document.getElementById('prodTitleNe');
+        if (titleNe) titleNe.value = '';
+        const subNe = document.getElementById('prodSubtitleNe');
+        if (subNe) subNe.value = '';
+        const badgeNe = document.getElementById('prodBadgeNe');
+        if (badgeNe) badgeNe.value = '';
+        const summaryNe = document.getElementById('prodSummaryNe');
+        if (summaryNe) summaryNe.value = '';
+        const usageNe = document.getElementById('prodUsageNe');
+        if (usageNe) usageNe.value = '';
         updateProdPreview('');
       }
       document.getElementById('productModal').classList.remove('hidden');
@@ -3463,7 +3625,12 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         usage_instructions: document.getElementById('prodUsage').value,
         image_url: imageUrl,
         is_featured: document.getElementById('prodFeatured').checked ? 1 : 0,
-        status: document.getElementById('prodStatus').value
+        status: document.getElementById('prodStatus').value,
+        title_ne: document.getElementById('prodTitleNe') ? document.getElementById('prodTitleNe').value : undefined,
+        subtitle_ne: document.getElementById('prodSubtitleNe') ? document.getElementById('prodSubtitleNe').value : undefined,
+        clinical_badge_ne: document.getElementById('prodBadgeNe') ? document.getElementById('prodBadgeNe').value : undefined,
+        summary_ne: document.getElementById('prodSummaryNe') ? document.getElementById('prodSummaryNe').value : undefined,
+        usage_instructions_ne: document.getElementById('prodUsageNe') ? document.getElementById('prodUsageNe').value : undefined
       };
 
       const method = id ? 'PUT' : 'POST';
@@ -3574,6 +3741,13 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         document.getElementById('clinicInStock').checked = Boolean(c.is_in_stock !== 0);
         document.getElementById('clinicSortOrder').value = c.sort_order || 0;
 
+        const nameNe = document.getElementById('clinicNameNe');
+        if (nameNe) nameNe.value = c.name_ne || '';
+        const addrNe = document.getElementById('clinicAddressNe');
+        if (addrNe) addrNe.value = c.address_ne || '';
+        const docNe = document.getElementById('clinicDoctorNe');
+        if (docNe) docNe.value = c.lead_doctor_ne || '';
+
         if (c.doctor_image) {
           prevImg.innerHTML = `<img src="${c.doctor_image}" class="w-full h-full object-cover">`;
         } else {
@@ -3589,6 +3763,14 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         document.getElementById('clinicVerified').checked = true;
         document.getElementById('clinicInStock').checked = true;
         document.getElementById('clinicSortOrder').value = 0;
+
+        const nameNe = document.getElementById('clinicNameNe');
+        if (nameNe) nameNe.value = '';
+        const addrNe = document.getElementById('clinicAddressNe');
+        if (addrNe) addrNe.value = '';
+        const docNe = document.getElementById('clinicDoctorNe');
+        if (docNe) docNe.value = '';
+
         prevImg.innerHTML = `<span class="material-symbols-outlined text-gray-400">person</span>`;
       }
       document.getElementById('clinicModal').classList.remove('hidden');
@@ -3661,7 +3843,10 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         directions_url: document.getElementById('clinicDirectionsUrl').value,
         is_verified: document.getElementById('clinicVerified').checked ? 1 : 0,
         is_in_stock: document.getElementById('clinicInStock').checked ? 1 : 0,
-        sort_order: parseInt(document.getElementById('clinicSortOrder').value) || 0
+        sort_order: parseInt(document.getElementById('clinicSortOrder').value) || 0,
+        name_ne: document.getElementById('clinicNameNe') ? document.getElementById('clinicNameNe').value : undefined,
+        address_ne: document.getElementById('clinicAddressNe') ? document.getElementById('clinicAddressNe').value : undefined,
+        lead_doctor_ne: document.getElementById('clinicDoctorNe') ? document.getElementById('clinicDoctorNe').value : undefined
       };
 
       const method = id ? 'PUT' : 'POST';
@@ -3782,6 +3967,14 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         document.getElementById('monographContent').value = m.content || '';
         document.getElementById('monographImageUrl').value = m.image_url || '';
         document.getElementById('monographPublished').checked = m.is_published == 1;
+
+        const titleNe = document.getElementById('monographTitleNe');
+        if (titleNe) titleNe.value = m.title_ne || '';
+        const summaryNe = document.getElementById('monographSummaryNe');
+        if (summaryNe) summaryNe.value = m.summary_ne || '';
+        const contentNe = document.getElementById('monographContentNe');
+        if (contentNe) contentNe.value = m.content_ne || '';
+
         updateMonographPreview(m.image_url || '');
       } else {
         document.getElementById('monographCode').value = 'CD-ADV-0' + (currentMonographs.length + 1);
@@ -3792,6 +3985,14 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         document.getElementById('monographDateText').value = new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
         document.getElementById('monographImageUrl').value = 'assets/images/img_7df877252467.jpg';
         document.getElementById('monographPublished').checked = true;
+
+        const titleNe = document.getElementById('monographTitleNe');
+        if (titleNe) titleNe.value = '';
+        const summaryNe = document.getElementById('monographSummaryNe');
+        if (summaryNe) summaryNe.value = '';
+        const contentNe = document.getElementById('monographContentNe');
+        if (contentNe) contentNe.value = '';
+
         updateMonographPreview('assets/images/img_7df877252467.jpg');
       }
       document.getElementById('monographModal').classList.remove('hidden');
@@ -3899,7 +4100,10 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         summary: document.getElementById('monographSummary').value.trim(),
         content: document.getElementById('monographContent').value.trim() || document.getElementById('monographSummary').value.trim(),
         image_url: imageUrl || 'assets/images/img_7df877252467.jpg',
-        is_published: document.getElementById('monographPublished').checked ? 1 : 0
+        is_published: document.getElementById('monographPublished').checked ? 1 : 0,
+        title_ne: document.getElementById('monographTitleNe') ? document.getElementById('monographTitleNe').value.trim() : undefined,
+        summary_ne: document.getElementById('monographSummaryNe') ? document.getElementById('monographSummaryNe').value.trim() : undefined,
+        content_ne: document.getElementById('monographContentNe') ? document.getElementById('monographContentNe').value.trim() : undefined
       };
 
       const method = id ? 'PUT' : 'POST';

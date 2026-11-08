@@ -141,14 +141,67 @@ const defaultSettings = [
   { key: 'products_disclaimer', value: 'For clinical dispensary prescription, authorized cosmetic stores, and clinic dispensing. Formulated at physiological pH in our Koshi cleanroom.', category: 'Products Page', label: 'Products Advisory Notice' },
 
   // Clinic Directory
-  { key: 'clinics_hero_title', value: 'Authorized Cosmetic Store & Clinic Directory', category: 'Clinics', label: 'Clinic Locator Headline' },
-  { key: 'clinics_hero_subtitle', value: 'Discover authorized beauty retailers, premium cosmetic stores, medical clinics, and aesthetic centers stocking official CDerma clinical formulations across Nepal.', category: 'Clinics', label: 'Clinic Locator Subtitle' },
-  { key: 'clinics_search_placeholder', value: 'Search by cosmetic store, clinic name, doctor, city (Kathmandu, Pokhara, Biratnagar)...', category: 'Clinics', label: 'Clinic Search Placeholder' },
+  { key: 'clinics_hero_title', value: 'Authorized Cosmetic Store & Clinic Directory', category: 'Clinics', label: 'Clinic Locator Headline', value_ne: 'अधिकृत कस्मेटिक स्टोर तथा क्लिनिक खोज्नुहोस्' },
+  { key: 'clinics_hero_subtitle', value: 'Discover authorized beauty retailers, premium cosmetic stores, medical clinics, and aesthetic centers stocking official CDerma clinical formulations across Nepal.', category: 'Clinics', label: 'Clinic Locator Subtitle', value_ne: 'सिडर्माका क्लिनिकल उत्पादनहरू नेपालभरिका प्रमाणित कस्मेटिक स्टोर, ब्युटी रिटेलर, एस्थेटिक क्लिनिक र अस्पताल फार्मेसीहरूमा उपलब्ध छन्।' },
+  { key: 'clinics_search_placeholder', value: 'Search by cosmetic store, clinic name, doctor, city (Kathmandu, Pokhara, Biratnagar)...', category: 'Clinics', label: 'Clinic Search Placeholder', value_ne: 'कस्मेटिक स्टोर, क्लिनिकको नाम, डाक्टर, शहर (काठमाडौं, पोखरा, विराटनगर) द्वारा खोज्नुहोस्...' },
+  { key: 'clinics_dispatch_title', value: 'Direct Cleanroom Dispatch Protocol', category: 'Clinics', label: 'Dispatch Protocol Title', value_ne: 'प्रत्यक्ष क्लिनरूम वितरण प्रक्रिया' },
+  { key: 'clinics_dispatch_desc', value: 'CDerma products are supplied directly from our Itahari and Biratnagar facilities under cold-chain quality standards to ensure maximum active potency and zero compromise.', category: 'Clinics', label: 'Dispatch Protocol Description', value_ne: 'CDerma का उत्पादनहरू अधिकतम सक्रिय गुणस्तर कायम राख्न इटहरी र विराटनगरबाट प्रत्यक्ष कोल्ड-चेन मापदण्डमा अस्पताल तथा अधिकृत स्टोरहरूमा पठाइन्छ।' },
+  { key: 'clinics_steps_title', value: 'How Clinical Prescriptions & Dispensation Work', category: 'Clinics', label: 'Dispensation Steps Title', value_ne: 'क्लिनिकल सिफारिस र वितरण प्रक्रिया कसरी काम गर्छ' },
+  { key: 'clinics_steps_desc', value: 'CDerma maintains an apothecary-level standard. Formulations are biologically active, unbuffered by synthetic fillers, and dispensed through trusted medical and retail partners.', category: 'Clinics', label: 'Dispensation Steps Description', value_ne: 'CDerma ले उच्च गुणस्तरीय मापदण्ड कायम राख्छ। हाम्रा उत्पादनहरू जैविक रूपमा सक्रिय हुन्छन् र अधिकृत साझेदारहरूमार्फत मात्र वितरण गरिन्छ।' },
+  { key: 'clinics_facility_title', value: 'Himalayan Cleanroom Science · Manufactured in Nepal', category: 'Clinics', label: 'Facility Showcase Title', value_ne: 'हिमालयन क्लिनरूम विज्ञान · नेपालमै उत्पादित' },
+  { key: 'clinics_facility_desc', value: 'Every CDerma bottle originates within our certified laboratory in Koshi Province, framed by the Himalayan ranges. We combine pure active ingredients with WHO-GMP and ISO certified standards.', category: 'Clinics', label: 'Facility Showcase Description', value_ne: 'CDerma का प्रत्येक उत्पादन कोशी प्रदेशस्थित प्रमाणित प्रयोगशालामा उच्च मापदण्डसहित तयार पारिन्छ।' },
+  { key: 'clinics_facility_stat1_title', value: 'ISO 9001:2015', category: 'Clinics', label: 'Facility Stat 1 Title', value_ne: 'आईएसओ ९००१:२०१५' },
+  { key: 'clinics_facility_stat1_desc', value: 'GMP Certified Plant', category: 'Clinics', label: 'Facility Stat 1 Desc', value_ne: 'जिएमपी प्रमाणित प्रयोगशाला' },
+  { key: 'clinics_facility_stat2_title', value: '3,400+ MASL', category: 'Clinics', label: 'Facility Stat 2 Title', value_ne: '३,४००+ मिटर उचाइ' },
+  { key: 'clinics_facility_stat2_desc', value: 'Ethical Foraging Altitude', category: 'Clinics', label: 'Facility Stat 2 Desc', value_ne: 'हिमाली संकलन उचाइ' },
+  { key: 'clinics_cta_title', value: 'Are You a Licensed Medical Clinic or Cosmetic Retailer?', category: 'Clinics', label: 'Clinics Bottom CTA Title', value_ne: 'के तपाईं इजाजतपत्र प्राप्त क्लिनिक वा कस्मेटिक व्यवसायी हुनुहुन्छ?' },
+  { key: 'clinics_cta_desc', value: 'Join the CDerma authorized hospital and retail network across Nepal. Ensure your patients and customers receive stable, high-potency formulations with protected margins.', category: 'Clinics', label: 'Clinics Bottom CTA Description', value_ne: 'नेपालभर CDerma को अधिकृत अस्पताल र रिटेल सञ्जालमा सामेल हुनुहोस्। आफ्ना ग्राहक र बिरामीहरूलाई भरपर्दो उत्पादन दिनुहोस्।' },
+  { key: 'clinics_cta_btn', value: 'Register Your Practice / Store', category: 'Clinics', label: 'Clinics Bottom CTA Button', value_ne: 'आफ्नो व्यवसाय दर्ता गर्नुहोस्' },
 
   // Monographs & Guidance
-  { key: 'monographs_hero_title', value: 'Medical Guidance & Clinical Monographs', category: 'Monographs', label: 'Monographs Headline' },
-  { key: 'monographs_hero_subtitle', value: 'Evidence-based dermatological prescribing protocols, post-procedure recovery schedules, and peer-reviewed formulation monographs for healthcare practitioners.', category: 'Monographs', label: 'Monographs Subtitle' },
-  { key: 'monographs_disclaimer', value: 'Prescribing guides provided for licensed medical practitioners and dermatology professionals.', category: 'Monographs', label: 'Monographs Advisory' },
+  { key: 'monographs_hero_title', value: 'Honest Skincare Advice From Our Doctors', category: 'Monographs', label: 'Monographs Headline', value_ne: 'हाम्रा डाक्टरहरूबाट इमानदार छाला हेरचाह सल्लाह' },
+  { key: 'monographs_hero_subtitle', value: 'We write these posts to help you understand your skin — no confusing words, no sales tricks. Just simple, practical advice from doctors who care about your skin health.', category: 'Monographs', label: 'Monographs Subtitle', value_ne: 'हामी तपाईंलाई आफ्नो छाला बुझ्न मद्दत गर्न यी लेखहरू लेख्छौँ — कुनै भ्रामक शब्द वा बिक्री प्रलोभन बिना, केवल व्यावहारिक र वैज्ञानिक सल्लाह।' },
+  { key: 'monographs_doctor_quote', value: 'Most skin problems I see can be fixed with three things: a gentle cleanser, a good moisturiser, and sunscreen every single morning. You don\'t need 10 products — you need the right ones.', category: 'Monographs', label: 'Lead Doctor Quote', value_ne: 'मैले देख्ने अधिकांश छाला समस्या तीन कुराले समाधान गर्न सकिन्छ: कोमल क्लिन्जर, राम्रो मोइस्चराइजर, र हरेक बिहान सनस्क्रीन। तपाईंलाई १० वटा उत्पादन चाहिँदैन — सही उत्पादन चाहिन्छ।' },
+  { key: 'monographs_doctor_name', value: 'Dr. S. Karki, MD', category: 'Monographs', label: 'Lead Doctor Name', value_ne: 'डा. एस. कार्की, एमडी' },
+  { key: 'monographs_doctor_role', value: 'Dermatologist • Kathmandu Skin & Laser Hospital', category: 'Monographs', label: 'Lead Doctor Hospital Role', value_ne: 'कन्सल्टेन्ट डर्माटोलोजिस्ट • काठमाडौं स्किन एण्ड लेजर हस्पिटल' },
+  { key: 'monographs_featured_badge', value: 'Featured Article This Month', category: 'Monographs', label: 'Featured Article Badge', value_ne: 'यस महिनाको प्रमुख लेख' },
+  { key: 'monographs_featured_title', value: 'Why Your Skin Keeps Feeling Dry — Even After Moisturising', category: 'Monographs', label: 'Featured Article Title', value_ne: 'मोइस्चराइजर लगाउँदा पनि छाला किन सुख्खा भइरहन्छ?' },
+  { key: 'monographs_featured_desc', value: 'If you\'ve tried three different creams and your face still feels tight and flaky, you\'re not alone. Many people in Nepal deal with this, especially in winter or at high altitude. The problem usually isn\'t your moisturiser — it\'s something happening deeper in your skin barrier.', category: 'Monographs', label: 'Featured Article Description', value_ne: 'यदि विभिन्न क्रिम लगाउँदा पनि अनुहार सुख्खा र तन्किएको महसुस हुन्छ भने कारण मोइस्चराइजर नभई छालाको सुरक्षात्मक पर्खाल (स्किन ब्यारियर) कमजोर हुनु हो।' },
+  { key: 'monographs_featured_short_answer', value: 'Your skin has a natural protective layer called the skin barrier. Think of it like a brick wall — the bricks are your skin cells and the mortar between them is made of natural fats called ceramides. When that mortar breaks down, moisture escapes easily. The fix? Use products that rebuild that mortar with ceramides, niacinamide, and centella.', category: 'Monographs', label: 'Doctor Short Answer', value_ne: 'छालाको प्राकृतिक सुरक्षात्मक तह हुन्छ जसलाई स्किन ब्यारियर भनिन्छ। सिरामाइड, नियासिनामाइड र सेन्टेलायुक्त उत्पादनले यो तहलाई भित्रैबाट मजबुत बनाउँछन्।' },
+  { key: 'monographs_disclaimer', value: 'Doctor\'s advice articles are written for educational guidance and skincare awareness across Nepal.', category: 'Monographs', label: 'Monographs Advisory', value_ne: 'डाक्टरको सल्लाह लेखहरू नेपालभर शैक्षिक मार्गदर्शन र छाला सचेतनाका लागि तयार पारिएका हुन्।' },
+
+  // Flagship Face Care & Product Detail Section
+  { key: 'flagship_sensorics_badge', value: 'Micro-Rheology & Feel', category: 'Flagship Face Care', label: 'Sensorics Badge', value_ne: 'अनुभूति र बनावट' },
+  { key: 'flagship_sensorics_title', value: 'Weightless Absorption Meets Deep Barrier Nourishment', category: 'Flagship Face Care', label: 'Sensorics Headline', value_ne: 'हल्कापन र गहिरो पोषणको उत्कृष्ट सम्मिश्रण' },
+  { key: 'flagship_sensorics_desc', value: 'No sticky feeling, no greasy residue, and no clogged pores. This lightweight serum sinks straight into your skin within seconds, leaving it soft, smooth, and deeply hydrated.', category: 'Flagship Face Care', label: 'Sensorics Description', value_ne: 'कुनै टाँसिने महसुस नहुने, तेलरहित र छिद्र बन्द नगर्ने। यो हल्का सीरम केही सेकेन्डमै छालामा समाहित भएर नरम र ओसिलो बनाउँछ।' },
+  { key: 'flagship_sensorics_stat1_title', value: 'Fast Absorption', category: 'Flagship Face Care', label: 'Sensorics Stat 1 Title', value_ne: 'छिटो सोसिने' },
+  { key: 'flagship_sensorics_stat1_val', value: 'Sinks In Within 15 Seconds', category: 'Flagship Face Care', label: 'Sensorics Stat 1 Val', value_ne: '१५ सेकेन्डमै छालामा समाहित' },
+  { key: 'flagship_sensorics_stat2_title', value: 'Won\'t Clog Pores', category: 'Flagship Face Care', label: 'Sensorics Stat 2 Title', value_ne: 'छिद्र बन्द नगर्ने' },
+  { key: 'flagship_sensorics_stat2_val', value: '100% Breathable & Light', category: 'Flagship Face Care', label: 'Sensorics Stat 2 Val', value_ne: '१००% हलुका र श्वासप्रश्वास अनुकूल' },
+  { key: 'flagship_sensorics_stat3_title', value: 'Works Great With Makeup & Sunscreen', category: 'Flagship Face Care', label: 'Sensorics Stat 3 Title', value_ne: 'मेकअप र सनस्क्रीनसँग अनुकूल' },
+  { key: 'flagship_sensorics_stat3_val', value: 'Zero Flaking / Pilling', category: 'Flagship Face Care', label: 'Sensorics Stat 3 Val', value_ne: 'कुनै पत्र नजम्ने वा नउप्किने' },
+  { key: 'flagship_trials_badge', value: 'Proven Results in Nepal', category: 'Flagship Face Care', label: 'Trials Badge', value_ne: 'नेपालमा प्रमाणित परिणामहरू' },
+  { key: 'flagship_trials_title', value: 'Real Results You Can See and Feel in 28 Days', category: 'Flagship Face Care', label: 'Trials Headline', value_ne: '२८ दिनमै देखिने र महसुस हुने वास्तविक नतिजा' },
+  { key: 'flagship_trials_tested', value: 'Tested with 80 Nepali men & women in Kathmandu & Patan', category: 'Flagship Face Care', label: 'Trials Tested Note', value_ne: 'काठमाडौं र पाटनका ८० नेपाली पुरुष तथा महिलाहरूमा परीक्षण गरिएको' },
+  { key: 'flagship_trials_study', value: '4-Week Visible Hydration Study', category: 'Flagship Face Care', label: 'Trials Study Note', value_ne: '४ हप्ताको प्रत्यक्ष मोइस्चर परीक्षण अध्ययन' },
+  { key: 'flagship_trials_m1_val', value: '98.4%', category: 'Flagship Face Care', label: 'Trial Metric 1 Value', value_ne: '९८.४%' },
+  { key: 'flagship_trials_m1_title', value: 'Fast Soothing Relief', category: 'Flagship Face Care', label: 'Trial Metric 1 Title', value_ne: 'तत्काल राहत र शितलता' },
+  { key: 'flagship_trials_m1_desc', value: 'Calmed burning, itching, and redness caused by dust and strong mountain sun within 48 hours of use.', category: 'Flagship Face Care', label: 'Trial Metric 1 Desc', value_ne: 'धुलो र चर्को घामले गराउने पोल्ने र चिलाउने समस्या ४८ घण्टामै कम गर्दछ।' },
+  { key: 'flagship_trials_m2_val', value: '-42.8%', category: 'Flagship Face Care', label: 'Trial Metric 2 Value', value_ne: '-४२.८%' },
+  { key: 'flagship_trials_m2_title', value: 'Deep All-Day Hydration', category: 'Flagship Face Care', label: 'Trial Metric 2 Title', value_ne: 'दिनभर गहिरो ओसिलोपन' },
+  { key: 'flagship_trials_m2_desc', value: 'Proven to lock in skin moisture and stop dryness from winter cold and air pollution.', category: 'Flagship Face Care', label: 'Trial Metric 2 Desc', value_ne: 'छालामा ओसिलोपन लक गरेर जाडोको सुख्खा हावाबाट छाला जोगाउँछ।' },
+  { key: 'flagship_trials_m3_val', value: '94.6%', category: 'Flagship Face Care', label: 'Trial Metric 3 Value', value_ne: '९४.६%' },
+  { key: 'flagship_trials_m3_title', value: 'Healthier, Bouncier Skin', category: 'Flagship Face Care', label: 'Trial Metric 3 Title', value_ne: 'स्वस्थ र चम्किलो छाला' },
+  { key: 'flagship_trials_m3_desc', value: 'Fewer dry flaky spots around the nose and cheeks, smoother texture, and lasting radiant glow.', category: 'Flagship Face Care', label: 'Trial Metric 3 Desc', value_ne: 'गाला र नाक वरिपरिको सुख्खापन हटाई छालालाई नरम र चम्किलो बनाउँछ।' },
+  { key: 'flagship_doctor_quote', value: 'Patients across Nepal experience chronic micro-inflammation stemming from winter dry inversions and heavy airborne particulate matter. CDerma\'s doctor-formulated face serums provide clinical efficacy with superior tolerability.', category: 'Flagship Face Care', label: 'Doctor Endorsement Quote', value_ne: 'नेपालको सुख्खा मौसम र धुलोका कारण छालाको अवरोध कमजोर हुन्छ। CDerma का डाक्टर-प्रमाणित सीरमहरूले छालालाई कुनै प्रतिकूल असर बिना बलियो र चम्किलो बनाउँछन्।' },
+  { key: 'flagship_doctor_name', value: 'Dr. Arpana Karki, MD', category: 'Flagship Face Care', label: 'Doctor Endorsement Name', value_ne: 'डा. अर्पणा कार्की, एमडी' },
+  { key: 'flagship_doctor_role', value: 'Consultant Dermatologist & Dermo-Surgeon', category: 'Flagship Face Care', label: 'Doctor Endorsement Role', value_ne: 'कन्सल्टेन्ट डर्माटोलोजिस्ट तथा डर्मो-सर्जन' },
+  { key: 'flagship_doctor_reg', value: 'NMC Reg: 9482 / Kathmandu Skin Institute', category: 'Flagship Face Care', label: 'Doctor Registration Details', value_ne: 'एनएमसी दर्ता: ९४८२ / काठमाडौं स्किन इन्स्टिच्युट' },
+  { key: 'flagship_inci_badge', value: '100% Disclosure Monograph', category: 'Flagship Face Care', label: 'INCI Monograph Badge', value_ne: '१००% पूर्ण सामग्री पारदर्शिता' },
+  { key: 'flagship_inci_title', value: 'Formula Architecture & Quantitative Potency', category: 'Flagship Face Care', label: 'INCI Monograph Title', value_ne: 'फर्म्युला संरचना र सक्रिय शक्ति' },
+  { key: 'flagship_b2b_title', value: 'Grow Your Cosmetic Store or Clinic with CDerma', category: 'Flagship Face Care', label: 'Detail B2B Teaser Title', value_ne: 'CDerma सँग आफ्नो कस्मेटिक स्टोर वा क्लिनिक विस्तार गर्नुहोस्' },
+  { key: 'flagship_b2b_desc', value: 'Join 120+ premier beauty retailers, pharmacies, and skin clinics across Nepal. Enjoy protected margins, free tester stands, and guaranteed 24h dispatch.', category: 'Flagship Face Care', label: 'Detail B2B Teaser Description', value_ne: 'नेपालभरका १२०+ प्रतिष्ठित कस्मेटिक स्टोर, फार्मेसी र क्लिनिकहरूमा सामेल हुनुहोस्। उच्च मुनाफा र २४ घण्टे डेलिभरीको फाइदा लिनुहोस्।' },
+  { key: 'flagship_b2b_btn', value: 'Request Wholesale Sample Kit', category: 'Flagship Face Care', label: 'Detail B2B Button', value_ne: 'थोक नमुना किट अनुरोध गर्नुहोस्' },
 
   // Contact & Footer
   { key: 'contact_email', value: 'cdermanepal@gmail.com', category: 'Contact & Footer', label: 'Official Medical Email' },
@@ -173,15 +226,65 @@ const defaultSettings = [
   { key: 'home_catalog_subtitle', value: 'Pure dermatological bio-actives formulated for high-altitude skin resilience.', category: 'Home Page', label: 'Catalog Section Subtitle' },
 
   // Products Page Purity Mandates
-  { key: 'products_mandate_title', value: 'The CDerma Purity Mandate', category: 'Products Page', label: 'Mandate Section Title' },
-  { key: 'products_mandate_1_title', value: 'Zero Synthetic Fragrance', category: 'Products Page', label: 'Mandate 1 Title' },
-  { key: 'products_mandate_1_desc', value: 'No perfumes, essential oils, or masking agents that trigger contact dermatitis.', category: 'Products Page', label: 'Mandate 1 Desc' },
-  { key: 'products_mandate_2_title', value: 'Pure Cleanroom Standards', category: 'Products Page', label: 'Mandate 2 Title' },
-  { key: 'products_mandate_2_desc', value: 'ISO Class 7 cleanroom positive-pressure HEPA filtered manufacturing in Itahari.', category: 'Products Page', label: 'Mandate 2 Desc' },
-  { key: 'products_mandate_3_title', value: 'Wild Himalayan Botanicals', category: 'Products Page', label: 'Mandate 3 Title' },
-  { key: 'products_mandate_3_desc', value: 'Cold-macerated sub-alpine Centella Asiatica harvested sustainably above 1,800m.', category: 'Products Page', label: 'Mandate 3 Desc' },
-  { key: 'products_mandate_4_title', value: 'Made for Nepal\'s Climate', category: 'Products Page', label: 'Mandate 4 Title' },
-  { key: 'products_mandate_4_desc', value: 'Targeted formulations for high-altitude UV, dry winter winds, and monsoon humidity.', category: 'Products Page', label: 'Mandate 4 Desc' }
+  { key: 'products_mandate_title', value: 'The CDerma Purity Mandate', category: 'Products Page', label: 'Mandate Section Title', value_ne: 'CDerma को शुद्धता मापदण्ड' },
+  { key: 'products_mandate_1_title', value: 'Zero Synthetic Fragrance', category: 'Products Page', label: 'Mandate 1 Title', value_ne: 'शून्य कृत्रिम सुगन्ध' },
+  { key: 'products_mandate_1_desc', value: 'No perfumes, essential oils, or masking agents that trigger contact dermatitis.', category: 'Products Page', label: 'Mandate 1 Desc', value_ne: 'छाला चिलाउने वा एलर्जी गराउने कुनै पनि अत्तर वा सुगन्ध प्रयोग गरिएको छैन।' },
+  { key: 'products_mandate_2_title', value: 'Pure Cleanroom Standards', category: 'Products Page', label: 'Mandate 2 Title', value_ne: 'शुद्ध क्लिनरूम मापदण्ड' },
+  { key: 'products_mandate_2_desc', value: 'ISO Class 7 cleanroom positive-pressure HEPA filtered manufacturing in Itahari.', category: 'Products Page', label: 'Mandate 2 Desc', value_ne: 'इटहरीमा सकारात्मक दबाब र हेपा फिल्टरसहितको आईएसओ क्लास ७ क्लिनरूम उत्पादन।' },
+  { key: 'products_mandate_3_title', value: 'Wild Himalayan Botanicals', category: 'Products Page', label: 'Mandate 3 Title', value_ne: 'प्राकृतिक हिमाली जडीबुटी' },
+  { key: 'products_mandate_3_desc', value: 'Cold-macerated sub-alpine Centella Asiatica harvested sustainably above 1,800m.', category: 'Products Page', label: 'Mandate 3 Desc', value_ne: '१,८०० मिटरभन्दा माथिको उचाइबाट संकलित कोल्ड-म्यासरेटेड सेन्टेला एसियाटिका।' },
+  { key: 'products_mandate_4_title', value: 'Made for Nepal\'s Climate', category: 'Products Page', label: 'Mandate 4 Title', value_ne: 'नेपालको मौसम अनुकूल' },
+  { key: 'products_mandate_4_desc', value: 'Targeted formulations for high-altitude UV, dry winter winds, and monsoon humidity.', category: 'Products Page', label: 'Mandate 4 Desc', value_ne: 'उच्च उचाइको घाम, सुख्खा जाडो र मनसुनी आर्द्रताका लागि विशेष फर्मुला।' },
+
+  // Home Page - Climate & Daily Glow Banner
+  { key: 'home_climate_badge', value: 'Crafted for Nepal Weather', category: 'Home Page', label: 'Climate Banner Badge', value_ne: 'नेपालको मौसम अनुकूल तयार पारिएको' },
+  { key: 'home_climate_title', value: 'Made for Nepal’s Climate & Everyday Radiance.', category: 'Home Page', label: 'Climate Banner Title', value_ne: 'नेपालको हावापानी र दैनिक चम्किलो छालाका लागि निर्मित।' },
+  { key: 'home_climate_desc', value: 'Designed for real daily life in Nepal — from dusty city roads to sunny afternoons and dry winter air. CDerma keeps your skin deeply hydrated, calm, and glowing without clogging pores or feeling sticky.', category: 'Home Page', label: 'Climate Banner Description', value_ne: 'नेपालको वास्तविक दैनिक जीवनका लागि उपयुक्त — धुलो, चर्को घाम र जाडोको सुख्खा हावाबाट जोगाउँछ। CDerma ले छालालाई टाँसिने नबनाई भित्रैबाट नरम र चम्किलो राख्छ।' },
+  { key: 'home_climate_stat1_val', value: '98.4%', category: 'Home Page', label: 'Climate Stat 1 Value', value_ne: '९८.४%' },
+  { key: 'home_climate_stat1_lbl', value: 'Felt soothing relief right away', category: 'Home Page', label: 'Climate Stat 1 Label', value_ne: 'पहिलो प्रयोगमै तत्काल आराम र शितलता' },
+  { key: 'home_climate_stat2_val', value: '0%', category: 'Home Page', label: 'Climate Stat 2 Value', value_ne: '०%' },
+  { key: 'home_climate_stat2_lbl', value: 'Artificial perfume or harsh parabens', category: 'Home Page', label: 'Climate Stat 2 Label', value_ne: 'कुनै हानिकारक सुगन्ध वा पाराबेन बिना' },
+  { key: 'home_climate_cta', value: 'Explore Flagship Serum', category: 'Home Page', label: 'Climate Banner CTA Button', value_ne: 'फ्ल्यागशिप सीरम हेर्नुहोस्' },
+
+  // Home Page - Ingredients & INCI Section
+  { key: 'home_ingredients_badge', value: 'Botanical & Molecular Balance', category: 'Home Page', label: 'Ingredients Section Badge', value_ne: 'प्राकृतिक जडीबुटी र आधुनिक विज्ञानको सन्तुलन' },
+  { key: 'home_ingredients_title', value: 'What Goes Into Your Skincare Matters.', category: 'Home Page', label: 'Ingredients Section Title', value_ne: 'तपाईंको छालामा के प्रयोग हुँदैछ भन्ने कुरा महत्त्वपूर्ण छ।' },
+  { key: 'home_ingredients_desc', value: 'Every bottle is an uncompromised convergence of verified actives and pristine alpine botanicals. Full INCI transparency is our foundational baseline.', category: 'Home Page', label: 'Ingredients Section Description', value_ne: 'हाम्रो प्रत्येक बोतल प्रमाणित बायो-एक्टिभ र हिमालयन जडीबुटीहरूको शुद्ध सम्मिश्रण हो। पूर्ण सामग्री पारदर्शिता हाम्रो पहिलो प्रतिबद्धता हो।' },
+
+  // Home Page - 4-Step Daily Regimen
+  { key: 'home_regimen_badge', value: 'Dermatological Protocol', category: 'Home Page', label: 'Regimen Section Badge', value_ne: 'दैनिक डर्माटोलोजिकल प्रक्रिया' },
+  { key: 'home_regimen_title', value: 'The 4-Step Daily Regimen', category: 'Home Page', label: 'Regimen Section Title', value_ne: '४-चरणको दैनिक स्किनकेयर तालिका' },
+  { key: 'home_regimen_subtitle', value: 'Designed to harmonize with your skin’s natural circadian renewal cycles.', category: 'Home Page', label: 'Regimen Section Subtitle', value_ne: 'तपाईंको छालाको प्राकृतिक जैविक पुनर्निर्माण चक्रसँग तालमेल मिलाउन तयार गरिएको।' },
+  { key: 'home_regimen_step1_title', value: '1. Gentle Cleanse', category: 'Home Page', label: 'Regimen Step 1 Title', value_ne: '१. कोमल सफाइ (Cleanse)' },
+  { key: 'home_regimen_step1_desc', value: 'Wash away dust and impurities without stripping natural skin oils.', category: 'Home Page', label: 'Regimen Step 1 Desc', value_ne: 'छालाको प्राकृतिक तेल नहटाई धुलो र फोहोर गहिरिएर सफा गर्दछ।' },
+  { key: 'home_regimen_step2_title', value: '2. Target with Serum', category: 'Home Page', label: 'Regimen Step 2 Title', value_ne: '२. सीरम उपचार (Target)' },
+  { key: 'home_regimen_step2_desc', value: 'Apply active drops to target dark spots, fine lines, or barrier repair.', category: 'Home Page', label: 'Regimen Step 2 Desc', value_ne: 'कालो दाग, चाउरीपना वा कमजोर छालाको अवरोध मर्मत गर्न सक्रिय थोपाहरू।' },
+  { key: 'home_regimen_step3_title', value: '3. Nourish & Moisturize', category: 'Home Page', label: 'Regimen Step 3 Title', value_ne: '३. पोषण र मोइस्चराइज (Nourish)' },
+  { key: 'home_regimen_step3_desc', value: 'Lock in hydration and strengthen your moisture barrier all day.', category: 'Home Page', label: 'Regimen Step 3 Desc', value_ne: 'छालामा दिनभर गहिरो ओसिलोपन लक गरेर सुरक्षात्मक तह बलियो बनाउँछ।' },
+  { key: 'home_regimen_step4_title', value: '4. Protect with SPF', category: 'Home Page', label: 'Regimen Step 4 Title', value_ne: '४. सनस्क्रीन सुरक्षा (Protect)' },
+  { key: 'home_regimen_step4_desc', value: 'Shield against high-altitude Himalayan sun and environmental stress.', category: 'Home Page', label: 'Regimen Step 4 Desc', value_ne: 'उच्च उचाइको चर्को घाम र वातावरणीय विकिरणबाट पूर्ण सुरक्षा।' },
+
+  // Home Page - Cleanroom & Standards
+  { key: 'home_mfg_badge', value: 'Imported Actives & Sourcing Standards', category: 'Home Page', label: 'Manufacturing Badge', value_ne: 'गुणस्तरीय कच्चा पदार्थ र उत्पादन मापदण्ड' },
+  { key: 'home_mfg_title', value: 'Imported High-Grade Formulations. Built Around Quality.', category: 'Home Page', label: 'Manufacturing Section Title', value_ne: 'प्रमाणित उच्च-स्तरीय फर्मुला। गुणस्तरमा आधारित।' },
+  { key: 'home_mfg_desc', value: 'CDerma imports certified pharmaceutical-grade active ingredients, clinical compounds, and precision packaging from internationally accredited laboratories, formulated and cleanroom-batched at our Itahari facility under stringent quality quarantine.', category: 'Home Page', label: 'Manufacturing Description', value_ne: 'CDerma ले अन्तर्राष्ट्रिय प्रयोगशालाहरूबाट प्रमाणित फार्मास्युटिकल-ग्रेड सामग्री आयात गरी इटहरीस्थित क्लिनरूममा कडा गुणस्तर परीक्षणसहित ब्याचिङ गर्दछ।' },
+
+  // Home Page - Supply Network
+  { key: 'home_network_badge', value: 'Supply Network', category: 'Home Page', label: 'Network Section Badge', value_ne: 'देशव्यापी आपूर्ति सञ्जाल' },
+  { key: 'home_network_title', value: 'From Itahari to Skincare Shelves Across Nepal.', category: 'Home Page', label: 'Network Section Title', value_ne: 'इटहरीदेखि नेपालभरका स्किनकेयर काउन्टरहरूसम्म।' },
+  { key: 'home_network_desc', value: 'CDerma is distributed through premier cosmetic shops, beauty stores, clinics, and hospital pharmacies in Kathmandu, Pokhara, Biratnagar, Dharan, Butwal, and beyond.', category: 'Home Page', label: 'Network Section Description', value_ne: 'काठमाडौँ, पोखरा, विराटनगर, धरान, बुटवललगायत देशभरका प्रमुख कस्मेटिक स्टोरहरू, फार्मेसीहरू र स्किन क्लिनिकहरूमा उपलब्ध।' },
+
+  // Home Page - B2B Teaser
+  { key: 'home_b2b_badge', value: 'B2B Partnership', category: 'Home Page', label: 'Home B2B Badge', value_ne: 'बी२बी व्यावसायिक साझेदारी' },
+  { key: 'home_b2b_title', value: 'Grow Your Business With CDerma.', category: 'Home Page', label: 'Home B2B Title', value_ne: 'CDerma सँग आफ्नो व्यवसाय विस्तार गर्नुहोस्।' },
+  { key: 'home_b2b_desc', value: 'We partner with cosmetic store owners, beauty retailers, aesthetic clinics, and dermatologists across Nepal with high margins, fast delivery, and marketing support.', category: 'Home Page', label: 'Home B2B Description', value_ne: 'हामी नेपालभरका कस्मेटिक स्टोर सञ्चालक, ब्युटी रिटेलर्स, र छाला रोग विशेषज्ञहरूसँग उच्च मुनाफा र भरपर्दो डेलिभरीका साथ सहकार्य गर्दछौँ।' },
+  { key: 'home_b2b_cta', value: 'Apply for Wholesale Partnership', category: 'Home Page', label: 'Home B2B CTA Button', value_ne: 'थोक साझेदारीका लागि आवेदन दिनुहोस्' },
+
+  // Home Page - Bottom Call to Action
+  { key: 'home_bottom_title', value: 'Elevate your daily regimen with doctor-recommended care.', category: 'Home Page', label: 'Bottom Banner Title', value_ne: 'डाक्टर-सिफारिस हेरचाहका साथ आफ्नो दैनिक स्किनकेयर बदल्नुहोस्।' },
+  { key: 'home_bottom_desc', value: 'Discover medical-grade face care formulated for Nepal’s climate, or partner with us as an authorized retail stockist.', category: 'Home Page', label: 'Bottom Banner Description', value_ne: 'नेपालको मौसमका लागि तयार पारिएको मेडिकल-ग्रेड स्किनकेयर अनुभव गर्नुहोस्, वा अधिकृत रिटेल साझेदार बन्नुहोस्।' },
+  { key: 'home_bottom_btn_products', value: 'Explore Full Range', category: 'Home Page', label: 'Bottom Banner Products Button', value_ne: 'सबै उत्पादनहरू हेर्नुहोस्' },
+  { key: 'home_bottom_btn_partner', value: 'Partner With Us', category: 'Home Page', label: 'Bottom Banner Partner Button', value_ne: 'हामीसँग सहकार्य गर्नुहोस्' }
 ];
 
 const defaultMedia = [
@@ -998,9 +1101,9 @@ const {
   clinicsNepali
 } = require('./seedDataNepali');
 
-// Attach value_ne to defaultSettings
+// Attach value_ne to defaultSettings (preserving any inlined value_ne)
 defaultSettings.forEach(s => {
-  s.value_ne = settingsNepali[s.key] || '';
+  s.value_ne = settingsNepali[s.key] || s.value_ne || '';
 });
 
 // Attach *_ne to defaultProducts

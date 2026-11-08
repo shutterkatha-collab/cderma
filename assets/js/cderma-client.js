@@ -2097,32 +2097,61 @@ async function initVisualEditor() {
     // Toggle Edit Mode handler
     toggleBtn.addEventListener('click', () => {
       editMode = !editMode;
+      const isNe = getActiveLanguage() === 'ne';
+
       if (editMode) {
         document.body.classList.add('cderma-edit-mode');
         toggleBtn.style.background = '#15803d';
         toggleBtn.style.borderColor = '#22c55e';
-        toggleBtn.innerHTML = `<span>🟢</span> <span>Visual Edit Mode ACTIVE</span>`;
-        showToast('✏️ Visual Edit Mode is now ON. Click any text to edit directly!');
+        toggleBtn.innerHTML = `<span>🟢</span> <span>Visual Edit Mode ACTIVE (${isNe ? 'नेपाली' : 'English'})</span>`;
+        showToast(`✏️ Visual Edit Mode is now ON (${isNe ? 'Editing नेपाली Translation' : 'Editing English'}). Click any text or image to edit!`);
 
-        // Enable contenteditable on all [data-cms]
-        document.querySelectorAll('[data-cms]').forEach(el => {
-          el.setAttribute('contenteditable', 'true');
-          el.setAttribute('title', `CMS Key: [${el.getAttribute('data-cms')}] (Click to edit)`);
+        // Gather all editable elements: explicit [data-cms] + semantic text blocks
+        const editableElements = new Set(document.querySelectorAll('[data-cms]'));
 
-          el.addEventListener('input', () => {
-            const key = el.getAttribute('data-cms');
-            window.__cderma_edits[key] = el.innerText.trim();
-            updatePendingCount();
-          });
+        document.querySelectorAll('main h1, main h2, main h3, main h4, main h5, main h6, main p, main li, footer p, footer li, main [class*="font-headline"], main [class*="font-body"], main [class*="font-label"]').forEach(el => {
+          // Avoid container divs with deep complex structure
+          if (el.children.length === 0 || (el.children.length === 1 && (el.children[0].tagName === 'SPAN' || el.children[0].classList.contains('material-symbols-outlined')))) {
+            editableElements.add(el);
+          }
         });
 
-        // Add click listener on images [data-cms-img]
-        document.querySelectorAll('[data-cms-img]').forEach(img => {
-          img.setAttribute('title', `Click to upload & replace image for slot [${img.getAttribute('data-cms-img')}]`);
+        editableElements.forEach((el, idx) => {
+          let key = el.getAttribute('data-cms');
+          if (!key) {
+            const pageName = (window.location.pathname.replace(/^\/|\.html$/g, '') || 'home').replace(/[^a-z0-9]+/g, '_');
+            const cleanText = el.textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '_').slice(0, 28);
+            key = `auto_${pageName}_${cleanText || ('elem_' + idx)}`;
+            el.setAttribute('data-cms', key);
+          }
+
+          el.setAttribute('contenteditable', 'true');
+          el.setAttribute('title', `CMS Key: [${key}] (${isNe ? 'Nepali Translation' : 'English Text'} - Click to edit)`);
+
+          if (!el._hasCmsListener) {
+            el._hasCmsListener = true;
+            el.addEventListener('input', () => {
+              const currentLang = getActiveLanguage();
+              const targetKey = currentLang === 'ne' ? (key.endsWith('_ne') ? key : `${key}_ne`) : key;
+              window.__cderma_edits[targetKey] = el.innerText.trim();
+              updatePendingCount();
+            });
+          }
+        });
+
+        // Add click listener on all images in main, header, and footer
+        document.querySelectorAll('main img, header img, footer img').forEach((img, idx) => {
+          let slot = img.getAttribute('data-cms-img');
+          if (!slot) {
+            const pageName = (window.location.pathname.replace(/^\/|\.html$/g, '') || 'home').replace(/[^a-z0-9]+/g, '_');
+            slot = `slot_${pageName}_img_${idx}`;
+            img.setAttribute('data-cms-img', slot);
+          }
+          img.setAttribute('title', `Click to upload & replace image for slot [${slot}]`);
           img.onclick = (ev) => {
             ev.preventDefault();
             ev.stopPropagation();
-            currentUploadSlot = img.getAttribute('data-cms-img');
+            currentUploadSlot = slot;
             currentUploadImgEl = img;
             fileInput.click();
           };
@@ -2137,7 +2166,7 @@ async function initVisualEditor() {
         document.querySelectorAll('[data-cms]').forEach(el => {
           el.removeAttribute('contenteditable');
         });
-        document.querySelectorAll('[data-cms-img]').forEach(img => {
+        document.querySelectorAll('main img, header img, footer img').forEach(img => {
           img.onclick = null;
         });
       }
@@ -2168,7 +2197,7 @@ async function initVisualEditor() {
       if (keys.length === 0) return;
 
       saveBtn.disabled = true;
-      saveBtn.innerHTML = `<span>⏳</span> <span>Saving...</span>`;
+      saveBtn.innerHTML = `<span>⏳</span> <span>Saving ${keys.length} edits...</span>`;
 
       try {
         const payload = { settings: window.__cderma_edits };
@@ -2180,7 +2209,7 @@ async function initVisualEditor() {
         const saveData = await saveRes.json();
 
         if (saveData.success) {
-          showToast(`✅ Successfully saved ${keys.length} changes to database!`);
+          showToast(`✅ Successfully saved ${keys.length} edits to database!`);
           window.__cderma_edits = {};
           updatePendingCount();
           saveBtn.innerHTML = `<span>💾</span> <span>Save Page Changes</span>`;
@@ -2195,6 +2224,14 @@ async function initVisualEditor() {
         saveBtn.innerHTML = `<span>💾</span> <span>Retry Save</span>`;
       }
     });
+
+    // Auto-enable Visual Edit Mode if ?edit=true or #edit is in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('edit') === 'true' || window.location.hash === '#edit') {
+      setTimeout(() => {
+        if (!editMode && toggleBtn) toggleBtn.click();
+      }, 400);
+    }
 
   } catch (e) {
     console.debug('Visual editor not enabled');
@@ -2436,6 +2473,25 @@ async function initProductDetail() {
     const descEl = document.getElementById('p-desc') || document.querySelector('[data-product-desc]');
     if (descEl) descEl.textContent = p.description || p.summary || '';
 
+    // 3b. Active Potency & AEO Clinical Summary
+    let activesText = p.title;
+    if (Array.isArray(p.active_ingredients) && p.active_ingredients.length > 0) {
+      activesText = p.active_ingredients.map(a => typeof a === 'string' ? a : (a.name || a.label || '')).filter(Boolean).slice(0, 3).join(' + ');
+    }
+    const potencyEl = document.getElementById('p-potency');
+    if (potencyEl) potencyEl.textContent = activesText || p.title;
+
+    const aeoTitle = document.getElementById('p-aeo-title');
+    if (aeoTitle) aeoTitle.textContent = p.title;
+
+    const aeoDesc = document.getElementById('p-aeo-desc');
+    if (aeoDesc) aeoDesc.textContent = isNe 
+      ? `एक डाक्टर-प्रमाणित क्लिनिकल फेस केयर समाधान हो जसले छालाको अवरोध सुरक्षित राख्दै उत्कृष्ट नतिजा दिन्छ। ${p.summary || ''}`
+      : `is a doctor-formulated clinical face care solution designed to deliver measurable results while maintaining skin barrier integrity. ${p.summary || ''}`;
+
+    const aeoActives = document.getElementById('p-aeo-actives');
+    if (aeoActives) aeoActives.textContent = isNe ? `सक्रिय तत्व: ${activesText}` : `Actives: ${activesText}`;
+
     // 4. Main Image & Gallery Thumbnails
     const mainImg = document.getElementById('main-product-img');
     const safeImg = (p.image_url || '').startsWith('/') || (p.image_url || '').startsWith('http')
@@ -2446,19 +2502,30 @@ async function initProductDetail() {
       mainImg.alt = p.title;
     }
     const thumbBtns = document.querySelectorAll('.thumbnail-btn');
-    if (thumbBtns.length >= 2 && safeImg) {
-      const bannerUrl = safeImg.replace('.jpg', '-banner.jpg');
+    if (thumbBtns.length >= 1 && safeImg) {
       thumbBtns[0].setAttribute('onclick', `switchGallery('${safeImg}', this)`);
       const img1 = thumbBtns[0].querySelector('img');
       if (img1) {
         img1.src = safeImg;
         img1.alt = `${p.title} pack shot`;
       }
+    }
+    if (thumbBtns.length >= 2 && safeImg) {
+      const bannerUrl = safeImg.replace('.jpg', '-banner.jpg');
       thumbBtns[1].setAttribute('onclick', `switchGallery('${bannerUrl}', this)`);
       const img2 = thumbBtns[1].querySelector('img');
       if (img2) {
         img2.src = bannerUrl;
         img2.alt = `${p.title} clinical flyer`;
+      }
+    }
+    if (thumbBtns.length >= 3) {
+      const appImg = '/assets/images/img_9f7d04f58a04.jpg';
+      thumbBtns[2].setAttribute('onclick', `switchGallery('${appImg}', this)`);
+      const img3 = thumbBtns[2].querySelector('img');
+      if (img3) {
+        img3.src = appImg;
+        img3.alt = `Dermatologist guided face application`;
       }
     }
 
