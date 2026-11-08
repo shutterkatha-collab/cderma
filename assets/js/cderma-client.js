@@ -2039,6 +2039,9 @@ async function initVisualEditor() {
         <button id="cderma-toggle-edit" style="background:#2d3331; color:#fff; border:1px solid #4b4639; padding:4px 12px; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; display:flex; align-items:center; gap:6px; transition:all 0.15s;">
           <span>✏️</span> <span>Enable Visual Edit Mode</span>
         </button>
+        <button id="cderma-lang-toggle" style="background:#2d3331; color:#dbc57c; border:1px solid #4b4639; padding:4px 10px; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; display:flex; align-items:center; gap:4px; transition:all 0.15s;">
+          <span>🌐</span> <span id="cderma-lang-label">${getActiveLanguage() === 'ne' ? 'नेपाली (NE)' : 'English (EN)'}</span>
+        </button>
       </div>
       <div style="display:flex; align-items:center; gap:10px;">
         <span id="cderma-pending-indicator" style="font-size:11px; color:#a1a1aa; display:none;">0 pending edits</span>
@@ -2055,6 +2058,19 @@ async function initVisualEditor() {
     const toggleBtn = document.getElementById('cderma-toggle-edit');
     const saveBtn = document.getElementById('cderma-save-btn');
     const pendingIndicator = document.getElementById('cderma-pending-indicator');
+    const langToggleBtn = document.getElementById('cderma-lang-toggle');
+    const langLabel = document.getElementById('cderma-lang-label');
+
+    if (langToggleBtn) {
+      langToggleBtn.addEventListener('click', () => {
+        const nextLang = getActiveLanguage() === 'ne' ? 'en' : 'ne';
+        setLanguage(nextLang);
+        if (langLabel) langLabel.textContent = nextLang === 'ne' ? 'नेपाली (NE)' : 'English (EN)';
+        if (editMode) {
+          showToast(`Switched editor mode to ${nextLang === 'ne' ? 'नेपाली (Nepali)' : 'English'}.`);
+        }
+      });
+    }
 
     // Hidden file uploader for in-page image replacement
     const fileInput = document.createElement('input');
