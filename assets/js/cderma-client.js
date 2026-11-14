@@ -2516,6 +2516,7 @@ async function initProductDetail() {
     if (mainImg && safeImg) {
       mainImg.src = safeImg;
       mainImg.alt = p.title;
+      mainImg.onerror = function() { this.onerror = null; this.src = '/assets/images/cderma-logo.png'; };
     }
     const thumbBtns = document.querySelectorAll('.thumbnail-btn');
     if (thumbBtns.length >= 1 && safeImg) {
@@ -2524,6 +2525,7 @@ async function initProductDetail() {
       if (img1) {
         img1.src = safeImg;
         img1.alt = `${p.title} pack shot`;
+        img1.onerror = function() { this.onerror = null; this.src = '/assets/images/cderma-logo.png'; };
       }
     }
     if (thumbBtns.length >= 2 && safeImg) {
@@ -2533,6 +2535,7 @@ async function initProductDetail() {
       if (img2) {
         img2.src = bannerUrl;
         img2.alt = `${p.title} clinical flyer`;
+        img2.onerror = function() { this.onerror = null; this.src = '/assets/images/cderma-lineup-hero.jpg'; };
       }
     }
     if (thumbBtns.length >= 3) {
@@ -2542,6 +2545,7 @@ async function initProductDetail() {
       if (img3) {
         img3.src = appImg;
         img3.alt = `Dermatologist guided face application`;
+        img3.onerror = function() { this.onerror = null; this.src = '/assets/images/cleanroom-lab-wide.png'; };
       }
     }
 
@@ -2550,6 +2554,7 @@ async function initProductDetail() {
     if (floatImg && safeImg) {
       floatImg.src = safeImg;
       floatImg.alt = p.title;
+      floatImg.onerror = function() { this.onerror = null; this.src = '/assets/images/cderma-logo.png'; };
     }
     const floatTitle = document.getElementById('floating-product-title') || document.querySelector('section.sticky p.font-semibold');
     if (floatTitle) {

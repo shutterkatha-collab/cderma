@@ -10,7 +10,7 @@
   <meta property="og:description" content="CDerma CMS Administration Portal">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -27,8 +27,8 @@
             'outline-border': '#E4E7E4'
           },
           fontFamily: {
-            serif: ['Playfair Display', 'serif'],
-            sans: ['Plus Jakarta Sans', 'sans-serif']
+            serif: ['Plus Jakarta Sans', 'Noto Sans Devanagari', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'Noto Sans Devanagari', 'sans-serif']
           }
         }
       }
@@ -191,77 +191,94 @@
     </div>
 
     <!-- Navigation items -->
-    <nav class="p-3 space-y-1 text-xs font-medium tracking-wide flex-1 overflow-y-auto">
-      <button onclick="switchTab('overview')" class="tab-btn active w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-left" data-tab="overview">
-        <span class="material-symbols-outlined text-lg">dashboard</span>
-        <span>Overview Dashboard</span>
-      </button>
-      <button onclick="switchTab('settings')" class="tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="settings">
-        <span class="material-symbols-outlined text-lg">web</span>
-        <span>Pages &amp; Content CMS</span>
-      </button>
-      <button onclick="switchTab('slides')" class="tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="slides">
-        <span class="material-symbols-outlined text-lg">view_carousel</span>
-        <span>Hero Image Slider</span>
-      </button>
-      <button onclick="switchTab('media')" class="tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="media">
-        <span class="material-symbols-outlined text-lg">image</span>
-        <span>Media & Images</span>
-      </button>
-      <button onclick="switchTab('products')" class="tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="products">
-        <span class="material-symbols-outlined text-lg">science</span>
-        <span>Products Formulary</span>
-      </button>
-      <button onclick="switchTab('clinics')" class="tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="clinics">
-        <span class="material-symbols-outlined text-lg">local_hospital</span>
-        <span>Clinics & Dispensaries</span>
-      </button>
-      <button onclick="switchTab('monographs')" class="tab-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="monographs">
-        <span class="material-symbols-outlined text-lg">menu_book</span>
-        <span>Doctor's Advice &amp; Articles</span>
-      </button>
-      <button onclick="switchTab('batches')" class="tab-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="batches">
-        <div class="flex items-center gap-3">
-          <span class="material-symbols-outlined text-lg">verified</span>
-          <span>Batches &amp; Quality (COA)</span>
+    <nav class="p-3 space-y-4 text-xs font-medium tracking-wide flex-1 overflow-y-auto">
+      <div>
+        <div class="px-3 pb-1.5 text-[10px] font-bold uppercase tracking-wider text-emerald-400/70">Content &amp; Site Copy</div>
+        <div class="space-y-1">
+          <button onclick="switchTab('overview')" class="tab-btn active w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-left" data-tab="overview">
+            <span class="material-symbols-outlined text-lg">dashboard</span>
+            <span>Overview Dashboard</span>
+          </button>
+          <button onclick="switchTab('settings')" class="tab-btn w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="settings">
+            <span class="material-symbols-outlined text-lg">web</span>
+            <span>Pages &amp; Content CMS</span>
+          </button>
+          <button onclick="switchTab('slides')" class="tab-btn w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="slides">
+            <span class="material-symbols-outlined text-lg">view_carousel</span>
+            <span>Hero Image Slider</span>
+          </button>
+          <button onclick="switchTab('media')" class="tab-btn w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="media">
+            <span class="material-symbols-outlined text-lg">image</span>
+            <span>Media &amp; Images</span>
+          </button>
+          <button onclick="switchTab('products')" class="tab-btn w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="products">
+            <span class="material-symbols-outlined text-lg">science</span>
+            <span>Products Formulary</span>
+          </button>
+          <button onclick="switchTab('clinics')" class="tab-btn w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="clinics">
+            <span class="material-symbols-outlined text-lg">local_hospital</span>
+            <span>Clinics &amp; Dispensaries</span>
+          </button>
+          <button onclick="switchTab('monographs')" class="tab-btn w-full flex items-center gap-3 px-3 py-2 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="monographs">
+            <span class="material-symbols-outlined text-lg">menu_book</span>
+            <span>Doctor's Advice &amp; Articles</span>
+          </button>
         </div>
-        <span id="badgeBatches" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-secondary/20 text-secondary border border-secondary/30">2</span>
-      </button>
-      <button onclick="switchTab('social')" class="tab-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="social">
-        <div class="flex items-center gap-3">
-          <span class="material-symbols-outlined text-lg">share</span>
-          <span>Social Media &amp; Channels</span>
+      </div>
+
+      <div>
+        <div class="px-3 pb-1.5 text-[10px] font-bold uppercase tracking-wider text-emerald-400/70">Inquiries &amp; Operations</div>
+        <div class="space-y-1">
+          <button onclick="switchTab('b2b')" class="tab-btn w-full flex items-center justify-between px-3 py-2 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="b2b">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-lg">storefront</span>
+              <span>B2B Applications</span>
+            </div>
+            <span id="badgeB2B" class="hidden px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500 text-white">0</span>
+          </button>
+          <button onclick="switchTab('inquiries')" class="tab-btn w-full flex items-center justify-between px-3 py-2 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="inquiries">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-lg">mail</span>
+              <span>Medical Inquiries</span>
+            </div>
+            <span id="badgeInquiries" class="hidden px-2 py-0.5 rounded-full text-[10px] font-bold bg-secondary text-white">0</span>
+          </button>
+          <button onclick="switchTab('batches')" class="tab-btn w-full flex items-center justify-between px-3 py-2 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="batches">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-lg">verified</span>
+              <span>Batches &amp; Quality (COA)</span>
+            </div>
+            <span id="badgeBatches" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-secondary/20 text-secondary border border-secondary/30">2</span>
+          </button>
         </div>
-        <span id="badgeSocial" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">7</span>
-      </button>
-      <button onclick="switchTab('b2b')" class="tab-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="b2b">
-        <div class="flex items-center gap-3">
-          <span class="material-symbols-outlined text-lg">storefront</span>
-          <span>B2B Applications</span>
+      </div>
+
+      <div>
+        <div class="px-3 pb-1.5 text-[10px] font-bold uppercase tracking-wider text-emerald-400/70">Platform &amp; Growth</div>
+        <div class="space-y-1">
+          <button onclick="switchTab('social')" class="tab-btn w-full flex items-center justify-between px-3 py-2 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="social">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-lg">share</span>
+              <span>Social Media &amp; Channels</span>
+            </div>
+            <span id="badgeSocial" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">7</span>
+          </button>
+          <button onclick="switchTab('llms')" class="tab-btn w-full flex items-center justify-between px-3 py-2 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="llms">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-lg">smart_toy</span>
+              <span>AI / LLM Discoverability</span>
+            </div>
+            <span id="badgeLlms" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Active</span>
+          </button>
+          <button onclick="switchTab('security')" class="tab-btn w-full flex items-center justify-between px-3 py-2 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="security">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-lg">shield</span>
+              <span>Security &amp; Auditing</span>
+            </div>
+            <span id="badgeSecurity" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Hardened</span>
+          </button>
         </div>
-        <span id="badgeB2B" class="hidden px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500 text-white">0</span>
-      </button>
-      <button onclick="switchTab('inquiries')" class="tab-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="inquiries">
-        <div class="flex items-center gap-3">
-          <span class="material-symbols-outlined text-lg">mail</span>
-          <span>Medical Inquiries</span>
-        </div>
-        <span id="badgeInquiries" class="hidden px-2 py-0.5 rounded-full text-[10px] font-bold bg-secondary text-white">0</span>
-      </button>
-      <button onclick="switchTab('llms')" class="tab-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="llms">
-        <div class="flex items-center gap-3">
-          <span class="material-symbols-outlined text-lg">smart_toy</span>
-          <span>AI / LLM Discoverability</span>
-        </div>
-        <span id="badgeLlms" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Active</span>
-      </button>
-      <button onclick="switchTab('security')" class="tab-btn w-full flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors text-left hover:bg-white/5" data-tab="security">
-        <div class="flex items-center gap-3">
-          <span class="material-symbols-outlined text-lg">shield</span>
-          <span>Security &amp; Auditing</span>
-        </div>
-        <span id="badgeSecurity" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Hardened</span>
-      </button>
+      </div>
     </nav>
 
     <!-- Footer user & logout -->
@@ -2623,7 +2640,7 @@ Sitemap: https://cdermanepal.com/sitemap.xml
       });
       document.querySelectorAll('.page-sel-btn').forEach(b => {
         const isActive = b.dataset.cat === cat;
-        b.className = `page-sel-btn p-3 rounded-xl border text-left transition-all flex flex-col justify-between gap-1.5 ${isActive ? 'border-secondary bg-secondary/10 shadow-sm ring-1 ring-secondary font-bold active' : 'border-outline-border bg-surface hover:border-secondary/50 hover:bg-surface-container'}`;
+        b.className = `page-sel-btn p-3 rounded-xl border text-left transition-all flex flex-col justify-between gap-1.5 ${isActive ? 'border-secondary bg-secondary/10 shadow-xs ring-1 ring-secondary font-bold active' : 'border-outline-border bg-surface hover:border-secondary/50 hover:bg-surface-container'}`;
       });
       renderSettings();
     }
@@ -2718,7 +2735,19 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         const standardCats = ['navigation', 'general', 'home page', 'flagship face care', 'science & about', 'b2b wholesale', 'products page', 'clinics', 'monographs', 'contact & footer'];
         filtered = filtered.filter(s => !s.category || s.category.toLowerCase() === 'custom' || !standardCats.includes(s.category.toLowerCase()));
       } else if (selectedSettingsCat !== 'all') {
-        filtered = filtered.filter(s => (s.category || '').toLowerCase() === selectedSettingsCat.toLowerCase());
+        const target = selectedSettingsCat.toLowerCase();
+        filtered = filtered.filter(s => {
+          const sc = (s.category || '').toLowerCase();
+          if (sc === target) return true;
+          if (target === 'monographs' && (sc.includes('monograph') || sc.includes('guidance'))) return true;
+          if (target === 'clinics' && (sc.includes('clinic') || sc.includes('locator'))) return true;
+          if (target === 'science & about' && (sc.includes('science') || sc.includes('about') || sc.includes('cleanroom'))) return true;
+          if (target === 'b2b wholesale' && (sc.includes('b2b') || sc.includes('wholesale'))) return true;
+          if (target === 'products page' && (sc.includes('product') && !sc.includes('flagship'))) return true;
+          if (target === 'contact & footer' && (sc.includes('contact') || sc.includes('footer'))) return true;
+          if (target === 'flagship face care' && (sc.includes('flagship') || sc.includes('face care'))) return true;
+          return false;
+        });
       }
 
       if (settingsSearchTerm) {
@@ -2826,116 +2855,37 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         groups[cat].push(s);
       });
 
-      // Section Definitions for Practical Organization
-      const pageSectionRules = [
-        { name: '✨ Hero Section & Top Announcement', icon: 'view_carousel', match: k => k.startsWith('hero_') || k.startsWith('topbar_') || k.startsWith('badge_') },
-        { name: '📖 AEO Summary & Brand Definition', icon: 'verified', match: k => k.startsWith('home_aeo_') },
-        { name: '📋 4-Step Daily Regimen Protocol', icon: 'format_list_numbered', match: k => k.includes('regimen') || k.includes('step_') },
-        { name: '🧴 Sensory Profile & Micro-Texture', icon: 'texture', match: k => k.includes('sensory') || k.includes('texture_') },
-        { name: '🏛️ Three Dermal Science Pillars', icon: 'account_balance', match: k => k.startsWith('pillar_') || k.startsWith('science_pillar') },
-        { name: '🏔️ Nepal Weather & Climate Resilience', icon: 'cloud', match: k => k.includes('climate') },
-        { name: '🧪 Flagship Product Spotlight & Monograph', icon: 'biotech', match: k => k.startsWith('home_flagship_') || k.startsWith('flagship_') },
-        { name: '📊 28-Day Clinical Trial Outcomes', icon: 'insights', match: k => k.startsWith('trial_') || k.startsWith('trials_') },
-        { name: '👨‍⚕️ Prescribing Doctors Reviews & Endorsements', icon: 'medical_services', match: k => k.startsWith('testimonial_') || k.includes('doctor_') },
-        { name: '🌿 Core Ingredients Matrix (2x2)', icon: 'spa', match: k => k.startsWith('home_ingredients_') || k.includes('actives') || k.includes('inci') },
-        { name: '🔬 Cleanroom Standards & Audit Invitation', icon: 'precision_manufacturing', match: k => k.startsWith('science_') || k.startsWith('cleanroom_') || k.startsWith('about_') },
-        { name: '🚚 Dispatch Protocols & Regional Hubs', icon: 'local_shipping', match: k => k.startsWith('clinics_dispatch') || k.startsWith('b2b_hub') },
-        { name: '🏥 Clinics Directory & Application Steps', icon: 'local_hospital', match: k => k.startsWith('clinics_') },
-        { name: '💼 B2B Wholesale Standards & Commercial Terms', icon: 'storefront', match: k => k.startsWith('b2b_') },
-        { name: '📖 Doctor Advice Articles & Monographs', icon: 'article', match: k => k.startsWith('monographs_') },
-        { name: '🛍️ Products Formulary Catalog & Mandates', icon: 'shopping_bag', match: k => k.startsWith('products_') },
-        { name: '🧭 Global Header Navigation Links', icon: 'menu', match: k => k.startsWith('nav_') },
-        { name: '📞 Official Contact & Footer Information', icon: 'contact_phone', match: k => k.startsWith('contact_') || k.startsWith('corporate_') || k.startsWith('footer_') },
-        { name: '❓ Frequently Asked Clinical Questions', icon: 'quiz', match: k => k.startsWith('faq_') }
-      ];
+      const slugify = (t) => (t || 'cat').toLowerCase().replace(/[^a-z0-9]/g, '_');
 
-      // Group filtered items into sections
-      const sectionsMap = new Map();
-      filtered.forEach(item => {
-        let secObj = pageSectionRules.find(r => r.match(item.key));
-        const secName = secObj ? secObj.name : (`⚙️ ${item.category || 'General'} Configuration`);
-        const secIcon = secObj ? secObj.icon : 'tune';
-        if (!sectionsMap.has(secName)) {
-          sectionsMap.set(secName, { name: secName, icon: secIcon, items: [] });
-        }
-        sectionsMap.get(secName).items.push(item);
-      });
-
-      // Target preview page
-      const pagePreviewMap = {
-        'Home Page': { url: '/?edit=true', label: 'Home Page (/)' },
-        'Flagship Face Care': { url: '/products/retin-c-serum?edit=true', label: 'Face Care Serums (/products/retin-c-serum)' },
-        'Products Page': { url: '/products.html?edit=true', label: 'Products Catalog (/products.html)' },
-        'Science & About': { url: '/science.html?edit=true', label: 'Quality & Science (/science.html)' },
-        'Clinics': { url: '/clinics.html?edit=true', label: 'Clinics Locator (/clinics.html)' },
-        'B2B Wholesale': { url: '/b2b.html?edit=true', label: 'B2B Wholesale Portal (/b2b.html)' },
-        'Monographs': { url: '/monographs.html?edit=true', label: 'Doctor Guidance (/monographs.html)' },
-        'Contact & Footer': { url: '/?edit=true', label: 'Global Header & Footer' }
-      };
-
-      const previewInfo = pagePreviewMap[selectedSettingsCat];
-      let pageHeaderBar = '';
-      if (previewInfo) {
-        pageHeaderBar = `
-          <div class="mb-5 p-4 rounded-xl bg-gradient-to-r from-primary/10 via-surface to-secondary/10 border border-primary/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
-            <div class="flex items-center gap-3">
-              <span class="w-10 h-10 rounded-xl bg-primary text-white flex items-center justify-center font-bold text-lg shadow-xs">🌿</span>
-              <div>
-                <h4 class="text-sm font-bold text-primary flex items-center gap-2">
-                  <span>${escapeHtml(previewInfo.label)}</span>
-                  <span class="px-2 py-0.5 rounded-full text-[10px] bg-primary/10 text-primary font-mono border border-primary/20">${filtered.length} CMS fields</span>
-                </h4>
-                <p class="text-xs text-gray-600 mt-0.5">Click any section to edit or launch the live in-page editor to edit visually on the website.</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-2 shrink-0">
-              <a href="${previewInfo.url}" target="_blank" class="px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold uppercase tracking-wider transition-all shadow flex items-center gap-1.5" title="Launch live visual edit mode on this page">
-                <span class="material-symbols-outlined text-sm">visibility</span>
-                <span>Open In-Page Live Editor ↗</span>
-              </a>
-            </div>
-          </div>
-        `;
-      }
-
-      let secCounter = 0;
-      container.innerHTML = pageHeaderBar + shortcutBanner + Array.from(sectionsMap.values()).map(sec => {
-        secCounter++;
-        const secId = `sec_box_${secCounter}`;
+      container.innerHTML = shortcutBanner + Object.entries(groups).map(([cat, items]) => {
+        const secId = `sec_${slugify(cat)}`;
         return `
-        <div id="${secId}" class="border border-outline-border rounded-xl p-5 bg-white shadow-xs space-y-4 hover:border-secondary/30 transition-all">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-outline-border/60 pb-3">
-            <div class="flex items-center gap-2.5">
-              <span class="w-8 h-8 rounded-lg bg-surface border border-outline-border flex items-center justify-center text-primary text-base shadow-2xs">
-                <span class="material-symbols-outlined text-[18px]">${sec.icon}</span>
-              </span>
-              <div>
-                <h4 class="font-serif text-sm font-bold text-primary flex items-center gap-2">
-                  <span>${sec.name}</span>
-                </h4>
-                <span class="text-[10px] font-mono text-gray-400">${sec.items.length} configuration field${sec.items.length > 1 ? 's' : ''}</span>
-              </div>
+        <div id="${secId}" class="border border-outline-border rounded-xl p-5 bg-surface/30 space-y-4">
+          <div class="flex items-center justify-between border-b border-outline-border/60 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+              <h4 class="font-bold text-sm text-primary tracking-tight">${escapeHtml(cat)} Section</h4>
+              <span class="text-[11px] font-mono text-gray-400 bg-white px-2 py-0.5 rounded border border-outline-border/60">${items.length} fields</span>
             </div>
             <div class="flex items-center gap-2">
-              <button type="button" onclick="saveSectionSettings('${secId}')" class="save-section-btn px-3 py-1.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs">
-                <span class="material-symbols-outlined text-[13px]">save</span>
-                <span>Save This Section</span>
+              <button type="button" onclick="saveSectionSettings('${secId}')" class="save-section-btn px-3 py-1.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold flex items-center gap-1.5 shadow-xs transition-colors">
+                <span class="material-symbols-outlined text-[14px]">save</span>
+                <span>Save Section</span>
               </button>
             </div>
           </div>
-
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            ${sec.items.map(item => {
-              const isLong = item.value && (item.value.length > 80 || item.key.includes('desc') || item.key.includes('body') || item.key.includes('mission') || item.key.includes('subtitle') || item.key.includes('quote') || item.key.includes('mandate') || item.key.includes('summary'));
+            ${items.map(item => {
+              const isLong = item.value && (item.value.length > 80 || item.key.includes('desc') || item.key.includes('body') || item.key.includes('mission') || item.key.includes('subtitle') || item.key.includes('quote') || item.key.includes('mandate'));
               return `
-              <div class="${isLong ? 'md:col-span-2' : ''} p-4 rounded-xl bg-surface/30 border border-outline-border/60 hover:border-secondary/40 transition-all shadow-xs space-y-3">
+              <div class="${isLong ? 'md:col-span-2' : ''} p-4 rounded-xl bg-white border border-outline-border/60 hover:border-secondary/40 transition-all shadow-xs space-y-3">
                 <div class="flex items-center justify-between">
                   <div>
                     <label class="block text-xs font-bold text-primary">${escapeHtml(item.label || item.key)}</label>
-                    <span class="font-mono text-[10px] text-gray-400 bg-white px-1.5 py-0.5 rounded border border-outline-border/40 select-all">${escapeHtml(item.key)}</span>
+                    <span class="font-mono text-[10px] text-gray-400 bg-gray-50 px-1.5 py-0.5 rounded select-all">${escapeHtml(item.key)}</span>
                   </div>
                   <div class="flex items-center gap-1.5">
-                    <button type="button" onclick="saveSingleSetting('${escapeHtml(item.key)}')" title="Save this field" class="px-2.5 py-1 rounded bg-white border border-outline-border hover:bg-secondary hover:text-white text-[11px] text-gray-700 font-semibold transition-colors flex items-center gap-1 shadow-2xs">
+                    <button type="button" onclick="saveSingleSetting('${escapeHtml(item.key)}')" title="Save this field" class="px-2.5 py-1 rounded bg-surface border border-outline-border hover:bg-secondary hover:text-white text-[11px] text-gray-700 font-semibold transition-colors flex items-center gap-1 shadow-2xs">
                       <span class="material-symbols-outlined text-[13px]">check</span>
                       <span>Save</span>
                     </button>
@@ -2953,9 +2903,9 @@ Sitemap: https://cdermanepal.com/sitemap.xml
                     <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> English Content</span>
                   </div>
                   ${isLong ? `
-                    <textarea id="setting_${item.key}" class="w-full p-2.5 rounded-lg border border-outline-border bg-white text-xs text-primary focus:border-secondary focus:outline-none transition-colors leading-relaxed shadow-2xs" rows="3">${escapeHtml(item.value || '')}</textarea>
+                    <textarea id="setting_${item.key}" class="w-full p-2.5 rounded-lg border border-outline-border bg-surface/30 text-xs text-primary focus:border-secondary focus:bg-white focus:outline-none transition-colors leading-relaxed" rows="3">${escapeHtml(item.value || '')}</textarea>
                   ` : `
-                    <input type="text" id="setting_${item.key}" value="${escapeHtml(item.value || '')}" class="w-full p-2.5 rounded-lg border border-outline-border bg-white text-xs text-primary focus:border-secondary focus:outline-none transition-colors shadow-2xs">
+                    <input type="text" id="setting_${item.key}" value="${escapeHtml(item.value || '')}" class="w-full p-2.5 rounded-lg border border-outline-border bg-surface/30 text-xs text-primary focus:border-secondary focus:bg-white focus:outline-none transition-colors">
                   `}
                 </div>
 
@@ -2965,9 +2915,9 @@ Sitemap: https://cdermanepal.com/sitemap.xml
                     <span class="flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> नेपाली अनुवाद (Nepali Translation)</span>
                   </div>
                   ${isLong ? `
-                    <textarea id="setting_${item.key}_ne" placeholder="नेपाली अनुवाद प्रविष्ट गर्नुहोस्..." class="w-full p-2.5 rounded-lg border border-outline-border bg-white text-xs text-primary focus:border-secondary focus:outline-none transition-colors leading-relaxed shadow-2xs" rows="2">${escapeHtml(item.value_ne || '')}</textarea>
+                    <textarea id="setting_${item.key}_ne" placeholder="नेपाली अनुवाद प्रविष्ट गर्नुहोस्..." class="w-full p-2.5 rounded-lg border border-outline-border bg-surface/30 text-xs text-primary focus:border-secondary focus:bg-white focus:outline-none transition-colors leading-relaxed" rows="2">${escapeHtml(item.value_ne || '')}</textarea>
                   ` : `
-                    <input type="text" id="setting_${item.key}_ne" value="${escapeHtml(item.value_ne || '')}" placeholder="नेपाली अनुवाद प्रविष्ट गर्नुहोस्..." class="w-full p-2.5 rounded-lg border border-outline-border bg-white text-xs text-primary focus:border-secondary focus:outline-none transition-colors shadow-2xs">
+                    <input type="text" id="setting_${item.key}_ne" value="${escapeHtml(item.value_ne || '')}" placeholder="नेपाली अनुवाद प्रविष्ट गर्नुहोस्..." class="w-full p-2.5 rounded-lg border border-outline-border bg-surface/30 text-xs text-primary focus:border-secondary focus:bg-white focus:outline-none transition-colors">
                   `}
                 </div>
               </div>
