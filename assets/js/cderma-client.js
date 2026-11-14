@@ -2550,13 +2550,13 @@ async function initProductDetail() {
     }
 
     // Floating Re-Order Banner synchronization
-    const floatImg = document.getElementById('floating-product-img') || document.querySelector('section.sticky img');
+    const floatImg = document.getElementById('floating-product-img') || document.querySelector('#floating-product-bar img') || document.querySelector('section.sticky img');
     if (floatImg && safeImg) {
       floatImg.src = safeImg;
       floatImg.alt = p.title;
       floatImg.onerror = function() { this.onerror = null; this.src = '/assets/images/cderma-logo.png'; };
     }
-    const floatTitle = document.getElementById('floating-product-title') || document.querySelector('section.sticky p.font-semibold');
+    const floatTitle = document.getElementById('floating-product-title') || document.querySelector('#floating-product-bar p.font-semibold') || document.querySelector('section.sticky p.font-semibold');
     if (floatTitle) {
       floatTitle.textContent = p.title;
     }
@@ -2572,14 +2572,13 @@ async function initProductDetail() {
       `).join('');
     }
 
-    // 6. Key Benefits Checkmark List
+    // 6. Key Benefits / Diagnostic Targets Pills
     const benefitsContainer = document.getElementById('p-benefits') || document.querySelector('[data-product-benefits]');
     if (benefitsContainer && Array.isArray(p.key_benefits) && p.key_benefits.length > 0) {
       benefitsContainer.innerHTML = p.key_benefits.map(b => `
-        <li class="flex items-start gap-2 text-on-surface-variant text-[13px] leading-relaxed">
-          <span class="material-symbols-outlined text-primary text-[18px] shrink-0 mt-0.5">check_circle</span>
-          <span>${escapeHtml(b)}</span>
-        </li>
+        <span class="px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface text-[11.5px] font-medium leading-normal">
+          ${escapeHtml(b)}
+        </span>
       `).join('');
     }
 

@@ -244,8 +244,8 @@ app.get('/products/:slug', (req, res) => {
     html = html.replace(/\{[^{}]*"@type":\s*"Product"[\s\S]*?"additionalProperty":\s*\[[\s\S]*?\]\s*\}/, JSON.stringify(productSchema, null, 2));
 
     // 7. SSR HTML DOM Pre-filling for search engines and zero-CLS load
-    html = html.replace(/<h1[^>]*id="p-title"[^>]*>[\s\S]*?<\/h1>/i, `<h1 class="font-display-lg text-[32px] sm:text-[38px] leading-tight text-on-surface font-semibold tracking-tight" id="p-title">${product.title}</h1>`);
-    html = html.replace(/<p[^>]*id="p-desc"[^>]*>[\s\S]*?<\/p>/i, `<p class="text-[15px] text-on-surface-variant font-normal leading-relaxed" id="p-desc">${product.description || product.summary || ''}</p>`);
+    html = html.replace(/<h1[^>]*id="p-title"[^>]*>[\s\S]*?<\/h1>/i, `<h1 class="font-display-lg text-[26px] sm:text-[32px] lg:text-[34px] leading-tight text-on-surface font-semibold tracking-tight" id="p-title">${product.title}</h1>`);
+    html = html.replace(/<p[^>]*id="p-desc"[^>]*>[\s\S]*?<\/p>/i, `<p class="text-[14px] sm:text-[15px] text-on-surface-variant font-normal leading-relaxed" id="p-desc">${product.description || product.summary || ''}</p>`);
     html = html.replace(/<span[^>]*id="p-breadcrumb"[^>]*>[\s\S]*?<\/span>/i, `<span class="text-on-surface font-medium" id="p-breadcrumb">${product.title}</span>`);
     if (product.category) {
       html = html.replace(/<span[^>]*id="p-category"[^>]*>[\s\S]*?<\/span>/i, `<span class="text-[12px] font-bold uppercase tracking-widest text-secondary" id="p-category">${product.category}</span>`);
@@ -257,7 +257,7 @@ app.get('/products/:slug', (req, res) => {
       html = html.replace(/<span id="p-badge"[^>]*>[\s\S]*?<\/span>/i, `<span id="p-badge">${product.clinical_badge}</span>`);
     }
     if (product.price_npr) {
-      html = html.replace(/<span[^>]*id="p-price"[^>]*>[\s\S]*?<\/span>/i, `<span class="px-space-sm py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed text-[11px] font-bold tracking-wide uppercase" id="p-price">NPR ${Number(product.price_npr).toLocaleString()}</span>`);
+      html = html.replace(/<span[^>]*id="p-price"[^>]*>[\s\S]*?<\/span>/i, `<span class="px-2.5 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed text-[11px] font-bold tracking-wide uppercase" id="p-price">NPR ${Number(product.price_npr).toLocaleString()}</span>`);
     }
 
     // Replace Potency Marker & AEO Clinical Summary
@@ -268,7 +268,7 @@ app.get('/products/:slug', (req, res) => {
         activesText = parsedActives.map(a => typeof a === 'string' ? a : (a.name || a.label || '')).filter(Boolean).slice(0, 3).join(' + ');
       }
     } catch (_) {}
-    html = html.replace(/<p[^>]*id="p-potency"[^>]*>[\s\S]*?<\/p>/i, `<p class="text-[14px] font-semibold text-primary" id="p-potency">${activesText || product.title}</p>`);
+    html = html.replace(/<p[^>]*id="p-potency"[^>]*>[\s\S]*?<\/p>/i, `<p class="text-[13px] font-semibold text-primary" id="p-potency">${activesText || product.title}</p>`);
     html = html.replace(/<strong id="p-aeo-title">[\s\S]*?<\/strong>/i, `<strong id="p-aeo-title">${product.title}</strong>`);
     html = html.replace(/<span id="p-aeo-desc">[\s\S]*?<\/span>/i, `<span id="p-aeo-desc">is a doctor-formulated clinical face care solution designed to deliver measurable results while maintaining skin barrier integrity. ${product.summary || ''}</span>`);
     html = html.replace(/<span id="p-aeo-actives">[\s\S]*?<\/span>/i, `<span id="p-aeo-actives">Actives: ${activesText || product.title}</span>`);
@@ -276,7 +276,7 @@ app.get('/products/:slug', (req, res) => {
     if (product.image_url) {
       const rootImg = product.image_url.startsWith('/') ? product.image_url : `/${product.image_url}`;
       const bannerImg = rootImg.replace('.jpg', '-banner.jpg');
-      html = html.replace(/<img[^>]*id="main-product-img"[^>]*>/i, `<img alt="${product.title}" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" id="main-product-img" src="${rootImg}" decoding="async">`);
+      html = html.replace(/<img[^>]*id="main-product-img"[^>]*>/i, `<img alt="${product.title}" class="max-h-[300px] sm:max-h-[360px] md:max-h-[390px] w-auto h-full object-contain transition-transform duration-500 group-hover:scale-105" id="main-product-img" src="${rootImg}" onerror="this.onerror=null; this.src='/assets/images/cderma-logo.png';" decoding="async">`);
       html = html.replace(/\/assets\/images\/cderma-retin-c-serum\.jpg/g, rootImg);
       html = html.replace(/\/assets\/images\/cderma-retin-c-serum-banner\.jpg/g, bannerImg);
       html = html.replace(/alt="CDerma Retin C Serum bottle and box"/g, `alt="${product.title} bottle and box"`);
