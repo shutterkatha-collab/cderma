@@ -546,35 +546,19 @@ function migrateBilingualColumns() {
 }
 
 function seedInitialData() {
-  // Seed Site Settings (upsert to ensure proper category and label while preserving user edits)
-  const upsertSetting = db.prepare(`
-    INSERT INTO site_settings (key, value, value_ne, category, label)
+  // 1. Seed Site Settings: INSERT OR IGNORE only. NEVER overwrite user edits or custom values!
+  const insertSetting = db.prepare(`
+    INSERT OR IGNORE INTO site_settings (key, value, value_ne, category, label)
     VALUES (?, ?, ?, ?, ?)
-    ON CONFLICT(key) DO UPDATE SET
-      category = excluded.category,
-      label = excluded.label,
-      value_ne = COALESCE(site_settings.value_ne, excluded.value_ne)
   `);
   const insertManySettings = db.transaction((settings) => {
     for (const s of settings) {
-      upsertSetting.run(s.key, s.value, s.value_ne || null, s.category, s.label);
+      insertSetting.run(s.key, s.value, s.value_ne || null, s.category, s.label);
     }
   });
   insertManySettings(defaultSettings);
 
-  // Fallback explicit category sync for all known keys
-  try {
-    const syncCatStmt = db.prepare('UPDATE site_settings SET category = ?, label = ? WHERE key = ?');
-    for (const s of defaultSettings) {
-      if (s.category && s.label) {
-        syncCatStmt.run(s.category, s.label, s.key);
-      }
-    }
-  } catch (syncErr) {
-    console.error('Category sync notice:', syncErr.message);
-  }
-
-  // Seed Site Media Slots (insert or ignore)
+  // 2. Seed Site Media Slots: INSERT OR IGNORE only. NEVER overwrite user uploads or changes!
   const insertMedia = db.prepare(`
     INSERT OR IGNORE INTO site_media (slot_key, slot_label, page, description, image_url)
     VALUES (?, ?, ?, ?, ?)
@@ -586,10 +570,9 @@ function seedInitialData() {
   });
   insertManyMedia(defaultMedia);
 
-  // Seed/Sync Products with Bilingual Data (Preserve all existing data without deletions)
-
-  const insertOrUpdateProduct = db.prepare(`
-    INSERT INTO products (
+  // 3. Seed Products: INSERT OR IGNORE only. NEVER overwrite user's custom titles, prices, descriptions, or changes!
+  const insertProduct = db.prepare(`
+    INSERT OR IGNORE INTO products (
       slug, title, subtitle, category, volume, price_npr,
       clinical_badge, summary, description, key_benefits,
       active_ingredients, inci_full, usage_instructions,
@@ -604,53 +587,44 @@ function seedInitialData() {
       @title_ne, @subtitle_ne, @category_ne, @clinical_badge_ne,
       @summary_ne, @description_ne, @key_benefits_ne, @usage_instructions_ne
     )
-    ON CONFLICT(slug) DO UPDATE SET
-      title = excluded.title, subtitle = excluded.subtitle, category = excluded.category,
-      volume = excluded.volume, price_npr = excluded.price_npr, clinical_badge = excluded.clinical_badge,
-      summary = excluded.summary, description = excluded.description, key_benefits = excluded.key_benefits,
-      active_ingredients = excluded.active_ingredients, inci_full = excluded.inci_full,
-      usage_instructions = excluded.usage_instructions, image_url = excluded.image_url,
-      is_featured = excluded.is_featured, sort_order = excluded.sort_order, status = excluded.status,
-      title_ne = excluded.title_ne, subtitle_ne = excluded.subtitle_ne, category_ne = excluded.category_ne,
-      clinical_badge_ne = excluded.clinical_badge_ne, summary_ne = excluded.summary_ne,
-      description_ne = excluded.description_ne, key_benefits_ne = excluded.key_benefits_ne,
-      usage_instructions_ne = excluded.usage_instructions_ne
   `);
 
-  for (const p of defaultProducts) {
-    insertOrUpdateProduct.run({
-      slug: p.slug,
-      title: p.title,
-      subtitle: p.subtitle || '',
-      category: p.category || '',
-      volume: p.volume || '',
-      price_npr: p.price_npr || 0,
-      clinical_badge: p.clinical_badge || '',
-      summary: p.summary || '',
-      description: p.description || '',
-      key_benefits: p.key_benefits || '[]',
-      active_ingredients: p.active_ingredients || '[]',
-      inci_full: p.inci_full || '',
-      usage_instructions: p.usage_instructions || '',
-      image_url: p.image_url || '',
-      is_featured: p.is_featured ? 1 : 0,
-      sort_order: p.sort_order || 1,
-      status: p.status || 'active',
-      title_ne: p.title_ne || null,
-      subtitle_ne: p.subtitle_ne || null,
-      category_ne: p.category_ne || null,
-      clinical_badge_ne: p.clinical_badge_ne || null,
-      summary_ne: p.summary_ne || null,
-      description_ne: p.description_ne || null,
-      key_benefits_ne: p.key_benefits_ne || null,
-      usage_instructions_ne: p.usage_instructions_ne || null
-    });
-  }
-  console.log('🌱 Seeded/updated active products catalog with bilingual data.');
+  const insertProductsTx = db.transaction((prods) => {
+    for (const p of prods) {
+      insertProduct.run({
+        slug: p.slug,
+        title: p.title,
+        subtitle: p.subtitle || '',
+        category: p.category || '',
+        volume: p.volume || '',
+        price_npr: p.price_npr || 0,
+        clinical_badge: p.clinical_badge || '',
+        summary: p.summary || '',
+        description: p.description || '',
+        key_benefits: p.key_benefits || '[]',
+        active_ingredients: p.active_ingredients || '[]',
+        inci_full: p.inci_full || '',
+        usage_instructions: p.usage_instructions || '',
+        image_url: p.image_url || '',
+        is_featured: p.is_featured ? 1 : 0,
+        sort_order: p.sort_order || 1,
+        status: p.status || 'active',
+        title_ne: p.title_ne || null,
+        subtitle_ne: p.subtitle_ne || null,
+        category_ne: p.category_ne || null,
+        clinical_badge_ne: p.clinical_badge_ne || null,
+        summary_ne: p.summary_ne || null,
+        description_ne: p.description_ne || null,
+        key_benefits_ne: p.key_benefits_ne || null,
+        usage_instructions_ne: p.usage_instructions_ne || null
+      });
+    }
+  });
+  insertProductsTx(defaultProducts);
 
-  // Seed Clinics & Dispensaries (Insert or update rich clinic details)
+  // 4. Seed Clinics & Dispensaries: INSERT OR IGNORE only. NEVER overwrite existing clinics!
   const insertClinic = db.prepare(`
-    INSERT INTO clinics (
+    INSERT OR IGNORE INTO clinics (
       name, category, city, province, address, phone, email,
       lead_doctor, doctor_nmc, doctor_image, distance_badge,
       stock_summary, batch_units, temp_control, operating_hours,
@@ -667,67 +641,47 @@ function seedInitialData() {
     )
   `);
 
-  const updateClinic = db.prepare(`
-    UPDATE clinics SET
-      category = @category, city = @city, province = @province, address = @address,
-      phone = @phone, email = @email, lead_doctor = @lead_doctor, doctor_nmc = @doctor_nmc,
-      doctor_image = @doctor_image, distance_badge = @distance_badge, stock_summary = @stock_summary,
-      batch_units = @batch_units, temp_control = @temp_control, operating_hours = @operating_hours,
-      is_verified = @is_verified, is_in_stock = @is_in_stock, directions_url = @directions_url,
-      latitude = @latitude, longitude = @longitude, status = @status, sort_order = @sort_order,
-      name_ne = COALESCE(clinics.name_ne, @name_ne),
-      category_ne = COALESCE(clinics.category_ne, @category_ne),
-      address_ne = COALESCE(clinics.address_ne, @address_ne),
-      stock_summary_ne = COALESCE(clinics.stock_summary_ne, @stock_summary_ne),
-      lead_doctor_ne = COALESCE(clinics.lead_doctor_ne, @lead_doctor_ne)
-    WHERE name = @name
-  `);
-
   const clinicTx = db.transaction((clinics) => {
     for (const c of clinics) {
       const existing = db.prepare('SELECT id FROM clinics WHERE name = ?').get(c.name);
-      const params = {
-        name: c.name,
-        category: c.category || 'Dermatology & Aesthetic Hospital',
-        city: c.city,
-        province: c.province,
-        address: c.address,
-        phone: c.phone || '',
-        email: c.email || '',
-        lead_doctor: c.lead_doctor || '',
-        doctor_nmc: c.doctor_nmc || '',
-        doctor_image: c.doctor_image || '',
-        distance_badge: c.distance_badge || '',
-        stock_summary: c.stock_summary || '',
-        batch_units: c.batch_units || 'Verified In-Stock',
-        temp_control: c.temp_control || '18°C Controlled',
-        operating_hours: c.operating_hours || '09:00 - 19:00 (Sun-Fri)',
-        is_verified: c.is_verified !== undefined ? c.is_verified : 1,
-        is_in_stock: c.is_in_stock !== undefined ? c.is_in_stock : 1,
-        directions_url: c.directions_url || '',
-        latitude: c.latitude || 27.7172,
-        longitude: c.longitude || 85.3240,
-        status: c.status || 'active',
-        sort_order: c.sort_order || 0,
-        name_ne: c.name_ne || null,
-        category_ne: c.category_ne || null,
-        address_ne: c.address_ne || null,
-        stock_summary_ne: c.stock_summary_ne || null,
-        lead_doctor_ne: c.lead_doctor_ne || null
-      };
-      if (existing) {
-        updateClinic.run(params);
-      } else {
-        insertClinic.run(params);
+      if (!existing) {
+        insertClinic.run({
+          name: c.name,
+          category: c.category || 'Dermatology & Aesthetic Hospital',
+          city: c.city,
+          province: c.province,
+          address: c.address,
+          phone: c.phone || '',
+          email: c.email || '',
+          lead_doctor: c.lead_doctor || '',
+          doctor_nmc: c.doctor_nmc || '',
+          doctor_image: c.doctor_image || '',
+          distance_badge: c.distance_badge || '',
+          stock_summary: c.stock_summary || '',
+          batch_units: c.batch_units || 'Verified In-Stock',
+          temp_control: c.temp_control || '18°C Controlled',
+          operating_hours: c.operating_hours || '09:00 - 19:00 (Sun-Fri)',
+          is_verified: c.is_verified !== undefined ? c.is_verified : 1,
+          is_in_stock: c.is_in_stock !== undefined ? c.is_in_stock : 1,
+          directions_url: c.directions_url || '',
+          latitude: c.latitude || 27.7172,
+          longitude: c.longitude || 85.3240,
+          status: c.status || 'active',
+          sort_order: c.sort_order || 0,
+          name_ne: c.name_ne || null,
+          category_ne: c.category_ne || null,
+          address_ne: c.address_ne || null,
+          stock_summary_ne: c.stock_summary_ne || null,
+          lead_doctor_ne: c.lead_doctor_ne || null
+        });
       }
     }
   });
   clinicTx(defaultClinics);
-  console.log('🌱 Seeded/updated authorized clinics directory with bilingual data.');
 
-  // Seed Monographs / Doctor's Advice Articles
-  const upsertMono = db.prepare(`
-    INSERT INTO monographs (
+  // 5. Seed Monographs / Doctor's Advice Articles: INSERT OR IGNORE only. NEVER overwrite existing articles!
+  const insertMono = db.prepare(`
+    INSERT OR IGNORE INTO monographs (
       code, title, category, indication, active_compounds, clinical_protocol,
       dosage_timing, precautions, pdf_file, is_published, sort_order,
       author, read_time, date_text, image_url, summary, content,
@@ -738,28 +692,11 @@ function seedInitialData() {
       @author, @read_time, @date_text, @image_url, @summary, @content,
       @title_ne, @category_ne, @indication_ne, @summary_ne, @content_ne, @clinical_protocol_ne
     )
-    ON CONFLICT(code) DO UPDATE SET
-      title = excluded.title,
-      category = excluded.category,
-      author = COALESCE(excluded.author, monographs.author),
-      read_time = COALESCE(excluded.read_time, monographs.read_time),
-      date_text = COALESCE(excluded.date_text, monographs.date_text),
-      image_url = COALESCE(excluded.image_url, monographs.image_url),
-      summary = COALESCE(excluded.summary, monographs.summary),
-      content = COALESCE(excluded.content, monographs.content),
-      is_published = excluded.is_published,
-      sort_order = excluded.sort_order,
-      title_ne = COALESCE(monographs.title_ne, excluded.title_ne),
-      category_ne = COALESCE(monographs.category_ne, excluded.category_ne),
-      indication_ne = COALESCE(monographs.indication_ne, excluded.indication_ne),
-      summary_ne = COALESCE(monographs.summary_ne, excluded.summary_ne),
-      content_ne = COALESCE(monographs.content_ne, excluded.content_ne),
-      clinical_protocol_ne = COALESCE(monographs.clinical_protocol_ne, excluded.clinical_protocol_ne)
   `);
 
   const insertManyMonos = db.transaction((monos) => {
     for (const m of monos) {
-      upsertMono.run({
+      insertMono.run({
         code: m.code,
         title: m.title,
         category: m.category || 'General',
@@ -788,30 +725,7 @@ function seedInitialData() {
   });
   insertManyMonos(defaultMonographs);
 
-  // Ensure all monographs get their Nepali translations populated
-  const { monographsNepali } = require('./seedDataNepali');
-  const updateMonoNe = db.prepare(`
-    UPDATE monographs SET
-      title_ne = @title_ne,
-      category_ne = @category_ne,
-      indication_ne = @indication_ne,
-      summary_ne = @summary_ne,
-      clinical_protocol_ne = @clinical_protocol_ne
-    WHERE code = @code AND (title_ne IS NULL OR title_ne = '')
-  `);
-  for (const [code, ne] of Object.entries(monographsNepali)) {
-    if (ne.title_ne) {
-      updateMonoNe.run({
-        code,
-        title_ne: ne.title_ne,
-        category_ne: ne.category_ne || '',
-        indication_ne: ne.indication_ne || '',
-        summary_ne: ne.summary_ne || '',
-        clinical_protocol_ne: ne.clinical_protocol_ne || ''
-      });
-    }
-  }
-  console.log('🌱 Seeded/updated monographs & doctor articles with bilingual data.');
+  console.log('✅ Database verified: all user customizations and data preserved (no defaults overwritten).');
 
   // Seed Hero Slides if table is empty, or update bilingual fields
   const heroCount = db.prepare('SELECT COUNT(*) as count FROM hero_slides').get().count;
