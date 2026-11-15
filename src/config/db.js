@@ -486,15 +486,28 @@ function migrateBilingualColumns() {
     const pCols = db.prepare("PRAGMA table_info(products)").all().map(c => c.name);
     const newPCols = [
       'title_ne', 'subtitle_ne', 'category_ne', 'clinical_badge_ne',
-      'summary_ne', 'description_ne', 'key_benefits_ne', 'usage_instructions_ne'
+      'summary_ne', 'description_ne', 'key_benefits_ne', 'usage_instructions_ne',
+      'gallery_images'
     ];
     for (const col of newPCols) {
       if (!pCols.includes(col)) {
         db.exec(`ALTER TABLE products ADD COLUMN ${col} TEXT;`);
       }
     }
+
+    // Populate default gallery sets for products without gallery_images
+    const prods = db.prepare("SELECT id, slug, image_url, gallery_images FROM products").all();
+    for (const p of prods) {
+      if (!p.gallery_images || p.gallery_images === '[]' || p.gallery_images === '') {
+        const root = (p.image_url || '').startsWith('/') ? p.image_url : (p.image_url ? '/' + p.image_url : '/assets/images/cderma-retin-c-serum.jpg');
+        const banner = root.replace('.jpg', '-banner.jpg');
+        const lifestyle = '/assets/images/img_9f7d04f58a04.jpg';
+        const gallery = JSON.stringify([root, banner, lifestyle]);
+        db.prepare("UPDATE products SET gallery_images = ? WHERE id = ?").run(gallery, p.id);
+      }
+    }
   } catch (e) {
-    console.error('Products bilingual migration notice:', e.message);
+    console.error('Products bilingual and gallery migration notice:', e.message);
   }
 
   // 3. hero_slides

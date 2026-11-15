@@ -275,12 +275,29 @@ app.get('/products/:slug', (req, res) => {
 
     if (product.image_url) {
       const rootImg = product.image_url.startsWith('/') ? product.image_url : `/${product.image_url}`;
-      const bannerImg = rootImg.replace('.jpg', '-banner.jpg');
+      let gallery = [rootImg];
+      try {
+        if (product.gallery_images) {
+          const parsedG = JSON.parse(product.gallery_images);
+          if (Array.isArray(parsedG) && parsedG.length) {
+            gallery = parsedG.map(u => u.startsWith('/') || u.startsWith('http') ? u : '/' + u);
+          }
+        }
+      } catch (_) {}
+      if (gallery.length === 1) {
+        gallery.push(rootImg.replace('.jpg', '-banner.jpg'));
+        gallery.push('/assets/images/img_9f7d04f58a04.jpg');
+      }
+      const bannerImg = gallery[1] || rootImg.replace('.jpg', '-banner.jpg');
+      const lifestyleImg = gallery[2] || '/assets/images/img_9f7d04f58a04.jpg';
+
       html = html.replace(/<img[^>]*id="main-product-img"[^>]*>/i, `<img alt="${product.title}" class="max-h-[300px] sm:max-h-[360px] md:max-h-[390px] w-auto h-full object-contain transition-transform duration-500 group-hover:scale-105" id="main-product-img" src="${rootImg}" onerror="this.onerror=null; this.src='/assets/images/cderma-logo.png';" decoding="async">`);
       html = html.replace(/\/assets\/images\/cderma-retin-c-serum\.jpg/g, rootImg);
       html = html.replace(/\/assets\/images\/cderma-retin-c-serum-banner\.jpg/g, bannerImg);
+      html = html.replace(/\/assets\/images\/img_9f7d04f58a04\.jpg/g, lifestyleImg);
       html = html.replace(/alt="CDerma Retin C Serum bottle and box"/g, `alt="${product.title} bottle and box"`);
       html = html.replace(/alt="CDerma Retin C clinical flyer and benefits"/g, `alt="${product.title} clinical flyer and benefits"`);
+      html = html.replace(/alt="Dermatologist guided face application"/g, `alt="${product.title} application"`);
       html = html.replace(/id="floating-product-img"[^>]*src="[^"]*"/i, `id="floating-product-img" src="${rootImg}"`);
       html = html.replace(/id="floating-product-title">[^<]*<\/p>/i, `id="floating-product-title">${product.title}</p>`);
     }

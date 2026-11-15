@@ -2513,41 +2513,34 @@ async function initProductDetail() {
     const safeImg = (p.image_url || '').startsWith('/') || (p.image_url || '').startsWith('http')
       ? p.image_url
       : (p.image_url ? '/' + p.image_url : '/assets/images/cderma-logo.png');
-    if (mainImg && safeImg) {
-      mainImg.src = safeImg;
+
+    let galleryList = [safeImg];
+    if (Array.isArray(p.gallery_images) && p.gallery_images.length > 0) {
+      galleryList = p.gallery_images.map(u => (u.startsWith('/') || u.startsWith('http')) ? u : '/' + u);
+    } else {
+      galleryList.push(safeImg.replace('.jpg', '-banner.jpg'));
+      galleryList.push('/assets/images/img_9f7d04f58a04.jpg');
+    }
+
+    if (mainImg && galleryList[0]) {
+      mainImg.src = galleryList[0];
       mainImg.alt = p.title;
       mainImg.onerror = function() { this.onerror = null; this.src = '/assets/images/cderma-logo.png'; };
     }
+
     const thumbBtns = document.querySelectorAll('.thumbnail-btn');
-    if (thumbBtns.length >= 1 && safeImg) {
-      thumbBtns[0].setAttribute('onclick', `switchGallery('${safeImg}', this)`);
-      const img1 = thumbBtns[0].querySelector('img');
-      if (img1) {
-        img1.src = safeImg;
-        img1.alt = `${p.title} pack shot`;
-        img1.onerror = function() { this.onerror = null; this.src = '/assets/images/cderma-logo.png'; };
+    thumbBtns.forEach((btn, idx) => {
+      if (galleryList[idx]) {
+        btn.classList.remove('hidden');
+        btn.setAttribute('onclick', `switchGallery('${galleryList[idx]}', this)`);
+        const tImg = btn.querySelector('img');
+        if (tImg) {
+          tImg.src = galleryList[idx];
+          tImg.alt = `${p.title} view ${idx + 1}`;
+          tImg.onerror = function() { this.onerror = null; this.src = '/assets/images/cderma-logo.png'; };
+        }
       }
-    }
-    if (thumbBtns.length >= 2 && safeImg) {
-      const bannerUrl = safeImg.replace('.jpg', '-banner.jpg');
-      thumbBtns[1].setAttribute('onclick', `switchGallery('${bannerUrl}', this)`);
-      const img2 = thumbBtns[1].querySelector('img');
-      if (img2) {
-        img2.src = bannerUrl;
-        img2.alt = `${p.title} clinical flyer`;
-        img2.onerror = function() { this.onerror = null; this.src = '/assets/images/cderma-lineup-hero.jpg'; };
-      }
-    }
-    if (thumbBtns.length >= 3) {
-      const appImg = '/assets/images/img_9f7d04f58a04.jpg';
-      thumbBtns[2].setAttribute('onclick', `switchGallery('${appImg}', this)`);
-      const img3 = thumbBtns[2].querySelector('img');
-      if (img3) {
-        img3.src = appImg;
-        img3.alt = `Dermatologist guided face application`;
-        img3.onerror = function() { this.onerror = null; this.src = '/assets/images/cleanroom-lab-wide.png'; };
-      }
-    }
+    });
 
     // Floating Re-Order Banner synchronization
     const floatImg = document.getElementById('floating-product-img') || document.querySelector('#floating-product-bar img') || document.querySelector('section.sticky img');

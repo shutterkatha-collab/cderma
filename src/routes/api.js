@@ -34,8 +34,19 @@ function localizeProduct(p, lang) {
   if (lang === 'ne' && p.key_benefits_ne) {
     try { keyBenefits = JSON.parse(p.key_benefits_ne); } catch(e) {}
   }
+  let gallery = [];
+  try {
+    if (p.gallery_images) {
+      const g = typeof p.gallery_images === 'string' ? JSON.parse(p.gallery_images) : p.gallery_images;
+      if (Array.isArray(g)) gallery = g;
+    }
+  } catch (_) {}
+  if (gallery.length === 0 && p.image_url) {
+    gallery = [p.image_url];
+  }
   return {
     ...p,
+    gallery_images: gallery,
     title: (lang === 'ne' && p.title_ne) ? p.title_ne : p.title,
     subtitle: (lang === 'ne' && p.subtitle_ne) ? p.subtitle_ne : p.subtitle,
     category: (lang === 'ne' && p.category_ne) ? p.category_ne : p.category,

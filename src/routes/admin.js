@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../config/db');
 const { requireAdmin } = require('../middleware/auth');
 const upload = require('../middleware/upload');
-const { verifyUploadedFile } = require('../middleware/upload');
+const { uploadMultiple, verifyUploadedFile } = require('../middleware/upload');
 const {
   verifyPassword,
   hashPassword,
@@ -304,11 +304,24 @@ router.delete('/api/settings/:key', requireAdmin, (req, res) => {
 router.get('/api/products', requireAdmin, (req, res) => {
   try {
     const products = db.prepare('SELECT * FROM products ORDER BY sort_order ASC, id ASC').all();
-    const parsed = products.map(p => ({
-      ...p,
-      key_benefits: p.key_benefits ? JSON.parse(p.key_benefits) : [],
-      active_ingredients: p.active_ingredients ? JSON.parse(p.active_ingredients) : []
-    }));
+    const parsed = products.map(p => {
+      let gallery = [];
+      try {
+        if (p.gallery_images) {
+          const g = typeof p.gallery_images === 'string' ? JSON.parse(p.gallery_images) : p.gallery_images;
+          if (Array.isArray(g)) gallery = g;
+        }
+      } catch (_) {}
+      if (gallery.length === 0 && p.image_url) {
+        gallery = [p.image_url];
+      }
+      return {
+        ...p,
+        gallery_images: gallery,
+        key_benefits: p.key_benefits ? JSON.parse(p.key_benefits) : [],
+        active_ingredients: p.active_ingredients ? JSON.parse(p.active_ingredients) : []
+      };
+    });
     res.json({ success: true, products: parsed });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -322,13 +335,29 @@ router.post('/api/products', requireAdmin, upload.single('image'), verifyUploade
       title, subtitle, slug, category, volume, price_npr,
       clinical_badge, summary, description, key_benefits,
       active_ingredients, inci_full, usage_instructions,
-      image_url, is_featured, sort_order, status,
+      image_url, gallery_images, is_featured, sort_order, status,
       title_ne, subtitle_ne, category_ne, clinical_badge_ne,
       summary_ne, description_ne, key_benefits_ne, usage_instructions_ne
     } = req.body;
 
     if (req.file) {
       image_url = `/uploads/${req.file.filename}`;
+    }
+
+    let galleryJson = '[]';
+    if (gallery_images) {
+      if (typeof gallery_images === 'string') {
+        try {
+          const parsed = JSON.parse(gallery_images);
+          galleryJson = JSON.stringify(Array.isArray(parsed) ? parsed : [parsed]);
+        } catch (_) {
+          galleryJson = JSON.stringify([gallery_images]);
+        }
+      } else if (Array.isArray(gallery_images)) {
+        galleryJson = JSON.stringify(gallery_images);
+      }
+    } else if (image_url) {
+      galleryJson = JSON.stringify([image_url]);
     }
 
     const safeSlug = (slug || title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''));
@@ -341,17 +370,17 @@ router.post('/api/products', requireAdmin, upload.single('image'), verifyUploade
         slug, title, subtitle, category, volume, price_npr,
         clinical_badge, summary, description, key_benefits,
         active_ingredients, inci_full, usage_instructions,
-        image_url, is_featured, sort_order, status,
+        image_url, gallery_images, is_featured, sort_order, status,
         title_ne, subtitle_ne, category_ne, clinical_badge_ne,
         summary_ne, description_ne, key_benefits_ne, usage_instructions_ne
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `);
 
     const result = stmt.run(
       safeSlug, title, subtitle || '', category, volume || '', parseFloat(price_npr) || 0,
       clinical_badge || '', summary || '', description || '', benefitsJson,
       ingredientsJson, inci_full || '', usage_instructions || '',
-      image_url || 'assets/images/product-packaging-dropper.png',
+      image_url || 'assets/images/product-packaging-dropper.png', galleryJson,
       is_featured ? 1 : 0, parseInt(sort_order) || 0, status || 'active',
       title_ne || null, subtitle_ne || null, category_ne || null, clinical_badge_ne || null,
       summary_ne || null, description_ne || null, benefitsNeJson, usage_instructions_ne || null
@@ -376,7 +405,7 @@ router.put('/api/products/:id', requireAdmin, upload.single('image'), verifyUplo
       title, subtitle, slug, category, volume, price_npr,
       clinical_badge, summary, description, key_benefits,
       active_ingredients, inci_full, usage_instructions,
-      image_url, is_featured, sort_order, status,
+      image_url, gallery_images, is_featured, sort_order, status,
       title_ne, subtitle_ne, category_ne, clinical_badge_ne,
       summary_ne, description_ne, key_benefits_ne, usage_instructions_ne
     } = req.body;
@@ -385,6 +414,22 @@ router.put('/api/products/:id', requireAdmin, upload.single('image'), verifyUplo
       image_url = `/uploads/${req.file.filename}`;
     } else if (!image_url) {
       image_url = existing.image_url;
+    }
+
+    let galleryJson = existing.gallery_images || '[]';
+    if (gallery_images !== undefined) {
+      if (typeof gallery_images === 'string') {
+        try {
+          const parsed = JSON.parse(gallery_images);
+          galleryJson = JSON.stringify(Array.isArray(parsed) ? parsed : [parsed]);
+        } catch (_) {
+          galleryJson = JSON.stringify([gallery_images]);
+        }
+      } else if (Array.isArray(gallery_images)) {
+        galleryJson = JSON.stringify(gallery_images);
+      }
+    } else if (image_url && (!existing.gallery_images || existing.gallery_images === '[]')) {
+      galleryJson = JSON.stringify([image_url]);
     }
 
     const benefitsJson = typeof key_benefits === 'string' ? key_benefits : JSON.stringify(key_benefits || []);
@@ -396,7 +441,7 @@ router.put('/api/products/:id', requireAdmin, upload.single('image'), verifyUplo
         slug = ?, title = ?, subtitle = ?, category = ?, volume = ?, price_npr = ?,
         clinical_badge = ?, summary = ?, description = ?, key_benefits = ?,
         active_ingredients = ?, inci_full = ?, usage_instructions = ?,
-        image_url = ?, is_featured = ?, sort_order = ?, status = ?,
+        image_url = ?, gallery_images = ?, is_featured = ?, sort_order = ?, status = ?,
         title_ne = ?, subtitle_ne = ?, category_ne = ?, clinical_badge_ne = ?,
         summary_ne = ?, description_ne = ?, key_benefits_ne = ?, usage_instructions_ne = ?,
         updated_at = CURRENT_TIMESTAMP
@@ -418,6 +463,7 @@ router.put('/api/products/:id', requireAdmin, upload.single('image'), verifyUplo
       inci_full !== undefined ? inci_full : existing.inci_full,
       usage_instructions !== undefined ? usage_instructions : existing.usage_instructions,
       image_url,
+      galleryJson,
       is_featured !== undefined ? (is_featured ? 1 : 0) : existing.is_featured,
       sort_order !== undefined ? (parseInt(sort_order) || 0) : existing.sort_order,
       status !== undefined ? status : existing.status,
@@ -896,7 +942,7 @@ router.delete('/api/media/:slot_key', requireAdmin, (req, res) => {
   }
 });
 
-// POST /admin/api/upload - General Asset Uploader
+// POST /admin/api/upload - Single Asset Uploader
 router.post('/api/upload', requireAdmin, upload.single('file'), verifyUploadedFile, (req, res) => {
   if (!req.file) {
     return res.status(400).json({ success: false, message: 'No file uploaded.' });
@@ -907,6 +953,26 @@ router.post('/api/upload', requireAdmin, upload.single('file'), verifyUploadedFi
     message: 'File uploaded successfully.',
     url: relativeUrl,
     filename: req.file.filename
+  });
+});
+
+// POST /admin/api/upload-multiple - Multiple / Bulk Asset Uploader
+router.post('/api/upload-multiple', requireAdmin, uploadMultiple.array('files', 12), verifyUploadedFile, (req, res) => {
+  if (!req.files || req.files.length === 0) {
+    return res.status(400).json({ success: false, message: 'No files uploaded.' });
+  }
+  const files = req.files.map(f => ({
+    url: `/uploads/${f.filename}`,
+    filename: f.filename,
+    originalName: f.originalname,
+    size: f.size
+  }));
+  res.json({
+    success: true,
+    message: `${files.length} file(s) uploaded successfully.`,
+    count: files.length,
+    urls: files.map(f => f.url),
+    files
   });
 });
 

@@ -513,8 +513,8 @@
               </button>
               <div class="flex items-center gap-2 bg-surface p-2 rounded-lg border border-outline-border">
                 <span class="material-symbols-outlined text-secondary text-base">cloud_upload</span>
-                <input type="file" id="generalAssetInput" accept="image/*" class="text-xs w-44 text-gray-500 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-[11px] file:font-semibold file:bg-primary file:text-white hover:file:bg-secondary">
-                <button onclick="handleGeneralAssetUpload()" class="px-3 py-1 rounded bg-primary hover:bg-secondary text-white text-xs font-semibold transition-colors">Upload</button>
+                <input type="file" id="generalAssetInput" multiple accept="image/*" class="text-xs w-48 text-gray-500 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-[11px] file:font-semibold file:bg-primary file:text-white hover:file:bg-secondary cursor-pointer">
+                <button onclick="handleGeneralAssetUpload()" class="px-3 py-1 rounded bg-primary hover:bg-secondary text-white text-xs font-semibold transition-colors whitespace-nowrap">Upload (Bulk)</button>
               </div>
             </div>
           </div>
@@ -1591,7 +1591,7 @@ Sitemap: https://cdermanepal.com/sitemap.xml
 
   <!-- ==================== PRODUCT MODAL ==================== -->
   <div id="productModal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col border border-outline-border">
+    <div class="bg-white rounded-xl shadow-2xl max-w-3xl w-full max-h-[90vh] flex flex-col border border-outline-border">
       <div class="p-6 border-b border-outline-border flex items-center justify-between">
         <h3 id="productModalTitle" class="font-serif text-lg font-semibold text-primary">Edit Formulation</h3>
         <button onclick="closeProductModal()" class="text-gray-400 hover:text-gray-600">
@@ -1679,33 +1679,51 @@ Sitemap: https://cdermanepal.com/sitemap.xml
             </div>
           </div>
         </details>
-        <div class="space-y-2 p-3 bg-surface rounded-xl border border-outline-border/80">
-          <div class="flex items-center justify-between">
-            <label class="block font-semibold text-gray-800 text-xs">Product Formulation Image</label>
-            <span id="prodImageStatusBadge" class="hidden text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">Uploaded</span>
-          </div>
-          <!-- Live Preview Box -->
-          <div id="prodImagePreviewWrapper" class="relative w-full h-36 rounded-lg border border-outline-border bg-gray-100 overflow-hidden flex items-center justify-center shadow-xs">
-            <img id="prodImagePreview" src="" alt="Product Preview" class="w-full h-full object-contain p-2">
-            <div id="prodImageEmptyPlaceholder" class="hidden flex flex-col items-center justify-center text-gray-400 gap-1 p-3 text-center">
-              <span class="material-symbols-outlined text-2xl text-gray-400">inventory_2</span>
-              <span class="text-[10px] font-medium text-gray-400">No product image</span>
-            </div>
-            <div id="prodUploadProgress" class="hidden absolute inset-0 bg-black/70 backdrop-blur-xs flex flex-col items-center justify-center text-white gap-2 z-10">
-              <span class="material-symbols-outlined animate-spin text-2xl">progress_activity</span>
-              <span class="text-[11px] font-bold tracking-wider uppercase">Uploading Image...</span>
-            </div>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+        <!-- Product Gallery & Multi-Image Control Center -->
+        <div class="space-y-3 p-4 bg-surface rounded-xl border border-outline-border/80">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 border-b border-outline-border/60">
             <div>
-              <label class="block font-medium text-gray-700 mb-1">Upload New Image File</label>
-              <input type="file" id="prodImageFile" accept="image/png,image/jpeg,image/webp,image/avif,image/gif" class="w-full text-[11px] text-gray-600 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-primary file:text-white hover:file:bg-secondary file:cursor-pointer cursor-pointer border border-outline-border rounded-lg p-1 bg-white focus:outline-none">
+              <label class="block font-bold text-gray-800 text-xs flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-base text-primary">collections</span>
+                <span>Product Gallery &amp; Multi-Image Studio (बहु-तस्वीर व्यवस्थापन)</span>
+              </label>
+              <p class="text-[11px] text-gray-500">Upload multiple photos at once: Packshot Bottle, Clinical Flyer, and Model Application Photos.</p>
             </div>
-            <div>
-              <label class="block font-medium text-gray-700 mb-1">Image URL / Path</label>
-              <input type="text" id="prodImage" placeholder="assets/images/... or /uploads/..." class="w-full px-3 py-1.5 border border-outline-border rounded-lg focus:outline-none focus:border-secondary font-mono text-[11px] bg-white">
+            <!-- Bulk Multi-Image Uploader Button -->
+            <div class="relative shrink-0">
+              <label for="prodBulkFilesInput" class="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold shadow-xs transition-colors">
+                <span class="material-symbols-outlined text-[16px]">add_photo_alternate</span>
+                <span>+ Upload Multiple Images</span>
+              </label>
+              <input type="file" id="prodBulkFilesInput" multiple accept="image/png,image/jpeg,image/webp,image/avif,image/gif" class="hidden">
             </div>
           </div>
+
+          <!-- Multi-Upload Progress Notification -->
+          <div id="prodBulkUploadProgress" class="hidden p-2.5 rounded-lg bg-primary/10 border border-primary/20 text-xs text-primary flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-base animate-spin">progress_activity</span>
+              <span id="prodBulkUploadStatusText">Uploading selected images...</span>
+            </div>
+          </div>
+
+          <!-- Dynamic Gallery Cards Container -->
+          <div id="prodGalleryCards" class="space-y-2.5">
+            <!-- Rendered dynamically by JavaScript -->
+          </div>
+
+          <!-- Add Slot Button & Tip -->
+          <div class="flex items-center justify-between pt-1 text-[11px]">
+            <button type="button" onclick="addEmptyGallerySlot()" class="font-semibold text-primary hover:text-secondary flex items-center gap-1 px-2.5 py-1 rounded border border-primary/30 hover:bg-primary/5 transition-colors">
+              <span class="material-symbols-outlined text-sm">add</span>
+              <span>+ Add Image Slot</span>
+            </button>
+            <span class="text-gray-400">Slot 1 is always the primary display bottle</span>
+          </div>
+
+          <!-- Hidden inputs for backward compatibility -->
+          <input type="hidden" id="prodImage">
+          <input type="file" id="prodImageFile" class="hidden">
         </div>
         <div class="flex items-center gap-6 pt-2">
           <label class="flex items-center gap-2 cursor-pointer">
@@ -3077,33 +3095,53 @@ Sitemap: https://cdermanepal.com/sitemap.xml
     async function handleGeneralAssetUpload() {
       const input = document.getElementById('generalAssetInput');
       if (!input || !input.files.length) {
-        showToast('Please select an image file to upload', true);
+        showToast('Please select image file(s) to upload', true);
         return;
       }
 
-      const formData = new FormData();
-      formData.append('file', input.files[0]);
+      const files = Array.from(input.files);
+      const isMultiple = files.length > 1;
+
+      showToast(`Uploading ${files.length} asset(s)...`);
 
       try {
-        const res = await fetch('/admin/api/upload', {
-          method: 'POST',
-          body: formData
-        });
-        const data = await res.json();
-        if (data.success) {
-          showToast('Asset uploaded successfully!');
+        let uploadedUrls = [];
+        if (isMultiple) {
+          const formData = new FormData();
+          files.forEach(f => formData.append('files', f));
+          const res = await fetch('/admin/api/upload-multiple', { method: 'POST', body: formData });
+          const data = await res.json();
+          if (data.success && Array.isArray(data.urls)) {
+            uploadedUrls = data.urls;
+          } else {
+            showToast(data.message || 'Error uploading files', true);
+            return;
+          }
+        } else {
+          const formData = new FormData();
+          formData.append('file', files[0]);
+          const res = await fetch('/admin/api/upload', { method: 'POST', body: formData });
+          const data = await res.json();
+          if (data.success && data.url) {
+            uploadedUrls = [data.url];
+          } else {
+            showToast(data.message || 'Error uploading file', true);
+            return;
+          }
+        }
+
+        if (uploadedUrls.length > 0) {
+          showToast(`${uploadedUrls.length} asset(s) uploaded successfully!`);
           const banner = document.getElementById('recentUploadBanner');
           const img = document.getElementById('recentUploadImg');
           const urlEl = document.getElementById('recentUploadUrl');
-          img.src = data.url;
-          urlEl.textContent = data.url;
+          img.src = uploadedUrls[0];
+          urlEl.textContent = uploadedUrls.join(', ');
           banner.classList.remove('hidden');
           input.value = '';
-        } else {
-          showToast(data.message || 'Upload error', true);
         }
       } catch (err) {
-        showToast('Upload connection error', true);
+        showToast('Upload connection error: ' + err.message, true);
       }
     }
 
@@ -3626,19 +3664,117 @@ Sitemap: https://cdermanepal.com/sitemap.xml
       }
     }
 
-    function updateProdPreview(url) {
-      const img = document.getElementById('prodImagePreview');
-      const placeholder = document.getElementById('prodImageEmptyPlaceholder');
-      if (!img || !placeholder) return;
-      if (url && url.trim()) {
-        const cleanUrl = url.trim();
-        img.src = cleanUrl.startsWith('http') || cleanUrl.startsWith('blob:') || cleanUrl.startsWith('/') ? cleanUrl : '/' + cleanUrl;
-        img.classList.remove('hidden');
-        placeholder.classList.add('hidden');
-      } else {
-        img.src = '';
-        img.classList.add('hidden');
-        placeholder.classList.remove('hidden');
+    // ==================== PRODUCT GALLERY & MULTI-IMAGE STUDIO ====================
+    let currentProdGallery = [];
+
+    function getGallerySlotRole(idx) {
+      if (idx === 0) return 'Slot 1: Primary Packshot (Main Bottle Display)';
+      if (idx === 1) return 'Slot 2: Clinical Flyer / Carton Spec Banner';
+      if (idx === 2) return 'Slot 3: Lifestyle / Dermatologist Face Application';
+      return `Slot ${idx + 1}: Additional Product / Lab Visual`;
+    }
+
+    function renderProdGallery() {
+      const container = document.getElementById('prodGalleryCards');
+      if (!container) return;
+      if (!Array.isArray(currentProdGallery) || currentProdGallery.length === 0) {
+        currentProdGallery = [''];
+      }
+
+      container.innerHTML = currentProdGallery.map((imgUrl, idx) => {
+        const roleText = getGallerySlotRole(idx);
+        const isPrimary = idx === 0;
+        const safeUrl = (imgUrl || '').trim();
+
+        return `
+          <div class="p-2.5 rounded-lg border ${isPrimary ? 'border-primary/50 bg-primary/5' : 'border-outline-border bg-white'} shadow-2xs flex flex-col sm:flex-row items-center gap-3">
+            <!-- Thumbnail preview -->
+            <div class="relative w-16 h-16 rounded-md bg-gray-50 border border-outline-border overflow-hidden shrink-0 flex items-center justify-center">
+              ${safeUrl ? `<img src="${safeUrl.startsWith('http') || safeUrl.startsWith('/') ? safeUrl : '/' + safeUrl}" alt="Gallery Slot ${idx + 1}" class="w-full h-full object-contain p-1" onerror="this.onerror=null; this.src='/assets/images/cderma-logo.png';">` : `<span class="material-symbols-outlined text-gray-300 text-2xl">image</span>`}
+            </div>
+
+            <!-- Content & Controls -->
+            <div class="flex-1 min-w-0 w-full space-y-1.5">
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-[11px] font-bold ${isPrimary ? 'text-primary' : 'text-gray-700'}">${roleText}</span>
+                  ${isPrimary ? '<span class="text-[9px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-primary text-white">Main Packshot</span>' : ''}
+                </div>
+                <div class="flex items-center gap-1">
+                  ${idx > 0 ? `<button type="button" onclick="moveGallerySlot(${idx}, -1)" class="p-1 text-gray-400 hover:text-gray-700 transition-colors" title="Move Up"><span class="material-symbols-outlined text-xs">arrow_upward</span></button>` : ''}
+                  ${idx < currentProdGallery.length - 1 ? `<button type="button" onclick="moveGallerySlot(${idx}, 1)" class="p-1 text-gray-400 hover:text-gray-700 transition-colors" title="Move Down"><span class="material-symbols-outlined text-xs">arrow_downward</span></button>` : ''}
+                  ${currentProdGallery.length > 1 ? `<button type="button" onclick="removeGallerySlot(${idx})" class="p-1 text-red-400 hover:text-red-600 transition-colors" title="Remove Slot"><span class="material-symbols-outlined text-xs">delete</span></button>` : ''}
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <input type="text" value="${escapeHtml(safeUrl)}" onchange="updateGalleryUrl(${idx}, this.value)" placeholder="/uploads/... or assets/images/..." class="flex-1 px-2.5 py-1 text-xs font-mono border border-outline-border rounded bg-white focus:outline-none focus:border-primary">
+                <label class="cursor-pointer inline-flex items-center gap-1 px-2.5 py-1 bg-surface-container hover:bg-surface-container-high border border-outline-border text-gray-700 text-[11px] font-semibold rounded shrink-0 transition-colors">
+                  <span class="material-symbols-outlined text-xs">cloud_upload</span>
+                  <span>Upload</span>
+                  <input type="file" accept="image/png,image/jpeg,image/webp,image/avif,image/gif" class="hidden" onchange="uploadSingleGallerySlot(${idx}, this)">
+                </label>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Keep backward-compatible #prodImage in sync with Slot 0
+      const primary = currentProdGallery.find(u => u && u.trim().length > 0) || '';
+      const prodImgEl = document.getElementById('prodImage');
+      if (prodImgEl) prodImgEl.value = primary;
+    }
+
+    function updateGalleryUrl(idx, val) {
+      if (currentProdGallery[idx] !== undefined) {
+        currentProdGallery[idx] = (val || '').trim();
+        renderProdGallery();
+      }
+    }
+
+    function addEmptyGallerySlot() {
+      currentProdGallery.push('');
+      renderProdGallery();
+    }
+
+    function removeGallerySlot(idx) {
+      if (currentProdGallery.length > 1) {
+        currentProdGallery.splice(idx, 1);
+        renderProdGallery();
+      }
+    }
+
+    function moveGallerySlot(idx, dir) {
+      const target = idx + dir;
+      if (target >= 0 && target < currentProdGallery.length) {
+        const temp = currentProdGallery[idx];
+        currentProdGallery[idx] = currentProdGallery[target];
+        currentProdGallery[target] = temp;
+        renderProdGallery();
+      }
+    }
+
+    async function uploadSingleGallerySlot(idx, fileInput) {
+      if (!fileInput.files || !fileInput.files.length) return;
+      const file = fileInput.files[0];
+      const formData = new FormData();
+      formData.append('file', file);
+
+      showToast(`Uploading ${file.name}...`);
+      try {
+        const res = await fetch('/admin/api/upload', { method: 'POST', body: formData });
+        const data = await res.json();
+        if (data.success && data.url) {
+          currentProdGallery[idx] = data.url;
+          renderProdGallery();
+          showToast(`Gallery Slot ${idx + 1} updated!`);
+        } else {
+          showToast(data.message || 'Error uploading file', true);
+        }
+      } catch (err) {
+        showToast('Upload error: ' + err.message, true);
+      } finally {
+        fileInput.value = '';
       }
     }
 
@@ -3646,11 +3782,6 @@ Sitemap: https://cdermanepal.com/sitemap.xml
       document.getElementById('productForm').reset();
       document.getElementById('prodId').value = prod ? prod.id : '';
       document.getElementById('productModalTitle').textContent = prod ? 'Edit Formulation' : 'Add New Formulation';
-      
-      const fileInput = document.getElementById('prodImageFile');
-      if (fileInput) fileInput.value = '';
-      const badgeEl = document.getElementById('prodImageStatusBadge');
-      if (badgeEl) badgeEl.classList.add('hidden');
 
       if (prod) {
         document.getElementById('prodTitle').value = prod.title || '';
@@ -3663,7 +3794,6 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         document.getElementById('prodSummary').value = prod.summary || '';
         document.getElementById('prodInci').value = prod.inci_full || '';
         document.getElementById('prodUsage').value = prod.usage_instructions || '';
-        document.getElementById('prodImage').value = prod.image_url || '';
         document.getElementById('prodFeatured').checked = Boolean(prod.is_featured);
         document.getElementById('prodStatus').value = prod.status || 'active';
 
@@ -3679,9 +3809,16 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         const usageNe = document.getElementById('prodUsageNe');
         if (usageNe) usageNe.value = prod.usage_instructions_ne || '';
 
-        updateProdPreview(prod.image_url || '');
+        // Initialize Gallery slots
+        if (Array.isArray(prod.gallery_images) && prod.gallery_images.length > 0) {
+          currentProdGallery = [...prod.gallery_images];
+        } else if (prod.image_url) {
+          const banner = prod.image_url.replace('.jpg', '-banner.jpg');
+          currentProdGallery = [prod.image_url, banner, '/assets/images/img_9f7d04f58a04.jpg'];
+        } else {
+          currentProdGallery = ['/assets/images/cderma-retin-c-serum.jpg'];
+        }
       } else {
-        document.getElementById('prodImage').value = '';
         const titleNe = document.getElementById('prodTitleNe');
         if (titleNe) titleNe.value = '';
         const subNe = document.getElementById('prodSubtitleNe');
@@ -3692,54 +3829,50 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         if (summaryNe) summaryNe.value = '';
         const usageNe = document.getElementById('prodUsageNe');
         if (usageNe) usageNe.value = '';
-        updateProdPreview('');
+
+        currentProdGallery = [''];
       }
+
+      renderProdGallery();
       document.getElementById('productModal').classList.remove('hidden');
     }
 
-    // Instant Image Upload on File Select for Products
-    const prodFileInput = document.getElementById('prodImageFile');
-    if (prodFileInput) {
-      prodFileInput.addEventListener('change', async function() {
+    // Attach bulk multi-image uploader for products
+    const prodBulkInput = document.getElementById('prodBulkFilesInput');
+    if (prodBulkInput) {
+      prodBulkInput.addEventListener('change', async function() {
         if (!this.files || !this.files.length) return;
-        const file = this.files[0];
-        
-        const localBlob = URL.createObjectURL(file);
-        updateProdPreview(localBlob);
-
-        const spinner = document.getElementById('prodUploadProgress');
-        if (spinner) spinner.classList.remove('hidden');
+        const progressEl = document.getElementById('prodBulkUploadProgress');
+        const statusText = document.getElementById('prodBulkUploadStatusText');
+        if (progressEl) progressEl.classList.remove('hidden');
+        if (statusText) statusText.textContent = `Uploading ${this.files.length} images...`;
 
         const formData = new FormData();
-        formData.append('file', file);
+        for (let i = 0; i < this.files.length; i++) {
+          formData.append('files', this.files[i]);
+        }
 
         try {
-          const res = await fetch('/admin/api/upload', { method: 'POST', body: formData });
+          const res = await fetch('/admin/api/upload-multiple', { method: 'POST', body: formData });
           const data = await res.json();
-          if (data.success && data.url) {
-            document.getElementById('prodImage').value = data.url;
-            updateProdPreview(data.url);
-            const badgeEl = document.getElementById('prodImageStatusBadge');
-            if (badgeEl) {
-              badgeEl.textContent = 'Uploaded';
-              badgeEl.classList.remove('hidden');
+          if (data.success && Array.isArray(data.urls)) {
+            // If current gallery only has 1 empty slot, replace it
+            if (currentProdGallery.length === 1 && !currentProdGallery[0]) {
+              currentProdGallery = data.urls;
+            } else {
+              currentProdGallery.push(...data.urls);
             }
-            showToast(`Image "${data.filename || file.name}" uploaded successfully!`);
+            renderProdGallery();
+            showToast(`${data.urls.length} images uploaded and added to product gallery!`);
           } else {
-            showToast(data.message || 'Error uploading image', true);
+            showToast(data.message || 'Multi-image upload failed', true);
           }
         } catch (err) {
-          showToast('Image upload failed: ' + err.message, true);
+          showToast('Multi-upload error: ' + err.message, true);
         } finally {
-          if (spinner) spinner.classList.add('hidden');
+          if (progressEl) progressEl.classList.add('hidden');
+          this.value = '';
         }
-      });
-    }
-
-    const prodUrlInput = document.getElementById('prodImage');
-    if (prodUrlInput) {
-      prodUrlInput.addEventListener('input', function() {
-        updateProdPreview(this.value.trim());
       });
     }
 
@@ -3769,24 +3902,9 @@ Sitemap: https://cdermanepal.com/sitemap.xml
     document.getElementById('productForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       const id = document.getElementById('prodId').value;
-      const fileInput = document.getElementById('prodImageFile');
 
-      let imageUrl = document.getElementById('prodImage').value;
-
-      // Handle file upload if provided
-      if (fileInput.files.length > 0) {
-        const formData = new FormData();
-        formData.append('file', fileInput.files[0]);
-        try {
-          const uploadRes = await fetch('/admin/api/upload', { method: 'POST', body: formData });
-          const uploadData = await uploadRes.json();
-          if (uploadData.success) {
-            imageUrl = uploadData.url;
-          }
-        } catch (err) {
-          console.error(err);
-        }
-      }
+      const primaryImage = currentProdGallery.find(u => u && u.trim().length > 0) || '/assets/images/cderma-retin-c-serum.jpg';
+      const cleanGallery = currentProdGallery.filter(u => u && u.trim().length > 0);
 
       const payload = {
         title: document.getElementById('prodTitle').value,
@@ -3799,7 +3917,16 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         summary: document.getElementById('prodSummary').value,
         inci_full: document.getElementById('prodInci').value,
         usage_instructions: document.getElementById('prodUsage').value,
-        image_url: imageUrl,
+        image_url: primaryImage,
+        gallery_images: cleanGallery,
+        is_featured: document.getElementById('prodFeatured').checked ? 1 : 0,
+        status: document.getElementById('prodStatus').value,
+        title_ne: document.getElementById('prodTitleNe') ? document.getElementById('prodTitleNe').value : undefined,
+        subtitle_ne: document.getElementById('prodSubtitleNe') ? document.getElementById('prodSubtitleNe').value : undefined,
+        clinical_badge_ne: document.getElementById('prodBadgeNe') ? document.getElementById('prodBadgeNe').value : undefined,
+        summary_ne: document.getElementById('prodSummaryNe') ? document.getElementById('prodSummaryNe').value : undefined,
+        usage_instructions_ne: document.getElementById('prodUsageNe') ? document.getElementById('prodUsageNe').value : undefined
+      };
         is_featured: document.getElementById('prodFeatured').checked ? 1 : 0,
         status: document.getElementById('prodStatus').value,
         title_ne: document.getElementById('prodTitleNe') ? document.getElementById('prodTitleNe').value : undefined,
