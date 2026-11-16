@@ -22,13 +22,18 @@ const storage = multer.diskStorage({
 });
 
 // 2. Pre-filter by file extension & MIME type
-const ALLOWED_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.svg', '.pdf']);
+const ALLOWED_EXTENSIONS = new Set(['.jpg', '.jpeg', '.png', '.webp', '.svg', '.pdf', '.avif']);
 const ALLOWED_MIMES = new Set([
   'image/jpeg',
+  'image/jpg',
+  'image/pjpeg',
   'image/png',
+  'image/x-png',
   'image/webp',
+  'image/avif',
   'image/svg+xml',
-  'application/pdf'
+  'application/pdf',
+  'application/octet-stream' // sometimes sent by mobile webview for raw images
 ]);
 
 const fileFilter = (req, file, cb) => {

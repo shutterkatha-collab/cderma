@@ -1691,11 +1691,11 @@ Sitemap: https://cdermanepal.com/sitemap.xml
             </div>
             <!-- Bulk Multi-Image Uploader Button -->
             <div class="relative shrink-0">
-              <label for="prodBulkFilesInput" class="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold shadow-xs transition-colors">
+              <button type="button" onclick="document.getElementById('prodBulkFilesInput').click()" class="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary hover:bg-secondary text-white text-xs font-semibold shadow-xs transition-colors">
                 <span class="material-symbols-outlined text-[16px]">add_photo_alternate</span>
                 <span>+ Upload Multiple Images</span>
-              </label>
-              <input type="file" id="prodBulkFilesInput" multiple accept="image/png,image/jpeg,image/webp,image/avif,image/gif" class="hidden">
+              </button>
+              <input type="file" id="prodBulkFilesInput" multiple accept="image/png,image/jpeg,image/webp,image/avif,image/gif" class="sr-only" style="position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0;">
             </div>
           </div>
 
@@ -3708,11 +3708,11 @@ Sitemap: https://cdermanepal.com/sitemap.xml
               </div>
               <div class="flex items-center gap-2">
                 <input type="text" value="${escapeHtml(safeUrl)}" onchange="updateGalleryUrl(${idx}, this.value)" placeholder="/uploads/... or assets/images/..." class="flex-1 px-2.5 py-1 text-xs font-mono border border-outline-border rounded bg-white focus:outline-none focus:border-primary">
-                <label class="cursor-pointer inline-flex items-center gap-1 px-2.5 py-1 bg-surface-container hover:bg-surface-container-high border border-outline-border text-gray-700 text-[11px] font-semibold rounded shrink-0 transition-colors">
+                <button type="button" onclick="this.nextElementSibling.click()" class="cursor-pointer inline-flex items-center gap-1 px-2.5 py-1 bg-surface-container hover:bg-surface-container-high border border-outline-border text-gray-700 text-[11px] font-semibold rounded shrink-0 transition-colors">
                   <span class="material-symbols-outlined text-xs">cloud_upload</span>
                   <span>Upload</span>
-                  <input type="file" accept="image/png,image/jpeg,image/webp,image/avif,image/gif" class="hidden" onchange="uploadSingleGallerySlot(${idx}, this)">
-                </label>
+                </button>
+                <input type="file" accept="image/png,image/jpeg,image/webp,image/avif,image/gif" class="sr-only" style="position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0;" onchange="uploadSingleGallerySlot(${idx}, this)">
               </div>
             </div>
           </div>
@@ -3919,14 +3919,6 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         usage_instructions: document.getElementById('prodUsage').value,
         image_url: primaryImage,
         gallery_images: cleanGallery,
-        is_featured: document.getElementById('prodFeatured').checked ? 1 : 0,
-        status: document.getElementById('prodStatus').value,
-        title_ne: document.getElementById('prodTitleNe') ? document.getElementById('prodTitleNe').value : undefined,
-        subtitle_ne: document.getElementById('prodSubtitleNe') ? document.getElementById('prodSubtitleNe').value : undefined,
-        clinical_badge_ne: document.getElementById('prodBadgeNe') ? document.getElementById('prodBadgeNe').value : undefined,
-        summary_ne: document.getElementById('prodSummaryNe') ? document.getElementById('prodSummaryNe').value : undefined,
-        usage_instructions_ne: document.getElementById('prodUsageNe') ? document.getElementById('prodUsageNe').value : undefined
-      };
         is_featured: document.getElementById('prodFeatured').checked ? 1 : 0,
         status: document.getElementById('prodStatus').value,
         title_ne: document.getElementById('prodTitleNe') ? document.getElementById('prodTitleNe').value : undefined,

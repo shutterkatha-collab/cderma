@@ -943,7 +943,13 @@ router.delete('/api/media/:slot_key', requireAdmin, (req, res) => {
 });
 
 // POST /admin/api/upload - Single Asset Uploader
-router.post('/api/upload', requireAdmin, upload.single('file'), verifyUploadedFile, (req, res) => {
+router.post('/api/upload', requireAdmin, (req, res, next) => {
+  upload.any()(req, res, (err) => {
+    if (err) return res.status(400).json({ success: false, message: err.message || 'File upload error.' });
+    if (req.files && req.files.length > 0) req.file = req.files[0];
+    next();
+  });
+}, verifyUploadedFile, (req, res) => {
   if (!req.file) {
     return res.status(400).json({ success: false, message: 'No file uploaded.' });
   }
@@ -957,7 +963,12 @@ router.post('/api/upload', requireAdmin, upload.single('file'), verifyUploadedFi
 });
 
 // POST /admin/api/upload-multiple - Multiple / Bulk Asset Uploader
-router.post('/api/upload-multiple', requireAdmin, uploadMultiple.array('files', 12), verifyUploadedFile, (req, res) => {
+router.post('/api/upload-multiple', requireAdmin, (req, res, next) => {
+  uploadMultiple.any()(req, res, (err) => {
+    if (err) return res.status(400).json({ success: false, message: err.message || 'File upload error.' });
+    next();
+  });
+}, verifyUploadedFile, (req, res) => {
   if (!req.files || req.files.length === 0) {
     return res.status(400).json({ success: false, message: 'No files uploaded.' });
   }
