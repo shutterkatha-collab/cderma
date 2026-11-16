@@ -2528,19 +2528,20 @@ async function initProductDetail() {
       mainImg.onerror = function() { this.onerror = null; this.src = '/assets/images/cderma-logo.png'; };
     }
 
-    const thumbBtns = document.querySelectorAll('.thumbnail-btn');
-    thumbBtns.forEach((btn, idx) => {
-      if (galleryList[idx]) {
-        btn.classList.remove('hidden');
-        btn.setAttribute('onclick', `switchGallery('${galleryList[idx]}', this)`);
-        const tImg = btn.querySelector('img');
-        if (tImg) {
-          tImg.src = galleryList[idx];
-          tImg.alt = `${p.title} view ${idx + 1}`;
-          tImg.onerror = function() { this.onerror = null; this.src = '/assets/images/cderma-logo.png'; };
-        }
-      }
-    });
+    const thumbGrid = document.getElementById('product-thumbnails-grid');
+    if (thumbGrid && galleryList.length > 0) {
+      thumbGrid.innerHTML = galleryList.map((imgUrl, idx) => `
+        <button class="thumbnail-btn rounded-xl aspect-square overflow-hidden bg-white border border-outline-variant/40 shadow-2xs ${idx === 0 ? 'ring-2 ring-primary' : 'hover:opacity-90'} p-1.5 flex items-center justify-center transition-all cursor-pointer" onclick="switchGallery('${escapeHtml(imgUrl)}', this)" type="button">
+          <img alt="${escapeHtml(p.title)} thumbnail ${idx + 1}" class="w-full h-full object-contain" src="${escapeHtml(imgUrl)}" onerror="this.onerror=null; this.src='/assets/images/cderma-logo.png';" loading="lazy" decoding="async">
+        </button>
+      `).join('') + `
+        <div class="rounded-xl aspect-square w-full h-full bg-surface-container-high/60 flex flex-col items-center justify-center p-2 text-center border border-outline-variant/40">
+          <span class="material-symbols-outlined text-secondary text-[22px]">biotech</span>
+          <span class="text-[10.5px] font-semibold uppercase tracking-wider text-on-surface mt-0.5">Lab Sealed</span>
+          <span class="text-[10px] text-outline">pH 5.45</span>
+        </div>
+      `;
+    }
 
     // Floating Re-Order Banner synchronization
     const floatImg = document.getElementById('floating-product-img') || document.querySelector('#floating-product-bar img') || document.querySelector('section.sticky img');
@@ -2557,22 +2558,29 @@ async function initProductDetail() {
     // 5. Active Ingredients Pills
     const ingredientsContainer = document.getElementById('p-ingredients') || document.querySelector('[data-product-ingredients]');
     if (ingredientsContainer && Array.isArray(p.active_ingredients) && p.active_ingredients.length > 0) {
-      ingredientsContainer.innerHTML = p.active_ingredients.map(ing => `
-        <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-surface-container border border-outline-variant/40 text-primary font-label text-[11px] font-semibold tracking-wide">
-          <span class="w-1.5 h-1.5 rounded-full bg-primary mr-1.5"></span>
-          ${escapeHtml(ing)}
-        </span>
-      `).join('');
+      ingredientsContainer.innerHTML = p.active_ingredients.map(ing => {
+        const name = typeof ing === 'string' ? ing : (ing.name || ing.label || '');
+        const conc = (typeof ing === 'object' && ing.concentration) ? ` (${ing.concentration})` : '';
+        return `
+          <span class="inline-flex items-center px-3 py-1.5 rounded-full bg-surface-container border border-outline-variant/40 text-primary font-label text-[11px] font-semibold tracking-wide">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary mr-1.5"></span>
+            ${escapeHtml(name + conc)}
+          </span>
+        `;
+      }).join('');
     }
 
     // 6. Key Benefits / Diagnostic Targets Pills
     const benefitsContainer = document.getElementById('p-benefits') || document.querySelector('[data-product-benefits]');
     if (benefitsContainer && Array.isArray(p.key_benefits) && p.key_benefits.length > 0) {
-      benefitsContainer.innerHTML = p.key_benefits.map(b => `
-        <span class="px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface text-[11.5px] font-medium leading-normal">
-          ${escapeHtml(b)}
-        </span>
-      `).join('');
+      benefitsContainer.innerHTML = p.key_benefits.map(b => {
+        const txt = typeof b === 'string' ? b : (b.text || b.label || String(b));
+        return `
+          <span class="px-2.5 py-1 rounded-full bg-surface-container-high text-on-surface text-[11.5px] font-medium leading-normal">
+            ${escapeHtml(txt)}
+          </span>
+        `;
+      }).join('');
     }
 
     // 7. INCI Full List

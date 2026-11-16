@@ -288,18 +288,22 @@ app.get('/products/:slug', (req, res) => {
         gallery.push(rootImg.replace('.jpg', '-banner.jpg'));
         gallery.push('/assets/images/img_9f7d04f58a04.jpg');
       }
-      const bannerImg = gallery[1] || rootImg.replace('.jpg', '-banner.jpg');
-      const lifestyleImg = gallery[2] || '/assets/images/img_9f7d04f58a04.jpg';
 
-      html = html.replace(/<img[^>]*id="main-product-img"[^>]*>/i, `<img alt="${product.title}" class="max-h-[300px] sm:max-h-[360px] md:max-h-[390px] w-auto h-full object-contain transition-transform duration-500 group-hover:scale-105" id="main-product-img" src="${rootImg}" onerror="this.onerror=null; this.src='/assets/images/cderma-logo.png';" decoding="async">`);
-      html = html.replace(/\/assets\/images\/cderma-retin-c-serum\.jpg/g, rootImg);
-      html = html.replace(/\/assets\/images\/cderma-retin-c-serum-banner\.jpg/g, bannerImg);
-      html = html.replace(/\/assets\/images\/img_9f7d04f58a04\.jpg/g, lifestyleImg);
-      html = html.replace(/alt="CDerma Retin C Serum bottle and box"/g, `alt="${product.title} bottle and box"`);
-      html = html.replace(/alt="CDerma Retin C clinical flyer and benefits"/g, `alt="${product.title} clinical flyer and benefits"`);
-      html = html.replace(/alt="Dermatologist guided face application"/g, `alt="${product.title} application"`);
-      html = html.replace(/id="floating-product-img"[^>]*src="[^"]*"/i, `id="floating-product-img" src="${rootImg}"`);
-      html = html.replace(/id="floating-product-title">[^<]*<\/p>/i, `id="floating-product-title">${product.title}</p>`);
+      const safeTitle = (product.title || '').replace(/"/g, '&quot;');
+      const thumbnailsHtml = gallery.map((imgUrl, idx) => `
+<button class="thumbnail-btn rounded-xl aspect-square overflow-hidden bg-white border border-outline-variant/40 shadow-2xs ${idx === 0 ? 'ring-2 ring-primary' : 'hover:opacity-90'} p-1.5 flex items-center justify-center transition-all cursor-pointer" onclick="switchGallery('${imgUrl}', this)" type="button">
+  <img alt="${safeTitle} thumbnail ${idx + 1}" class="w-full h-full object-contain" src="${imgUrl}" onerror="this.onerror=null; this.src='/assets/images/cderma-logo.png';" loading="lazy" decoding="async">
+</button>`).join('') + `
+<div class="rounded-xl aspect-square w-full h-full bg-surface-container-high/60 flex flex-col items-center justify-center p-2 text-center border border-outline-variant/40">
+  <span class="material-symbols-outlined text-secondary text-[22px]">biotech</span>
+  <span class="text-[10.5px] font-semibold uppercase tracking-wider text-on-surface mt-0.5">Lab Sealed</span>
+  <span class="text-[10px] text-outline">pH 5.45</span>
+</div>`;
+
+      html = html.replace(/<img[^>]*id="main-product-img"[^>]*>/i, `<img alt="${safeTitle}" class="max-h-[300px] sm:max-h-[360px] md:max-h-[390px] w-auto h-full object-contain transition-transform duration-500 group-hover:scale-105" id="main-product-img" src="${gallery[0] || rootImg}" onerror="this.onerror=null; this.src='/assets/images/cderma-logo.png';" decoding="async">`);
+      html = html.replace(/<div class="grid grid-cols-4 gap-2.5 sm:gap-3" id="product-thumbnails-grid">[\s\S]*?<\/div>\s*<!-- Ambient Mini Guarantee Strip -->/i, `<div class="grid grid-cols-4 gap-2.5 sm:gap-3" id="product-thumbnails-grid">${thumbnailsHtml}\n</div>\n<!-- Ambient Mini Guarantee Strip -->`);
+      html = html.replace(/<img[^>]*id="floating-product-img"[^>]*>/i, `<img alt="${safeTitle}" id="floating-product-img" class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg object-contain bg-white shadow-2xs shrink-0 p-0.5 border border-outline-variant/40" src="${gallery[0] || rootImg}" onerror="this.onerror=null; this.src='/assets/images/cderma-logo.png';" loading="lazy" decoding="async">`);
+      html = html.replace(/<p[^>]*id="floating-product-title"[^>]*>[\s\S]*?<\/p>/i, `<p class="font-semibold text-[12.5px] sm:text-[13.5px] text-on-surface leading-tight truncate" id="floating-product-title">${safeTitle}</p>`);
     }
 
     res.send(html);

@@ -432,9 +432,22 @@ router.put('/api/products/:id', requireAdmin, upload.single('image'), verifyUplo
       galleryJson = JSON.stringify([image_url]);
     }
 
-    const benefitsJson = typeof key_benefits === 'string' ? key_benefits : JSON.stringify(key_benefits || []);
-    const benefitsNeJson = typeof key_benefits_ne === 'string' ? key_benefits_ne : (key_benefits_ne !== undefined ? JSON.stringify(key_benefits_ne) : existing.key_benefits_ne);
-    const ingredientsJson = typeof active_ingredients === 'string' ? active_ingredients : JSON.stringify(active_ingredients || []);
+    if (slug && slug !== existing.slug) {
+      const conflict = db.prepare('SELECT id FROM products WHERE slug = ? AND id != ?').get(slug, req.params.id);
+      if (conflict) {
+        return res.status(400).json({ success: false, message: `The URL slug "${slug}" is already in use by another product.` });
+      }
+    }
+
+    const benefitsJson = key_benefits !== undefined
+      ? (typeof key_benefits === 'string' ? key_benefits : JSON.stringify(key_benefits))
+      : existing.key_benefits;
+    const benefitsNeJson = key_benefits_ne !== undefined
+      ? (typeof key_benefits_ne === 'string' ? key_benefits_ne : JSON.stringify(key_benefits_ne))
+      : existing.key_benefits_ne;
+    const ingredientsJson = active_ingredients !== undefined
+      ? (typeof active_ingredients === 'string' ? active_ingredients : JSON.stringify(active_ingredients))
+      : existing.active_ingredients;
 
     const stmt = db.prepare(`
       UPDATE products SET

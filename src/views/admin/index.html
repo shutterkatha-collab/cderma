@@ -1633,8 +1633,16 @@ Sitemap: https://cdermanepal.com/sitemap.xml
           <input type="text" id="prodBadge" class="w-full p-2.5 rounded border border-outline-border" placeholder="e.g. Flagship Formulation">
         </div>
         <div>
-          <label class="block font-semibold text-gray-600 mb-1">Summary Description</label>
-          <textarea id="prodSummary" rows="2" class="w-full p-2.5 rounded border border-outline-border"></textarea>
+          <label class="block font-semibold text-gray-600 mb-1">Short Clinical Summary / TL;DR</label>
+          <textarea id="prodSummary" rows="2" class="w-full p-2.5 rounded border border-outline-border" placeholder="Brief clinical summary..."></textarea>
+        </div>
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Full Detailed Description / Formula Story</label>
+          <textarea id="prodDesc" rows="3" class="w-full p-2.5 rounded border border-outline-border" placeholder="Detailed product story and mechanism of action..."></textarea>
+        </div>
+        <div>
+          <label class="block font-semibold text-gray-600 mb-1">Key Benefits (1 benefit per line)</label>
+          <textarea id="prodBenefits" rows="3" class="w-full p-2.5 rounded border border-outline-border" placeholder="Reduces dark spots&#10;Strengthens skin barrier&#10;Hydrates deeply without clogging pores"></textarea>
         </div>
         <div>
           <label class="block font-semibold text-gray-600 mb-1">Full INCI Ingredient List</label>
@@ -3792,6 +3800,10 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         document.getElementById('prodPrice').value = prod.price_npr || '';
         document.getElementById('prodBadge').value = prod.clinical_badge || '';
         document.getElementById('prodSummary').value = prod.summary || '';
+        document.getElementById('prodDesc').value = prod.description || '';
+        document.getElementById('prodBenefits').value = Array.isArray(prod.key_benefits) 
+          ? prod.key_benefits.map(b => typeof b === 'string' ? b : (b.text || b.label || '')).join('\n')
+          : (typeof prod.key_benefits === 'string' ? prod.key_benefits : '');
         document.getElementById('prodInci').value = prod.inci_full || '';
         document.getElementById('prodUsage').value = prod.usage_instructions || '';
         document.getElementById('prodFeatured').checked = Boolean(prod.is_featured);
@@ -3915,6 +3927,10 @@ Sitemap: https://cdermanepal.com/sitemap.xml
         price_npr: document.getElementById('prodPrice').value,
         clinical_badge: document.getElementById('prodBadge').value,
         summary: document.getElementById('prodSummary').value,
+        description: document.getElementById('prodDesc') ? document.getElementById('prodDesc').value : undefined,
+        key_benefits: document.getElementById('prodBenefits') 
+          ? document.getElementById('prodBenefits').value.split('\n').map(s => s.trim()).filter(Boolean)
+          : undefined,
         inci_full: document.getElementById('prodInci').value,
         usage_instructions: document.getElementById('prodUsage').value,
         image_url: primaryImage,
